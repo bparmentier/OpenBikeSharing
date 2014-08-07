@@ -1,0 +1,35 @@
+<!--
+  ~ Copyright (c) 2014 Bruno Parmentier. This file is part of OpenBikeSharing.
+  ~
+  ~ OpenBikeSharing is free software: you can redistribute it and/or modify
+  ~ it under the terms of the GNU General Public License as published by
+  ~ the Free Software Foundation, either version 3 of the License, or
+  ~ (at your option) any later version.
+  ~
+  ~ OpenBikeSharing is distributed in the hope that it will be useful,
+  ~ but WITHOUT ANY WARRANTY; without even the implied warranty of
+  ~ MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+  ~ GNU General Public License for more details.
+  ~
+  ~ You should have received a copy of the GNU General Public License
+  ~ along with OpenBikeSharing.  If not, see <http://www.gnu.org/licenses/>.
+  -->
+
+<PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <Preference android:title="@string/pref_title_bike_networks_list">
+        <intent
+            android:targetPackage="be.brunoparmentier.openbikesharing.app"
+            android:targetClass="be.brunoparmentier.openbikesharing.app.ui.BikeNetworksListActivity" />
+    </Preference>
+
+    <be.brunoparmentier.openbikesharing.app.utils.InfoDialogPreference
+        android:title="@string/pref_title_license"
+        android:dialogTitle="@string/pref_title_license"
+        android:dialogMessage="@string/pref_title_license_message" />
+
+    <be.brunoparmentier.openbikesharing.app.utils.InfoDialogPreference
+        android:title="@string/pref_title_about"
+        android:dialogTitle="@string/pref_title_about"
+        android:dialogMessage="@string/pref_title_about_message" />
+</PreferenceScreen>
