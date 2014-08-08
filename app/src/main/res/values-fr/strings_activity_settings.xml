@@ -52,7 +52,7 @@
     </string>
 
     <!-- Map layer -->
-    <string name="pref_map_layer_title">Couche de carte</string>
+    <string name="pref_map_layer_title">Fond de carte</string>
     <!--<string name="pref_map_layer_mapnik">Mapnik</string>
     <string name="pref_map_layer_cyclemap">OpenCycleMap</string>
     <string name="pref_map_layer_osmpublictransport">OSMPublicTransport</string>
