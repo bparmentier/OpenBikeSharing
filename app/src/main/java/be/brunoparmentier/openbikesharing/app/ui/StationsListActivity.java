@@ -24,6 +24,7 @@ import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.AsyncTask;
 import android.os.Bundle;
+import android.preference.PreferenceManager;
 import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -57,7 +58,6 @@ public class StationsListActivity extends Activity {
     private BikeNetwork bikeNetwork;
     private ArrayList<Station> stations;
     //private String networkId;
-    private final String PREFERENCES_FILE = "Preferences";
     private final String PREF_NETWORK_ID_LABEL = "network-id";
     private final String TAG = "StationsListActivity";
     private boolean firstRun;
@@ -68,7 +68,7 @@ public class StationsListActivity extends Activity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_stations_list);
-        SharedPreferences settings = getSharedPreferences(PREFERENCES_FILE, 0);
+        SharedPreferences settings = PreferenceManager.getDefaultSharedPreferences(this);
         listView = (ListView) findViewById(R.id.stationsListView);
 
         firstRun = settings.getString(PREF_NETWORK_ID_LABEL, "").isEmpty();
@@ -113,7 +113,9 @@ public class StationsListActivity extends Activity {
             startActivity(intent);
             return true;
         } else if (id == R.id.action_refresh) {
-            String networkId = getSharedPreferences(PREFERENCES_FILE, 0).getString(PREF_NETWORK_ID_LABEL, "");
+            String networkId = PreferenceManager
+                    .getDefaultSharedPreferences(this)
+                    .getString(PREF_NETWORK_ID_LABEL, "");
             Log.e(TAG, "URL: " + BASE_URL + "/" + networkId);
             new JSONDownloadTask().execute(BASE_URL + "/" + networkId);
             return true;

@@ -21,6 +21,7 @@ import android.app.Activity;
 import android.content.SharedPreferences;
 import android.os.AsyncTask;
 import android.os.Bundle;
+import android.preference.PreferenceManager;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
@@ -51,7 +52,6 @@ import be.brunoparmentier.openbikesharing.app.utils.parser.BikeNetworksListParse
 public class BikeNetworksListActivity extends Activity {
 
     private final String BASE_URL = "http://api.citybik.es/v2/networks";
-    private final String PREFERENCES_FILE = "Preferences";
     private final String NETWORK_ID_LABEL = "network-id";
     private ListView listView;
     private ArrayList<BikeNetworkInfo> bikeNetworks;
@@ -140,7 +140,8 @@ public class BikeNetworksListActivity extends Activity {
                     public void onItemClick(AdapterView<?> parent, View view,
                                             int position, long id) {
 
-                        SharedPreferences settings = getSharedPreferences(PREFERENCES_FILE, 0);
+                        SharedPreferences settings = PreferenceManager
+                                .getDefaultSharedPreferences(BikeNetworksListActivity.this);
                         SharedPreferences.Editor editor = settings.edit();
                         editor.putString(NETWORK_ID_LABEL, bikeNetworks.get(position).getId());
                         editor.putBoolean("first-run", false);
