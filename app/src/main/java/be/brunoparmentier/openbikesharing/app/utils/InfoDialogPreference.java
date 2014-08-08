@@ -23,7 +23,7 @@ import android.preference.DialogPreference;
 import android.util.AttributeSet;
 
 /**
- * Created by Bruno Parmentier on 2014-06-15.
+ * Custom DialogPreference class without negative button.
  */
 public class InfoDialogPreference extends DialogPreference {
 

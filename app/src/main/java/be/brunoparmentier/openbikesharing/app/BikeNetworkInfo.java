@@ -20,7 +20,7 @@ package be.brunoparmentier.openbikesharing.app;
 import java.io.Serializable;
 
 /**
- * Created by bp on 6/28/14.
+ * Information on a bike network.
  */
 public class BikeNetworkInfo implements Serializable, Comparable<BikeNetworkInfo> {
     private String id;

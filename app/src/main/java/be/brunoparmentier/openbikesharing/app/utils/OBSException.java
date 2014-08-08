@@ -18,7 +18,7 @@
 package be.brunoparmentier.openbikesharing.app.utils;
 
 /**
- * Created by Bruno Parmentier on 2014-06-09.
+ * Custom exception for the OpenBikeSharing project.
  */
 public class OBSException extends Exception {
     private String message;

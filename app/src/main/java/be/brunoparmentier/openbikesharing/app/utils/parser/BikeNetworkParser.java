@@ -29,7 +29,7 @@ import be.brunoparmentier.openbikesharing.app.Station;
 import be.brunoparmentier.openbikesharing.app.utils.OBSException;
 
 /**
- * Created by Bruno Parmentier on 2014-06-09.
+ * Parse information on a bike network.
  */
 public class BikeNetworkParser {
     private String networkId;

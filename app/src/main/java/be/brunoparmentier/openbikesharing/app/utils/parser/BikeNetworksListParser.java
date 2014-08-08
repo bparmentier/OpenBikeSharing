@@ -28,7 +28,7 @@ import be.brunoparmentier.openbikesharing.app.BikeNetworkLocation;
 import be.brunoparmentier.openbikesharing.app.utils.OBSException;
 
 /**
- * Created by Bruno Parmentier on 2014-06-09.
+ * Parse the list of bike networks.
  */
 public class BikeNetworksListParser {
     private ArrayList<BikeNetworkInfo> bikeNetworks;

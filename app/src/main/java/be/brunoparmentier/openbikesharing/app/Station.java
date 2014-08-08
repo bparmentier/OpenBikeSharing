@@ -20,7 +20,7 @@ package be.brunoparmentier.openbikesharing.app;
 import java.io.Serializable;
 
 /**
- * Created by Bruno Parmentier on 6/9/14.
+ * Represents a bike station.
  */
 public class Station implements Serializable, Comparable<Station> {
     private String id;

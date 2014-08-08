@@ -20,7 +20,7 @@ package be.brunoparmentier.openbikesharing.app;
 import java.util.ArrayList;
 
 /**
- * Created by Bruno Parmentier on 2014-06-09.
+ * Represents a bike network and its stations.
  */
 public class BikeNetwork extends BikeNetworkInfo {
     private ArrayList<Station> stations;

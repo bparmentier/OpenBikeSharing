@@ -20,7 +20,7 @@ package be.brunoparmentier.openbikesharing.app;
 import java.io.Serializable;
 
 /**
- * Created by Bruno Parmentier on 2014-06-09.
+ * Represents the location of a bike network.
  */
 public class BikeNetworkLocation implements Serializable {
     private double latitude;
