@@ -47,7 +47,7 @@
     <string name="bike_network_downloading">Please wait while bike network is being downloaded</string>
 
     <!-- Various -->
-    <string name="free_bikes">Free bikes:</string>
-    <string name="empty_slots">Empty slots:</string>
+    <string name="free_bikes">Free bikes:\u00A0</string>
+    <string name="empty_slots">Empty slots:\u00A0</string>
 
 </resources>

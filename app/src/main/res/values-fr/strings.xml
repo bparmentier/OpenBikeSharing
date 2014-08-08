@@ -47,7 +47,7 @@
     <string name="bike_network_downloading">Veuillez patienter pendant que le réseau de vélos est téléchargé</string>
 
     <!-- Various -->
-    <string name="free_bikes">Vélos restants\u00A0:</string>
-    <string name="empty_slots">Emplacements vides\u00A0:</string>
+    <string name="free_bikes">Vélos restants\u00A0:\u00A0</string>
+    <string name="empty_slots">Emplacements vides\u00A0:\u00A0</string>
 
 </resources>
