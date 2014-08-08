@@ -117,9 +117,9 @@ public class MapActivity extends Activity {
                     public boolean onItemSingleTapUp(int i, OverlayItem overlayItem) {
                         Toast.makeText(MapActivity.this,
                                 stations.get(i).getName()
-                                        + "\n" + getString(R.string.free_bikes) + " "
+                                        + "\n" + getString(R.string.free_bikes)
                                         + stations.get(i).getFreeBikes()
-                                        + "\n" + getString(R.string.empty_slots) + " "
+                                        + "\n" + getString(R.string.empty_slots)
                                         + stations.get(i).getEmptySlots(),
                                 Toast.LENGTH_SHORT).show();
 
