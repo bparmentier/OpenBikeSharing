@@ -19,9 +19,11 @@ package be.brunoparmentier.openbikesharing.app.ui;
 
 import android.app.Activity;
 import android.content.Context;
+import android.content.SharedPreferences;
 import android.graphics.drawable.Drawable;
 import android.location.LocationManager;
 import android.os.Bundle;
+import android.preference.PreferenceManager;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.widget.Toast;
@@ -53,12 +55,14 @@ public class MapActivity extends Activity {
     private ItemizedOverlay<OverlayItem> stationLocationOverlay;
     private ResourceProxy mResourceProxy;
     private MyLocationNewOverlay myLocationOverlay;
+    SharedPreferences settings;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_map);
 
+        settings = PreferenceManager.getDefaultSharedPreferences(this);
         mResourceProxy = new ResourceProxyImpl(getApplicationContext());
 
         try {
@@ -89,7 +93,20 @@ public class MapActivity extends Activity {
         map.setMultiTouchControls(true);
         map.setBuiltInZoomControls(true);
         map.setMinZoomLevel(3);
-        map.setTileSource(TileSourceFactory.CYCLEMAP);
+
+        /* map tile source */
+        String mapLayer = settings.getString("pref_map_layer", "");
+        if (mapLayer.equals("mapnik")) {
+            map.setTileSource(TileSourceFactory.MAPNIK);
+        } else if (mapLayer.equals("cyclemap")) {
+            map.setTileSource(TileSourceFactory.CYCLEMAP);
+        } else if (mapLayer.equals("osmpublictransport")) {
+            map.setTileSource(TileSourceFactory.PUBLIC_TRANSPORT);
+        } else if (mapLayer.equals("mapquestosm")) {
+            map.setTileSource(TileSourceFactory.MAPQUESTOSM);
+        } else {
+            map.setTileSource(TileSourceFactory.DEFAULT_TILE_SOURCE);
+        }
 
         /* Stations markers */
         Drawable newMarker = this.getResources().getDrawable(R.drawable.bike);

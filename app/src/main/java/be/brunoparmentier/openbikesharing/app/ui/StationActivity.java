@@ -18,8 +18,10 @@
 package be.brunoparmentier.openbikesharing.app.ui;
 
 import android.app.Activity;
+import android.content.SharedPreferences;
 import android.graphics.drawable.Drawable;
 import android.os.Bundle;
+import android.preference.PreferenceManager;
 import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -27,6 +29,7 @@ import android.widget.TextView;
 
 import org.osmdroid.ResourceProxy;
 import org.osmdroid.api.IMapController;
+import org.osmdroid.tileprovider.tilesource.TileSourceFactory;
 import org.osmdroid.util.GeoPoint;
 import org.osmdroid.util.ResourceProxyImpl;
 import org.osmdroid.views.MapView;
@@ -45,11 +48,14 @@ public class StationActivity extends Activity {
     private IMapController mapController;
     private ItemizedOverlay<OverlayItem> stationLocationOverlay;
     private ResourceProxy mResourceProxy;
+    SharedPreferences settings;
 
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+
+        settings = PreferenceManager.getDefaultSharedPreferences(this);
         mResourceProxy = new ResourceProxyImpl(getApplicationContext());
 
         setContentView(R.layout.activity_station);
@@ -63,7 +69,20 @@ public class StationActivity extends Activity {
 
         mapController = map.getController();
         mapController.setZoom(16);
-        mapController.animateTo(stationLocation);
+
+        /* map tile source */
+        String mapLayer = settings.getString("pref_map_layer", "");
+        if (mapLayer.equals("mapnik")) {
+            map.setTileSource(TileSourceFactory.MAPNIK);
+        } else if (mapLayer.equals("cyclemap")) {
+            map.setTileSource(TileSourceFactory.CYCLEMAP);
+        } else if (mapLayer.equals("osmpublictransport")) {
+            map.setTileSource(TileSourceFactory.PUBLIC_TRANSPORT);
+        } else if (mapLayer.equals("mapquestosm")) {
+            map.setTileSource(TileSourceFactory.MAPQUESTOSM);
+        } else {
+            map.setTileSource(TileSourceFactory.DEFAULT_TILE_SOURCE);
+        }
 
         map.setMultiTouchControls(true);
 
@@ -95,6 +114,8 @@ public class StationActivity extends Activity {
         stationName.setText(station.getName());
         stationEmptySlots.append(String.valueOf(station.getEmptySlots()));
         stationFreeBikes.append(String.valueOf(station.getFreeBikes()));
+
+        mapController.animateTo(stationLocation);
     }
 
     @Override

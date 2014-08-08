@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8"?><!--
+  ~ Copyright (c) 2014 Bruno Parmentier. This file is part of OpenBikeSharing.
+  ~
+  ~ OpenBikeSharing is free software: you can redistribute it and/or modify
+  ~ it under the terms of the GNU General Public License as published by
+  ~ the Free Software Foundation, either version 3 of the License, or
+  ~ (at your option) any later version.
+  ~
+  ~ OpenBikeSharing is distributed in the hope that it will be useful,
+  ~ but WITHOUT ANY WARRANTY; without even the implied warranty of
+  ~ MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+  ~ GNU General Public License for more details.
+  ~
+  ~ You should have received a copy of the GNU General Public License
+  ~ along with OpenBikeSharing.  If not, see <http://www.gnu.org/licenses/>.
+  -->
+
+<resources>
+    <string-array name="pref_map_layer_entries">
+        <item>@string/pref_map_layer_mapnik</item>
+        <item>@string/pref_map_layer_cyclemap</item>
+        <item>@string/pref_map_layer_osmpublictransport</item>
+        <item>@string/pref_map_layer_mapquestosm</item>
+    </string-array>
+
+    <string-array name="pref_map_layer_values">
+        <item>mapnik</item>
+        <item>cyclemap</item>
+        <item>osmpublictransport</item>
+        <item>mapquestosm</item>
+    </string-array>
+</resources>

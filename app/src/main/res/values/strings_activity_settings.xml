@@ -51,4 +51,12 @@
         (https://github.com/osmdroid/osmdroid).
     </string>
 
+    <!-- Map layer -->
+    <string name="pref_map_layer_title">Map layer</string>
+    <string name="pref_map_layer_mapnik">Mapnik</string>
+    <string name="pref_map_layer_cyclemap">OpenCycleMap</string>
+    <string name="pref_map_layer_osmpublictransport">OSMPublicTransport</string>
+    <string name="pref_map_layer_mapquestosm">MapQuest-OSM</string>
+
+
 </resources>
