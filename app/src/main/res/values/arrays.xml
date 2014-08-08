@@ -23,7 +23,7 @@
         <item>@string/pref_map_layer_mapquestosm</item>
     </string-array>
 
-    <string-array name="pref_map_layer_values">
+    <string-array name="pref_map_layer_values" translatable="false">
         <item>mapnik</item>
         <item>cyclemap</item>
         <item>osmpublictransport</item>
