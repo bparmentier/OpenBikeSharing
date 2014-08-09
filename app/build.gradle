@@ -40,4 +40,5 @@ dependencies {
     compile fileTree(dir: 'libs', include: ['*.jar'])
     compile 'org.osmdroid:osmdroid-android:4.2'
     compile 'com.android.support:support-v4:19.+'
+    compile 'org.slf4j:slf4j-simple:1.7.7'
 }
