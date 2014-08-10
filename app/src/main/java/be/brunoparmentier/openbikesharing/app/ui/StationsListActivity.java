@@ -54,12 +54,12 @@ import be.brunoparmentier.openbikesharing.app.utils.parser.BikeNetworkParser;
 
 public class StationsListActivity extends Activity {
     private final String BASE_URL = "http://api.citybik.es/v2/networks";
-    private ListView listView;
-    private BikeNetwork bikeNetwork;
-    private ArrayList<Station> stations;
     //private String networkId;
     private final String PREF_NETWORK_ID_LABEL = "network-id";
     private final String TAG = "StationsListActivity";
+    private ListView listView;
+    private BikeNetwork bikeNetwork;
+    private ArrayList<Station> stations;
     private boolean firstRun;
 
     private Menu optionsMenu;
@@ -116,7 +116,6 @@ public class StationsListActivity extends Activity {
             String networkId = PreferenceManager
                     .getDefaultSharedPreferences(this)
                     .getString(PREF_NETWORK_ID_LABEL, "");
-            Log.e(TAG, "URL: " + BASE_URL + "/" + networkId);
             new JSONDownloadTask().execute(BASE_URL + "/" + networkId);
             return true;
         } else if (id == R.id.action_map) {
@@ -173,7 +172,7 @@ public class StationsListActivity extends Activity {
                     }
                     input.close();
                 }
-                Log.e(TAG, response.toString());
+                Log.d(TAG, response.toString());
                 return response.toString();
             } catch (IOException e) {
                 error = e;

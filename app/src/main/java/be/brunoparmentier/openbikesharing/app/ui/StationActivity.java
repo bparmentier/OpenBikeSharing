@@ -25,7 +25,6 @@ import android.net.Uri;
 import android.os.Build;
 import android.os.Bundle;
 import android.preference.PreferenceManager;
-import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.ViewTreeObserver;
@@ -67,8 +66,6 @@ public class StationActivity extends Activity {
         map = (MapView) findViewById(R.id.mapView);
         final GeoPoint stationLocation = new GeoPoint((int) (station.getLatitude() * 1000000),
                 (int) (station.getLongitude() * 1000000));
-
-        Log.e(StationActivity.class.toString(), "lat: " + (int) (station.getLatitude() * 1000000));
 
         mapController = map.getController();
         mapController.setZoom(16);
