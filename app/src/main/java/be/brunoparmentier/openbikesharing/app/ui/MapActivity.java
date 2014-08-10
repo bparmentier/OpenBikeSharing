@@ -48,6 +48,7 @@ import be.brunoparmentier.openbikesharing.app.Station;
 
 public class MapActivity extends Activity {
 
+    SharedPreferences settings;
     private BikeNetwork bikeNetwork;
     private ArrayList<Station> stations;
     private MapView map;
@@ -55,7 +56,6 @@ public class MapActivity extends Activity {
     private ItemizedOverlay<OverlayItem> stationLocationOverlay;
     private ResourceProxy mResourceProxy;
     private MyLocationNewOverlay myLocationOverlay;
-    SharedPreferences settings;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -154,8 +154,9 @@ public class MapActivity extends Activity {
                     .getLastKnownLocation(LocationManager.NETWORK_PROVIDER));
             mapController.animateTo(myLocation);
         } catch (NullPointerException e) {
-            mapController.animateTo(new GeoPoint(stations.get(0).getLatitude(),
-                    stations.get(0).getLongitude()));
+            mapController.setZoom(13);
+            mapController.animateTo(new GeoPoint(bikeNetwork.getLocation().getLatitude(),
+                    bikeNetwork.getLocation().getLongitude()));
             Toast.makeText(this, R.string.location_not_found, Toast.LENGTH_LONG).show();
         }
     }
