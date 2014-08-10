@@ -200,8 +200,8 @@ public class StationsListActivity extends Activity {
                     Collections.sort(stations);
 
                     final ArrayList<String> list = new ArrayList<String>();
-                    for (int i = 0; i < stations.size(); ++i) {
-                        list.add(stations.get(i).getName());
+                    for (Station station : stations) {
+                        list.add(station.getName());
                     }
                     ArrayAdapter<String> stationsList = new ArrayAdapter<String>(StationsListActivity.this,
                             android.R.layout.simple_list_item_1, list);

@@ -116,8 +116,8 @@ public class BikeNetworksListActivity extends Activity {
 
 
                 final ArrayList<String> list = new ArrayList<String>();
-                for (int i = 0; i < bikeNetworks.size(); ++i) {
-                    list.add(bikeNetworks.get(i).getLocation().getCity() + " - " + bikeNetworks.get(i).getName());
+                for (BikeNetworkInfo bikeNetwork : bikeNetworks) {
+                    list.add(bikeNetwork.getLocation().getCity() + " - " + bikeNetwork.getName());
                 }
 
                 ArrayAdapter networksList = new ArrayAdapter(BikeNetworksListActivity.this,
