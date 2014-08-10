@@ -15,7 +15,15 @@
   ~ along with OpenBikeSharing.  If not, see <http://www.gnu.org/licenses/>.
   -->
 
-<menu xmlns:tools="http://schemas.android.com/tools"
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
     tools:context="be.brunoparmentier.openbikesharing.app.ui.StationActivity">
+
+    <item
+        android:id="@+id/action_directions"
+        android:icon="@drawable/ic_menu_directions"
+        android:orderInCategory="100"
+        android:showAsAction="ifRoom"
+        android:title="@string/action_directions" />
 
 </menu>

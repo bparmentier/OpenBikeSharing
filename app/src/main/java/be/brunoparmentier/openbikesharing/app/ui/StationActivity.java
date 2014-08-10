@@ -18,8 +18,10 @@
 package be.brunoparmentier.openbikesharing.app.ui;
 
 import android.app.Activity;
+import android.content.Intent;
 import android.content.SharedPreferences;
 import android.graphics.drawable.Drawable;
+import android.net.Uri;
 import android.os.Build;
 import android.os.Bundle;
 import android.preference.PreferenceManager;
@@ -139,6 +141,16 @@ public class StationActivity extends Activity {
 
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
+        int id = item.getItemId();
+        if (id == R.id.action_directions) {
+            Intent intent = new Intent(Intent.ACTION_VIEW, getStationLocationUri());
+            startActivity(intent);
+            return true;
+        }
         return super.onOptionsItemSelected(item);
+    }
+
+    private Uri getStationLocationUri() {
+        return Uri.parse("geo:" + station.getLatitude() + "," + station.getLongitude());
     }
 }

@@ -28,6 +28,7 @@
     <string name="action_settings">Paramètres</string>
     <string name="action_refresh">Rafraîchir</string>
     <string name="action_map">Carte</string>
+    <string name="action_directions">Itinéraire</string>
 
     <!-- Activities titles -->
     <string name="title_activity_stations_list">Stations</string>
