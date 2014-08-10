@@ -20,11 +20,13 @@ package be.brunoparmentier.openbikesharing.app.ui;
 import android.app.Activity;
 import android.content.SharedPreferences;
 import android.graphics.drawable.Drawable;
+import android.os.Build;
 import android.os.Bundle;
 import android.preference.PreferenceManager;
 import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.ViewTreeObserver;
 import android.widget.TextView;
 
 import org.osmdroid.ResourceProxy;
@@ -43,13 +45,12 @@ import be.brunoparmentier.openbikesharing.app.R;
 import be.brunoparmentier.openbikesharing.app.Station;
 
 public class StationActivity extends Activity {
+    SharedPreferences settings;
     private Station station;
     private MapView map;
     private IMapController mapController;
     private ItemizedOverlay<OverlayItem> stationLocationOverlay;
     private ResourceProxy mResourceProxy;
-    SharedPreferences settings;
-
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -62,7 +63,7 @@ public class StationActivity extends Activity {
         station = (Station) getIntent().getSerializableExtra("station");
 
         map = (MapView) findViewById(R.id.mapView);
-        GeoPoint stationLocation = new GeoPoint((int) (station.getLatitude() * 1000000),
+        final GeoPoint stationLocation = new GeoPoint((int) (station.getLatitude() * 1000000),
                 (int) (station.getLongitude() * 1000000));
 
         Log.e(StationActivity.class.toString(), "lat: " + (int) (station.getLatitude() * 1000000));
@@ -115,7 +116,19 @@ public class StationActivity extends Activity {
         stationEmptySlots.append(String.valueOf(station.getEmptySlots()));
         stationFreeBikes.append(String.valueOf(station.getFreeBikes()));
 
-        mapController.animateTo(stationLocation);
+        /* Fix for osmdroid 4.2: map was centered at offset (0,0) */
+        ViewTreeObserver vto = map.getViewTreeObserver();
+        vto.addOnGlobalLayoutListener(new ViewTreeObserver.OnGlobalLayoutListener() {
+            @Override
+            public void onGlobalLayout() {
+                if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.JELLY_BEAN) {
+                    map.getViewTreeObserver().removeOnGlobalLayoutListener(this);
+                } else {
+                    map.getViewTreeObserver().removeGlobalOnLayoutListener(this);
+                }
+                mapController.animateTo(stationLocation);
+            }
+        });
     }
 
     @Override

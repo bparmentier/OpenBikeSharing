@@ -22,10 +22,12 @@ import android.content.Context;
 import android.content.SharedPreferences;
 import android.graphics.drawable.Drawable;
 import android.location.LocationManager;
+import android.os.Build;
 import android.os.Bundle;
 import android.preference.PreferenceManager;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.ViewTreeObserver;
 import android.widget.Toast;
 
 import org.osmdroid.ResourceProxy;
@@ -155,8 +157,22 @@ public class MapActivity extends Activity {
             mapController.animateTo(myLocation);
         } catch (NullPointerException e) {
             mapController.setZoom(13);
-            mapController.animateTo(new GeoPoint(bikeNetwork.getLocation().getLatitude(),
-                    bikeNetwork.getLocation().getLongitude()));
+
+            /* Fix for osmdroid 4.2: map was centered at offset (0,0) */
+            ViewTreeObserver vto = map.getViewTreeObserver();
+            vto.addOnGlobalLayoutListener(new ViewTreeObserver.OnGlobalLayoutListener() {
+                @Override
+                public void onGlobalLayout() {
+                    if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.JELLY_BEAN) {
+                        map.getViewTreeObserver().removeOnGlobalLayoutListener(this);
+                    } else {
+                        map.getViewTreeObserver().removeGlobalOnLayoutListener(this);
+                    }
+                    mapController.animateTo(new GeoPoint(bikeNetwork.getLocation().getLatitude(),
+                            bikeNetwork.getLocation().getLongitude()));
+                }
+            });
+
             Toast.makeText(this, R.string.location_not_found, Toast.LENGTH_LONG).show();
         }
     }
