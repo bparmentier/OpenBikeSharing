@@ -22,7 +22,8 @@
     tools:context="be.brunoparmentier.openbikesharing.app.ui.BikeNetworksListActivity">
 
     <ListView
+        android:id="@+id/networksListView"
         android:layout_width="fill_parent"
         android:layout_height="fill_parent"
-        android:id="@+id/networksListView" />
+        android:fastScrollEnabled="true" />
 </RelativeLayout>

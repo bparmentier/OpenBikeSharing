@@ -22,10 +22,11 @@
     tools:context="be.brunoparmentier.openbikesharing.app.ui.StationsListActivity">
 
     <ListView
+        android:id="@+id/stationsListView"
         android:layout_width="fill_parent"
         android:layout_height="fill_parent"
-        android:id="@+id/stationsListView"
-        android:layout_alignParentTop="true"
         android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true" />
+        android:layout_alignParentStart="true"
+        android:layout_alignParentTop="true"
+        android:fastScrollEnabled="true" />
 </RelativeLayout>
