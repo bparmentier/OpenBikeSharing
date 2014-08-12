@@ -69,7 +69,7 @@ public class Station implements Serializable, Comparable<Station> {
 
     @Override
     public int compareTo(Station another) {
-        return this.getName().compareToIgnoreCase(another.getName()) > 0 ? 1 :
-                (this.getName().compareToIgnoreCase(another.getName()) < 0 ? -1 : 0);
+        return name.compareToIgnoreCase(another.getName()) > 0 ? 1 :
+                (name.compareToIgnoreCase(another.getName()) < 0 ? -1 : 0);
     }
 }

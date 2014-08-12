@@ -53,7 +53,7 @@ public class BikeNetworkInfo implements Serializable, Comparable<BikeNetworkInfo
 
     @Override
     public int compareTo(BikeNetworkInfo another) {
-        return this.location.getCity().compareToIgnoreCase(another.getLocation().getCity()) > 0 ? 1 :
-                (this.location.getCity().compareToIgnoreCase(another.getLocation().getCity()) < 0 ? -1 : 0);
+        return location.getCity().compareToIgnoreCase(another.getLocation().getCity()) > 0 ? 1 :
+                (location.getCity().compareToIgnoreCase(another.getLocation().getCity()) < 0 ? -1 : 0);
     }
 }
