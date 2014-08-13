@@ -164,7 +164,7 @@ public class StationActivity extends Activity {
             if (isIntentSafe) {
                 startActivity(intent);
             } else {
-                Toast.makeText(this, getString(R.string.no_nav_application), Toast.LENGTH_LONG);
+                Toast.makeText(this, getString(R.string.no_nav_application), Toast.LENGTH_LONG).show();
             }
             return true;
         } else if (id == R.id.action_favorite) {
