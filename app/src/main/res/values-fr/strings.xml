@@ -55,6 +55,6 @@
     <string name="favorite_stations">Favoris</string>
     <string name="station_added_to_favorites">Station ajoutée aux favoris</string>
     <string name="stations_removed_from_favorites">Station supprimée des favoris</string>
-    <string name="no_nav_application">Vous n'avez pas d'application de navigation installée</string>
+    <string name="no_nav_application">Vous n\'avez pas d\'application de navigation installée</string>
 
 </resources>
