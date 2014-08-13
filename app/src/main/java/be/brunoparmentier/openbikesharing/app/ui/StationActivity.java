@@ -25,10 +25,12 @@ import android.net.Uri;
 import android.os.Build;
 import android.os.Bundle;
 import android.preference.PreferenceManager;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.ViewTreeObserver;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import org.osmdroid.ResourceProxy;
 import org.osmdroid.api.IMapController;
@@ -41,17 +43,22 @@ import org.osmdroid.views.overlay.ItemizedOverlay;
 import org.osmdroid.views.overlay.OverlayItem;
 
 import java.util.ArrayList;
+import java.util.HashSet;
+import java.util.Set;
 
 import be.brunoparmentier.openbikesharing.app.R;
 import be.brunoparmentier.openbikesharing.app.Station;
 
 public class StationActivity extends Activity {
+    private final String PREF_FAV_STATIONS = "fav-stations";
+    private final String TAG = "StationActivity";
     SharedPreferences settings;
     private Station station;
     private MapView map;
     private IMapController mapController;
     private ItemizedOverlay<OverlayItem> stationLocationOverlay;
     private ResourceProxy mResourceProxy;
+    private MenuItem favStar;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -133,6 +140,13 @@ public class StationActivity extends Activity {
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         getMenuInflater().inflate(R.menu.station, menu);
+
+        favStar = menu.findItem(R.id.action_favorite);
+        if (isFavorite()) {
+            favStar.setIcon(R.drawable.ic_action_important);
+        } else {
+            favStar.setIcon(R.drawable.ic_action_not_important);
+        }
         return true;
     }
 
@@ -143,11 +157,42 @@ public class StationActivity extends Activity {
             Intent intent = new Intent(Intent.ACTION_VIEW, getStationLocationUri());
             startActivity(intent);
             return true;
+        } else if (id == R.id.action_favorite) {
+            setFavorite(!isFavorite());
         }
         return super.onOptionsItemSelected(item);
     }
 
     private Uri getStationLocationUri() {
         return Uri.parse("geo:" + station.getLatitude() + "," + station.getLongitude());
+    }
+
+    private boolean isFavorite() {
+        Set<String> favorites = settings.getStringSet(PREF_FAV_STATIONS, new HashSet<String>());
+        Log.d(TAG, "Station in favorites: " + favorites.contains(station.getId()));
+        return (favorites.contains(station.getId()));
+    }
+
+    private void setFavorite(boolean favorite) {
+        SharedPreferences.Editor editor = settings.edit();
+        Set<String> favorites = settings.getStringSet(PREF_FAV_STATIONS, new HashSet<String>());
+
+        if (favorite) {
+            favorites.add(station.getId());
+            editor.putStringSet(PREF_FAV_STATIONS, new HashSet<String>(favorites));
+            editor.commit();
+            favStar.setIcon(R.drawable.ic_action_important);
+            Toast.makeText(StationActivity.this,
+                    getString(R.string.station_added_to_favorites), Toast.LENGTH_SHORT).show();
+            Log.d(TAG, "station fav'ed");
+        } else {
+            favorites.remove(station.getId());
+            editor.putStringSet(PREF_FAV_STATIONS, new HashSet<String>(favorites));
+            editor.commit();
+            favStar.setIcon(R.drawable.ic_action_not_important);
+            Toast.makeText(StationActivity.this,
+                    getString(R.string.stations_removed_from_favorites), Toast.LENGTH_SHORT).show();
+            Log.d(TAG, "station un-fav'ed");
+        }
     }
 }

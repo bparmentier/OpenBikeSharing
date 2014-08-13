@@ -17,21 +17,23 @@
 
 package be.brunoparmentier.openbikesharing.app.ui;
 
-import android.app.Activity;
+import android.app.ActionBar;
 import android.app.AlertDialog;
+import android.app.FragmentTransaction;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.preference.PreferenceManager;
+import android.support.v4.app.Fragment;
+import android.support.v4.app.FragmentActivity;
+import android.support.v4.app.FragmentManager;
+import android.support.v4.app.FragmentPagerAdapter;
+import android.support.v4.view.ViewPager;
 import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
-import android.view.View;
-import android.widget.AdapterView;
-import android.widget.ArrayAdapter;
-import android.widget.ListView;
 import android.widget.Toast;
 
 import org.json.JSONException;
@@ -44,33 +46,49 @@ import java.net.HttpURLConnection;
 import java.net.URL;
 import java.util.ArrayList;
 import java.util.Collections;
+import java.util.HashSet;
+import java.util.Set;
 
 import be.brunoparmentier.openbikesharing.app.BikeNetwork;
 import be.brunoparmentier.openbikesharing.app.R;
 import be.brunoparmentier.openbikesharing.app.Station;
+import be.brunoparmentier.openbikesharing.app.fragments.StationsListFragment;
 import be.brunoparmentier.openbikesharing.app.utils.OBSException;
 import be.brunoparmentier.openbikesharing.app.utils.parser.BikeNetworkParser;
 
 
-public class StationsListActivity extends Activity {
+public class StationsListActivity extends FragmentActivity implements ActionBar.TabListener {
     private final String BASE_URL = "http://api.citybik.es/v2/networks";
-    //private String networkId;
     private final String PREF_NETWORK_ID_LABEL = "network-id";
+    private final String PREF_FAV_STATIONS = "fav-stations";
     private final String TAG = "StationsListActivity";
-    private ListView listView;
+    //private String networkId;
+    private SharedPreferences settings;
     private BikeNetwork bikeNetwork;
     private ArrayList<Station> stations;
+    private ArrayList<Station> favStations;
     private boolean firstRun;
 
     private Menu optionsMenu;
+
+    private ViewPager viewPager;
+    private ActionBar actionBar;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_stations_list);
-        SharedPreferences settings = PreferenceManager.getDefaultSharedPreferences(this);
-        listView = (ListView) findViewById(R.id.stationsListView);
 
+        actionBar = getActionBar();
+
+        actionBar.addTab(actionBar.newTab()
+                .setText(getString(R.string.all_stations))
+                .setTabListener(this));
+        actionBar.addTab(actionBar.newTab()
+                .setText(getString(R.string.favorite_stations))
+                .setTabListener(this));
+
+        settings = PreferenceManager.getDefaultSharedPreferences(this);
         firstRun = settings.getString(PREF_NETWORK_ID_LABEL, "").isEmpty();
 
         if (firstRun) {
@@ -128,6 +146,21 @@ public class StationsListActivity extends Activity {
             }
         }
         return super.onOptionsItemSelected(item);
+    }
+
+    @Override
+    public void onTabSelected(ActionBar.Tab tab, FragmentTransaction fragmentTransaction) {
+        viewPager.setCurrentItem(tab.getPosition());
+    }
+
+    @Override
+    public void onTabUnselected(ActionBar.Tab tab, FragmentTransaction fragmentTransaction) {
+
+    }
+
+    @Override
+    public void onTabReselected(ActionBar.Tab tab, FragmentTransaction fragmentTransaction) {
+
     }
 
     private void setRefreshActionButtonState(final boolean refreshing) {
@@ -199,24 +232,39 @@ public class StationsListActivity extends Activity {
 
                     Collections.sort(stations);
 
-                    final ArrayList<String> list = new ArrayList<String>();
+                    /* create new list with favorite stations */
+                    Set<String> favorites = settings.getStringSet(PREF_FAV_STATIONS, new HashSet<String>());
+                    favStations = new ArrayList<Station>();
                     for (Station station : stations) {
-                        list.add(station.getName());
+                        if (favorites.contains(station.getId())) {
+                            favStations.add(station);
+                        }
                     }
-                    ArrayAdapter<String> stationsList = new ArrayAdapter<String>(StationsListActivity.this,
-                            android.R.layout.simple_list_item_1, list);
 
-                    listView.setAdapter(stationsList);
-                    listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+                    viewPager = (ViewPager) findViewById(R.id.viewPager);
+                    FragmentPagerAdapter adapterViewPager = new TabsPagerAdapter(getSupportFragmentManager());
+
+                    viewPager.setAdapter(adapterViewPager);
+
+                    actionBar.setHomeButtonEnabled(false);
+                    actionBar.setNavigationMode(ActionBar.NAVIGATION_MODE_TABS);
+
+                    viewPager.setOnPageChangeListener(new ViewPager.OnPageChangeListener() {
                         @Override
-                        public void onItemClick(AdapterView<?> parent, View view,
-                                                int position, long id) {
-                            Intent intent = new Intent(StationsListActivity.this, StationActivity.class);
-                            intent.putExtra("station", stations.get(position));
-                            startActivity(intent);
+                        public void onPageScrolled(int position, float positionOffset, int positionOffsetPixels) {
+
+                        }
+
+                        @Override
+                        public void onPageSelected(int position) {
+                            actionBar.setSelectedNavigationItem(position);
+                        }
+
+                        @Override
+                        public void onPageScrollStateChanged(int state) {
+
                         }
                     });
-
                 } catch (JSONException e) {
                     Log.e(StationsListActivity.class.toString(), e.getMessage());
                     Toast.makeText(StationsListActivity.this,
@@ -228,6 +276,31 @@ public class StationsListActivity extends Activity {
                 } finally {
                     setRefreshActionButtonState(false);
                 }
+            }
+        }
+    }
+
+    private class TabsPagerAdapter extends FragmentPagerAdapter {
+        private final int NUM_ITEMS = 2;
+
+        public TabsPagerAdapter(FragmentManager fragmentManager) {
+            super(fragmentManager);
+        }
+
+        @Override
+        public int getCount() {
+            return NUM_ITEMS;
+        }
+
+        @Override
+        public Fragment getItem(int position) {
+            switch (position) {
+                case 0:
+                    return StationsListFragment.newInstance(stations);
+                case 1:
+                    return StationsListFragment.newInstance(favStations);
+                default:
+                    return null;
             }
         }
     }
