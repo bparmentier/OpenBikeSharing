@@ -20,6 +20,8 @@ package be.brunoparmentier.openbikesharing.app.ui;
 import android.app.Activity;
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.content.pm.PackageManager;
+import android.content.pm.ResolveInfo;
 import android.graphics.drawable.Drawable;
 import android.net.Uri;
 import android.os.Build;
@@ -44,6 +46,7 @@ import org.osmdroid.views.overlay.OverlayItem;
 
 import java.util.ArrayList;
 import java.util.HashSet;
+import java.util.List;
 import java.util.Set;
 
 import be.brunoparmentier.openbikesharing.app.R;
@@ -155,7 +158,14 @@ public class StationActivity extends Activity {
         int id = item.getItemId();
         if (id == R.id.action_directions) {
             Intent intent = new Intent(Intent.ACTION_VIEW, getStationLocationUri());
-            startActivity(intent);
+            PackageManager packageManager = getPackageManager();
+            List<ResolveInfo> activities = packageManager.queryIntentActivities(intent, 0);
+            boolean isIntentSafe = activities.size() > 0;
+            if (isIntentSafe) {
+                startActivity(intent);
+            } else {
+                Toast.makeText(this, getString(R.string.no_nav_application), Toast.LENGTH_LONG);
+            }
             return true;
         } else if (id == R.id.action_favorite) {
             setFavorite(!isFavorite());
