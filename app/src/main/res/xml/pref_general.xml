@@ -17,27 +17,29 @@
 
 <PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android">
 
-    <Preference android:title="@string/pref_title_bike_networks_list">
+    <Preference
+        android:key="network-id"
+        android:title="@string/pref_title_bike_networks_list">
         <intent
-            android:targetPackage="be.brunoparmentier.openbikesharing.app"
-            android:targetClass="be.brunoparmentier.openbikesharing.app.ui.BikeNetworksListActivity" />
+            android:targetClass="be.brunoparmentier.openbikesharing.app.ui.BikeNetworksListActivity"
+            android:targetPackage="be.brunoparmentier.openbikesharing.app" />
     </Preference>
 
     <ListPreference
-        android:key="pref_map_layer"
-        android:title="@string/pref_map_layer_title"
+        android:defaultValue="mapnik"
         android:dialogTitle="@string/pref_map_layer_title"
         android:entries="@array/pref_map_layer_entries"
         android:entryValues="@array/pref_map_layer_values"
-        android:defaultValue="mapnik" />
+        android:key="pref_map_layer"
+        android:title="@string/pref_map_layer_title" />
 
     <be.brunoparmentier.openbikesharing.app.utils.InfoDialogPreference
-        android:title="@string/pref_title_license"
+        android:dialogMessage="@string/pref_title_license_message"
         android:dialogTitle="@string/pref_title_license"
-        android:dialogMessage="@string/pref_title_license_message" />
+        android:title="@string/pref_title_license" />
 
     <be.brunoparmentier.openbikesharing.app.utils.InfoDialogPreference
-        android:title="@string/pref_title_about"
+        android:dialogMessage="@string/pref_title_about_message"
         android:dialogTitle="@string/pref_title_about"
-        android:dialogMessage="@string/pref_title_about_message" />
+        android:title="@string/pref_title_about" />
 </PreferenceScreen>
