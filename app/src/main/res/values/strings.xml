@@ -29,6 +29,7 @@
     <string name="action_refresh">Refresh</string>
     <string name="action_map">Map</string>
     <string name="action_directions">Directions</string>
+    <string name="action_favorite">Favorite</string>
 
     <!-- Activities titles -->
     <string name="title_activity_stations_list">Stations</string>
@@ -50,5 +51,9 @@
     <!-- Various -->
     <string name="free_bikes">Free bikes:\u00A0</string>
     <string name="empty_slots">Empty slots:\u00A0</string>
+    <string name="all_stations">All stations</string>
+    <string name="favorite_stations">Favorites</string>
+    <string name="station_added_to_favorites">Station added to favorites</string>
+    <string name="stations_removed_from_favorites">Station removed from favorites</string>
 
 </resources>

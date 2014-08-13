@@ -29,6 +29,7 @@
     <string name="action_refresh">Rafraîchir</string>
     <string name="action_map">Carte</string>
     <string name="action_directions">Itinéraire</string>
+    <string name="action_favorite">Favori</string>
 
     <!-- Activities titles -->
     <string name="title_activity_stations_list">Stations</string>
@@ -50,5 +51,9 @@
     <!-- Various -->
     <string name="free_bikes">Vélos restants\u00A0:\u00A0</string>
     <string name="empty_slots">Emplacements vides\u00A0:\u00A0</string>
+    <string name="all_stations">Toutes les stations</string>
+    <string name="favorite_stations">Favoris</string>
+    <string name="station_added_to_favorites">Station ajoutée aux favoris</string>
+    <string name="stations_removed_from_favorites">Station supprimée des favoris</string>
 
 </resources>

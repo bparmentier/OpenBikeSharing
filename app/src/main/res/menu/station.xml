@@ -20,6 +20,13 @@
     tools:context="be.brunoparmentier.openbikesharing.app.ui.StationActivity">
 
     <item
+        android:id="@+id/action_favorite"
+        android:icon="@drawable/ic_action_not_important"
+        android:orderInCategory="100"
+        android:showAsAction="always"
+        android:title="@string/action_favorite" />
+
+    <item
         android:id="@+id/action_directions"
         android:icon="@drawable/ic_menu_directions"
         android:orderInCategory="100"
