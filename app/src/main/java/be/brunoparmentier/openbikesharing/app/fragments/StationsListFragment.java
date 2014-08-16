@@ -24,19 +24,19 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
-import android.widget.ArrayAdapter;
 import android.widget.ListView;
 
 import java.util.ArrayList;
 
 import be.brunoparmentier.openbikesharing.app.R;
 import be.brunoparmentier.openbikesharing.app.Station;
+import be.brunoparmentier.openbikesharing.app.StationsListAdapter;
 import be.brunoparmentier.openbikesharing.app.ui.StationActivity;
 
 public class StationsListFragment extends Fragment {
     private ArrayList<Station> stations;
 
-    private ArrayAdapter<String> stationsListAdapter;
+    private StationsListAdapter stationsListAdapter;
 
     /* newInstance constructor for creating fragment with arguments */
     public static StationsListFragment newInstance(ArrayList<Station> stations) {
@@ -51,14 +51,9 @@ public class StationsListFragment extends Fragment {
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         stations = (ArrayList<Station>) getArguments().getSerializable("stations");
-        final ArrayList<String> stationsTitlesList = new ArrayList<String>();
 
-        for (Station station : stations) {
-            stationsTitlesList.add(station.getName());
-        }
-
-        stationsListAdapter = new ArrayAdapter<String>(getActivity(),
-                android.R.layout.simple_list_item_1, android.R.id.text1, stationsTitlesList);
+        stationsListAdapter = new StationsListAdapter(getActivity(),
+                R.layout.station_list_item, stations);
     }
 
     @Override
