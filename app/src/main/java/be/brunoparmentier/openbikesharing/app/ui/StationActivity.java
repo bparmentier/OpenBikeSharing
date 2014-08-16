@@ -99,7 +99,7 @@ public class StationActivity extends Activity {
         /* Station marker */
         final ArrayList<OverlayItem> items = new ArrayList<OverlayItem>();
         items.add(new OverlayItem("Title", "Description", stationLocation));
-        Drawable newMarker = this.getResources().getDrawable(R.drawable.bike);
+        Drawable newMarker = this.getResources().getDrawable(R.drawable.ic_bike);
         this.stationLocationOverlay = new ItemizedIconOverlay<OverlayItem>(items, newMarker,
                 new ItemizedIconOverlay.OnItemGestureListener<OverlayItem>() {
 

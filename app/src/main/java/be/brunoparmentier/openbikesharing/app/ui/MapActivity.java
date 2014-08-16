@@ -111,7 +111,7 @@ public class MapActivity extends Activity {
         }
 
         /* Stations markers */
-        Drawable newMarker = this.getResources().getDrawable(R.drawable.bike);
+        Drawable newMarker = this.getResources().getDrawable(R.drawable.ic_bike);
         stationLocationOverlay = new ItemizedIconOverlay<OverlayItem>(items, newMarker,
                 new ItemizedIconOverlay.OnItemGestureListener<OverlayItem>() {
 
