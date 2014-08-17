@@ -51,6 +51,13 @@
         (https://github.com/osmdroid/osmdroid).
     </string>
 
+    <string name="pref_title_source_code">Source code</string>
+    <string name="pref_title_developers_website">Developer\'s website</string>
+    <string name="pref_title_donate_bitcoin">Donate Bitcoin</string>
+    <string name="pref_title_citybikes_api">CityBikes API</string>
+    <string name="pref_title_osmdroid_library">osmdroid library</string>
+    <string name="pref_title_openstreetmap">OpenStreetMap</string>
+
     <!-- Map layer -->
     <string name="pref_map_layer_title">Map layer</string>
     <string name="pref_map_layer_mapnik" translatable="false">Mapnik</string>
