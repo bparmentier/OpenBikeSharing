@@ -58,11 +58,9 @@
             android:title="@string/pref_title_license" />
 
         <Preference
+            android:key="pref_donate_bitcoin"
             android:summary="168utA5DWMVXLFVfQDahG5abEWUSk9Wcfm"
             android:title="@string/pref_title_donate_bitcoin">
-            <intent
-                android:action="android.intent.action.VIEW"
-                android:data="bitcoin:168utA5DWMVXLFVfQDahG5abEWUSk9Wcfm" />
         </Preference>
 
         <Preference

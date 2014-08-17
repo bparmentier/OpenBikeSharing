@@ -19,7 +19,11 @@ package be.brunoparmentier.openbikesharing.app.ui;
 
 import android.annotation.TargetApi;
 import android.content.Context;
+import android.content.Intent;
+import android.content.pm.PackageManager;
+import android.content.pm.ResolveInfo;
 import android.content.res.Configuration;
+import android.net.Uri;
 import android.os.Build;
 import android.os.Bundle;
 import android.preference.Preference;
@@ -114,6 +118,31 @@ public class SettingsActivity extends PreferenceActivity {
         super.onPostCreate(savedInstanceState);
 
         setupSimplePreferencesScreen();
+
+        /* Setup "Donate Bitcoin" button */
+        final Preference donateBitcoinPref = findPreference("pref_donate_bitcoin");
+        Intent bitcoinIntent = new Intent(Intent.ACTION_VIEW);
+        bitcoinIntent.setData(Uri.parse("bitcoin:168utA5DWMVXLFVfQDahG5abEWUSk9Wcfm"));
+
+        PackageManager packageManager = getPackageManager();
+        List<ResolveInfo> bitcoinActivities =
+                packageManager.queryIntentActivities(bitcoinIntent, 0);
+        boolean isBitcoinIntentSafe = bitcoinActivities.size() > 0;
+
+        if (isBitcoinIntentSafe) {
+            donateBitcoinPref.setIntent(bitcoinIntent);
+        } else {
+            Intent marketIntent = new Intent(Intent.ACTION_VIEW);
+            marketIntent.setData(Uri.parse("market://search?q=bitcoin"));
+
+            List<ResolveInfo> marketActivities =
+                    packageManager.queryIntentActivities(marketIntent, 0);
+            boolean isMarketIntentSafe = marketActivities.size() > 0;
+
+            if (isMarketIntentSafe) {
+                donateBitcoinPref.setIntent(marketIntent);
+            }
+        }
     }
 
     /**
@@ -131,8 +160,6 @@ public class SettingsActivity extends PreferenceActivity {
 
         // Add 'general' preferences.
         addPreferencesFromResource(R.xml.pref_general);
-
-
     }
 
     /**
@@ -176,6 +203,31 @@ public class SettingsActivity extends PreferenceActivity {
             // guidelines.
             bindPreferenceSummaryToValue(findPreference("network-id"));
             bindPreferenceSummaryToValue(findPreference("pref_map_layer"));
+
+            /* Setup "Donate Bitcoin" button */
+            final Preference donateBitcoinPref = findPreference("pref_donate_bitcoin");
+            Intent bitcoinIntent = new Intent(Intent.ACTION_VIEW);
+            bitcoinIntent.setData(Uri.parse("bitcoin:168utA5DWMVXLFVfQDahG5abEWUSk9Wcfm"));
+
+            PackageManager packageManager = getActivity().getPackageManager();
+            List<ResolveInfo> bitcoinActivities =
+                    packageManager.queryIntentActivities(bitcoinIntent, 0);
+            boolean isBitcoinIntentSafe = bitcoinActivities.size() > 0;
+
+            if (isBitcoinIntentSafe) {
+                donateBitcoinPref.setIntent(bitcoinIntent);
+            } else {
+                Intent marketIntent = new Intent(Intent.ACTION_VIEW);
+                marketIntent.setData(Uri.parse("market://search?q=bitcoin"));
+
+                List<ResolveInfo> marketActivities =
+                        packageManager.queryIntentActivities(marketIntent, 0);
+                boolean isMarketIntentSafe = marketActivities.size() > 0;
+
+                if (isMarketIntentSafe) {
+                    donateBitcoinPref.setIntent(marketIntent);
+                }
+            }
         }
     }
 }
