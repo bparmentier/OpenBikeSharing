@@ -34,6 +34,9 @@
         android:title="@string/pref_map_layer_title" />
 
     <PreferenceScreen android:title="@string/pref_title_about">
+        <Preference
+            android:key="pref_version"
+            android:title="@string/pref_title_version"></Preference>
 
         <Preference
             android:summary="https://github.com/bparmentier/OpenBikeSharing"

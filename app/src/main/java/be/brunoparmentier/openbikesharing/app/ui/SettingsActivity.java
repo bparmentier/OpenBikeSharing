@@ -30,6 +30,7 @@ import android.preference.Preference;
 import android.preference.PreferenceActivity;
 import android.preference.PreferenceFragment;
 import android.preference.PreferenceManager;
+import android.util.Log;
 
 import java.util.List;
 
@@ -143,6 +144,15 @@ public class SettingsActivity extends PreferenceActivity {
                 donateBitcoinPref.setIntent(marketIntent);
             }
         }
+
+        /* Setup Version entry */
+        final Preference versionPref = findPreference("pref_version");
+        try {
+            String versionName = getPackageManager().getPackageInfo(getPackageName(), 0).versionName;
+            versionPref.setSummary(versionName);
+        } catch (PackageManager.NameNotFoundException e) {
+            Log.e("SettingsActivity", e.getMessage());
+        }
     }
 
     /**
@@ -227,6 +237,16 @@ public class SettingsActivity extends PreferenceActivity {
                 if (isMarketIntentSafe) {
                     donateBitcoinPref.setIntent(marketIntent);
                 }
+            }
+
+            /* Setup Version entry */
+            final Preference versionPref = findPreference("pref_version");
+            try {
+                String versionName = getActivity().getPackageManager()
+                        .getPackageInfo(getActivity().getPackageName(), 0).versionName;
+                versionPref.setSummary(versionName);
+            } catch (PackageManager.NameNotFoundException e) {
+                Log.e("GeneralPreferenceFragment", e.getMessage());
             }
         }
     }

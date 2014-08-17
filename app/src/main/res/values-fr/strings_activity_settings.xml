@@ -57,6 +57,7 @@
     <string name="pref_title_citybikes_api">API CityBikes</string>
     <string name="pref_title_osmdroid_library">Bibliothèque osmdroid</string>
     <string name="pref_title_openstreetmap">OpenStreetMap</string>
+    <string name="pref_title_version">Version</string>
 
     <!-- Map layer -->
     <string name="pref_map_layer_title">Fond de carte</string>
