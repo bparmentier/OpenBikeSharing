@@ -73,4 +73,12 @@ public class StationsListFragment extends Fragment {
         });
         return view;
     }
+
+    public void updateStationsList(ArrayList<Station> stations) {
+        stationsListAdapter.clear();
+        for (Station station : stations) {
+            stationsListAdapter.add(station);
+        }
+        stationsListAdapter.notifyDataSetChanged();
+    }
 }

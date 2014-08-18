@@ -72,6 +72,7 @@ public class StationsListActivity extends FragmentActivity implements ActionBar.
     private Menu optionsMenu;
 
     private ViewPager viewPager;
+    private TabsPagerAdapter tabsPagerAdapter;
     private ActionBar actionBar;
 
     @Override
@@ -79,14 +80,18 @@ public class StationsListActivity extends FragmentActivity implements ActionBar.
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_stations_list);
 
-        actionBar = getActionBar();
+        viewPager = (ViewPager) findViewById(R.id.viewPager);
 
+        actionBar = getActionBar();
         actionBar.addTab(actionBar.newTab()
                 .setText(getString(R.string.all_stations))
                 .setTabListener(this));
         actionBar.addTab(actionBar.newTab()
                 .setText(getString(R.string.favorite_stations))
                 .setTabListener(this));
+        actionBar.setHomeButtonEnabled(false);
+        actionBar.setNavigationMode(ActionBar.NAVIGATION_MODE_TABS);
+
 
         settings = PreferenceManager.getDefaultSharedPreferences(this);
         firstRun = settings.getString(PREF_NETWORK_ID_LABEL, "").isEmpty();
@@ -241,30 +246,30 @@ public class StationsListActivity extends FragmentActivity implements ActionBar.
                         }
                     }
 
-                    viewPager = (ViewPager) findViewById(R.id.viewPager);
-                    FragmentPagerAdapter adapterViewPager = new TabsPagerAdapter(getSupportFragmentManager());
+                    if (tabsPagerAdapter != null) {
+                        tabsPagerAdapter.updateAllStationsListFragment(stations);
+                        tabsPagerAdapter.updateFavoriteStationsFragment(favStations);
+                    } else {
+                        tabsPagerAdapter = new TabsPagerAdapter(getSupportFragmentManager());
+                        viewPager.setAdapter(tabsPagerAdapter);
 
-                    viewPager.setAdapter(adapterViewPager);
+                        viewPager.setOnPageChangeListener(new ViewPager.OnPageChangeListener() {
+                            @Override
+                            public void onPageScrolled(int position, float positionOffset, int positionOffsetPixels) {
 
-                    actionBar.setHomeButtonEnabled(false);
-                    actionBar.setNavigationMode(ActionBar.NAVIGATION_MODE_TABS);
+                            }
 
-                    viewPager.setOnPageChangeListener(new ViewPager.OnPageChangeListener() {
-                        @Override
-                        public void onPageScrolled(int position, float positionOffset, int positionOffsetPixels) {
+                            @Override
+                            public void onPageSelected(int position) {
+                                actionBar.setSelectedNavigationItem(position);
+                            }
 
-                        }
+                            @Override
+                            public void onPageScrollStateChanged(int state) {
 
-                        @Override
-                        public void onPageSelected(int position) {
-                            actionBar.setSelectedNavigationItem(position);
-                        }
-
-                        @Override
-                        public void onPageScrollStateChanged(int state) {
-
-                        }
-                    });
+                            }
+                        });
+                    }
                 } catch (JSONException e) {
                     Log.e(StationsListActivity.class.toString(), e.getMessage());
                     Toast.makeText(StationsListActivity.this,
@@ -282,9 +287,14 @@ public class StationsListActivity extends FragmentActivity implements ActionBar.
 
     private class TabsPagerAdapter extends FragmentPagerAdapter {
         private final int NUM_ITEMS = 2;
+        private StationsListFragment allStationsFragment;
+        private StationsListFragment favoriteStationsFragment;
 
         public TabsPagerAdapter(FragmentManager fragmentManager) {
             super(fragmentManager);
+
+            allStationsFragment = StationsListFragment.newInstance(stations);
+            favoriteStationsFragment = StationsListFragment.newInstance(favStations);
         }
 
         @Override
@@ -296,12 +306,20 @@ public class StationsListActivity extends FragmentActivity implements ActionBar.
         public Fragment getItem(int position) {
             switch (position) {
                 case 0:
-                    return StationsListFragment.newInstance(stations);
+                    return allStationsFragment;
                 case 1:
-                    return StationsListFragment.newInstance(favStations);
+                    return favoriteStationsFragment;
                 default:
                     return null;
             }
+        }
+
+        public void updateAllStationsListFragment(ArrayList<Station> stations) {
+            allStationsFragment.updateStationsList(stations);
+        }
+
+        public void updateFavoriteStationsFragment(ArrayList<Station> stations) {
+            favoriteStationsFragment.updateStationsList(stations);
         }
     }
 }
