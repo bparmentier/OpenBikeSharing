@@ -185,11 +185,12 @@ public class StationActivity extends Activity {
 
     private void setFavorite(boolean favorite) {
         SharedPreferences.Editor editor = settings.edit();
-        Set<String> favorites = settings.getStringSet(PREF_FAV_STATIONS, new HashSet<String>());
+        Set<String> favorites = new HashSet<String>(settings.getStringSet(PREF_FAV_STATIONS,
+                new HashSet<String>()));
 
         if (favorite) {
             favorites.add(station.getId());
-            editor.putStringSet(PREF_FAV_STATIONS, new HashSet<String>(favorites));
+            editor.putStringSet(PREF_FAV_STATIONS, favorites);
             editor.commit();
             favStar.setIcon(R.drawable.ic_action_important);
             Toast.makeText(StationActivity.this,
@@ -197,7 +198,7 @@ public class StationActivity extends Activity {
             Log.d(TAG, "station fav'ed");
         } else {
             favorites.remove(station.getId());
-            editor.putStringSet(PREF_FAV_STATIONS, new HashSet<String>(favorites));
+            editor.putStringSet(PREF_FAV_STATIONS, favorites);
             editor.commit();
             favStar.setIcon(R.drawable.ic_action_not_important);
             Toast.makeText(StationActivity.this,
