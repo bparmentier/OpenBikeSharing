@@ -81,6 +81,22 @@ public class StationsListActivity extends FragmentActivity implements ActionBar.
         setContentView(R.layout.activity_stations_list);
 
         viewPager = (ViewPager) findViewById(R.id.viewPager);
+        viewPager.setOnPageChangeListener(new ViewPager.OnPageChangeListener() {
+            @Override
+            public void onPageScrolled(int position, float positionOffset, int positionOffsetPixels) {
+
+            }
+
+            @Override
+            public void onPageSelected(int position) {
+                actionBar.setSelectedNavigationItem(position);
+            }
+
+            @Override
+            public void onPageScrollStateChanged(int state) {
+
+            }
+        });
 
         actionBar = getActionBar();
         actionBar.addTab(actionBar.newTab()
@@ -90,7 +106,6 @@ public class StationsListActivity extends FragmentActivity implements ActionBar.
                 .setText(getString(R.string.favorite_stations))
                 .setTabListener(this));
         actionBar.setHomeButtonEnabled(false);
-        actionBar.setNavigationMode(ActionBar.NAVIGATION_MODE_TABS);
 
 
         settings = PreferenceManager.getDefaultSharedPreferences(this);
@@ -226,7 +241,6 @@ public class StationsListActivity extends FragmentActivity implements ActionBar.
                         Toast.LENGTH_SHORT);
                 setRefreshActionButtonState(false);
             } else {
-
                 try {
                     JSONObject jsonObject = new JSONObject(result);
 
@@ -250,25 +264,9 @@ public class StationsListActivity extends FragmentActivity implements ActionBar.
                         tabsPagerAdapter.updateAllStationsListFragment(stations);
                         tabsPagerAdapter.updateFavoriteStationsFragment(favStations);
                     } else {
+                        actionBar.setNavigationMode(ActionBar.NAVIGATION_MODE_TABS);
                         tabsPagerAdapter = new TabsPagerAdapter(getSupportFragmentManager());
                         viewPager.setAdapter(tabsPagerAdapter);
-
-                        viewPager.setOnPageChangeListener(new ViewPager.OnPageChangeListener() {
-                            @Override
-                            public void onPageScrolled(int position, float positionOffset, int positionOffsetPixels) {
-
-                            }
-
-                            @Override
-                            public void onPageSelected(int position) {
-                                actionBar.setSelectedNavigationItem(position);
-                            }
-
-                            @Override
-                            public void onPageScrollStateChanged(int state) {
-
-                            }
-                        });
                     }
                 } catch (JSONException e) {
                     Log.e(StationsListActivity.class.toString(), e.getMessage());
