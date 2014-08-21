@@ -77,7 +77,6 @@ public class MapActivity extends Activity {
         stations = bikeNetwork.getStations();
 
         map = (MapView) findViewById(R.id.mapView);
-        final ArrayList<GeoPoint> geoPointsList = new ArrayList<GeoPoint>();
 
         /* markers list */
         final ArrayList<OverlayItem> items = new ArrayList<OverlayItem>();
@@ -85,7 +84,6 @@ public class MapActivity extends Activity {
         for (Station station : stations) {
             GeoPoint stationLocation = new GeoPoint((int) (station.getLatitude() * 1000000),
                     (int) (station.getLongitude() * 1000000));
-            geoPointsList.add(stationLocation);
             items.add(new OverlayItem("Title", "Description", stationLocation));
         }
 
