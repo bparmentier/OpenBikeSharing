@@ -24,3 +24,19 @@ code may be a bit messy. So if you have enough courage, take a look at it and te
 
 If your language is not supported yet, I will gladly add it if you translate some strings for me.
 They are located in `app/src/main/res/values-xx` (there is not much).
+
+Permissions
+-----------
+
+The following permissions are needed by OpenBikeSharing (those are the same that are required by
+osmdroid):
+
+* ACCESS_COARSE_LOCATION
+* ACCESS_FINE_LOCATION
+* ACCESS_WIFI_STATE
+* ACCESS_NETWORK_STATE
+* INTERNET
+* WRITE_EXTERNAL_STORAGE
+
+Internet access is needed to download the map tiles and the stations. Location access is only used
+to locate you on the map. Access to the SD card is required by osmdroid to cache the tiles.
