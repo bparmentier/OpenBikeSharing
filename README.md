@@ -15,6 +15,8 @@ Download
 OpenBikeSharing is available on
 [F-Droid](https://f-droid.org/repository/browse/?fdid=be.brunoparmentier.openbikesharing.app) and
 [Google Play](https://play.google.com/store/apps/details?id=be.brunoparmentier.openbikesharing.app).
+Signed APK's can also be found on GitHub in the
+[Releases](https://github.com/bparmentier/OpenBikeSharing/releases) section.
 
 Contribute
 ----------
