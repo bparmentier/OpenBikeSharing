@@ -27,6 +27,31 @@ code may be a bit messy. So if you have enough courage, take a look at it and te
 If your language is not supported yet, I will gladly add it if you translate some strings for me.
 They are located in `app/src/main/res/values-xx` (there is not much).
 
+Build
+-----
+
+If you use Android Studio, you can import the project directly from GitHub.
+
+Otherwise you can build it from the command line with
+[Gradle](https://developer.android.com/sdk/installing/studio-build.html).  
+Clone the repo and type:
+
+    ./gradlew build
+
+(You may need to `chmod +x` the `gradlew` script)
+
+If the build fails, try to add the following to `app/build.gradle`:
+
+    android {
+        …
+        lintOptions {
+            abortOnError false
+        }
+    }
+
+The Gradle script will take care of downloading the necessary libraries and will generate the APK's
+in `app/build/outputs/apk`.
+
 Permissions
 -----------
 
