@@ -81,6 +81,7 @@
     <orderEntry type="sourceFolder" forTests="false" />
     <orderEntry type="library" exported="" name="slf4j-api-1.7.7" level="project" />
     <orderEntry type="library" exported="" name="support-v4-19.1.0" level="project" />
+    <orderEntry type="library" exported="" name="osmbonuspack_v4.8" level="project" />
     <orderEntry type="library" exported="" name="slf4j-simple-1.7.7" level="project" />
     <orderEntry type="library" exported="" name="osmdroid-android-4.2" level="project" />
   </component>
