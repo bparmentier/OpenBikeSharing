@@ -169,6 +169,10 @@ public class StationActivity extends Activity {
             return true;
         } else if (id == R.id.action_favorite) {
             setFavorite(!isFavorite());
+            return true;
+        } else if (id == android.R.id.home) {
+            this.finish();
+            return true;
         }
         return super.onOptionsItemSelected(item);
     }
