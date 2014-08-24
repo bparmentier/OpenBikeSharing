@@ -19,7 +19,10 @@ package be.brunoparmentier.openbikesharing.app.ui;
 
 import android.app.Activity;
 import android.content.Context;
+import android.content.Intent;
 import android.content.SharedPreferences;
+import android.graphics.Bitmap;
+import android.graphics.drawable.BitmapDrawable;
 import android.graphics.drawable.Drawable;
 import android.location.LocationManager;
 import android.os.Build;
@@ -27,18 +30,21 @@ import android.os.Bundle;
 import android.preference.PreferenceManager;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
 import android.view.ViewTreeObserver;
+import android.widget.LinearLayout;
 import android.widget.Toast;
 
-import org.osmdroid.ResourceProxy;
 import org.osmdroid.api.IMapController;
+import org.osmdroid.bonuspack.clustering.GridMarkerClusterer;
+import org.osmdroid.bonuspack.overlays.InfoWindow;
+import org.osmdroid.bonuspack.overlays.MapEventsOverlay;
+import org.osmdroid.bonuspack.overlays.MapEventsReceiver;
+import org.osmdroid.bonuspack.overlays.Marker;
+import org.osmdroid.bonuspack.overlays.MarkerInfoWindow;
 import org.osmdroid.tileprovider.tilesource.TileSourceFactory;
 import org.osmdroid.util.GeoPoint;
-import org.osmdroid.util.ResourceProxyImpl;
 import org.osmdroid.views.MapView;
-import org.osmdroid.views.overlay.ItemizedIconOverlay;
-import org.osmdroid.views.overlay.ItemizedOverlay;
-import org.osmdroid.views.overlay.OverlayItem;
 import org.osmdroid.views.overlay.mylocation.GpsMyLocationProvider;
 import org.osmdroid.views.overlay.mylocation.MyLocationNewOverlay;
 
@@ -48,15 +54,13 @@ import be.brunoparmentier.openbikesharing.app.BikeNetwork;
 import be.brunoparmentier.openbikesharing.app.R;
 import be.brunoparmentier.openbikesharing.app.Station;
 
-public class MapActivity extends Activity {
+public class MapActivity extends Activity implements MapEventsReceiver {
 
     SharedPreferences settings;
     private BikeNetwork bikeNetwork;
     private ArrayList<Station> stations;
     private MapView map;
     private IMapController mapController;
-    private ItemizedOverlay<OverlayItem> stationLocationOverlay;
-    private ResourceProxy mResourceProxy;
     private MyLocationNewOverlay myLocationOverlay;
 
     @Override
@@ -65,7 +69,6 @@ public class MapActivity extends Activity {
         setContentView(R.layout.activity_map);
 
         settings = PreferenceManager.getDefaultSharedPreferences(this);
-        mResourceProxy = new ResourceProxyImpl(getApplicationContext());
 
         try {
             bikeNetwork = (BikeNetwork) getIntent().getSerializableExtra("bike-network");
@@ -78,14 +81,22 @@ public class MapActivity extends Activity {
 
         map = (MapView) findViewById(R.id.mapView);
 
-        /* markers list */
-        final ArrayList<OverlayItem> items = new ArrayList<OverlayItem>();
+        /* handling map events */
+        MapEventsOverlay mapEventsOverlay = new MapEventsOverlay(this, this);
+        map.getOverlays().add(0, mapEventsOverlay);
 
-        for (Station station : stations) {
-            GeoPoint stationLocation = new GeoPoint((int) (station.getLatitude() * 1000000),
-                    (int) (station.getLongitude() * 1000000));
-            items.add(new OverlayItem("Title", "Description", stationLocation));
+        /* markers list */
+        GridMarkerClusterer stationsMarkers = new GridMarkerClusterer(this);
+        Drawable clusterIconD = getResources().getDrawable(R.drawable.marker_cluster);
+        Bitmap clusterIcon = ((BitmapDrawable) clusterIconD).getBitmap();
+        map.getOverlays().add(stationsMarkers);
+        stationsMarkers.setIcon(clusterIcon);
+        stationsMarkers.setGridSize(100);
+
+        for (final Station station : stations) {
+            stationsMarkers.add(createStationMarker(station));
         }
+        map.invalidate();
 
         mapController = map.getController();
         mapController.setZoom(16);
@@ -108,38 +119,11 @@ public class MapActivity extends Activity {
             map.setTileSource(TileSourceFactory.DEFAULT_TILE_SOURCE);
         }
 
-        /* Stations markers */
-        Drawable newMarker = this.getResources().getDrawable(R.drawable.ic_bike);
-        stationLocationOverlay = new ItemizedIconOverlay<OverlayItem>(items, newMarker,
-                new ItemizedIconOverlay.OnItemGestureListener<OverlayItem>() {
-
-                    @Override
-                    public boolean onItemSingleTapUp(int i, OverlayItem overlayItem) {
-                        Toast.makeText(MapActivity.this,
-                                stations.get(i).getName()
-                                        + "\n" + getString(R.string.free_bikes)
-                                        + stations.get(i).getFreeBikes()
-                                        + "\n" + getString(R.string.empty_slots)
-                                        + stations.get(i).getEmptySlots(),
-                                Toast.LENGTH_SHORT).show();
-
-                        return true;
-                    }
-
-                    @Override
-                    public boolean onItemLongPress(int i, OverlayItem overlayItem) {
-                        return false;
-                    }
-                }, mResourceProxy);
-
-
         GpsMyLocationProvider imlp = new GpsMyLocationProvider(this.getBaseContext());
         imlp.setLocationUpdateMinDistance(1000);
         imlp.setLocationUpdateMinTime(60000);
 
         myLocationOverlay = new MyLocationNewOverlay(this.getBaseContext(), imlp, this.map);
-
-        map.getOverlays().add(this.stationLocationOverlay);
         map.getOverlays().add(this.myLocationOverlay);
 
         myLocationOverlay.enableMyLocation();
@@ -147,9 +131,9 @@ public class MapActivity extends Activity {
         try {
             LocationManager locationManager =
                     (LocationManager) this.getSystemService(Context.LOCATION_SERVICE);
-            GeoPoint myLocation = new GeoPoint(locationManager
+            GeoPoint userLocation = new GeoPoint(locationManager
                     .getLastKnownLocation(LocationManager.NETWORK_PROVIDER));
-            mapController.animateTo(myLocation);
+            mapController.animateTo(userLocation);
         } catch (NullPointerException e) {
             mapController.setZoom(13);
 
@@ -193,5 +177,57 @@ public class MapActivity extends Activity {
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
         return super.onOptionsItemSelected(item);
+    }
+
+    @Override
+    public boolean singleTapConfirmedHelper(GeoPoint geoPoint) {
+        InfoWindow.closeAllInfoWindowsOn(map);
+        return true;
+    }
+
+    @Override
+    public boolean longPressHelper(GeoPoint geoPoint) {
+        return false;
+    }
+
+    private Marker createStationMarker(Station station) {
+        GeoPoint stationLocation = new GeoPoint((int) (station.getLatitude() * 1000000),
+                (int) (station.getLongitude() * 1000000));
+        Marker marker = new Marker(map);
+        marker.setInfoWindow(new StationMarkerInfoWindow(R.layout.map_bubble, map, station));
+        marker.setPosition(stationLocation);
+        marker.setAnchor(Marker.ANCHOR_CENTER, Marker.ANCHOR_CENTER);
+        marker.setIcon(getResources().getDrawable(R.drawable.ic_bike));
+        marker.setTitle(station.getName());
+        marker.setSnippet(String.valueOf(station.getFreeBikes())); // free bikes
+        marker.setSubDescription(String.valueOf(station.getEmptySlots())); // empty slots
+
+        return marker;
+    }
+
+    private class StationMarkerInfoWindow extends MarkerInfoWindow {
+        Station station;
+
+        public StationMarkerInfoWindow(int layoutResId, final MapView mapView, Station station) {
+            super(layoutResId, mapView);
+            this.station = station;
+        }
+
+        @Override
+        public void onOpen(Object item) {
+            super.onOpen(item);
+            closeAllInfoWindowsOn(map);
+
+            LinearLayout layout = (LinearLayout) getView().findViewById(R.id.map_bubble_layout);
+            layout.setClickable(true);
+            layout.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    Intent intent = new Intent(MapActivity.this, StationActivity.class);
+                    intent.putExtra("station", station);
+                    startActivity(intent);
+                }
+            });
+        }
     }
 }
