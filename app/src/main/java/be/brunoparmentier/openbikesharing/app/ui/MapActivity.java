@@ -194,7 +194,7 @@ public class MapActivity extends Activity implements MapEventsReceiver {
         GeoPoint stationLocation = new GeoPoint((int) (station.getLatitude() * 1000000),
                 (int) (station.getLongitude() * 1000000));
         Marker marker = new Marker(map);
-        marker.setInfoWindow(new StationMarkerInfoWindow(R.layout.map_bubble, map, station));
+        marker.setInfoWindow(new StationMarkerInfoWindow(R.layout.bonuspack_bubble, map, station));
         marker.setPosition(stationLocation);
         marker.setAnchor(Marker.ANCHOR_CENTER, Marker.ANCHOR_CENTER);
         marker.setIcon(getResources().getDrawable(R.drawable.ic_bike));
