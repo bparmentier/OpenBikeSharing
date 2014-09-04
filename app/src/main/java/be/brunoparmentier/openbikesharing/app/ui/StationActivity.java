@@ -55,7 +55,7 @@ import be.brunoparmentier.openbikesharing.app.Station;
 public class StationActivity extends Activity {
     private final String PREF_FAV_STATIONS = "fav-stations";
     private final String TAG = "StationActivity";
-    SharedPreferences settings;
+    private SharedPreferences settings;
     private Station station;
     private MapView map;
     private IMapController mapController;
