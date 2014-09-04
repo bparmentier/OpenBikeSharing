@@ -75,10 +75,12 @@ public class StationsListFragment extends Fragment {
     }
 
     public void updateStationsList(ArrayList<Station> stations) {
-        stationsListAdapter.clear();
-        for (Station station : stations) {
-            stationsListAdapter.add(station);
+        if (stationsListAdapter != null) {
+            stationsListAdapter.clear();
+            for (Station station : stations) {
+                stationsListAdapter.add(station);
+            }
+            stationsListAdapter.notifyDataSetChanged();
         }
-        stationsListAdapter.notifyDataSetChanged();
     }
 }
