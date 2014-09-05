@@ -225,7 +225,7 @@ public class StationsListActivity extends FragmentActivity implements ActionBar.
                     }
                     input.close();
                 }
-                Log.d(TAG, response.toString());
+                Log.d(TAG, "Stations downloaded");
                 return response.toString();
             } catch (IOException e) {
                 error = e;
