@@ -56,12 +56,14 @@ import be.brunoparmentier.openbikesharing.app.Station;
 
 public class MapActivity extends Activity implements MapEventsReceiver {
 
-    SharedPreferences settings;
+    private SharedPreferences settings;
     private BikeNetwork bikeNetwork;
     private ArrayList<Station> stations;
     private MapView map;
     private IMapController mapController;
     private MyLocationNewOverlay myLocationOverlay;
+    private StationMarkerInfoWindow stationMarkerInfoWindow;
+    private GridMarkerClusterer stationsMarkers;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -80,13 +82,14 @@ public class MapActivity extends Activity implements MapEventsReceiver {
         stations = bikeNetwork.getStations();
 
         map = (MapView) findViewById(R.id.mapView);
+        stationMarkerInfoWindow = new StationMarkerInfoWindow(R.layout.bonuspack_bubble, map);
 
         /* handling map events */
         MapEventsOverlay mapEventsOverlay = new MapEventsOverlay(this, this);
         map.getOverlays().add(0, mapEventsOverlay);
 
         /* markers list */
-        GridMarkerClusterer stationsMarkers = new GridMarkerClusterer(this);
+        stationsMarkers = new GridMarkerClusterer(this);
         Drawable clusterIconD = getResources().getDrawable(R.drawable.marker_cluster);
         Bitmap clusterIcon = ((BitmapDrawable) clusterIconD).getBitmap();
         map.getOverlays().add(stationsMarkers);
@@ -194,7 +197,8 @@ public class MapActivity extends Activity implements MapEventsReceiver {
         GeoPoint stationLocation = new GeoPoint((int) (station.getLatitude() * 1000000),
                 (int) (station.getLongitude() * 1000000));
         Marker marker = new Marker(map);
-        marker.setInfoWindow(new StationMarkerInfoWindow(R.layout.bonuspack_bubble, map, station));
+        marker.setRelatedObject(station);
+        marker.setInfoWindow(stationMarkerInfoWindow);
         marker.setPosition(stationLocation);
         marker.setAnchor(Marker.ANCHOR_CENTER, Marker.ANCHOR_CENTER);
         marker.setIcon(getResources().getDrawable(R.drawable.ic_bike));
@@ -206,15 +210,15 @@ public class MapActivity extends Activity implements MapEventsReceiver {
     }
 
     private class StationMarkerInfoWindow extends MarkerInfoWindow {
-        Station station;
 
-        public StationMarkerInfoWindow(int layoutResId, final MapView mapView, Station station) {
+        public StationMarkerInfoWindow(int layoutResId, final MapView mapView) {
             super(layoutResId, mapView);
-            this.station = station;
         }
 
         @Override
         public void onOpen(Object item) {
+            Marker marker = (Marker) item;
+            final Station markerStation = (Station) marker.getRelatedObject();
             super.onOpen(item);
             closeAllInfoWindowsOn(map);
 
@@ -224,7 +228,7 @@ public class MapActivity extends Activity implements MapEventsReceiver {
                 @Override
                 public void onClick(View view) {
                     Intent intent = new Intent(MapActivity.this, StationActivity.class);
-                    intent.putExtra("station", station);
+                    intent.putExtra("station", markerStation);
                     startActivity(intent);
                 }
             });
