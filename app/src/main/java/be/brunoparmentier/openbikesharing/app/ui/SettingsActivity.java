@@ -119,6 +119,23 @@ public class SettingsActivity extends PreferenceActivity {
         super.onPostCreate(savedInstanceState);
 
         setupSimplePreferencesScreen();
+    }
+
+    /**
+     * Shows the simplified settings UI if the device configuration if the
+     * device configuration dictates that a simplified, single-pane UI should be
+     * shown.
+     */
+    private void setupSimplePreferencesScreen() {
+        if (!isSimplePreferences(this)) {
+            return;
+        }
+
+        // In the simplified UI, fragments are not used at all and we instead
+        // use the older PreferenceActivity APIs.
+
+        // Add 'general' preferences.
+        addPreferencesFromResource(R.xml.pref_general);
 
         /* Setup "Donate Bitcoin" button */
         final Preference donateBitcoinPref = findPreference("pref_donate_bitcoin");
@@ -153,23 +170,6 @@ public class SettingsActivity extends PreferenceActivity {
         } catch (PackageManager.NameNotFoundException e) {
             Log.e("SettingsActivity", e.getMessage());
         }
-    }
-
-    /**
-     * Shows the simplified settings UI if the device configuration if the
-     * device configuration dictates that a simplified, single-pane UI should be
-     * shown.
-     */
-    private void setupSimplePreferencesScreen() {
-        if (!isSimplePreferences(this)) {
-            return;
-        }
-
-        // In the simplified UI, fragments are not used at all and we instead
-        // use the older PreferenceActivity APIs.
-
-        // Add 'general' preferences.
-        addPreferencesFromResource(R.xml.pref_general);
     }
 
     /**
