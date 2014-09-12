@@ -19,6 +19,8 @@
 
 
 
+
+
 apply plugin: 'android'
 
 android {
@@ -29,8 +31,8 @@ android {
         applicationId "be.brunoparmentier.openbikesharing.app"
         minSdkVersion 14
         targetSdkVersion 19
-        versionCode 5
-        versionName "1.1.3"
+        versionCode 6
+        versionName "1.2"
     }
     buildTypes {
         release {
