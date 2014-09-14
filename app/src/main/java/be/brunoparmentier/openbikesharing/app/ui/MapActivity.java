@@ -179,7 +179,17 @@ public class MapActivity extends Activity implements MapEventsReceiver {
 
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
-        return super.onOptionsItemSelected(item);
+        switch (item.getItemId()) {
+            case R.id.action_my_location:
+                LocationManager locationManager =
+                        (LocationManager) this.getSystemService(Context.LOCATION_SERVICE);
+                GeoPoint userLocation = new GeoPoint(locationManager
+                        .getLastKnownLocation(LocationManager.NETWORK_PROVIDER));
+                mapController.animateTo(userLocation);
+                return true;
+            default:
+                return super.onOptionsItemSelected(item);
+        }
     }
 
     @Override

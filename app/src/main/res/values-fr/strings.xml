@@ -30,6 +30,7 @@
     <string name="action_map">Carte</string>
     <string name="action_directions">Itinéraire</string>
     <string name="action_favorite">Favori</string>
+    <string name="action_my_location">Mon emplacement</string>
 
     <!-- Activities titles -->
     <string name="title_activity_stations_list">Stations</string>
