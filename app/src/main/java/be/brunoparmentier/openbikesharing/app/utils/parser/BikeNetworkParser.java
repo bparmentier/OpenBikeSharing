@@ -32,27 +32,22 @@ import be.brunoparmentier.openbikesharing.app.utils.OBSException;
  * Parse information on a bike network.
  */
 public class BikeNetworkParser {
-    private String networkId;
-    private String networkName;
-    private String networkCompany;
-    private BikeNetworkLocation networkLocation;
-    private ArrayList<Station> stations;
-
     private BikeNetwork bikeNetwork;
 
     public BikeNetworkParser(JSONObject jsonObject) throws OBSException {
 
-        stations = new ArrayList<Station>();
+        ArrayList<Station> stations = new ArrayList<Station>();
 
         try {
             JSONObject rawNetwork = jsonObject.getJSONObject("network");
 
             /* network name & id */
-            networkId = rawNetwork.getString("id");
-            networkName = rawNetwork.getString("name");
-            networkCompany = rawNetwork.getString("company");
+            String networkId = rawNetwork.getString("id");
+            String networkName = rawNetwork.getString("name");
+            String networkCompany = rawNetwork.getString("company");
 
             /* network location */
+            BikeNetworkLocation networkLocation;
             {
                 JSONObject rawLocation = rawNetwork.getJSONObject("location");
 
