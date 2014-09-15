@@ -18,6 +18,7 @@
 package be.brunoparmentier.openbikesharing.app;
 
 import java.io.Serializable;
+import java.util.Date;
 
 /**
  * Represents a bike station.
@@ -31,6 +32,12 @@ public class Station implements Serializable, Comparable<Station> {
     private int freeBikes;
     private int emptySlots;
 
+    private String address;
+    private Boolean banking;
+    private Boolean bonus;
+    private Date lastUpdate;
+    private StationStatus status;
+
     public Station(String id, String name, /*Date timestamp, */double latitude, double longitude, int freeBikes, int emptySlots) {
         this.id = id;
         this.name = name;
@@ -39,6 +46,12 @@ public class Station implements Serializable, Comparable<Station> {
         this.longitude = longitude;
         this.freeBikes = freeBikes;
         this.emptySlots = emptySlots;
+
+        this.address = null;
+        this.banking = null;
+        this.bonus = null;
+        this.lastUpdate = null;
+        this.status = null;
     }
 
     public String getId() {
@@ -65,6 +78,46 @@ public class Station implements Serializable, Comparable<Station> {
 
     public int getEmptySlots() {
         return emptySlots;
+    }
+
+    public String getAddress() {
+        return address;
+    }
+
+    public void setAddress(String address) {
+        this.address = address;
+    }
+
+    public Boolean isBanking() {
+        return banking;
+    }
+
+    public Boolean isBonus() {
+        return bonus;
+    }
+
+    public Date getLastUpdate() {
+        return lastUpdate;
+    }
+
+    public void setLastUpdate(Date lastUpdate) {
+        this.lastUpdate = lastUpdate;
+    }
+
+    public StationStatus getStatus() {
+        return status;
+    }
+
+    public void setStatus(StationStatus status) {
+        this.status = status;
+    }
+
+    public void setBanking(boolean banking) {
+        this.banking = banking;
+    }
+
+    public void setBonus(boolean bonus) {
+        this.bonus = bonus;
     }
 
     @Override
