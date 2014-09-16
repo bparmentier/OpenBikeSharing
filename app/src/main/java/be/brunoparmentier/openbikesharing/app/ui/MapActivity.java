@@ -28,6 +28,7 @@ import android.location.LocationManager;
 import android.os.Build;
 import android.os.Bundle;
 import android.preference.PreferenceManager;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
@@ -181,12 +182,18 @@ public class MapActivity extends Activity implements MapEventsReceiver {
     public boolean onOptionsItemSelected(MenuItem item) {
         switch (item.getItemId()) {
             case R.id.action_my_location:
-                LocationManager locationManager =
-                        (LocationManager) this.getSystemService(Context.LOCATION_SERVICE);
-                GeoPoint userLocation = new GeoPoint(locationManager
-                        .getLastKnownLocation(LocationManager.NETWORK_PROVIDER));
-                mapController.animateTo(userLocation);
-                return true;
+                try {
+                    LocationManager locationManager =
+                            (LocationManager) this.getSystemService(Context.LOCATION_SERVICE);
+                    GeoPoint userLocation = new GeoPoint(locationManager
+                            .getLastKnownLocation(LocationManager.NETWORK_PROVIDER));
+                    mapController.animateTo(userLocation);
+                    return true;
+                } catch (NullPointerException ex) {
+                    Toast.makeText(this, getString(R.string.location_not_found), Toast.LENGTH_LONG).show();
+                    Log.e("MapActivity", "Location not found");
+                    return true;
+                }
             default:
                 return super.onOptionsItemSelected(item);
         }
