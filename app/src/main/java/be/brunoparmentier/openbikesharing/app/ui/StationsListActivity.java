@@ -62,7 +62,6 @@ public class StationsListActivity extends FragmentActivity implements ActionBar.
     private final String PREF_NETWORK_ID_LABEL = "network-id";
     private final String PREF_FAV_STATIONS = "fav-stations";
     private final String TAG = "StationsListActivity";
-    //private String networkId;
     private SharedPreferences settings;
     private BikeNetwork bikeNetwork;
     private ArrayList<Station> stations;
