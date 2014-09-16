@@ -22,6 +22,7 @@ import android.content.Intent;
 import android.content.SharedPreferences;
 import android.content.pm.PackageManager;
 import android.content.pm.ResolveInfo;
+import android.graphics.Paint;
 import android.graphics.drawable.Drawable;
 import android.net.Uri;
 import android.os.Build;
@@ -30,7 +31,9 @@ import android.preference.PreferenceManager;
 import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
 import android.view.ViewTreeObserver;
+import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -51,6 +54,7 @@ import java.util.Set;
 
 import be.brunoparmentier.openbikesharing.app.R;
 import be.brunoparmentier.openbikesharing.app.Station;
+import be.brunoparmentier.openbikesharing.app.StationStatus;
 
 public class StationActivity extends Activity {
     private final String PREF_FAV_STATIONS = "fav-stations";
@@ -122,8 +126,49 @@ public class StationActivity extends Activity {
         TextView stationFreeBikes = (TextView) findViewById(R.id.stationFreeBikes);
 
         stationName.setText(station.getName());
-        stationEmptySlots.append(String.valueOf(station.getEmptySlots()));
-        stationFreeBikes.append(String.valueOf(station.getFreeBikes()));
+        stationEmptySlots.setText(String.valueOf(station.getEmptySlots()));
+        stationFreeBikes.setText(String.valueOf(station.getFreeBikes()));
+
+        /* extra info on station */
+        Boolean isBankingStation = station.isBanking();
+        Boolean isBonusStation = station.isBonus();
+        StationStatus stationStatus = station.getStatus();
+
+        if (isBankingStation != null) {
+            ImageView stationBanking = (ImageView) findViewById(R.id.stationBanking);
+            stationBanking.setVisibility(View.VISIBLE);
+            if (isBankingStation) {
+                stationBanking.setImageDrawable(getResources().getDrawable(R.drawable.ic_banking_on));
+                stationBanking.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View view) {
+                        Toast.makeText(getApplicationContext(),
+                                getString(R.string.cards_accepted),
+                                Toast.LENGTH_SHORT).show();
+                    }
+                });
+            }
+        }
+
+        if (isBonusStation != null) {
+            ImageView stationBonus = (ImageView) findViewById(R.id.stationBonus);
+            stationBonus.setVisibility(View.VISIBLE);
+            if (isBonusStation) {
+                stationBonus.setImageDrawable(getResources().getDrawable(R.drawable.ic_bonus_on));
+                stationBonus.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View view) {
+                        Toast.makeText(getApplicationContext(),
+                                getString(R.string.is_bonus_station),
+                                Toast.LENGTH_SHORT).show();
+                    }
+                });
+            }
+        }
+
+        if ((stationStatus != null) && stationStatus == StationStatus.CLOSED) {
+            stationName.setPaintFlags(stationName.getPaintFlags() | Paint.STRIKE_THRU_TEXT_FLAG);
+        }
 
         /* Fix for osmdroid 4.2: map was centered at offset (0,0) */
         ViewTreeObserver vto = map.getViewTreeObserver();

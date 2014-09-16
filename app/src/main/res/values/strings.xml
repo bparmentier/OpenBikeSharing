@@ -57,5 +57,7 @@
     <string name="station_added_to_favorites">Station added to favorites</string>
     <string name="stations_removed_from_favorites">Station removed from favorites</string>
     <string name="no_nav_application">You don\'t have any navigation application installed</string>
+    <string name="is_bonus_station">Bonus station</string>
+    <string name="cards_accepted">Cards accepted</string>
 
 </resources>
