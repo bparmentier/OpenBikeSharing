@@ -26,6 +26,7 @@ import java.util.ArrayList;
 import be.brunoparmentier.openbikesharing.app.BikeNetwork;
 import be.brunoparmentier.openbikesharing.app.BikeNetworkLocation;
 import be.brunoparmentier.openbikesharing.app.Station;
+import be.brunoparmentier.openbikesharing.app.StationStatus;
 import be.brunoparmentier.openbikesharing.app.utils.OBSException;
 
 /**
@@ -74,7 +75,30 @@ public class BikeNetworkParser {
                     int freeBikes = rawStation.getInt("free_bikes");
                     int emptySlots = rawStation.getInt("empty_slots");
 
-                    stations.add(new Station(id, name, /*timestamp,*/ latitude, longitude, freeBikes, emptySlots));
+                    Station station = new Station(id, name, /*timestamp,*/ latitude, longitude,
+                            freeBikes, emptySlots);
+
+                    if (rawStation.has("extra")) {
+                        JSONObject rawExtra = rawStation.getJSONObject("extra");
+
+                        if (rawExtra.has("address")) {
+                            station.setAddress(rawExtra.getString("address"));
+                        }
+                        if (rawExtra.has("banking")) {
+                            station.setBanking(rawExtra.getBoolean("banking"));
+                        }
+                        if (rawExtra.has("bonus")) {
+                            station.setBonus(rawExtra.getBoolean("bonus"));
+                        }
+                        if (rawExtra.has("status")) {
+                            if (rawExtra.getString("status").equals("CLOSED")) {
+                                station.setStatus(StationStatus.CLOSED);
+                            } else {
+                                station.setStatus(StationStatus.OPEN);
+                            }
+                        }
+                    }
+                    stations.add(station);
                 }
             }
 
