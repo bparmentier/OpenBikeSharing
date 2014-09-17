@@ -201,25 +201,27 @@ public class StationActivity extends Activity {
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
         int id = item.getItemId();
-        if (id == R.id.action_directions) {
-            Intent intent = new Intent(Intent.ACTION_VIEW, getStationLocationUri());
-            PackageManager packageManager = getPackageManager();
-            List<ResolveInfo> activities = packageManager.queryIntentActivities(intent, 0);
-            boolean isIntentSafe = activities.size() > 0;
-            if (isIntentSafe) {
-                startActivity(intent);
-            } else {
-                Toast.makeText(this, getString(R.string.no_nav_application), Toast.LENGTH_LONG).show();
-            }
-            return true;
-        } else if (id == R.id.action_favorite) {
-            setFavorite(!isFavorite());
-            return true;
-        } else if (id == android.R.id.home) {
-            this.finish();
-            return true;
+        switch (id) {
+            case R.id.action_directions:
+                Intent intent = new Intent(Intent.ACTION_VIEW, getStationLocationUri());
+                PackageManager packageManager = getPackageManager();
+                List<ResolveInfo> activities = packageManager.queryIntentActivities(intent, 0);
+                boolean isIntentSafe = activities.size() > 0;
+                if (isIntentSafe) {
+                    startActivity(intent);
+                } else {
+                    Toast.makeText(this, getString(R.string.no_nav_application), Toast.LENGTH_LONG).show();
+                }
+                return true;
+            case R.id.action_favorite:
+                setFavorite(!isFavorite());
+                return true;
+            case android.R.id.home:
+                this.finish();
+                return true;
+            default:
+                return super.onOptionsItemSelected(item);
         }
-        return super.onOptionsItemSelected(item);
     }
 
     private Uri getStationLocationUri() {

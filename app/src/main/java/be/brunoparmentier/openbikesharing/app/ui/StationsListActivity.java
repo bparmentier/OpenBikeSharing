@@ -106,7 +106,6 @@ public class StationsListActivity extends FragmentActivity implements ActionBar.
                 .setTabListener(this));
         actionBar.setHomeButtonEnabled(false);
 
-
         settings = PreferenceManager.getDefaultSharedPreferences(this);
         firstRun = settings.getString(PREF_NETWORK_ID_LABEL, "").isEmpty();
 
@@ -145,26 +144,30 @@ public class StationsListActivity extends FragmentActivity implements ActionBar.
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
         int id = item.getItemId();
-        if (id == R.id.action_settings) {
-            Intent intent = new Intent(this, SettingsActivity.class);
-            startActivity(intent);
-            return true;
-        } else if (id == R.id.action_refresh) {
-            String networkId = PreferenceManager
-                    .getDefaultSharedPreferences(this)
-                    .getString(PREF_NETWORK_ID_LABEL, "");
-            new JSONDownloadTask().execute(BASE_URL + "/" + networkId);
-            return true;
-        } else if (id == R.id.action_map) {
-            if (bikeNetwork != null) {
-                Intent intent = new Intent(this, MapActivity.class);
-                intent.putExtra("bike-network", bikeNetwork);
-                startActivity(intent);
-            } else {
-                Toast.makeText(this, R.string.bike_network_downloading, Toast.LENGTH_LONG).show();
-            }
+        switch (id) {
+            case R.id.action_settings:
+                Intent settingsIntent = new Intent(this, SettingsActivity.class);
+                startActivity(settingsIntent);
+                return true;
+            case R.id.action_refresh:
+                String networkId = PreferenceManager
+                        .getDefaultSharedPreferences(this)
+                        .getString(PREF_NETWORK_ID_LABEL, "");
+                new JSONDownloadTask().execute(BASE_URL + "/" + networkId);
+                return true;
+            case R.id.action_map:
+                if (bikeNetwork != null) {
+                    Intent mapIntent = new Intent(this, MapActivity.class);
+                    mapIntent.putExtra("bike-network", bikeNetwork);
+                    startActivity(mapIntent);
+                } else {
+                    Toast.makeText(this,
+                            R.string.bike_network_downloading,
+                            Toast.LENGTH_LONG).show();
+                }
+            default:
+                return super.onOptionsItemSelected(item);
         }
-        return super.onOptionsItemSelected(item);
     }
 
     @Override
