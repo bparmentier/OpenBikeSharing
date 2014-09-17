@@ -73,11 +73,6 @@ public class BikeNetworksListActivity extends Activity {
 
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
-        int id = item.getItemId();
-        if (id == R.id.action_refresh) {
-            new JSONDownloadTask().execute(BASE_URL);
-            return true;
-        }
         return super.onOptionsItemSelected(item);
     }
 
@@ -92,7 +87,7 @@ public class BikeNetworksListActivity extends Activity {
                 HttpURLConnection conn = (HttpURLConnection) url.openConnection();
                 if (conn.getResponseCode() == HttpURLConnection.HTTP_OK) {
                     BufferedReader input = new BufferedReader(new InputStreamReader(conn.getInputStream()));
-                    String strLine = null;
+                    String strLine;
                     while ((strLine = input.readLine()) != null) {
                         response.append(strLine);
                     }
