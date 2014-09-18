@@ -20,9 +20,12 @@ package be.brunoparmentier.openbikesharing.app.ui;
 import android.app.ActionBar;
 import android.app.AlertDialog;
 import android.app.FragmentTransaction;
+import android.app.SearchManager;
+import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.database.MatrixCursor;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.preference.PreferenceManager;
@@ -34,6 +37,7 @@ import android.support.v4.view.ViewPager;
 import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.widget.SearchView;
 import android.widget.Toast;
 
 import org.json.JSONException;
@@ -51,6 +55,7 @@ import java.util.Set;
 
 import be.brunoparmentier.openbikesharing.app.BikeNetwork;
 import be.brunoparmentier.openbikesharing.app.R;
+import be.brunoparmentier.openbikesharing.app.SearchStationAdapter;
 import be.brunoparmentier.openbikesharing.app.Station;
 import be.brunoparmentier.openbikesharing.app.fragments.StationsListFragment;
 import be.brunoparmentier.openbikesharing.app.utils.OBSException;
@@ -73,6 +78,7 @@ public class StationsListActivity extends FragmentActivity implements ActionBar.
     private ViewPager viewPager;
     private TabsPagerAdapter tabsPagerAdapter;
     private ActionBar actionBar;
+    private SearchView searchView;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -138,6 +144,25 @@ public class StationsListActivity extends FragmentActivity implements ActionBar.
     public boolean onCreateOptionsMenu(Menu menu) {
         this.optionsMenu = menu;
         getMenuInflater().inflate(R.menu.stations_list, menu);
+
+        SearchManager manager = (SearchManager) getSystemService(Context.SEARCH_SERVICE);
+
+        searchView = (SearchView) menu.findItem(R.id.action_search).getActionView();
+        searchView.setSearchableInfo(manager.getSearchableInfo(getComponentName()));
+        searchView.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
+
+            @Override
+            public boolean onQueryTextSubmit(String s) {
+                return false;
+            }
+
+            @Override
+            public boolean onQueryTextChange(String s) {
+                loadData(s);
+                return true;
+            }
+        });
+
         return true;
     }
 
@@ -182,6 +207,29 @@ public class StationsListActivity extends FragmentActivity implements ActionBar.
 
     @Override
     public void onTabReselected(ActionBar.Tab tab, FragmentTransaction fragmentTransaction) {
+
+    }
+
+    private void loadData(String query) {
+        ArrayList<Station> queryStations = new ArrayList<Station>();
+        String[] columns = new String[]{"_id", "text"};
+        Object[] temp = new Object[]{0, "default"};
+
+        MatrixCursor cursor = new MatrixCursor(columns);
+
+        if (stations != null) {
+            for (int i = 0; i < stations.size(); i++) {
+                Station station = stations.get(i);
+                if (station.getName().toLowerCase().contains(query.toLowerCase())) {
+                    temp[0] = i;
+                    temp[1] = station.getName();
+                    cursor.addRow(temp);
+                    queryStations.add(station);
+                }
+            }
+        }
+
+        searchView.setSuggestionsAdapter(new SearchStationAdapter(this, cursor, queryStations));
 
     }
 

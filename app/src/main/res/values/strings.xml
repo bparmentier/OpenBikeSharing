@@ -31,6 +31,7 @@
     <string name="action_directions">Directions</string>
     <string name="action_favorite">Favorite</string>
     <string name="action_my_location">My location</string>
+    <string name="action_search">Search</string>
 
     <!-- Activities titles -->
     <string name="title_activity_stations_list">Stations</string>
