@@ -31,12 +31,13 @@
         android:entries="@array/pref_map_layer_entries"
         android:entryValues="@array/pref_map_layer_values"
         android:key="pref_map_layer"
+        android:summary="%s"
         android:title="@string/pref_map_layer_title" />
 
     <PreferenceScreen android:title="@string/pref_title_about">
         <Preference
             android:key="pref_version"
-            android:title="@string/pref_title_version"></Preference>
+            android:title="@string/pref_title_version" />
 
         <Preference
             android:summary="https://github.com/bparmentier/OpenBikeSharing"
