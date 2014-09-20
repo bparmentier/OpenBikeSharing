@@ -27,6 +27,9 @@ code may be a bit messy. So if you have enough courage, take a look at it and te
 If your language is not supported yet, I will gladly add it if you translate some strings for me.
 They are located in `app/src/main/res/values-xx` (there is not much).
 
+As I don't have as many devices as I would like to test this app on (only one, actually), please
+report any bug/crash that you may encounter. And feel free to make any suggestions to improve it.
+
 Build
 -----
 
