@@ -34,6 +34,9 @@ import be.brunoparmentier.openbikesharing.app.R;
  * Settings fragment
  */
 public class SettingsFragment extends PreferenceFragment {
+
+    private final String TAG = "SettingsFragment";
+
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -78,7 +81,7 @@ public class SettingsFragment extends PreferenceFragment {
                     .getPackageInfo(getActivity().getPackageName(), 0).versionName;
             versionPref.setSummary(versionName);
         } catch (PackageManager.NameNotFoundException e) {
-            Log.e("SettingsFragment", e.getMessage());
+            Log.e(TAG, e.getMessage());
         }
     }
 }

@@ -57,6 +57,7 @@ import be.brunoparmentier.openbikesharing.app.Station;
 
 public class MapActivity extends Activity implements MapEventsReceiver {
 
+    private final String TAG = "MapActivity";
     private SharedPreferences settings;
     private BikeNetwork bikeNetwork;
     private ArrayList<Station> stations;
@@ -191,7 +192,7 @@ public class MapActivity extends Activity implements MapEventsReceiver {
                     return true;
                 } catch (NullPointerException ex) {
                     Toast.makeText(this, getString(R.string.location_not_found), Toast.LENGTH_LONG).show();
-                    Log.e("MapActivity", "Location not found");
+                    Log.e(TAG, "Location not found");
                     return true;
                 }
             default:

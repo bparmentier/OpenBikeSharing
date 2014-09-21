@@ -35,7 +35,6 @@ import be.brunoparmentier.openbikesharing.app.ui.StationActivity;
 
 public class StationsListFragment extends Fragment {
     private ArrayList<Station> stations;
-
     private StationsListAdapter stationsListAdapter;
 
     /* newInstance constructor for creating fragment with arguments */
