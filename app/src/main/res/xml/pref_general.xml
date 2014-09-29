@@ -25,7 +25,7 @@
             android:targetPackage="be.brunoparmentier.openbikesharing.app" />
     </Preference>
 
-    <ListPreference
+    <be.brunoparmentier.openbikesharing.app.UpdateListPreference
         android:defaultValue="mapnik"
         android:dialogTitle="@string/pref_map_layer_title"
         android:entries="@array/pref_map_layer_entries"
