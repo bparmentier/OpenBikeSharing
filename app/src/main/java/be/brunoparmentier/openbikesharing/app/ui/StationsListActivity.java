@@ -141,6 +141,15 @@ public class StationsListActivity extends FragmentActivity implements ActionBar.
     }
 
     @Override
+    protected void onRestart() {
+        super.onRestart();
+        if (tabsPagerAdapter == null) {
+            String stationUrl = BASE_URL + "/" + settings.getString(PREF_NETWORK_ID_LABEL, "");
+            new JSONDownloadTask().execute(stationUrl);
+        }
+    }
+
+    @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         this.optionsMenu = menu;
         getMenuInflater().inflate(R.menu.stations_list, menu);
