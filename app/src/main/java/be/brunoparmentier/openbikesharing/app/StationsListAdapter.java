@@ -30,9 +30,6 @@ import java.util.ArrayList;
  * Define a list of stations with their title, number of bikes and empty slots.
  */
 public class StationsListAdapter extends ArrayAdapter<Station> {
-    public StationsListAdapter(Context context, int resource) {
-        super(context, resource);
-    }
 
     public StationsListAdapter(Context context, int resource, ArrayList<Station> stations) {
         super(context, resource, stations);
