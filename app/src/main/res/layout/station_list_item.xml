@@ -40,7 +40,7 @@
         android:layout_centerVertical="true"
         android:layout_gravity="center_vertical"
         android:layout_toLeftOf="@id/emptySlotsValue"
-        android:layout_toStartOf="@id/stationEmptySlots"
+        android:layout_toStartOf="@id/emptySlotsValue"
         android:contentDescription="@string/empty_slots"
         android:padding="3dp"
         android:src="@drawable/ic_parking" />
