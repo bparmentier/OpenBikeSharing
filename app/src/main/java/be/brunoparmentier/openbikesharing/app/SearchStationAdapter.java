@@ -34,7 +34,6 @@ import be.brunoparmentier.openbikesharing.app.ui.StationActivity;
 /**
  * Cursor adapter to display search results in a dropdown list
  */
-
 public class SearchStationAdapter extends CursorAdapter {
 
     private ArrayList<Station> stations;
@@ -49,7 +48,7 @@ public class SearchStationAdapter extends CursorAdapter {
         final int position = cursor.getPosition();
         TextView textView = (TextView) view.findViewById(android.R.id.text1);
         textView.setText(stations.get(position).getName());
-        textView.setTextColor(view.getResources().getColor(android.R.color.secondary_text_light));
+        textView.setTextColor(context.getResources().getColor(android.R.color.secondary_text_light));
         view.setBackgroundColor(Color.rgb(243, 243, 243)); // background_holo_light
         view.setOnClickListener(new View.OnClickListener() {
             @Override
