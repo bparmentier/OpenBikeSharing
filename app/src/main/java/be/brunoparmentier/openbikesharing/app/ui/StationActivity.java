@@ -91,7 +91,6 @@ public class StationActivity extends Activity {
 
         /* Station marker */
         Marker marker = new Marker(map);
-
         marker.setPosition(stationLocation);
         marker.setAnchor(Marker.ANCHOR_CENTER, Marker.ANCHOR_CENTER);
         marker.setOnMarkerClickListener(new Marker.OnMarkerClickListener() {
@@ -100,6 +99,8 @@ public class StationActivity extends Activity {
                 return false;
             }
         });
+
+        /* Marker icon */
         int emptySlots = station.getEmptySlots();
         int freeBikes = station.getFreeBikes();
         if (emptySlots + freeBikes == 0 || station.getStatus() == StationStatus.CLOSED) {

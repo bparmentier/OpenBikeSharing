@@ -220,6 +220,11 @@ public class MapActivity extends Activity implements MapEventsReceiver {
         marker.setInfoWindow(stationMarkerInfoWindow);
         marker.setPosition(stationLocation);
         marker.setAnchor(Marker.ANCHOR_CENTER, Marker.ANCHOR_CENTER);
+        marker.setTitle(station.getName());
+        marker.setSnippet(String.valueOf(station.getFreeBikes())); // free bikes
+        marker.setSubDescription(String.valueOf(station.getEmptySlots())); // empty slots
+
+        /* Marker icon */
         int emptySlots = station.getEmptySlots();
         int freeBikes = station.getFreeBikes();
         if (emptySlots + freeBikes == 0 || station.getStatus() == StationStatus.CLOSED) {
@@ -238,9 +243,6 @@ public class MapActivity extends Activity implements MapEventsReceiver {
                 marker.setIcon(getResources().getDrawable(R.drawable.ic_station_marker100));
             }
         }
-        marker.setTitle(station.getName());
-        marker.setSnippet(String.valueOf(station.getFreeBikes())); // free bikes
-        marker.setSubDescription(String.valueOf(station.getEmptySlots())); // empty slots
 
         return marker;
     }
