@@ -27,7 +27,6 @@ import android.net.Uri;
 import android.os.Build;
 import android.os.Bundle;
 import android.preference.PreferenceManager;
-import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
@@ -52,7 +51,6 @@ import be.brunoparmentier.openbikesharing.app.StationStatus;
 
 public class StationActivity extends Activity {
     private final String PREF_FAV_STATIONS = "fav-stations";
-    private final String TAG = "StationActivity";
     private SharedPreferences settings;
     private Station station;
     private MapView map;
@@ -232,7 +230,6 @@ public class StationActivity extends Activity {
 
     private boolean isFavorite() {
         Set<String> favorites = settings.getStringSet(PREF_FAV_STATIONS, new HashSet<String>());
-        Log.d(TAG, "Station in favorites: " + favorites.contains(station.getId()));
         return (favorites.contains(station.getId()));
     }
 
@@ -248,7 +245,6 @@ public class StationActivity extends Activity {
             favStar.setIcon(R.drawable.ic_action_important);
             Toast.makeText(StationActivity.this,
                     getString(R.string.station_added_to_favorites), Toast.LENGTH_SHORT).show();
-            Log.d(TAG, "station fav'ed");
         } else {
             favorites.remove(station.getId());
             editor.putStringSet(PREF_FAV_STATIONS, favorites);
@@ -256,7 +252,6 @@ public class StationActivity extends Activity {
             favStar.setIcon(R.drawable.ic_action_not_important);
             Toast.makeText(StationActivity.this,
                     getString(R.string.stations_removed_from_favorites), Toast.LENGTH_SHORT).show();
-            Log.d(TAG, "station un-fav'ed");
         }
     }
 }
