@@ -54,6 +54,7 @@ import java.util.ArrayList;
 import be.brunoparmentier.openbikesharing.app.BikeNetwork;
 import be.brunoparmentier.openbikesharing.app.R;
 import be.brunoparmentier.openbikesharing.app.Station;
+import be.brunoparmentier.openbikesharing.app.StationStatus;
 
 public class MapActivity extends Activity implements MapEventsReceiver {
 
@@ -219,7 +220,24 @@ public class MapActivity extends Activity implements MapEventsReceiver {
         marker.setInfoWindow(stationMarkerInfoWindow);
         marker.setPosition(stationLocation);
         marker.setAnchor(Marker.ANCHOR_CENTER, Marker.ANCHOR_CENTER);
-        marker.setIcon(getResources().getDrawable(R.drawable.ic_bike));
+        int emptySlots = station.getEmptySlots();
+        int freeBikes = station.getFreeBikes();
+        if (emptySlots + freeBikes == 0 || station.getStatus() == StationStatus.CLOSED) {
+            marker.setIcon(getResources().getDrawable(R.drawable.ic_station_marker_unavailable));
+        } else {
+            double ratio = (double) freeBikes / (double) (freeBikes + emptySlots);
+            if (freeBikes == 0) {
+                marker.setIcon(getResources().getDrawable(R.drawable.ic_station_marker0));
+            } else if (freeBikes >= 1 && ratio <= 0.3) {
+                marker.setIcon(getResources().getDrawable(R.drawable.ic_station_marker25));
+            } else if (ratio > 0.3 && ratio < 0.7) {
+                marker.setIcon(getResources().getDrawable(R.drawable.ic_station_marker50));
+            } else if (ratio >= 0.7 && emptySlots >= 1) {
+                marker.setIcon(getResources().getDrawable(R.drawable.ic_station_marker75));
+            } else if (emptySlots == 0) {
+                marker.setIcon(getResources().getDrawable(R.drawable.ic_station_marker100));
+            }
+        }
         marker.setTitle(station.getName());
         marker.setSnippet(String.valueOf(station.getFreeBikes())); // free bikes
         marker.setSubDescription(String.valueOf(station.getEmptySlots())); // empty slots

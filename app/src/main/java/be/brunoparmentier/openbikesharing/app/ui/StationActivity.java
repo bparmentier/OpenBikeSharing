@@ -23,7 +23,6 @@ import android.content.SharedPreferences;
 import android.content.pm.PackageManager;
 import android.content.pm.ResolveInfo;
 import android.graphics.Paint;
-import android.graphics.drawable.Drawable;
 import android.net.Uri;
 import android.os.Build;
 import android.os.Bundle;
@@ -37,17 +36,12 @@ import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import org.osmdroid.ResourceProxy;
 import org.osmdroid.api.IMapController;
+import org.osmdroid.bonuspack.overlays.Marker;
 import org.osmdroid.tileprovider.tilesource.TileSourceFactory;
 import org.osmdroid.util.GeoPoint;
-import org.osmdroid.util.ResourceProxyImpl;
 import org.osmdroid.views.MapView;
-import org.osmdroid.views.overlay.ItemizedIconOverlay;
-import org.osmdroid.views.overlay.ItemizedOverlay;
-import org.osmdroid.views.overlay.OverlayItem;
 
-import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
@@ -63,8 +57,6 @@ public class StationActivity extends Activity {
     private Station station;
     private MapView map;
     private IMapController mapController;
-    private ItemizedOverlay<OverlayItem> stationLocationOverlay;
-    private ResourceProxy mResourceProxy;
     private MenuItem favStar;
 
     @Override
@@ -72,7 +64,6 @@ public class StationActivity extends Activity {
         super.onCreate(savedInstanceState);
 
         settings = PreferenceManager.getDefaultSharedPreferences(this);
-        mResourceProxy = new ResourceProxyImpl(getApplicationContext());
 
         setContentView(R.layout.activity_station);
         station = (Station) getIntent().getSerializableExtra("station");
@@ -101,25 +92,36 @@ public class StationActivity extends Activity {
         map.setMultiTouchControls(true);
 
         /* Station marker */
-        final ArrayList<OverlayItem> items = new ArrayList<OverlayItem>();
-        items.add(new OverlayItem("Title", "Description", stationLocation));
-        Drawable newMarker = this.getResources().getDrawable(R.drawable.ic_bike);
-        this.stationLocationOverlay = new ItemizedIconOverlay<OverlayItem>(items, newMarker,
-                new ItemizedIconOverlay.OnItemGestureListener<OverlayItem>() {
+        Marker marker = new Marker(map);
 
-                    @Override
-                    public boolean onItemSingleTapUp(int i, OverlayItem overlayItem) {
+        marker.setPosition(stationLocation);
+        marker.setAnchor(Marker.ANCHOR_CENTER, Marker.ANCHOR_CENTER);
+        marker.setOnMarkerClickListener(new Marker.OnMarkerClickListener() {
+            @Override
+            public boolean onMarkerClick(Marker marker, MapView mapView) {
+                return false;
+            }
+        });
+        int emptySlots = station.getEmptySlots();
+        int freeBikes = station.getFreeBikes();
+        if (emptySlots + freeBikes == 0 || station.getStatus() == StationStatus.CLOSED) {
+            marker.setIcon(getResources().getDrawable(R.drawable.ic_station_marker_unavailable));
+        } else {
+            double ratio = (double) freeBikes / (double) (freeBikes + emptySlots);
+            if (freeBikes == 0) {
+                marker.setIcon(getResources().getDrawable(R.drawable.ic_station_marker0));
+            } else if (freeBikes >= 1 && ratio <= 0.3) {
+                marker.setIcon(getResources().getDrawable(R.drawable.ic_station_marker25));
+            } else if (ratio > 0.3 && ratio < 0.7) {
+                marker.setIcon(getResources().getDrawable(R.drawable.ic_station_marker50));
+            } else if (ratio >= 0.7 && emptySlots >= 1) {
+                marker.setIcon(getResources().getDrawable(R.drawable.ic_station_marker75));
+            } else if (emptySlots == 0) {
+                marker.setIcon(getResources().getDrawable(R.drawable.ic_station_marker100));
+            }
+        }
 
-                        return false;
-                    }
-
-                    @Override
-                    public boolean onItemLongPress(int i, OverlayItem overlayItem) {
-                        return false;
-                    }
-                }, mResourceProxy);
-
-        this.map.getOverlays().add(this.stationLocationOverlay);
+        map.getOverlays().add(marker);
 
         TextView stationName = (TextView) findViewById(R.id.stationName);
         TextView stationEmptySlots = (TextView) findViewById(R.id.stationEmptySlots);
