@@ -140,6 +140,9 @@ public class StationsListActivity extends FragmentActivity implements ActionBar.
             dialog.show();
         } else {
             if (savedInstanceState != null) {
+                bikeNetwork = (BikeNetwork) savedInstanceState.getSerializable("bikeNetwork");
+                stations = (ArrayList<Station>) savedInstanceState.getSerializable("stations");
+                favStations = (ArrayList<Station>) savedInstanceState.getSerializable("favStations");
                 actionBar.setNavigationMode(ActionBar.NAVIGATION_MODE_TABS);
                 tabsPagerAdapter = new TabsPagerAdapter(getSupportFragmentManager());
                 viewPager.setAdapter(tabsPagerAdapter);
@@ -157,6 +160,14 @@ public class StationsListActivity extends FragmentActivity implements ActionBar.
             String stationUrl = BASE_URL + "/" + settings.getString(PREF_NETWORK_ID_LABEL, "");
             new JSONDownloadTask().execute(stationUrl);
         }
+    }
+
+    @Override
+    protected void onSaveInstanceState(Bundle outState) {
+        super.onSaveInstanceState(outState);
+        outState.putSerializable("bikeNetwork", bikeNetwork);
+        outState.putSerializable("stations", stations);
+        outState.putSerializable("favStations", favStations);
     }
 
     @Override
