@@ -77,6 +77,10 @@ public class StationsListActivity extends FragmentActivity implements ActionBar.
 
     private ViewPager viewPager;
     private TabsPagerAdapter tabsPagerAdapter;
+
+    private StationsListFragment allStationsFragment;
+    private StationsListFragment favoriteStationsFragment;
+
     private ActionBar actionBar;
     private SearchView searchView;
 
@@ -135,8 +139,14 @@ public class StationsListActivity extends FragmentActivity implements ActionBar.
             AlertDialog dialog = builder.create();
             dialog.show();
         } else {
-            String stationUrl = BASE_URL + "/" + settings.getString(PREF_NETWORK_ID_LABEL, "");
-            new JSONDownloadTask().execute(stationUrl);
+            if (savedInstanceState != null) {
+                actionBar.setNavigationMode(ActionBar.NAVIGATION_MODE_TABS);
+                tabsPagerAdapter = new TabsPagerAdapter(getSupportFragmentManager());
+                viewPager.setAdapter(tabsPagerAdapter);
+            } else {
+                String stationUrl = BASE_URL + "/" + settings.getString(PREF_NETWORK_ID_LABEL, "");
+                new JSONDownloadTask().execute(stationUrl);
+            }
         }
     }
 
@@ -153,7 +163,6 @@ public class StationsListActivity extends FragmentActivity implements ActionBar.
     public boolean onCreateOptionsMenu(Menu menu) {
         this.optionsMenu = menu;
         getMenuInflater().inflate(R.menu.stations_list, menu);
-        setRefreshActionButtonState(true);
 
         SearchManager manager = (SearchManager) getSystemService(Context.SEARCH_SERVICE);
 
@@ -289,6 +298,7 @@ public class StationsListActivity extends FragmentActivity implements ActionBar.
                 return response.toString();
             } catch (IOException e) {
                 error = e;
+                Log.d(TAG, e.getMessage());
                 return e.getMessage();
             }
         }
@@ -345,8 +355,6 @@ public class StationsListActivity extends FragmentActivity implements ActionBar.
 
     private class TabsPagerAdapter extends FragmentPagerAdapter {
         private final int NUM_ITEMS = 2;
-        private StationsListFragment allStationsFragment;
-        private StationsListFragment favoriteStationsFragment;
 
         public TabsPagerAdapter(FragmentManager fragmentManager) {
             super(fragmentManager);
