@@ -308,7 +308,7 @@ public class StationsListActivity extends FragmentActivity implements ActionBar.
             if (error != null) {
                 Toast.makeText(getApplicationContext(),
                         getApplicationContext().getResources().getString(R.string.connection_error),
-                        Toast.LENGTH_SHORT);
+                        Toast.LENGTH_SHORT).show();
                 setRefreshActionButtonState(false);
             } else {
                 try {
