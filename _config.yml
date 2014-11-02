@@ -1,0 +1,28 @@
+# ----------------------- #
+#      Main Configs       #
+# ----------------------- #
+
+url: https://bparmentier.github.io/OpenBikeSharing
+title: OpenBikeSharing
+author: Bruno Parmentier
+email: contact@brunoparmentier.be
+description: > # "Write an awesome description for your new site here. 
+  Shared bikes availability in your city
+# ----------------------- #
+#    Jekyll & Plugins     #
+# ----------------------- #
+
+# Build settings
+markdown: kramdown
+permalink: pretty
+
+# ----------------------- #
+#   3rd Party Settings    #
+# ----------------------- #
+
+social:
+  - title: twitter
+    url: https://twitter.com/mau5kito
+  - title: github
+    url: https://github.com/bparmentier/OpenBikeSharing
+
