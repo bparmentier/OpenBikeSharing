@@ -51,6 +51,7 @@
         (https://github.com/osmdroid/osmdroid).
     </string>
 
+    <string name="pref_title_website">Site web</string>
     <string name="pref_title_source_code">Code source</string>
     <string name="pref_title_developers_website">Site web du développeur</string>
     <string name="pref_title_donate_bitcoin">Donation Bitcoin</string>

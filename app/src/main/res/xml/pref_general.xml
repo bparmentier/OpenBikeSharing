@@ -40,6 +40,14 @@
             android:title="@string/pref_title_version" />
 
         <Preference
+            android:summary="http://openbikesharing.org"
+            android:title="@string/pref_title_website">
+            <intent
+                android:action="android.intent.action.VIEW"
+                android:data="http://openbikesharing.org" />
+        </Preference>
+
+        <Preference
             android:summary="https://github.com/bparmentier/OpenBikeSharing"
             android:title="@string/pref_title_source_code">
             <intent
