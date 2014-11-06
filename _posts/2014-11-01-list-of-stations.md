@@ -1,7 +1,7 @@
 ---
 layout: default
 img: v1.4-smartphone4-allstations-en_framed.png
-category: 
+category: intro
 title: List of stations
 description: |
   <p>Display a list of all stations with the number of bikes available and the

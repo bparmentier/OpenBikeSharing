@@ -1,7 +1,7 @@
 ---
 layout: default
 img: v1.4-smartphone4-map-en_framed.png
-category: 
+category: intro
 title: Find the nearest stations on the map
 description: |
   <p>The <em>Map</em> screen will show you all the stations near you (do not

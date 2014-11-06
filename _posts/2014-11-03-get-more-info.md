@@ -1,7 +1,7 @@
 ---
 layout: default
 img: v1.4-smartphone4-station-en_framed.png
-category: 
+category: intro
 title: Get more info
 description: |
   <p>Tapping a station in the list or on the map will get you on a dedicated
