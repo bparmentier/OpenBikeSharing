@@ -60,6 +60,7 @@ public class BikeNetworksListActivity extends Activity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_bike_networks_list);
+        getActionBar().setDisplayHomeAsUpEnabled(true);
 
         listView = (ListView) findViewById(R.id.networksListView);
         new JSONDownloadTask().execute(BASE_URL);
@@ -73,6 +74,11 @@ public class BikeNetworksListActivity extends Activity {
 
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
+        switch (item.getItemId()) {
+            case android.R.id.home:
+                finish();
+                return true;
+        }
         return super.onOptionsItemSelected(item);
     }
 

@@ -60,10 +60,11 @@ public class StationActivity extends Activity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_station);
+        getActionBar().setDisplayHomeAsUpEnabled(true);
 
         settings = PreferenceManager.getDefaultSharedPreferences(this);
 
-        setContentView(R.layout.activity_station);
         station = (Station) getIntent().getSerializableExtra("station");
 
         map = (MapView) findViewById(R.id.mapView);
@@ -218,7 +219,7 @@ public class StationActivity extends Activity {
                 setFavorite(!isFavorite());
                 return true;
             case android.R.id.home:
-                this.finish();
+                finish();
                 return true;
             default:
                 return super.onOptionsItemSelected(item);

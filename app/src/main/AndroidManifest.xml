@@ -46,7 +46,7 @@
             android:parentActivityName=".ui.StationsListActivity">
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
-                android:value="StationsListActivity" />
+                android:value=".ui.StationsListActivity" />
         </activity>
 
         <activity
@@ -55,8 +55,7 @@
             android:parentActivityName=".ui.StationsListActivity">
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
-                android:value="StationsListActivity" />
-
+                android:value=".ui.StationsListActivity" />
         </activity>
 
         <activity
@@ -65,7 +64,7 @@
             android:parentActivityName=".ui.SettingsActivity">
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
-                android:value="SettingsActivity" />
+                android:value=".ui.SettingsActivity" />
         </activity>
 
         <activity
@@ -74,7 +73,7 @@
             android:parentActivityName=".ui.StationsListActivity">
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
-                android:value="StationsListActivity" />
+                android:value=".ui.StationsListActivity" />
         </activity>
     </application>
 
