@@ -35,7 +35,7 @@ import be.brunoparmentier.openbikesharing.app.utils.OBSException;
 public class BikeNetworkParser {
     private BikeNetwork bikeNetwork;
 
-    public BikeNetworkParser(JSONObject jsonObject) throws OBSException {
+    public BikeNetworkParser(JSONObject jsonObject, boolean stripIdFromStationName) throws OBSException {
 
         ArrayList<Station> stations = new ArrayList<Station>();
 
@@ -69,6 +69,7 @@ public class BikeNetworkParser {
 
                     String id = rawStation.getString("id");
                     String name = rawStation.getString("name");
+                    if (stripIdFromStationName) name = name.replaceAll("^[0-9]* ?- ?", "");
                     //Date timestamp = new Date(rawStation.getString("timestamp"));
                     double latitude = rawStation.getDouble("latitude");
                     double longitude = rawStation.getDouble("longitude");

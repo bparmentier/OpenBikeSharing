@@ -67,5 +67,7 @@
     <string name="pref_map_layer_osmpublictransport" translatable="false">OSMPublicTransport</string>
     <string name="pref_map_layer_mapquestosm" translatable="false">MapQuest-OSM</string>
 
+    <string name="pref_title_strip_station_id">Strip station ID</string>
+    <string name="pref_title_strip_station_id_summary">Remove ID from station name</string>
 
 </resources>

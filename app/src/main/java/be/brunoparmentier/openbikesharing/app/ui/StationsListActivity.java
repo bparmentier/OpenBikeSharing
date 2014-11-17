@@ -326,7 +326,8 @@ public class StationsListActivity extends FragmentActivity implements ActionBar.
                     JSONObject jsonObject = new JSONObject(result);
 
                     /* parse result */
-                    BikeNetworkParser bikeNetworkParser = new BikeNetworkParser(jsonObject);
+                    boolean stripId = settings.getBoolean("pref_strip_id_station", false);
+                    BikeNetworkParser bikeNetworkParser = new BikeNetworkParser(jsonObject, stripId);
                     bikeNetwork = bikeNetworkParser.getNetwork();
                     stations = bikeNetwork.getStations();
 
