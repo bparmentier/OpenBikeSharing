@@ -21,8 +21,6 @@ permalink: pretty
 # ----------------------- #
 
 social:
-  - title: twitter
-    url: https://twitter.com/mau5kito
   - title: github
     url: https://github.com/bparmentier/OpenBikeSharing
 
