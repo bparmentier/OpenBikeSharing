@@ -34,7 +34,7 @@
         android:summary="%s"
         android:title="@string/pref_map_layer_title" />
 
-    <SwitchPreference
+    <CheckBoxPreference
         android:key="pref_strip_id_station"
         android:summary="@string/pref_title_strip_station_id_summary"
         android:title="@string/pref_title_strip_station_id" />
