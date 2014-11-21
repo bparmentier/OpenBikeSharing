@@ -45,12 +45,6 @@
     </string>-->
 
     <string name="pref_title_about">À propos</string>
-    <string name="pref_title_about_message">
-        OpenBikeSharing récupère ses données depuis l\'API CityBikes (http://api.citybik.es/v2/).\n
-        \nLes cartes sont fournies par OpenStreetMap (https://www.openstreetmap.org/) grâce à osmdroid
-        (https://github.com/osmdroid/osmdroid).
-    </string>
-
     <string name="pref_title_website">Site web</string>
     <string name="pref_title_source_code">Code source</string>
     <string name="pref_title_developers_website">Site web du développeur</string>
