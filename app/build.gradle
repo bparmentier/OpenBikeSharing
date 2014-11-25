@@ -17,11 +17,13 @@
 
 
 
+
+
 apply plugin: 'com.android.application'
 
 android {
     compileSdkVersion 21
-    buildToolsVersion "21.0.2"
+    buildToolsVersion "21.1.0"
 
     defaultConfig {
         applicationId "be.brunoparmentier.openbikesharing.app"
