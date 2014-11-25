@@ -23,7 +23,7 @@
     <!-- Example General settings -->
     <string name="pref_header_general">Général</string>
 
-    <string name="pref_title_bike_networks_list">Choisissez un réseau</string>
+    <string name="pref_title_bike_networks_list">Choisir un réseau</string>
 
     <string name="pref_title_license">Licence</string>
     <!--<string name="pref_title_license_message" translatable="false">
@@ -61,7 +61,9 @@
     <string name="pref_map_layer_osmpublictransport" translatable="false">OSMPublicTransport</string>
     <string name="pref_map_layer_mapquestosm" translatable="false">MapQuest-OSM</string>-->
 
-    <string name="pref_title_strip_station_id">Retirer l\'ID de la station</string>
-    <string name="pref_title_strip_station_id_summary">Supprime l\'identifiant du nom de la station</string>
+    <string name="pref_title_strip_station_id">Masquer l\'ID de la station</string>
+    <string name="pref_title_strip_station_id_summary">
+        Supprime l\'identifiant dans le nom de la station (utile pour certains réseaux uniquement)
+    </string>
 
 </resources>
