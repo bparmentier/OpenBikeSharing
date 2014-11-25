@@ -21,7 +21,7 @@
 
     <item
         android:id="@+id/action_favorite"
-        android:icon="@drawable/ic_action_not_important"
+        android:icon="@drawable/ic_menu_favorite_outline"
         android:orderInCategory="100"
         android:showAsAction="always"
         android:title="@string/action_favorite" />

@@ -193,9 +193,9 @@ public class StationActivity extends Activity {
 
         favStar = menu.findItem(R.id.action_favorite);
         if (isFavorite()) {
-            favStar.setIcon(R.drawable.ic_action_important);
+            favStar.setIcon(R.drawable.ic_menu_favorite);
         } else {
-            favStar.setIcon(R.drawable.ic_action_not_important);
+            favStar.setIcon(R.drawable.ic_menu_favorite_outline);
         }
         return true;
     }
@@ -244,14 +244,14 @@ public class StationActivity extends Activity {
             favorites.add(station.getId());
             editor.putStringSet(PREF_FAV_STATIONS, favorites);
             editor.commit();
-            favStar.setIcon(R.drawable.ic_action_important);
+            favStar.setIcon(R.drawable.ic_menu_favorite);
             Toast.makeText(StationActivity.this,
                     getString(R.string.station_added_to_favorites), Toast.LENGTH_SHORT).show();
         } else {
             favorites.remove(station.getId());
             editor.putStringSet(PREF_FAV_STATIONS, favorites);
             editor.commit();
-            favStar.setIcon(R.drawable.ic_action_not_important);
+            favStar.setIcon(R.drawable.ic_menu_favorite_outline);
             Toast.makeText(StationActivity.this,
                     getString(R.string.stations_removed_from_favorites), Toast.LENGTH_SHORT).show();
         }
