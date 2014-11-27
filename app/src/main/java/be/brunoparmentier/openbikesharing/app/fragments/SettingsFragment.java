@@ -84,20 +84,18 @@ public class SettingsFragment extends PreferenceFragment {
         String versionName;
         final Preference versionPref = findPreference("pref_version");
         try {
+            versionName = getActivity().getPackageManager()
+                    .getPackageInfo(getActivity().getPackageName(), 0).versionName;
             if (BuildConfig.DEBUG) {
                 /* https://stackoverflow.com/a/7608719/3997816 */
                 ApplicationInfo ai = getActivity().getPackageManager().getApplicationInfo(getActivity().getPackageName(), 0);
                 ZipFile zf = new ZipFile(ai.sourceDir);
                 ZipEntry ze = zf.getEntry("classes.dex");
+                zf.close();
                 long time = ze.getTime();
                 SimpleDateFormat dateFormat = new SimpleDateFormat("yyyyMMddHHmmdd");
-                versionName = getActivity().getPackageManager()
-                        .getPackageInfo(getActivity().getPackageName(), 0).versionName + "-debug-";
-                versionName += dateFormat.format(time);
-                zf.close();
-            } else {
-                versionName = getActivity().getPackageManager()
-                        .getPackageInfo(getActivity().getPackageName(), 0).versionName;
+
+                versionName += "-debug-" + dateFormat.format(time);
             }
             versionPref.setSummary(versionName);
         } catch (PackageManager.NameNotFoundException e) {
