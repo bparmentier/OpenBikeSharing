@@ -18,6 +18,7 @@
 package be.brunoparmentier.openbikesharing.app.fragments;
 
 import android.content.Intent;
+import android.content.pm.ApplicationInfo;
 import android.content.pm.PackageManager;
 import android.content.pm.ResolveInfo;
 import android.net.Uri;
@@ -26,8 +27,13 @@ import android.preference.Preference;
 import android.preference.PreferenceFragment;
 import android.util.Log;
 
+import java.io.IOException;
+import java.text.SimpleDateFormat;
 import java.util.List;
+import java.util.zip.ZipEntry;
+import java.util.zip.ZipFile;
 
+import be.brunoparmentier.openbikesharing.app.BuildConfig;
 import be.brunoparmentier.openbikesharing.app.R;
 
 /**
@@ -75,12 +81,28 @@ public class SettingsFragment extends PreferenceFragment {
 
     /* Setup version entry */
     private void setupVersionEntry() {
+        String versionName;
         final Preference versionPref = findPreference("pref_version");
         try {
-            String versionName = getActivity().getPackageManager()
-                    .getPackageInfo(getActivity().getPackageName(), 0).versionName;
+            if (BuildConfig.DEBUG) {
+                /* https://stackoverflow.com/a/7608719/3997816 */
+                ApplicationInfo ai = getActivity().getPackageManager().getApplicationInfo(getActivity().getPackageName(), 0);
+                ZipFile zf = new ZipFile(ai.sourceDir);
+                ZipEntry ze = zf.getEntry("classes.dex");
+                long time = ze.getTime();
+                SimpleDateFormat dateFormat = new SimpleDateFormat("yyyyMMddHHmmdd");
+                versionName = getActivity().getPackageManager()
+                        .getPackageInfo(getActivity().getPackageName(), 0).versionName + "-debug-";
+                versionName += dateFormat.format(time);
+                zf.close();
+            } else {
+                versionName = getActivity().getPackageManager()
+                        .getPackageInfo(getActivity().getPackageName(), 0).versionName;
+            }
             versionPref.setSummary(versionName);
         } catch (PackageManager.NameNotFoundException e) {
+            Log.e(TAG, e.getMessage());
+        } catch (IOException e) {
             Log.e(TAG, e.getMessage());
         }
     }
