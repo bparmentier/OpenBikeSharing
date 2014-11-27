@@ -1,6 +1,6 @@
 ---
 layout: default
-img: v1.4-smartphone4-map-en_framed.png
+img: v1.5-smartphone4-map-en_framed.png
 category: intro
 title: Find the nearest stations on the map
 description: |
