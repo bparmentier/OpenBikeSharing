@@ -40,7 +40,7 @@
     <string name="title_activity_map">Carte</string>
 
     <!-- Welcome dialog -->
-    <string name="welcome_dialog_message">Aller dans les paramètres pour choisir un réseau de vélos\u00A0?</string>
+    <string name="welcome_dialog_message">Avant de commencer, veuillez choisir un réseau de vélos dans les paramètres.</string>
     <string name="welcome_dialog_ok">OK</string>
     <string name="welcome_dialog_cancel">Annuler</string>
     <string name="welcome_dialog_title">Bienvenue</string>
