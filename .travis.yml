@@ -4,6 +4,7 @@ android:
     # Use the latest revision of Android SDK Tools
     - platform-tools
     - tools
+    - extra-android-support
 
     # The BuildTools version used by the project
     - build-tools-21.1.0
