@@ -43,15 +43,6 @@ Clone the repo and type:
 
 (You may need to `chmod +x` the `gradlew` script)
 
-If the build fails, try to add the following to `app/build.gradle`:
-
-    android {
-        …
-        lintOptions {
-            abortOnError false
-        }
-    }
-
 The Gradle script will take care of downloading the necessary libraries and will generate the APK's
 in `app/build/outputs/apk`.
 
