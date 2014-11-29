@@ -1,6 +1,8 @@
 OpenBikeSharing
 ===============
 
+[![Build Status](https://travis-ci.org/bparmentier/OpenBikeSharing.svg?branch=master)](https://travis-ci.org/bparmentier/OpenBikeSharing)
+
 OpenBikeSharing is an Android application that displays the availability of shared bikes in your
 city.
 
