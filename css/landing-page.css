@@ -26,7 +26,7 @@ h6 {
     font-weight: 400;
 }
 
-.intro-header, .faq-header {
+.intro-header, .faq-header, .map-header {
     padding-top: 50px; /* If you're making other pages, make sure there is 50px of padding to make sure the navbar doesn't overlap content! */
     padding-bottom: 50px;
     text-align: center;
@@ -35,7 +35,7 @@ h6 {
     background-size: cover;
 }
 
-.faq-header {
+.faq-header, .map-header {
     padding-bottom: 10px;
 }
 
@@ -45,7 +45,7 @@ h6 {
     padding-bottom: 20%;
 }
 
-.faq-message {
+.faq-message, .map-message {
     position: relative;
     padding-top: 4%;
     padding-bottom: 4%;
@@ -57,7 +57,7 @@ h6 {
     font-size: 5em;
 }
 
-.faq-message > h1 {
+.faq-message > h1, .map-message > h1 {
     margin: 0;
     text-shadow: 2px 2px 3px rgba(0,0,0,0.6);
     font-size: 3em;
@@ -179,4 +179,8 @@ footer {
 
 p.copyright {
     margin: 15px 0 0;
+}
+
+#map {
+    height: 300px;
 }
