@@ -77,16 +77,22 @@ public class StationActivity extends Activity {
 
         /* map tile source */
         String mapLayer = settings.getString("pref_map_layer", "");
-        if (mapLayer.equals("mapnik")) {
-            map.setTileSource(TileSourceFactory.MAPNIK);
-        } else if (mapLayer.equals("cyclemap")) {
-            map.setTileSource(TileSourceFactory.CYCLEMAP);
-        } else if (mapLayer.equals("osmpublictransport")) {
-            map.setTileSource(TileSourceFactory.PUBLIC_TRANSPORT);
-        } else if (mapLayer.equals("mapquestosm")) {
-            map.setTileSource(TileSourceFactory.MAPQUESTOSM);
-        } else {
-            map.setTileSource(TileSourceFactory.DEFAULT_TILE_SOURCE);
+        switch (mapLayer) {
+            case "mapnik":
+                map.setTileSource(TileSourceFactory.MAPNIK);
+                break;
+            case "cyclemap":
+                map.setTileSource(TileSourceFactory.CYCLEMAP);
+                break;
+            case "osmpublictransport":
+                map.setTileSource(TileSourceFactory.PUBLIC_TRANSPORT);
+                break;
+            case "mapquestosm":
+                map.setTileSource(TileSourceFactory.MAPQUESTOSM);
+                break;
+            default:
+                map.setTileSource(TileSourceFactory.DEFAULT_TILE_SOURCE);
+                break;
         }
 
         map.setMultiTouchControls(true);
