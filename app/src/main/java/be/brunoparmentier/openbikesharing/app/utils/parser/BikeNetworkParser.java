@@ -17,11 +17,17 @@
 
 package be.brunoparmentier.openbikesharing.app.utils.parser;
 
+import android.util.Log;
+
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Date;
+import java.util.TimeZone;
 
 import be.brunoparmentier.openbikesharing.app.BikeNetwork;
 import be.brunoparmentier.openbikesharing.app.BikeNetworkLocation;
@@ -64,19 +70,22 @@ public class BikeNetworkParser {
             {
                 JSONArray rawStations = rawNetwork.getJSONArray("stations");
 
+                SimpleDateFormat timestampFormat = new SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss");
+                timestampFormat.setTimeZone(TimeZone.getTimeZone("UTC"));
+
                 for (int i = 0; i < rawStations.length(); i++) {
                     JSONObject rawStation = rawStations.getJSONObject(i);
 
                     String id = rawStation.getString("id");
                     String name = rawStation.getString("name");
                     if (stripIdFromStationName) name = name.replaceAll("^[0-9]* ?- ?", "");
-                    //Date timestamp = new Date(rawStation.getString("timestamp"));
+                    Date lastUpdate = timestampFormat.parse(rawStation.getString("timestamp"));
                     double latitude = rawStation.getDouble("latitude");
                     double longitude = rawStation.getDouble("longitude");
                     int freeBikes = rawStation.getInt("free_bikes");
                     int emptySlots = rawStation.getInt("empty_slots");
 
-                    Station station = new Station(id, name, /*timestamp,*/ latitude, longitude,
+                    Station station = new Station(id, name, lastUpdate, latitude, longitude,
                             freeBikes, emptySlots);
 
                     if (rawStation.has("extra")) {
@@ -105,7 +114,11 @@ public class BikeNetworkParser {
 
             bikeNetwork = new BikeNetwork(networkId, networkName, networkCompany, networkLocation, stations);
         } catch (JSONException e) {
+            Log.e("BikeNetworkParser", e.getMessage());
             throw new OBSException("Invalid JSON object");
+        } catch (ParseException e) {
+            Log.e("BikeNetworkParser", e.getMessage());
+            throw new OBSException("Error parsing data");
         }
     }
 

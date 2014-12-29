@@ -26,7 +26,7 @@ import java.util.Date;
 public class Station implements Serializable, Comparable<Station> {
     private String id;
     private String name;
-    //private Date timestamp;
+    private Date lastUpdate;
     private double latitude;
     private double longitude;
     private int freeBikes;
@@ -35,13 +35,12 @@ public class Station implements Serializable, Comparable<Station> {
     private String address;
     private Boolean banking;
     private Boolean bonus;
-    private Date lastUpdate;
     private StationStatus status;
 
-    public Station(String id, String name, /*Date timestamp, */double latitude, double longitude, int freeBikes, int emptySlots) {
+    public Station(String id, String name, Date lastUpdate, double latitude, double longitude, int freeBikes, int emptySlots) {
         this.id = id;
         this.name = name;
-        //this.timestamp = timestamp;
+        this.lastUpdate = lastUpdate;
         this.latitude = latitude;
         this.longitude = longitude;
         this.freeBikes = freeBikes;
@@ -50,7 +49,6 @@ public class Station implements Serializable, Comparable<Station> {
         this.address = null;
         this.banking = null;
         this.bonus = null;
-        this.lastUpdate = null;
         this.status = null;
     }
 
@@ -62,7 +60,9 @@ public class Station implements Serializable, Comparable<Station> {
         return name;
     }
 
-    //public Date getTimestamp() { return timestamp; }
+    public Date getLastUpdate() {
+        return lastUpdate;
+    }
 
     public double getLongitude() {
         return longitude;
@@ -94,14 +94,6 @@ public class Station implements Serializable, Comparable<Station> {
 
     public Boolean isBonus() {
         return bonus;
-    }
-
-    public Date getLastUpdate() {
-        return lastUpdate;
-    }
-
-    public void setLastUpdate(Date lastUpdate) {
-        this.lastUpdate = lastUpdate;
     }
 
     public StationStatus getStatus() {
