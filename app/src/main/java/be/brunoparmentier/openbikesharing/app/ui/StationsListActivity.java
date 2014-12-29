@@ -350,14 +350,9 @@ public class StationsListActivity extends FragmentActivity implements ActionBar.
                         tabsPagerAdapter = new TabsPagerAdapter(getSupportFragmentManager());
                         viewPager.setAdapter(tabsPagerAdapter);
                     }
-                } catch (JSONException e) {
-                    Log.e(StationsListActivity.class.toString(), e.getMessage());
+                } catch (JSONException | OBSException e) {
                     Toast.makeText(StationsListActivity.this,
-                            e.getLocalizedMessage(), Toast.LENGTH_LONG).show();
-                } catch (OBSException e) {
-                    Log.e(StationsListActivity.class.toString(), e.getMessage());
-                    Toast.makeText(StationsListActivity.this,
-                            e.getLocalizedMessage(), Toast.LENGTH_LONG).show();
+                            e.getMessage(), Toast.LENGTH_LONG).show();
                 } finally {
                     setRefreshActionButtonState(false);
                 }
