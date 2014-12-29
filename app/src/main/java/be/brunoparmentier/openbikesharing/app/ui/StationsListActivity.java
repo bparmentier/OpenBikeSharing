@@ -335,7 +335,7 @@ public class StationsListActivity extends FragmentActivity implements ActionBar.
 
                     /* create new list with favorite stations */
                     Set<String> favorites = settings.getStringSet(PREF_FAV_STATIONS, new HashSet<String>());
-                    favStations = new ArrayList<Station>();
+                    favStations = new ArrayList<>();
                     for (Station station : stations) {
                         if (favorites.contains(station.getId())) {
                             favStations.add(station);
