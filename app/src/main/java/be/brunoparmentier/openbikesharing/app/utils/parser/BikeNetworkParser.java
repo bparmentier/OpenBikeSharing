@@ -101,7 +101,29 @@ public class BikeNetworkParser {
                             station.setBonus(rawExtra.getBoolean("bonus"));
                         }
                         if (rawExtra.has("status")) {
-                            if (rawExtra.getString("status").equals("CLOSED")) {
+                            String status = rawExtra.getString("status");
+                            if (status.equals("CLOSED") // villo
+                                    || status.equals("CLS") // ClearChannel
+                                    || status.equals("1") // vlille
+                                    || status.equals("offline")) { // idecycle
+                                station.setStatus(StationStatus.CLOSED);
+                            } else {
+                                station.setStatus(StationStatus.OPEN);
+                            }
+                        } else if (rawExtra.has("statusValue")) {
+                            if (rawExtra.getString("statusValue").equals("Not In Service")) { // Bike Share
+                                station.setStatus(StationStatus.CLOSED);
+                            } else {
+                                station.setStatus(StationStatus.OPEN);
+                            }
+                        } else if (rawExtra.has("locked")) {
+                            if (rawExtra.getBoolean("locked")) { // bixi
+                                station.setStatus(StationStatus.CLOSED);
+                            } else {
+                                station.setStatus(StationStatus.OPEN);
+                            }
+                        } else if (rawExtra.has("open")) {
+                            if (!rawExtra.getBoolean("open")) { // dublinbikes, citycycle
                                 station.setStatus(StationStatus.CLOSED);
                             } else {
                                 station.setStatus(StationStatus.OPEN);
