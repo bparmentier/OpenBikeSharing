@@ -88,12 +88,16 @@ public class BikeNetworkParser {
                     Station station = new Station(id, name, lastUpdate, latitude, longitude,
                             freeBikes, emptySlots);
 
+                    /* extra info */
                     if (rawStation.has("extra")) {
                         JSONObject rawExtra = rawStation.getJSONObject("extra");
 
+                        /* address */
                         if (rawExtra.has("address")) {
                             station.setAddress(rawExtra.getString("address"));
                         }
+
+                        /* banking */
                         if (rawExtra.has("banking")) { // JCDecaux
                             station.setBanking(rawExtra.getBoolean("banking"));
                         } else if (rawExtra.has("payment")) {
@@ -105,9 +109,13 @@ public class BikeNetworkParser {
                         } else if (rawExtra.has("ticket")) { // dublinbikes, citycycle
                             station.setBanking(rawExtra.getBoolean("ticket"));
                         }
+
+                        /* bonus */
                         if (rawExtra.has("bonus")) {
                             station.setBonus(rawExtra.getBoolean("bonus"));
                         }
+
+                        /* status */
                         if (rawExtra.has("status")) {
                             String status = rawExtra.getString("status");
                             if (status.equals("CLOSED") // villo
