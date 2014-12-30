@@ -41,7 +41,6 @@ import org.osmdroid.tileprovider.tilesource.TileSourceFactory;
 import org.osmdroid.util.GeoPoint;
 import org.osmdroid.views.MapView;
 
-import java.text.DateFormat;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
@@ -131,14 +130,10 @@ public class StationActivity extends Activity {
         map.getOverlays().add(marker);
 
         TextView stationName = (TextView) findViewById(R.id.stationName);
-        TextView lastUpdate = (TextView) findViewById(R.id.lastUpdate);
         TextView stationEmptySlots = (TextView) findViewById(R.id.stationEmptySlots);
         TextView stationFreeBikes = (TextView) findViewById(R.id.stationFreeBikes);
 
         stationName.setText(station.getName());
-        DateFormat df = DateFormat.getDateTimeInstance(DateFormat.DEFAULT, DateFormat.SHORT);
-        String date = df.format(station.getLastUpdate());
-        lastUpdate.setText(date);
         stationEmptySlots.setText(String.valueOf(station.getEmptySlots()));
         stationFreeBikes.setText(String.valueOf(station.getFreeBikes()));
 
