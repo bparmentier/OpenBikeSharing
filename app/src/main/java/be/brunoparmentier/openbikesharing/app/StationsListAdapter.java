@@ -18,6 +18,7 @@
 package be.brunoparmentier.openbikesharing.app;
 
 import android.content.Context;
+import android.graphics.Paint;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -40,22 +41,28 @@ public class StationsListAdapter extends ArrayAdapter<Station> {
         View v = convertView;
 
         if (v == null) {
-
             LayoutInflater vi;
             vi = LayoutInflater.from(getContext());
             v = vi.inflate(R.layout.station_list_item, parent, false);
-
         }
 
-        Station station = getItem(position);
+        final Station station = getItem(position);
 
         if (station != null) {
             TextView stationNameTitle = (TextView) v.findViewById(R.id.stationNameTitle);
             TextView freeBikesValue = (TextView) v.findViewById(R.id.freeBikesValue);
             TextView emptySlotsValue = (TextView) v.findViewById(R.id.emptySlotsValue);
+            StationStatus stationStatus = station.getStatus();
 
-            if (stationNameTitle != null)
+            if (stationNameTitle != null) {
                 stationNameTitle.setText(station.getName());
+
+                if (stationStatus == StationStatus.CLOSED) {
+                    stationNameTitle.setPaintFlags(stationNameTitle.getPaintFlags() | Paint.STRIKE_THRU_TEXT_FLAG);
+                } else {
+                    stationNameTitle.setPaintFlags(stationNameTitle.getPaintFlags() & (~Paint.STRIKE_THRU_TEXT_FLAG));
+                }
+            }
 
             if (freeBikesValue != null)
                 freeBikesValue.setText(String.valueOf(station.getFreeBikes()));
