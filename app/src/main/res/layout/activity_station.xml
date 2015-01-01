@@ -56,11 +56,19 @@
                 android:text="Station name"
                 android:textAppearance="?android:attr/textAppearanceLarge" />
 
+            <TextView
+                android:id="@+id/stationAddress"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/stationName"
+                android:text="Address"
+                android:visibility="gone" />
+
             <GridLayout
                 android:id="@+id/bikesAvailabilityLayout"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_below="@id/stationName"
+                android:layout_below="@id/stationAddress"
                 android:layout_alignParentBottom="true"
                 android:orientation="vertical">
 

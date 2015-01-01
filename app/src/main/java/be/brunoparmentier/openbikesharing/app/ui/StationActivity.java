@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2014 Bruno Parmentier. This file is part of OpenBikeSharing.
+ * Copyright (c) 2015 Bruno Parmentier. This file is part of OpenBikeSharing.
  *
  * OpenBikeSharing is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -136,6 +136,12 @@ public class StationActivity extends Activity {
         stationName.setText(station.getName());
         stationEmptySlots.setText(String.valueOf(station.getEmptySlots()));
         stationFreeBikes.setText(String.valueOf(station.getFreeBikes()));
+
+        if (station.getAddress() != null) {
+            TextView stationAddress = (TextView) findViewById(R.id.stationAddress);
+            stationAddress.setText(station.getAddress());
+            stationAddress.setVisibility(View.VISIBLE);
+        }
 
         /* extra info on station */
         Boolean isBankingStation = station.isBanking();
