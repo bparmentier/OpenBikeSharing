@@ -110,7 +110,6 @@ public class BikeNetworksListActivity extends Activity {
                         editor.putString(PREF_NETWORK_ID, searchedBikeNetworks.get(position).getId());
                         editor.putString(PREF_NETWORK_NAME, searchedBikeNetworks.get(position).getName());
                         editor.putString(PREF_NETWORK_CITY, searchedBikeNetworks.get(position).getLocation().getCity());
-                        editor.putBoolean("first-run", false);
                         editor.apply();
                         Toast.makeText(BikeNetworksListActivity.this,
                                 searchedBikeNetworks.get(position).getId() + " " + getString(R.string.network_selected),
@@ -186,7 +185,6 @@ public class BikeNetworksListActivity extends Activity {
                         editor.putString(PREF_NETWORK_ID, bikeNetworks.get(position).getId());
                         editor.putString(PREF_NETWORK_NAME, bikeNetworks.get(position).getName());
                         editor.putString(PREF_NETWORK_CITY, bikeNetworks.get(position).getLocation().getCity());
-                        editor.putBoolean("first-run", false);
                         editor.apply();
                         Toast.makeText(BikeNetworksListActivity.this,
                                 bikeNetworks.get(position).getId() + " " + getString(R.string.network_selected),
