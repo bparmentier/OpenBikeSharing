@@ -98,9 +98,7 @@ public class SettingsFragment extends PreferenceFragment {
                 versionName += "-debug-" + dateFormat.format(time);
             }
             versionPref.setSummary(versionName);
-        } catch (PackageManager.NameNotFoundException e) {
-            Log.e(TAG, e.getMessage());
-        } catch (IOException e) {
+        } catch (PackageManager.NameNotFoundException | IOException e) {
             Log.e(TAG, e.getMessage());
         }
     }
