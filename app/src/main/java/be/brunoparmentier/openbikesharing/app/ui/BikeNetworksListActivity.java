@@ -112,7 +112,10 @@ public class BikeNetworksListActivity extends Activity {
                         editor.putString(PREF_NETWORK_CITY, searchedBikeNetworks.get(position).getLocation().getCity());
                         editor.apply();
                         Toast.makeText(BikeNetworksListActivity.this,
-                                searchedBikeNetworks.get(position).getId() + " " + getString(R.string.network_selected),
+                                searchedBikeNetworks.get(position).getName()
+                                        + " ("
+                                        + searchedBikeNetworks.get(position).getLocation().getCity()
+                                        + ")" + getString(R.string.network_selected),
                                 Toast.LENGTH_SHORT).show();
 
                         finish();
@@ -187,7 +190,10 @@ public class BikeNetworksListActivity extends Activity {
                         editor.putString(PREF_NETWORK_CITY, bikeNetworks.get(position).getLocation().getCity());
                         editor.apply();
                         Toast.makeText(BikeNetworksListActivity.this,
-                                bikeNetworks.get(position).getId() + " " + getString(R.string.network_selected),
+                                bikeNetworks.get(position).getName()
+                                        + " ("
+                                        + bikeNetworks.get(position).getLocation().getCity()
+                                        + ") " + getString(R.string.network_selected),
                                 Toast.LENGTH_SHORT).show();
 
                         finish();
