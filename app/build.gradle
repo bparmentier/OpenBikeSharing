@@ -15,8 +15,6 @@
  * along with OpenBikeSharing.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-
-
 apply plugin: 'com.android.application'
 
 android {
@@ -27,8 +25,8 @@ android {
         applicationId "be.brunoparmentier.openbikesharing.app"
         minSdkVersion 14
         targetSdkVersion 21
-        versionCode 10
-        versionName "1.5"
+        versionCode 11
+        versionName "1.6"
     }
 
     buildTypes {
