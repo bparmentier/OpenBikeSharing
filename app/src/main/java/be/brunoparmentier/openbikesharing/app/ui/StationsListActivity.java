@@ -64,8 +64,9 @@ import be.brunoparmentier.openbikesharing.app.utils.parser.BikeNetworkParser;
 
 public class StationsListActivity extends FragmentActivity implements ActionBar.TabListener {
     private static final String BASE_URL = "http://api.citybik.es/v2/networks";
-    private static final String PREF_NETWORK_ID_LABEL = "network-id";
+    private static final String PREF_NETWORK_ID = "network-id";
     private static final String PREF_FAV_STATIONS = "fav-stations";
+    private static final String PREF_STRIP_ID_STATION = "pref_strip_id_station";
     private static final String TAG = "StationsListActivity";
     private SharedPreferences settings;
     private BikeNetwork bikeNetwork;
@@ -116,7 +117,7 @@ public class StationsListActivity extends FragmentActivity implements ActionBar.
         actionBar.setHomeButtonEnabled(false);
 
         settings = PreferenceManager.getDefaultSharedPreferences(this);
-        boolean firstRun = settings.getString(PREF_NETWORK_ID_LABEL, "").isEmpty();
+        boolean firstRun = settings.getString(PREF_NETWORK_ID, "").isEmpty();
 
         if (firstRun) {
             AlertDialog.Builder builder = new AlertDialog.Builder(this);
@@ -146,7 +147,7 @@ public class StationsListActivity extends FragmentActivity implements ActionBar.
                 tabsPagerAdapter = new TabsPagerAdapter(getSupportFragmentManager());
                 viewPager.setAdapter(tabsPagerAdapter);
             } else {
-                String stationUrl = BASE_URL + "/" + settings.getString(PREF_NETWORK_ID_LABEL, "");
+                String stationUrl = BASE_URL + "/" + settings.getString(PREF_NETWORK_ID, "");
                 new JSONDownloadTask().execute(stationUrl);
             }
         }
@@ -156,7 +157,7 @@ public class StationsListActivity extends FragmentActivity implements ActionBar.
     protected void onRestart() {
         super.onRestart();
         if (tabsPagerAdapter == null) {
-            String stationUrl = BASE_URL + "/" + settings.getString(PREF_NETWORK_ID_LABEL, "");
+            String stationUrl = BASE_URL + "/" + settings.getString(PREF_NETWORK_ID, "");
             new JSONDownloadTask().execute(stationUrl);
         }
     }
@@ -206,7 +207,7 @@ public class StationsListActivity extends FragmentActivity implements ActionBar.
             case R.id.action_refresh:
                 String networkId = PreferenceManager
                         .getDefaultSharedPreferences(this)
-                        .getString(PREF_NETWORK_ID_LABEL, "");
+                        .getString(PREF_NETWORK_ID, "");
                 new JSONDownloadTask().execute(BASE_URL + "/" + networkId);
                 return true;
             case R.id.action_map:
@@ -325,7 +326,7 @@ public class StationsListActivity extends FragmentActivity implements ActionBar.
                     JSONObject jsonObject = new JSONObject(result);
 
                     /* parse result */
-                    boolean stripId = settings.getBoolean("pref_strip_id_station", false);
+                    boolean stripId = settings.getBoolean(PREF_STRIP_ID_STATION, false);
                     BikeNetworkParser bikeNetworkParser = new BikeNetworkParser(jsonObject, stripId);
                     bikeNetwork = bikeNetworkParser.getNetwork();
                     stations = bikeNetwork.getStations();
