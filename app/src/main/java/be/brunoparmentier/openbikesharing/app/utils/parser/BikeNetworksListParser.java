@@ -35,7 +35,7 @@ public class BikeNetworksListParser {
 
     public BikeNetworksListParser(JSONObject jsonObject) throws OBSException {
 
-        bikeNetworks = new ArrayList<BikeNetworkInfo>();
+        bikeNetworks = new ArrayList<>();
 
         try {
             JSONArray rawNetworks = jsonObject.getJSONArray("networks");
