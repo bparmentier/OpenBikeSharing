@@ -115,7 +115,7 @@ public class BikeNetworksListActivity extends Activity {
                                 searchedBikeNetworks.get(position).getName()
                                         + " ("
                                         + searchedBikeNetworks.get(position).getLocation().getCity()
-                                        + ")" + getString(R.string.network_selected),
+                                        + ") " + getString(R.string.network_selected),
                                 Toast.LENGTH_SHORT).show();
 
                         finish();
