@@ -60,14 +60,11 @@ import be.brunoparmentier.openbikesharing.app.StationStatus;
 public class MapActivity extends Activity implements MapEventsReceiver {
 
     private static final String TAG = "MapActivity";
-    private SharedPreferences settings;
     private BikeNetwork bikeNetwork;
-    private ArrayList<Station> stations;
     private MapView map;
     private IMapController mapController;
     private MyLocationNewOverlay myLocationOverlay;
     private StationMarkerInfoWindow stationMarkerInfoWindow;
-    private GridMarkerClusterer stationsMarkers;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -75,7 +72,7 @@ public class MapActivity extends Activity implements MapEventsReceiver {
         setContentView(R.layout.activity_map);
         getActionBar().setDisplayHomeAsUpEnabled(true);
 
-        settings = PreferenceManager.getDefaultSharedPreferences(this);
+        SharedPreferences settings = PreferenceManager.getDefaultSharedPreferences(this);
 
         try {
             bikeNetwork = (BikeNetwork) getIntent().getSerializableExtra("bike-network");
@@ -84,7 +81,7 @@ public class MapActivity extends Activity implements MapEventsReceiver {
             finish();
         }
 
-        stations = bikeNetwork.getStations();
+        ArrayList<Station> stations = bikeNetwork.getStations();
 
         map = (MapView) findViewById(R.id.mapView);
         stationMarkerInfoWindow = new StationMarkerInfoWindow(R.layout.bonuspack_bubble, map);
@@ -94,7 +91,7 @@ public class MapActivity extends Activity implements MapEventsReceiver {
         map.getOverlays().add(0, mapEventsOverlay);
 
         /* markers list */
-        stationsMarkers = new GridMarkerClusterer(this);
+        GridMarkerClusterer stationsMarkers = new GridMarkerClusterer(this);
         Drawable clusterIconD = getResources().getDrawable(R.drawable.marker_cluster);
         Bitmap clusterIcon = ((BitmapDrawable) clusterIconD).getBitmap();
         map.getOverlays().add(stationsMarkers);

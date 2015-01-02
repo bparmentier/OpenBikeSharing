@@ -71,7 +71,6 @@ public class StationsListActivity extends FragmentActivity implements ActionBar.
     private BikeNetwork bikeNetwork;
     private ArrayList<Station> stations;
     private ArrayList<Station> favStations;
-    private boolean firstRun;
 
     private Menu optionsMenu;
 
@@ -117,7 +116,7 @@ public class StationsListActivity extends FragmentActivity implements ActionBar.
         actionBar.setHomeButtonEnabled(false);
 
         settings = PreferenceManager.getDefaultSharedPreferences(this);
-        firstRun = settings.getString(PREF_NETWORK_ID_LABEL, "").isEmpty();
+        boolean firstRun = settings.getString(PREF_NETWORK_ID_LABEL, "").isEmpty();
 
         if (firstRun) {
             AlertDialog.Builder builder = new AlertDialog.Builder(this);

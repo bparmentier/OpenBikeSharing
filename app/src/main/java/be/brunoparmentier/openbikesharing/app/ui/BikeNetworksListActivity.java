@@ -57,7 +57,6 @@ public class BikeNetworksListActivity extends Activity {
     private ArrayList<BikeNetworkInfo> bikeNetworks;
     private ArrayList<BikeNetworkInfo> searchedBikeNetworks;
     private BikeNetworksListAdapter bikeNetworksListAdapter;
-    private SearchView searchView;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -75,7 +74,7 @@ public class BikeNetworksListActivity extends Activity {
 
         SearchManager manager = (SearchManager) getSystemService(Context.SEARCH_SERVICE);
 
-        searchView = (SearchView) menu.findItem(R.id.action_search).getActionView();
+        SearchView searchView = (SearchView) menu.findItem(R.id.action_search).getActionView();
         searchView.setSearchableInfo(manager.getSearchableInfo(getComponentName()));
 
         searchView.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
