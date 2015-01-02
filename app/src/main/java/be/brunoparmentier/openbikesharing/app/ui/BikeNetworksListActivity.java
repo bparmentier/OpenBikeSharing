@@ -18,6 +18,8 @@
 package be.brunoparmentier.openbikesharing.app.ui;
 
 import android.app.Activity;
+import android.app.SearchManager;
+import android.content.Context;
 import android.content.SharedPreferences;
 import android.os.AsyncTask;
 import android.os.Bundle;
@@ -25,11 +27,9 @@ import android.preference.PreferenceManager;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
-import android.view.ViewGroup;
 import android.widget.AdapterView;
-import android.widget.ArrayAdapter;
 import android.widget.ListView;
-import android.widget.TextView;
+import android.widget.SearchView;
 import android.widget.Toast;
 
 import org.json.JSONException;
@@ -44,10 +44,10 @@ import java.util.ArrayList;
 import java.util.Collections;
 
 import be.brunoparmentier.openbikesharing.app.BikeNetworkInfo;
+import be.brunoparmentier.openbikesharing.app.BikeNetworksListAdapter;
 import be.brunoparmentier.openbikesharing.app.R;
 import be.brunoparmentier.openbikesharing.app.utils.OBSException;
 import be.brunoparmentier.openbikesharing.app.utils.parser.BikeNetworksListParser;
-
 
 public class BikeNetworksListActivity extends Activity {
 
@@ -55,6 +55,9 @@ public class BikeNetworksListActivity extends Activity {
     private final String NETWORK_ID_LABEL = "network-id";
     private ListView listView;
     private ArrayList<BikeNetworkInfo> bikeNetworks;
+    private ArrayList<BikeNetworkInfo> searchedBikeNetworks;
+    private BikeNetworksListAdapter bikeNetworksListAdapter;
+    private SearchView searchView;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -69,6 +72,55 @@ public class BikeNetworksListActivity extends Activity {
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         getMenuInflater().inflate(R.menu.bike_networks_list, menu);
+
+        SearchManager manager = (SearchManager) getSystemService(Context.SEARCH_SERVICE);
+
+        searchView = (SearchView) menu.findItem(R.id.action_search).getActionView();
+        searchView.setSearchableInfo(manager.getSearchableInfo(getComponentName()));
+
+        searchView.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
+
+            @Override
+            public boolean onQueryTextSubmit(String s) {
+                return false;
+            }
+
+            @Override
+            public boolean onQueryTextChange(String s) {
+                searchedBikeNetworks = new ArrayList<>();
+                for (BikeNetworkInfo network : bikeNetworks) {
+                    if (network.getName().toLowerCase().contains(s.toLowerCase())
+                            || network.getLocation().getCity().toLowerCase().contains(s.toLowerCase())) {
+                        searchedBikeNetworks.add(network);
+                    }
+                }
+                bikeNetworksListAdapter = new BikeNetworksListAdapter(BikeNetworksListActivity.this,
+                        android.R.layout.simple_expandable_list_item_2,
+                        android.R.id.text1,
+                        searchedBikeNetworks);
+                listView.setAdapter(bikeNetworksListAdapter);
+                listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+                    @Override
+                    public void onItemClick(AdapterView<?> parent, View view,
+                                            int position, long id) {
+                        SharedPreferences settings = PreferenceManager
+                                .getDefaultSharedPreferences(BikeNetworksListActivity.this);
+                        SharedPreferences.Editor editor = settings.edit();
+                        editor.putString(NETWORK_ID_LABEL, searchedBikeNetworks.get(position).getId());
+                        editor.putBoolean("first-run", false);
+                        editor.commit();
+                        Toast.makeText(BikeNetworksListActivity.this,
+                                searchedBikeNetworks.get(position).getId() + " " + getString(R.string.network_selected),
+                                Toast.LENGTH_SHORT).show();
+
+                        finish();
+                    }
+                });
+
+                return true;
+            }
+        });
+
         return true;
     }
 
@@ -115,32 +167,16 @@ public class BikeNetworksListActivity extends Activity {
                 bikeNetworks = bikeNetworksListParser.getNetworks();
                 Collections.sort(bikeNetworks);
 
+                bikeNetworksListAdapter = new BikeNetworksListAdapter(BikeNetworksListActivity.this,
+                                android.R.layout.simple_expandable_list_item_2,
+                                android.R.id.text1,
+                                bikeNetworks);
 
-                final ArrayList<String> list = new ArrayList<String>();
-                for (BikeNetworkInfo bikeNetwork : bikeNetworks) {
-                    list.add(bikeNetwork.getLocation().getCity() + " - " + bikeNetwork.getName());
-                }
-
-                ArrayAdapter networksList = new ArrayAdapter(BikeNetworksListActivity.this,
-                        android.R.layout.simple_list_item_2, android.R.id.text1, list) {
-                    @Override
-                    public View getView(int position, View convertView, ViewGroup parent) {
-                        View view = super.getView(position, convertView, parent);
-                        TextView text1 = (TextView) view.findViewById(android.R.id.text1);
-                        TextView text2 = (TextView) view.findViewById(android.R.id.text2);
-                        text1.setText(bikeNetworks.get(position).getLocation().getCity()
-                                + " (" + bikeNetworks.get(position).getLocation().getCountry() + ")");
-                        text2.setText(bikeNetworks.get(position).getName());
-                        return view;
-                    }
-                };
-
-                listView.setAdapter(networksList);
+                listView.setAdapter(bikeNetworksListAdapter);
                 listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
                     @Override
                     public void onItemClick(AdapterView<?> parent, View view,
                                             int position, long id) {
-
                         SharedPreferences settings = PreferenceManager
                                 .getDefaultSharedPreferences(BikeNetworksListActivity.this);
                         SharedPreferences.Editor editor = settings.edit();
