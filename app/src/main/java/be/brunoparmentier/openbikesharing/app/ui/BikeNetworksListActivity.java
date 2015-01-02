@@ -108,7 +108,7 @@ public class BikeNetworksListActivity extends Activity {
                         SharedPreferences.Editor editor = settings.edit();
                         editor.putString(NETWORK_ID_LABEL, searchedBikeNetworks.get(position).getId());
                         editor.putBoolean("first-run", false);
-                        editor.commit();
+                        editor.apply();
                         Toast.makeText(BikeNetworksListActivity.this,
                                 searchedBikeNetworks.get(position).getId() + " " + getString(R.string.network_selected),
                                 Toast.LENGTH_SHORT).show();
@@ -182,7 +182,7 @@ public class BikeNetworksListActivity extends Activity {
                         SharedPreferences.Editor editor = settings.edit();
                         editor.putString(NETWORK_ID_LABEL, bikeNetworks.get(position).getId());
                         editor.putBoolean("first-run", false);
-                        editor.commit();
+                        editor.apply();
                         Toast.makeText(BikeNetworksListActivity.this,
                                 bikeNetworks.get(position).getId() + " " + getString(R.string.network_selected),
                                 Toast.LENGTH_SHORT).show();

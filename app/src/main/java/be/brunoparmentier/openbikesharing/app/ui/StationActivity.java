@@ -255,14 +255,14 @@ public class StationActivity extends Activity {
         if (favorite) {
             favorites.add(station.getId());
             editor.putStringSet(PREF_FAV_STATIONS, favorites);
-            editor.commit();
+            editor.apply();
             favStar.setIcon(R.drawable.ic_menu_favorite);
             Toast.makeText(StationActivity.this,
                     getString(R.string.station_added_to_favorites), Toast.LENGTH_SHORT).show();
         } else {
             favorites.remove(station.getId());
             editor.putStringSet(PREF_FAV_STATIONS, favorites);
-            editor.commit();
+            editor.apply();
             favStar.setIcon(R.drawable.ic_menu_favorite_outline);
             Toast.makeText(StationActivity.this,
                     getString(R.string.stations_removed_from_favorites), Toast.LENGTH_SHORT).show();
