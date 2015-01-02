@@ -25,6 +25,7 @@ import android.net.Uri;
 import android.os.Bundle;
 import android.preference.Preference;
 import android.preference.PreferenceFragment;
+import android.preference.PreferenceManager;
 import android.util.Log;
 
 import java.io.IOException;
@@ -42,12 +43,20 @@ import be.brunoparmentier.openbikesharing.app.R;
 public class SettingsFragment extends PreferenceFragment {
 
     private static final String TAG = "SettingsFragment";
+    private static final String PREF_NETWORK_ID = "network-id";
+    private static final String PREF_NETWORK_NAME = "network-name";
+    private static final String PREF_NETWORK_CITY = "network-city";
+
+    Preference bikeNetworkPref;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         addPreferencesFromResource(R.xml.pref_general);
 
+        bikeNetworkPref = findPreference(PREF_NETWORK_ID);
+
+        setBikeNetworkPrefSummary();
         setupBitcoinButton();
         setupVersionEntry();
     }
@@ -101,5 +110,23 @@ public class SettingsFragment extends PreferenceFragment {
         } catch (PackageManager.NameNotFoundException | IOException e) {
             Log.e(TAG, e.getMessage());
         }
+    }
+
+    private void setBikeNetworkPrefSummary() {
+        String networkName = PreferenceManager
+                .getDefaultSharedPreferences(getActivity())
+                .getString(PREF_NETWORK_NAME, "");
+        String networkCity = PreferenceManager
+                .getDefaultSharedPreferences(getActivity())
+                .getString(PREF_NETWORK_CITY, "");
+        if (!networkName.isEmpty() && !networkCity.isEmpty()) {
+            bikeNetworkPref.setSummary(networkName + " (" + networkCity + ")");
+        }
+    }
+
+    @Override
+    public void onResume() {
+        super.onResume();
+        setBikeNetworkPrefSummary();
     }
 }

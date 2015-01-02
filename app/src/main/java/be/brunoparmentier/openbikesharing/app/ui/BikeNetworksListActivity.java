@@ -52,7 +52,9 @@ import be.brunoparmentier.openbikesharing.app.utils.parser.BikeNetworksListParse
 public class BikeNetworksListActivity extends Activity {
 
     private static final String BASE_URL = "http://api.citybik.es/v2/networks";
-    private static final String NETWORK_ID_LABEL = "network-id";
+    private static final String PREF_NETWORK_ID = "network-id";
+    private static final String PREF_NETWORK_NAME = "network-name";
+    private static final String PREF_NETWORK_CITY = "network-city";
     private ListView listView;
     private ArrayList<BikeNetworkInfo> bikeNetworks;
     private ArrayList<BikeNetworkInfo> searchedBikeNetworks;
@@ -105,7 +107,9 @@ public class BikeNetworksListActivity extends Activity {
                         SharedPreferences settings = PreferenceManager
                                 .getDefaultSharedPreferences(BikeNetworksListActivity.this);
                         SharedPreferences.Editor editor = settings.edit();
-                        editor.putString(NETWORK_ID_LABEL, searchedBikeNetworks.get(position).getId());
+                        editor.putString(PREF_NETWORK_ID, searchedBikeNetworks.get(position).getId());
+                        editor.putString(PREF_NETWORK_NAME, searchedBikeNetworks.get(position).getName());
+                        editor.putString(PREF_NETWORK_CITY, searchedBikeNetworks.get(position).getLocation().getCity());
                         editor.putBoolean("first-run", false);
                         editor.apply();
                         Toast.makeText(BikeNetworksListActivity.this,
@@ -179,7 +183,9 @@ public class BikeNetworksListActivity extends Activity {
                         SharedPreferences settings = PreferenceManager
                                 .getDefaultSharedPreferences(BikeNetworksListActivity.this);
                         SharedPreferences.Editor editor = settings.edit();
-                        editor.putString(NETWORK_ID_LABEL, bikeNetworks.get(position).getId());
+                        editor.putString(PREF_NETWORK_ID, bikeNetworks.get(position).getId());
+                        editor.putString(PREF_NETWORK_NAME, bikeNetworks.get(position).getName());
+                        editor.putString(PREF_NETWORK_CITY, bikeNetworks.get(position).getLocation().getCity());
                         editor.putBoolean("first-run", false);
                         editor.apply();
                         Toast.makeText(BikeNetworksListActivity.this,
