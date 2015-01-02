@@ -41,7 +41,7 @@ import be.brunoparmentier.openbikesharing.app.R;
  */
 public class SettingsFragment extends PreferenceFragment {
 
-    private final String TAG = "SettingsFragment";
+    private static final String TAG = "SettingsFragment";
 
     @Override
     public void onCreate(Bundle savedInstanceState) {

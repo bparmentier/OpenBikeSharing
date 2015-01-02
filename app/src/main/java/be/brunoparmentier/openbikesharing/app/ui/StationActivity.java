@@ -50,7 +50,7 @@ import be.brunoparmentier.openbikesharing.app.Station;
 import be.brunoparmentier.openbikesharing.app.StationStatus;
 
 public class StationActivity extends Activity {
-    private final String PREF_FAV_STATIONS = "fav-stations";
+    private static final String PREF_FAV_STATIONS = "fav-stations";
     private SharedPreferences settings;
     private Station station;
     private MapView map;

@@ -59,7 +59,7 @@ import be.brunoparmentier.openbikesharing.app.StationStatus;
 
 public class MapActivity extends Activity implements MapEventsReceiver {
 
-    private final String TAG = "MapActivity";
+    private static final String TAG = "MapActivity";
     private SharedPreferences settings;
     private BikeNetwork bikeNetwork;
     private ArrayList<Station> stations;

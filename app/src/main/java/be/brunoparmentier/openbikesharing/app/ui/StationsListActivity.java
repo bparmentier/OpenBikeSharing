@@ -63,10 +63,10 @@ import be.brunoparmentier.openbikesharing.app.utils.parser.BikeNetworkParser;
 
 
 public class StationsListActivity extends FragmentActivity implements ActionBar.TabListener {
-    private final String BASE_URL = "http://api.citybik.es/v2/networks";
-    private final String PREF_NETWORK_ID_LABEL = "network-id";
-    private final String PREF_FAV_STATIONS = "fav-stations";
-    private final String TAG = "StationsListActivity";
+    private static final String BASE_URL = "http://api.citybik.es/v2/networks";
+    private static final String PREF_NETWORK_ID_LABEL = "network-id";
+    private static final String PREF_FAV_STATIONS = "fav-stations";
+    private static final String TAG = "StationsListActivity";
     private SharedPreferences settings;
     private BikeNetwork bikeNetwork;
     private ArrayList<Station> stations;

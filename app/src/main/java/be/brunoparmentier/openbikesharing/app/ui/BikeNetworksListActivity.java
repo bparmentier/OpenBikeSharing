@@ -51,8 +51,8 @@ import be.brunoparmentier.openbikesharing.app.utils.parser.BikeNetworksListParse
 
 public class BikeNetworksListActivity extends Activity {
 
-    private final String BASE_URL = "http://api.citybik.es/v2/networks";
-    private final String NETWORK_ID_LABEL = "network-id";
+    private static final String BASE_URL = "http://api.citybik.es/v2/networks";
+    private static final String NETWORK_ID_LABEL = "network-id";
     private ListView listView;
     private ArrayList<BikeNetworkInfo> bikeNetworks;
     private ArrayList<BikeNetworkInfo> searchedBikeNetworks;
