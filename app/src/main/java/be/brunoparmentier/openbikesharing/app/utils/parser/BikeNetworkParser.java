@@ -95,6 +95,8 @@ public class BikeNetworkParser {
                         /* address */
                         if (rawExtra.has("address")) {
                             station.setAddress(rawExtra.getString("address"));
+                        } else if (rawExtra.has("description")) {
+                            station.setAddress(rawExtra.getString("description"));
                         }
 
                         /* banking */
