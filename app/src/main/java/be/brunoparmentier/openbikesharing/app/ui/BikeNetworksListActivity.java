@@ -88,6 +88,9 @@ public class BikeNetworksListActivity extends Activity {
 
             @Override
             public boolean onQueryTextChange(String s) {
+                if (bikeNetworks == null) {
+                    return false;
+                }
                 searchedBikeNetworks = new ArrayList<>();
                 for (BikeNetworkInfo network : bikeNetworks) {
                     if (network.getName().toLowerCase().contains(s.toLowerCase())
@@ -100,6 +103,7 @@ public class BikeNetworksListActivity extends Activity {
                         android.R.id.text1,
                         searchedBikeNetworks);
                 listView.setAdapter(bikeNetworksListAdapter);
+
                 listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
                     @Override
                     public void onItemClick(AdapterView<?> parent, View view,
@@ -121,7 +125,6 @@ public class BikeNetworksListActivity extends Activity {
                         finish();
                     }
                 });
-
                 return true;
             }
         });
@@ -173,9 +176,9 @@ public class BikeNetworksListActivity extends Activity {
                 Collections.sort(bikeNetworks);
 
                 bikeNetworksListAdapter = new BikeNetworksListAdapter(BikeNetworksListActivity.this,
-                                android.R.layout.simple_expandable_list_item_2,
-                                android.R.id.text1,
-                                bikeNetworks);
+                        android.R.layout.simple_expandable_list_item_2,
+                        android.R.id.text1,
+                        bikeNetworks);
 
                 listView.setAdapter(bikeNetworksListAdapter);
                 listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
