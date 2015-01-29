@@ -184,19 +184,7 @@ public class StationActivity extends Activity {
             stationName.setPaintFlags(stationName.getPaintFlags() | Paint.STRIKE_THRU_TEXT_FLAG);
         }
 
-        /* Fix for osmdroid 4.2: map was centered at offset (0,0) */
-        ViewTreeObserver vto = map.getViewTreeObserver();
-        vto.addOnGlobalLayoutListener(new ViewTreeObserver.OnGlobalLayoutListener() {
-            @Override
-            public void onGlobalLayout() {
-                if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.JELLY_BEAN) {
-                    map.getViewTreeObserver().removeOnGlobalLayoutListener(this);
-                } else {
-                    map.getViewTreeObserver().removeGlobalOnLayoutListener(this);
-                }
-                mapController.animateTo(stationLocation);
-            }
-        });
+        mapController.setCenter(stationLocation);
     }
 
     @Override

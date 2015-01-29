@@ -147,21 +147,8 @@ public class MapActivity extends Activity implements MapEventsReceiver {
             mapController.animateTo(userLocation);
         } catch (NullPointerException e) {
             mapController.setZoom(13);
-
-            /* Fix for osmdroid 4.2: map was centered at offset (0,0) */
-            ViewTreeObserver vto = map.getViewTreeObserver();
-            vto.addOnGlobalLayoutListener(new ViewTreeObserver.OnGlobalLayoutListener() {
-                @Override
-                public void onGlobalLayout() {
-                    if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.JELLY_BEAN) {
-                        map.getViewTreeObserver().removeOnGlobalLayoutListener(this);
-                    } else {
-                        map.getViewTreeObserver().removeGlobalOnLayoutListener(this);
-                    }
-                    mapController.animateTo(new GeoPoint(bikeNetwork.getLocation().getLatitude(),
-                            bikeNetwork.getLocation().getLongitude()));
-                }
-            });
+            mapController.animateTo(new GeoPoint(bikeNetwork.getLocation().getLatitude(),
+                    bikeNetwork.getLocation().getLongitude()));
 
             Toast.makeText(this, R.string.location_not_found, Toast.LENGTH_LONG).show();
         }
