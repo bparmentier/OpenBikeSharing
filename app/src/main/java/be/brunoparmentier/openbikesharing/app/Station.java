@@ -18,7 +18,6 @@
 package be.brunoparmentier.openbikesharing.app;
 
 import java.io.Serializable;
-import java.util.Date;
 
 /**
  * Represents a bike station.
@@ -26,7 +25,7 @@ import java.util.Date;
 public class Station implements Serializable, Comparable<Station> {
     private String id;
     private String name;
-    private Date lastUpdate;
+    private String lastUpdate;
     private double latitude;
     private double longitude;
     private int freeBikes;
@@ -37,7 +36,7 @@ public class Station implements Serializable, Comparable<Station> {
     private Boolean bonus;
     private StationStatus status;
 
-    public Station(String id, String name, Date lastUpdate, double latitude, double longitude, int freeBikes, int emptySlots) {
+    public Station(String id, String name, String lastUpdate, double latitude, double longitude, int freeBikes, int emptySlots) {
         this.id = id;
         this.name = name;
         this.lastUpdate = lastUpdate;
@@ -60,7 +59,7 @@ public class Station implements Serializable, Comparable<Station> {
         return name;
     }
 
-    public Date getLastUpdate() {
+    public String getLastUpdate() {
         return lastUpdate;
     }
 

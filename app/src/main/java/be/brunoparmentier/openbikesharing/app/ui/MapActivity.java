@@ -25,7 +25,6 @@ import android.graphics.Bitmap;
 import android.graphics.drawable.BitmapDrawable;
 import android.graphics.drawable.Drawable;
 import android.location.LocationManager;
-import android.os.Build;
 import android.os.Bundle;
 import android.preference.PreferenceManager;
 import android.support.v4.app.NavUtils;
@@ -33,7 +32,6 @@ import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
-import android.view.ViewTreeObserver;
 import android.widget.LinearLayout;
 import android.widget.Toast;
 
@@ -52,19 +50,21 @@ import org.osmdroid.views.overlay.mylocation.MyLocationNewOverlay;
 
 import java.util.ArrayList;
 
-import be.brunoparmentier.openbikesharing.app.BikeNetwork;
 import be.brunoparmentier.openbikesharing.app.R;
 import be.brunoparmentier.openbikesharing.app.Station;
 import be.brunoparmentier.openbikesharing.app.StationStatus;
+import be.brunoparmentier.openbikesharing.app.db.StationsDataSource;
 
 public class MapActivity extends Activity implements MapEventsReceiver {
 
     private static final String TAG = "MapActivity";
-    private BikeNetwork bikeNetwork;
+    private static final String PREF_NETWORK_LATITUDE = "network-latitude";
+    private static final String PREF_NETWORK_LONGITUDE = "network-longitude";
     private MapView map;
     private IMapController mapController;
     private MyLocationNewOverlay myLocationOverlay;
     private StationMarkerInfoWindow stationMarkerInfoWindow;
+    private StationsDataSource stationsDataSource;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -74,14 +74,8 @@ public class MapActivity extends Activity implements MapEventsReceiver {
 
         SharedPreferences settings = PreferenceManager.getDefaultSharedPreferences(this);
 
-        try {
-            bikeNetwork = (BikeNetwork) getIntent().getSerializableExtra("bike-network");
-        } catch (NullPointerException e) {
-            Toast.makeText(this, R.string.bike_network_downloading, Toast.LENGTH_LONG).show();
-            finish();
-        }
-
-        ArrayList<Station> stations = bikeNetwork.getStations();
+        stationsDataSource = new StationsDataSource(this);
+        ArrayList<Station> stations = stationsDataSource.getStations();
 
         map = (MapView) findViewById(R.id.mapView);
         stationMarkerInfoWindow = new StationMarkerInfoWindow(R.layout.bonuspack_bubble, map);
@@ -147,8 +141,9 @@ public class MapActivity extends Activity implements MapEventsReceiver {
             mapController.animateTo(userLocation);
         } catch (NullPointerException e) {
             mapController.setZoom(13);
-            mapController.animateTo(new GeoPoint(bikeNetwork.getLocation().getLatitude(),
-                    bikeNetwork.getLocation().getLongitude()));
+            double bikeNetworkLatitude = Double.longBitsToDouble(settings.getLong(PREF_NETWORK_LATITUDE, 0));
+            double bikeNetworkLongitude = Double.longBitsToDouble(settings.getLong(PREF_NETWORK_LONGITUDE, 0));
+            mapController.animateTo(new GeoPoint(bikeNetworkLatitude, bikeNetworkLongitude));
 
             Toast.makeText(this, R.string.location_not_found, Toast.LENGTH_LONG).show();
         }

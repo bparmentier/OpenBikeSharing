@@ -20,6 +20,7 @@ package be.brunoparmentier.openbikesharing.app.ui;
 import android.app.Activity;
 import android.app.SearchManager;
 import android.content.Context;
+import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.AsyncTask;
 import android.os.Bundle;
@@ -55,6 +56,8 @@ public class BikeNetworksListActivity extends Activity {
     private static final String PREF_NETWORK_ID = "network-id";
     private static final String PREF_NETWORK_NAME = "network-name";
     private static final String PREF_NETWORK_CITY = "network-city";
+    private static final String PREF_NETWORK_LATITUDE = "network-latitude";
+    private static final String PREF_NETWORK_LONGITUDE = "network-longitude";
     private ListView listView;
     private ArrayList<BikeNetworkInfo> bikeNetworks;
     private ArrayList<BikeNetworkInfo> searchedBikeNetworks;
@@ -87,6 +90,7 @@ public class BikeNetworksListActivity extends Activity {
             }
 
             @Override
+            // TODO: avoid redundancy
             public boolean onQueryTextChange(String s) {
                 if (bikeNetworks == null) {
                     return false;
@@ -166,7 +170,7 @@ public class BikeNetworksListActivity extends Activity {
         }
 
         @Override
-        protected void onPostExecute(String result) {
+        protected void onPostExecute(final String result) {
             try {
                 JSONObject jsonObject = new JSONObject(result);
 
@@ -191,6 +195,12 @@ public class BikeNetworksListActivity extends Activity {
                         editor.putString(PREF_NETWORK_ID, bikeNetworks.get(position).getId());
                         editor.putString(PREF_NETWORK_NAME, bikeNetworks.get(position).getName());
                         editor.putString(PREF_NETWORK_CITY, bikeNetworks.get(position).getLocation().getCity());
+                        editor.putLong(PREF_NETWORK_LATITUDE, Double.doubleToRawLongBits(
+                                        bikeNetworks.get(position).getLocation().getLatitude())
+                        );
+                        editor.putLong(PREF_NETWORK_LONGITUDE, Double.doubleToRawLongBits(
+                                bikeNetworks.get(position).getLocation().getLongitude())
+                        );
                         editor.apply();
                         Toast.makeText(BikeNetworksListActivity.this,
                                 bikeNetworks.get(position).getName()
@@ -199,6 +209,13 @@ public class BikeNetworksListActivity extends Activity {
                                         + ") " + getString(R.string.network_selected),
                                 Toast.LENGTH_SHORT).show();
 
+                        Intent resultIntent = new Intent();
+                        resultIntent.putExtra("network-id", bikeNetworks.get(position).getId());
+                        if (getParent() == null) {
+                            setResult(Activity.RESULT_OK, resultIntent);
+                        } else {
+                            getParent().setResult(Activity.RESULT_OK, resultIntent);
+                        }
                         finish();
                     }
                 });
