@@ -130,7 +130,7 @@ public class StationsDataSource {
         db.delete(DatabaseHelper.FAV_STATIONS_TABLE_NAME, "id = ?", new String[] { id });
     }
 
-    public ArrayList<Station> getFavStations() {
+    public ArrayList<Station> getFavoriteStations() {
         db = dbHelper.getReadableDatabase();
         ArrayList<Station> favStations = new ArrayList<>();
         Cursor cursor = db.rawQuery("SELECT sta.id as _id, name, last_update, latitude, longitude, "

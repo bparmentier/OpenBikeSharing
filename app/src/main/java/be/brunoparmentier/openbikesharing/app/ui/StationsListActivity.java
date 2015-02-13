@@ -116,7 +116,7 @@ public class StationsListActivity extends FragmentActivity implements ActionBar.
 
         stationsDataSource = new StationsDataSource(this);
         stations = stationsDataSource.getStations();
-        favStations = stationsDataSource.getFavStations();
+        favStations = stationsDataSource.getFavoriteStations();
 
 
         actionBar = getActionBar();
@@ -343,7 +343,7 @@ public class StationsListActivity extends FragmentActivity implements ActionBar.
                     stations = bikeNetwork.getStations();
                     Collections.sort(stations);
                     stationsDataSource.storeStations(stations);
-                    favStations = stationsDataSource.getFavStations();
+                    favStations = stationsDataSource.getFavoriteStations();
 
                     tabsPagerAdapter.updateAllStationsListFragment(stations);
                     tabsPagerAdapter.updateFavoriteStationsFragment(favStations);
