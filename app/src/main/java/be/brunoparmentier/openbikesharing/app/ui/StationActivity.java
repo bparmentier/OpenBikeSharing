@@ -39,13 +39,12 @@ import org.osmdroid.tileprovider.tilesource.TileSourceFactory;
 import org.osmdroid.util.GeoPoint;
 import org.osmdroid.views.MapView;
 
-import java.util.HashSet;
 import java.util.List;
-import java.util.Set;
 
 import be.brunoparmentier.openbikesharing.app.R;
 import be.brunoparmentier.openbikesharing.app.Station;
 import be.brunoparmentier.openbikesharing.app.StationStatus;
+import be.brunoparmentier.openbikesharing.app.db.StationsDataSource;
 
 public class StationActivity extends Activity {
     private static final String PREF_FAV_STATIONS = "fav-stations";
@@ -54,12 +53,15 @@ public class StationActivity extends Activity {
     private MapView map;
     private IMapController mapController;
     private MenuItem favStar;
+    private StationsDataSource stationsDataSource;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_station);
         getActionBar().setDisplayHomeAsUpEnabled(true);
+
+        stationsDataSource = new StationsDataSource(this);
 
         settings = PreferenceManager.getDefaultSharedPreferences(this);
 
@@ -229,26 +231,17 @@ public class StationActivity extends Activity {
     }
 
     private boolean isFavorite() {
-        Set<String> favorites = settings.getStringSet(PREF_FAV_STATIONS, new HashSet<String>());
-        return (favorites.contains(station.getId()));
+        return stationsDataSource.isFavoriteStation(station.getId());
     }
 
     private void setFavorite(boolean favorite) {
-        SharedPreferences.Editor editor = settings.edit();
-        Set<String> favorites = new HashSet<String>(settings.getStringSet(PREF_FAV_STATIONS,
-                new HashSet<String>()));
-
         if (favorite) {
-            favorites.add(station.getId());
-            editor.putStringSet(PREF_FAV_STATIONS, favorites);
-            editor.apply();
+            stationsDataSource.addFavoriteStation(station.getId());
             favStar.setIcon(R.drawable.ic_menu_favorite);
             Toast.makeText(StationActivity.this,
                     getString(R.string.station_added_to_favorites), Toast.LENGTH_SHORT).show();
         } else {
-            favorites.remove(station.getId());
-            editor.putStringSet(PREF_FAV_STATIONS, favorites);
-            editor.apply();
+            stationsDataSource.removeFavoriteStation(station.getId());
             favStar.setIcon(R.drawable.ic_menu_favorite_outline);
             Toast.makeText(StationActivity.this,
                     getString(R.string.stations_removed_from_favorites), Toast.LENGTH_SHORT).show();

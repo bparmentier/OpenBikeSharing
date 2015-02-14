@@ -152,6 +152,19 @@ public class StationsDataSource {
         }
     }
 
+    public boolean isFavoriteStation(String id) {
+        db = dbHelper.getReadableDatabase();
+        Cursor cursor = db.rawQuery("SELECT id "
+                + "FROM " + DatabaseHelper.FAV_STATIONS_TABLE_NAME
+                + " WHERE id = ?", new String[] { id });
+
+        try {
+            return cursor.getCount() > 0;
+        } finally {
+            cursor.close();
+        }
+    }
+
     private Station toStation(Cursor cursor) {
         Station station = new Station(
                 cursor.getString(0), // id
