@@ -71,7 +71,7 @@ public class BikeNetworkParser {
 
                     String id = rawStation.getString("id");
                     String name = rawStation.getString("name");
-                    if (stripIdFromStationName) name = name.replaceAll("^[0-9]* ?- ?", "");
+                    if (stripIdFromStationName) name = name.replaceAll("^[0-9 ]*- *", "");
                     String lastUpdate = rawStation.getString("timestamp");
                     double latitude = rawStation.getDouble("latitude");
                     double longitude = rawStation.getDouble("longitude");
