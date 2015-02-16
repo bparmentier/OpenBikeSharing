@@ -22,6 +22,8 @@ import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
 
 public class DatabaseHelper extends SQLiteOpenHelper {
+    private static DatabaseHelper instance;
+
     private static final String DB_NAME = "openbikesharing.sqlite";
     private static final int DB_VERSION = 1;
 
@@ -41,7 +43,14 @@ public class DatabaseHelper extends SQLiteOpenHelper {
     public static final String FAV_STATIONS_TABLE_NAME = "fav_stations";
     public static final String FAV_STATIONS_COLUMN_ID = "id";
 
-    public DatabaseHelper(Context context) {
+    public static DatabaseHelper getInstance(Context context) {
+        if (instance == null) {
+            instance = new DatabaseHelper(context.getApplicationContext());
+        }
+        return instance;
+    }
+
+    private DatabaseHelper(Context context) {
         super(context, DB_NAME, null, DB_VERSION);
     }
 

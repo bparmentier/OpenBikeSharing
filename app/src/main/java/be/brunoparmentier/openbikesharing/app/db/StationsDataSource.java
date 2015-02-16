@@ -28,15 +28,14 @@ import be.brunoparmentier.openbikesharing.app.Station;
 import be.brunoparmentier.openbikesharing.app.StationStatus;
 
 public class StationsDataSource {
-    private SQLiteDatabase db;
     private DatabaseHelper dbHelper;
 
     public StationsDataSource(Context context) {
-        dbHelper = new DatabaseHelper(context);
+        dbHelper = DatabaseHelper.getInstance(context);
     }
 
     public void storeStations(ArrayList<Station> stations) {
-        db = dbHelper.getWritableDatabase();
+        SQLiteDatabase db = dbHelper.getWritableDatabase();
         db.beginTransaction();
         try {
             clearStations();
@@ -64,23 +63,15 @@ public class StationsDataSource {
         } finally {
             db.endTransaction();
         }
-
-        dbHelper.close();
     }
 
     public void clearStations() {
-        db = dbHelper.getWritableDatabase();
-        db.beginTransaction();
-        try {
-            db.delete(DatabaseHelper.STATIONS_TABLE_NAME, null, null);
-            db.setTransactionSuccessful();
-        } finally {
-            db.endTransaction();
-        }
+        SQLiteDatabase db = dbHelper.getWritableDatabase();
+        db.delete(DatabaseHelper.STATIONS_TABLE_NAME, null, null);
     }
 
     public ArrayList<Station> getStations() {
-        db = dbHelper.getReadableDatabase();
+        SQLiteDatabase db = dbHelper.getReadableDatabase();
         ArrayList<Station> stations = new ArrayList<>();
         Cursor cursor = db.rawQuery("SELECT id as _id, name, last_update, latitude, longitude, "
                 + "free_bikes, empty_slots, address, banking, bonus, status "
@@ -101,7 +92,7 @@ public class StationsDataSource {
     }
 
     public Station getStation(String id) {
-        db = dbHelper.getReadableDatabase();
+        SQLiteDatabase db = dbHelper.getReadableDatabase();
 
         Cursor cursor = db.rawQuery("SELECT id as _id, name, last_update, latitude, longitude, "
                 + "free_bikes, empty_slots, address, banking, bonus, status "
@@ -119,19 +110,19 @@ public class StationsDataSource {
     }
 
     public void addFavoriteStation(String id) {
-        db = dbHelper.getWritableDatabase();
+        SQLiteDatabase db = dbHelper.getWritableDatabase();
         ContentValues values = new ContentValues();
         values.put(DatabaseHelper.FAV_STATIONS_COLUMN_ID, id);
         db.insert(DatabaseHelper.FAV_STATIONS_TABLE_NAME, null, values);
     }
 
     public void removeFavoriteStation(String id) {
-        db = dbHelper.getWritableDatabase();
+        SQLiteDatabase db = dbHelper.getWritableDatabase();
         db.delete(DatabaseHelper.FAV_STATIONS_TABLE_NAME, "id = ?", new String[] { id });
     }
 
     public ArrayList<Station> getFavoriteStations() {
-        db = dbHelper.getReadableDatabase();
+        SQLiteDatabase db = dbHelper.getReadableDatabase();
         ArrayList<Station> favStations = new ArrayList<>();
         Cursor cursor = db.rawQuery("SELECT sta.id as _id, name, last_update, latitude, longitude, "
                 + "free_bikes, empty_slots, address, banking, bonus, status "
@@ -153,7 +144,7 @@ public class StationsDataSource {
     }
 
     public boolean isFavoriteStation(String id) {
-        db = dbHelper.getReadableDatabase();
+        SQLiteDatabase db = dbHelper.getReadableDatabase();
         Cursor cursor = db.rawQuery("SELECT id "
                 + "FROM " + DatabaseHelper.FAV_STATIONS_TABLE_NAME
                 + " WHERE id = ?", new String[] { id });
