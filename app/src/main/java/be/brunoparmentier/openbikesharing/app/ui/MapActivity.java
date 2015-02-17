@@ -56,10 +56,11 @@ import be.brunoparmentier.openbikesharing.app.StationStatus;
 import be.brunoparmentier.openbikesharing.app.db.StationsDataSource;
 
 public class MapActivity extends Activity implements MapEventsReceiver {
-
     private static final String TAG = "MapActivity";
-    private static final String PREF_NETWORK_LATITUDE = "network-latitude";
-    private static final String PREF_NETWORK_LONGITUDE = "network-longitude";
+
+    private static final String PREF_KEY_NETWORK_LATITUDE = "network-latitude";
+    private static final String PREF_KEY_NETWORK_LONGITUDE = "network-longitude";
+
     private MapView map;
     private IMapController mapController;
     private MyLocationNewOverlay myLocationOverlay;
@@ -141,8 +142,8 @@ public class MapActivity extends Activity implements MapEventsReceiver {
             mapController.animateTo(userLocation);
         } catch (NullPointerException e) {
             mapController.setZoom(13);
-            double bikeNetworkLatitude = Double.longBitsToDouble(settings.getLong(PREF_NETWORK_LATITUDE, 0));
-            double bikeNetworkLongitude = Double.longBitsToDouble(settings.getLong(PREF_NETWORK_LONGITUDE, 0));
+            double bikeNetworkLatitude = Double.longBitsToDouble(settings.getLong(PREF_KEY_NETWORK_LATITUDE, 0));
+            double bikeNetworkLongitude = Double.longBitsToDouble(settings.getLong(PREF_KEY_NETWORK_LONGITUDE, 0));
             mapController.animateTo(new GeoPoint(bikeNetworkLatitude, bikeNetworkLongitude));
 
             Toast.makeText(this, R.string.location_not_found, Toast.LENGTH_LONG).show();

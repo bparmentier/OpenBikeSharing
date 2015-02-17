@@ -64,32 +64,32 @@ import be.brunoparmentier.openbikesharing.app.utils.parser.BikeNetworkParser;
 
 
 public class StationsListActivity extends FragmentActivity implements ActionBar.TabListener {
-    private static final String BASE_URL = "http://api.citybik.es/v2/networks";
-    private static final String PREF_NETWORK_ID = "network-id";
-    private static final String PREF_NETWORK_LATITUDE = "network-latitude";
-    private static final String PREF_NETWORK_LONGITUDE = "network-longitude";
-    private static final String PREF_FAV_STATIONS = "fav-stations";
-    private static final String PREF_STRIP_ID_STATION = "pref_strip_id_station";
     private static final String TAG = "StationsListActivity";
-    private SharedPreferences settings;
+
+    private static final String BASE_URL = "http://api.citybik.es/v2/networks";
+    private static final String PREF_KEY_NETWORK_ID = "network-id";
+    private static final String PREF_KEY_NETWORK_LATITUDE = "network-latitude";
+    private static final String PREF_KEY_NETWORK_LONGITUDE = "network-longitude";
+    private static final String PREF_KEY_FAV_STATIONS = "fav-stations";
+    private static final String PREF_KEY_STRIP_ID_STATION = "pref_strip_id_station";
+
+    private static final int PICK_NETWORK_REQUEST = 1;
+
     private BikeNetwork bikeNetwork;
     private ArrayList<Station> stations;
     private ArrayList<Station> favStations;
-
     private StationsDataSource stationsDataSource;
 
-    private Menu optionsMenu;
+    private SharedPreferences settings;
 
+    private Menu optionsMenu;
+    private ActionBar actionBar;
+    private SearchView searchView;
     private ViewPager viewPager;
     private TabsPagerAdapter tabsPagerAdapter;
 
     private StationsListFragment allStationsFragment;
     private StationsListFragment favoriteStationsFragment;
-
-    private ActionBar actionBar;
-    private SearchView searchView;
-
-    private static final int PICK_NETWORK_REQUEST = 1;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -129,7 +129,7 @@ public class StationsListActivity extends FragmentActivity implements ActionBar.
         actionBar.setHomeButtonEnabled(false);
 
         settings = PreferenceManager.getDefaultSharedPreferences(this);
-        boolean firstRun = settings.getString(PREF_NETWORK_ID, "").isEmpty();
+        boolean firstRun = settings.getString(PREF_KEY_NETWORK_ID, "").isEmpty();
 
         actionBar.setNavigationMode(ActionBar.NAVIGATION_MODE_TABS);
         tabsPagerAdapter = new TabsPagerAdapter(getSupportFragmentManager());
@@ -160,7 +160,7 @@ public class StationsListActivity extends FragmentActivity implements ActionBar.
                 stations = (ArrayList<Station>) savedInstanceState.getSerializable("stations");
                 favStations = (ArrayList<Station>) savedInstanceState.getSerializable("favStations");
             } else {
-                String stationUrl = BASE_URL + "/" + settings.getString(PREF_NETWORK_ID, "");
+                String stationUrl = BASE_URL + "/" + settings.getString(PREF_KEY_NETWORK_ID, "");
                 new JSONDownloadTask().execute(stationUrl);
             }
         }
@@ -211,7 +211,7 @@ public class StationsListActivity extends FragmentActivity implements ActionBar.
             case R.id.action_refresh:
                 String networkId = PreferenceManager
                         .getDefaultSharedPreferences(this)
-                        .getString(PREF_NETWORK_ID, "");
+                        .getString(PREF_KEY_NETWORK_ID, "");
                 new JSONDownloadTask().execute(BASE_URL + "/" + networkId);
                 return true;
             case R.id.action_map:
@@ -336,7 +336,7 @@ public class StationsListActivity extends FragmentActivity implements ActionBar.
                     JSONObject jsonObject = new JSONObject(result);
 
                     /* parse result */
-                    boolean stripId = settings.getBoolean(PREF_STRIP_ID_STATION, false);
+                    boolean stripId = settings.getBoolean(PREF_KEY_STRIP_ID_STATION, false);
                     BikeNetworkParser bikeNetworkParser = new BikeNetworkParser(jsonObject, stripId);
                     bikeNetwork = bikeNetworkParser.getNetwork();
 
@@ -396,21 +396,21 @@ public class StationsListActivity extends FragmentActivity implements ActionBar.
     }
 
     private void upgradeAppToVersion13() {
-        if (settings.contains(PREF_FAV_STATIONS)) {
-            Set<String> favorites = settings.getStringSet(PREF_FAV_STATIONS, new HashSet<String>());
+        if (settings.contains(PREF_KEY_FAV_STATIONS)) {
+            Set<String> favorites = settings.getStringSet(PREF_KEY_FAV_STATIONS, new HashSet<String>());
 
             for (String favorite : favorites) {
                 stationsDataSource.addFavoriteStation(favorite);
             }
 
-            settings.edit().remove(PREF_FAV_STATIONS).apply();
+            settings.edit().remove(PREF_KEY_FAV_STATIONS).apply();
         }
 
-        if (!settings.contains(PREF_NETWORK_LATITUDE) || !settings.contains(PREF_NETWORK_LONGITUDE)) {
+        if (!settings.contains(PREF_KEY_NETWORK_LATITUDE) || !settings.contains(PREF_KEY_NETWORK_LONGITUDE)) {
             settings.edit()
-                    .putLong(PREF_NETWORK_LATITUDE,
+                    .putLong(PREF_KEY_NETWORK_LATITUDE,
                             Double.doubleToRawLongBits(bikeNetwork.getLocation().getLatitude()))
-                    .putLong(PREF_NETWORK_LONGITUDE,
+                    .putLong(PREF_KEY_NETWORK_LONGITUDE,
                             Double.doubleToRawLongBits(bikeNetwork.getLocation().getLongitude()))
                     .apply();
         }
