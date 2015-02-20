@@ -23,6 +23,7 @@ import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 
 import java.util.ArrayList;
+import java.util.Collections;
 
 import be.brunoparmentier.openbikesharing.app.Station;
 import be.brunoparmentier.openbikesharing.app.StationStatus;
@@ -85,6 +86,7 @@ public class StationsDataSource {
                     cursor.moveToNext();
                 }
             }
+            Collections.sort(stations);
             return stations;
         } finally {
             cursor.close();
@@ -96,8 +98,8 @@ public class StationsDataSource {
 
         Cursor cursor = db.rawQuery("SELECT id as _id, name, last_update, latitude, longitude, "
                 + "free_bikes, empty_slots, address, banking, bonus, status "
-                + "FROM " + DatabaseHelper.STATIONS_TABLE_NAME
-                + " WHERE id = ?", new String[] { id });
+                + "FROM " + DatabaseHelper.STATIONS_TABLE_NAME + " "
+                + "WHERE id = ?", new String[] { id });
         try {
             if (cursor.moveToFirst()) {
                 return toStation(cursor);
@@ -137,6 +139,7 @@ public class StationsDataSource {
                     cursor.moveToNext();
                 }
             }
+            Collections.sort(favStations);
             return favStations;
         } finally {
             cursor.close();
@@ -146,8 +149,8 @@ public class StationsDataSource {
     public boolean isFavoriteStation(String id) {
         SQLiteDatabase db = dbHelper.getReadableDatabase();
         Cursor cursor = db.rawQuery("SELECT id "
-                + "FROM " + DatabaseHelper.FAV_STATIONS_TABLE_NAME
-                + " WHERE id = ?", new String[] { id });
+                + "FROM " + DatabaseHelper.FAV_STATIONS_TABLE_NAME + " "
+                + "WHERE id = ?", new String[] { id });
 
         try {
             return cursor.getCount() > 0;
