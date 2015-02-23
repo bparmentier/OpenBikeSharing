@@ -15,7 +15,7 @@
  * along with OpenBikeSharing.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-package be.brunoparmentier.openbikesharing.app.utils.parser;
+package be.brunoparmentier.openbikesharing.app.parsers;
 
 import org.json.JSONArray;
 import org.json.JSONException;

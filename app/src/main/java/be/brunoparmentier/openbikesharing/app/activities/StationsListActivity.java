@@ -63,7 +63,7 @@ import be.brunoparmentier.openbikesharing.app.Station;
 import be.brunoparmentier.openbikesharing.app.db.StationsDataSource;
 import be.brunoparmentier.openbikesharing.app.fragments.StationsListFragment;
 import be.brunoparmentier.openbikesharing.app.utils.OBSException;
-import be.brunoparmentier.openbikesharing.app.utils.parser.BikeNetworkParser;
+import be.brunoparmentier.openbikesharing.app.parsers.BikeNetworkParser;
 
 
 public class StationsListActivity extends FragmentActivity implements ActionBar.TabListener {
