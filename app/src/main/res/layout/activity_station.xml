@@ -64,11 +64,19 @@
                 android:text="Address"
                 android:visibility="gone" />
 
+            <TextView
+                android:id="@+id/stationLastUpdate"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/stationAddress"
+                android:text="last udpate"
+                android:visibility="visible" />
+
             <GridLayout
                 android:id="@+id/bikesAvailabilityLayout"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_below="@id/stationAddress"
+                android:layout_below="@id/stationLastUpdate"
                 android:layout_alignParentBottom="true"
                 android:orientation="vertical">
 

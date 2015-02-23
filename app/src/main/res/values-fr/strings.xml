@@ -62,5 +62,11 @@
     <string name="cards_accepted">Cartes acceptées</string>
     <string name="db_last_update">Dernière mise à jour\u00A0: %1$s</string>
     <string name="db_last_update_never">jamais</string>
+    <string name="updated_day_ago">il y a %1$d jour</string>
+    <string name="updated_days_ago">il y a %1$d jours</string>
+    <string name="updated_hour_ago">il y a %1$d heure</string>
+    <string name="updated_hours_ago">il y a %1$d heures</string>
+    <string name="updated_minute_ago">il y a %1$d minute</string>
+    <string name="updated_minutes_ago">il y a %1$d minutes</string>
 
 </resources>

@@ -23,6 +23,7 @@ import android.content.SharedPreferences;
 import android.content.pm.PackageManager;
 import android.content.pm.ResolveInfo;
 import android.graphics.Paint;
+import android.graphics.Typeface;
 import android.net.Uri;
 import android.os.Bundle;
 import android.preference.PreferenceManager;
@@ -39,7 +40,11 @@ import org.osmdroid.tileprovider.tilesource.TileSourceFactory;
 import org.osmdroid.util.GeoPoint;
 import org.osmdroid.views.MapView;
 
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.List;
+import java.util.Locale;
+import java.util.TimeZone;
 
 import be.brunoparmentier.openbikesharing.app.R;
 import be.brunoparmentier.openbikesharing.app.Station;
@@ -133,6 +138,7 @@ public class StationActivity extends Activity {
         TextView stationFreeBikes = (TextView) findViewById(R.id.stationFreeBikes);
 
         stationName.setText(station.getName());
+        setLastUpdateText(station.getLastUpdate());
         stationEmptySlots.setText(String.valueOf(station.getEmptySlots()));
         stationFreeBikes.setText(String.valueOf(station.getFreeBikes()));
 
@@ -184,6 +190,43 @@ public class StationActivity extends Activity {
         }
 
         mapController.setCenter(stationLocation);
+    }
+
+    private void setLastUpdateText(String rawLastUpdateISO8601) {
+        long timeDifferenceInSeconds;
+        TextView stationLastUpdate = (TextView) findViewById(R.id.stationLastUpdate);
+        SimpleDateFormat timestampFormatISO8601 = new SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss", Locale.US);
+        timestampFormatISO8601.setTimeZone(TimeZone.getTimeZone("UTC"));
+
+        try {
+            long lastUpdate = timestampFormatISO8601.parse(rawLastUpdateISO8601).getTime();
+            long currentDateTime = System.currentTimeMillis();
+            timeDifferenceInSeconds = (currentDateTime - lastUpdate) / 1000;
+
+            if (timeDifferenceInSeconds >= 0 && timeDifferenceInSeconds < 120) {
+                stationLastUpdate.setText(String.format(getString(R.string.updated_minute_ago),
+                        timeDifferenceInSeconds / 60));
+            } else if (timeDifferenceInSeconds >= 120 && timeDifferenceInSeconds < 3600) {
+                stationLastUpdate.setText(String.format(getString(R.string.updated_minutes_ago),
+                        timeDifferenceInSeconds / 60));
+            } else if (timeDifferenceInSeconds >= 3600 && timeDifferenceInSeconds < 7200) {
+                stationLastUpdate.setText(String.format(getString(R.string.updated_hour_ago), 1));
+            } else if (timeDifferenceInSeconds >= 7200 && timeDifferenceInSeconds < 86400) {
+                stationLastUpdate.setText(String.format(getString(R.string.updated_hours_ago),
+                        timeDifferenceInSeconds / 3600));
+            } else if (timeDifferenceInSeconds >= 86400 && timeDifferenceInSeconds < 172800) {
+                stationLastUpdate.setText(String.format(getString(R.string.updated_day_ago), 1));
+            } else if (timeDifferenceInSeconds >= 172800) {
+                stationLastUpdate.setText(String.format(getString(R.string.updated_days_ago),
+                        timeDifferenceInSeconds / 86400));
+            } else {
+                stationLastUpdate.setText("NaN");
+            }
+
+            stationLastUpdate.setTypeface(null, Typeface.ITALIC);
+        } catch (ParseException e) {
+            e.printStackTrace();
+        }
     }
 
     @Override
