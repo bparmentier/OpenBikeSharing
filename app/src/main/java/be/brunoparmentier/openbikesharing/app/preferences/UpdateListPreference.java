@@ -15,25 +15,30 @@
  * along with OpenBikeSharing.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-package be.brunoparmentier.openbikesharing.app.utils;
+package be.brunoparmentier.openbikesharing.app.preferences;
 
-import android.app.AlertDialog;
 import android.content.Context;
-import android.preference.DialogPreference;
+import android.preference.ListPreference;
 import android.util.AttributeSet;
 
 /**
- * Custom DialogPreference class without negative button.
+ * On some versions of Android (4.2?), the default ListPreference view doesn't update when summary
+ * changes.
+ * cf. https://code.google.com/p/android/issues/detail?id=27867
  */
-public class InfoDialogPreference extends DialogPreference {
+public class UpdateListPreference extends ListPreference {
 
-    public InfoDialogPreference(Context context, AttributeSet attrs) {
+    public UpdateListPreference(Context context, AttributeSet attrs) {
         super(context, attrs);
     }
 
+    public UpdateListPreference(Context context) {
+        super(context);
+    }
+
     @Override
-    protected void onPrepareDialogBuilder(AlertDialog.Builder builder) {
-        super.onPrepareDialogBuilder(builder);
-        builder.setNegativeButton(null, null);
+    public void setValue(String value) {
+        super.setValue(value);
+        notifyChanged();
     }
 }

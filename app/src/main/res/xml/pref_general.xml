@@ -25,7 +25,7 @@
             android:targetPackage="be.brunoparmentier.openbikesharing.app" />
     </Preference>
 
-    <be.brunoparmentier.openbikesharing.app.UpdateListPreference
+    <be.brunoparmentier.openbikesharing.app.preferences.UpdateListPreference
         android:defaultValue="mapnik"
         android:dialogTitle="@string/pref_map_layer_title"
         android:entries="@array/pref_map_layer_entries"
@@ -68,7 +68,7 @@
                 android:data="http://www.brunoparmentier.be" />
         </Preference>
 
-        <be.brunoparmentier.openbikesharing.app.utils.InfoDialogPreference
+        <be.brunoparmentier.openbikesharing.app.preferences.InfoDialogPreference
             android:dialogMessage="@string/pref_title_license_message"
             android:dialogTitle="@string/pref_title_license"
             android:summary="GPLv3"
