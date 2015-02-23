@@ -29,7 +29,7 @@ import android.widget.TextView;
 
 import java.util.ArrayList;
 
-import be.brunoparmentier.openbikesharing.app.ui.StationActivity;
+import be.brunoparmentier.openbikesharing.app.activities.StationActivity;
 
 /**
  * Cursor adapter to display search results in a dropdown list

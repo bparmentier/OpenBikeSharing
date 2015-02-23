@@ -19,7 +19,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="be.brunoparmentier.openbikesharing.app.ui.StationsListActivity">
+    tools:context="be.brunoparmentier.openbikesharing.app.activities.StationsListActivity">
 
     <android.support.v4.view.ViewPager
         android:id="@+id/viewPager"

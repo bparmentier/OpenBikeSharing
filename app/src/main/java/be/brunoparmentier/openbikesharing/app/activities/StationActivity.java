@@ -15,7 +15,7 @@
  * along with OpenBikeSharing.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-package be.brunoparmentier.openbikesharing.app.ui;
+package be.brunoparmentier.openbikesharing.app.activities;
 
 import android.app.Activity;
 import android.content.Intent;
