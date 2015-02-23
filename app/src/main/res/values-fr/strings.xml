@@ -60,5 +60,7 @@
     <string name="no_nav_application">Vous n\'avez pas d\'application de navigation installée</string>
     <string name="is_bonus_station">Station bonus</string>
     <string name="cards_accepted">Cartes acceptées</string>
+    <string name="db_last_update">Dernière mise à jour\u00A0: %1$s</string>
+    <string name="db_last_update_never">jamais</string>
 
 </resources>

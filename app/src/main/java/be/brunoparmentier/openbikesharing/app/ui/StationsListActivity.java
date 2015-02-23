@@ -34,10 +34,12 @@ import android.support.v4.app.FragmentActivity;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentPagerAdapter;
 import android.support.v4.view.ViewPager;
+import android.text.format.DateUtils;
 import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.widget.SearchView;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import org.json.JSONException;
@@ -48,6 +50,7 @@ import java.io.IOException;
 import java.io.InputStreamReader;
 import java.net.HttpURLConnection;
 import java.net.URL;
+import java.text.DateFormat;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.HashSet;
@@ -72,6 +75,7 @@ public class StationsListActivity extends FragmentActivity implements ActionBar.
     private static final String PREF_KEY_NETWORK_LONGITUDE = "network-longitude";
     private static final String PREF_KEY_FAV_STATIONS = "fav-stations";
     private static final String PREF_KEY_STRIP_ID_STATION = "pref_strip_id_station";
+    private static final String PREF_KEY_DB_LAST_UPDATE = "db_last_update";
 
     private static final int PICK_NETWORK_REQUEST = 1;
 
@@ -118,7 +122,6 @@ public class StationsListActivity extends FragmentActivity implements ActionBar.
         stations = stationsDataSource.getStations();
         favStations = stationsDataSource.getFavoriteStations();
 
-
         actionBar = getActionBar();
         actionBar.addTab(actionBar.newTab()
                 .setText(getString(R.string.all_stations))
@@ -134,6 +137,8 @@ public class StationsListActivity extends FragmentActivity implements ActionBar.
         actionBar.setNavigationMode(ActionBar.NAVIGATION_MODE_TABS);
         tabsPagerAdapter = new TabsPagerAdapter(getSupportFragmentManager());
         viewPager.setAdapter(tabsPagerAdapter);
+
+        setDBLastUpdateText();
 
         if (firstRun) {
             AlertDialog.Builder builder = new AlertDialog.Builder(this);
@@ -160,9 +165,24 @@ public class StationsListActivity extends FragmentActivity implements ActionBar.
                 stations = (ArrayList<Station>) savedInstanceState.getSerializable("stations");
                 favStations = (ArrayList<Station>) savedInstanceState.getSerializable("favStations");
             } else {
-                String stationUrl = BASE_URL + "/" + settings.getString(PREF_KEY_NETWORK_ID, "");
+                String networkId = settings.getString(PREF_KEY_NETWORK_ID, "");
+                String stationUrl = BASE_URL + "/" + networkId;
                 new JSONDownloadTask().execute(stationUrl);
             }
+        }
+    }
+
+    private void setDBLastUpdateText() {
+        TextView lastUpdate = (TextView) findViewById(R.id.dbLastUpdate);
+        long dbLastUpdate = settings.getLong(PREF_KEY_DB_LAST_UPDATE, -1);
+
+        if (dbLastUpdate == -1) {
+            lastUpdate.setText(String.format(getString(R.string.db_last_update),
+                    getString(R.string.db_last_update_never)));
+        } else {
+            lastUpdate.setText(String.format(getString(R.string.db_last_update),
+                    DateUtils.formatSameDayTime(dbLastUpdate, System.currentTimeMillis(),
+                            DateFormat.DEFAULT, DateFormat.DEFAULT)));
         }
     }
 
@@ -344,6 +364,11 @@ public class StationsListActivity extends FragmentActivity implements ActionBar.
                     Collections.sort(stations);
                     stationsDataSource.storeStations(stations);
                     favStations = stationsDataSource.getFavoriteStations();
+
+                    settings.edit()
+                            .putLong(PREF_KEY_DB_LAST_UPDATE, System.currentTimeMillis())
+                            .apply();
+                    setDBLastUpdateText();
 
                     tabsPagerAdapter.updateAllStationsListFragment(stations);
                     tabsPagerAdapter.updateFavoriteStationsFragment(favStations);
