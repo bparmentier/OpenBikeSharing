@@ -21,7 +21,7 @@
         android:key="network-id"
         android:title="@string/pref_title_bike_networks_list">
         <intent
-            android:targetClass="be.brunoparmentier.openbikesharing.app.ui.BikeNetworksListActivity"
+            android:targetClass="be.brunoparmentier.openbikesharing.app.activities.BikeNetworksListActivity"
             android:targetPackage="be.brunoparmentier.openbikesharing.app" />
     </Preference>
 
