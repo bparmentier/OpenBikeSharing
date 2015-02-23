@@ -15,7 +15,7 @@
  * along with OpenBikeSharing.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-package be.brunoparmentier.openbikesharing.app;
+package be.brunoparmentier.openbikesharing.app.adapters;
 
 import android.content.Context;
 import android.view.LayoutInflater;
@@ -25,6 +25,8 @@ import android.widget.ArrayAdapter;
 import android.widget.TextView;
 
 import java.util.ArrayList;
+
+import be.brunoparmentier.openbikesharing.app.BikeNetworkInfo;
 
 /**
  * Define a list of bike networks.

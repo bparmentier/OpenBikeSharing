@@ -30,7 +30,7 @@ import java.util.ArrayList;
 
 import be.brunoparmentier.openbikesharing.app.R;
 import be.brunoparmentier.openbikesharing.app.Station;
-import be.brunoparmentier.openbikesharing.app.StationsListAdapter;
+import be.brunoparmentier.openbikesharing.app.adapters.StationsListAdapter;
 import be.brunoparmentier.openbikesharing.app.activities.StationActivity;
 
 public class StationsListFragment extends Fragment {

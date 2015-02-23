@@ -58,7 +58,7 @@ import java.util.Set;
 
 import be.brunoparmentier.openbikesharing.app.BikeNetwork;
 import be.brunoparmentier.openbikesharing.app.R;
-import be.brunoparmentier.openbikesharing.app.SearchStationAdapter;
+import be.brunoparmentier.openbikesharing.app.adapters.SearchStationAdapter;
 import be.brunoparmentier.openbikesharing.app.Station;
 import be.brunoparmentier.openbikesharing.app.db.StationsDataSource;
 import be.brunoparmentier.openbikesharing.app.fragments.StationsListFragment;

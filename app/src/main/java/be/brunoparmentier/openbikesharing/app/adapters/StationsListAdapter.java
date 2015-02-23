@@ -15,7 +15,7 @@
  * along with OpenBikeSharing.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-package be.brunoparmentier.openbikesharing.app;
+package be.brunoparmentier.openbikesharing.app.adapters;
 
 import android.content.Context;
 import android.graphics.Paint;
@@ -26,6 +26,10 @@ import android.widget.ArrayAdapter;
 import android.widget.TextView;
 
 import java.util.ArrayList;
+
+import be.brunoparmentier.openbikesharing.app.R;
+import be.brunoparmentier.openbikesharing.app.Station;
+import be.brunoparmentier.openbikesharing.app.StationStatus;
 
 /**
  * Define a list of stations with their title, number of bikes and empty slots.
