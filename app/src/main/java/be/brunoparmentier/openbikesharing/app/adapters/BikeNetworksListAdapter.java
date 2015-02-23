@@ -26,7 +26,7 @@ import android.widget.TextView;
 
 import java.util.ArrayList;
 
-import be.brunoparmentier.openbikesharing.app.BikeNetworkInfo;
+import be.brunoparmentier.openbikesharing.app.models.BikeNetworkInfo;
 
 /**
  * Define a list of bike networks.

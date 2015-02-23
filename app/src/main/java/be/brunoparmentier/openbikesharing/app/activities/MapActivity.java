@@ -51,8 +51,8 @@ import org.osmdroid.views.overlay.mylocation.MyLocationNewOverlay;
 import java.util.ArrayList;
 
 import be.brunoparmentier.openbikesharing.app.R;
-import be.brunoparmentier.openbikesharing.app.Station;
-import be.brunoparmentier.openbikesharing.app.StationStatus;
+import be.brunoparmentier.openbikesharing.app.models.Station;
+import be.brunoparmentier.openbikesharing.app.models.StationStatus;
 import be.brunoparmentier.openbikesharing.app.db.StationsDataSource;
 
 public class MapActivity extends Activity implements MapEventsReceiver {

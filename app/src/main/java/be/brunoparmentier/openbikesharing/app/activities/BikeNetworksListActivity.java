@@ -44,7 +44,7 @@ import java.net.URL;
 import java.util.ArrayList;
 import java.util.Collections;
 
-import be.brunoparmentier.openbikesharing.app.BikeNetworkInfo;
+import be.brunoparmentier.openbikesharing.app.models.BikeNetworkInfo;
 import be.brunoparmentier.openbikesharing.app.adapters.BikeNetworksListAdapter;
 import be.brunoparmentier.openbikesharing.app.R;
 import be.brunoparmentier.openbikesharing.app.utils.OBSException;

@@ -15,7 +15,7 @@
  * along with OpenBikeSharing.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-package be.brunoparmentier.openbikesharing.app;
+package be.brunoparmentier.openbikesharing.app.models;
 
 import java.io.Serializable;
 

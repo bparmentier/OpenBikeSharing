@@ -25,10 +25,10 @@ import org.json.JSONObject;
 
 import java.util.ArrayList;
 
-import be.brunoparmentier.openbikesharing.app.BikeNetwork;
-import be.brunoparmentier.openbikesharing.app.BikeNetworkLocation;
-import be.brunoparmentier.openbikesharing.app.Station;
-import be.brunoparmentier.openbikesharing.app.StationStatus;
+import be.brunoparmentier.openbikesharing.app.models.BikeNetwork;
+import be.brunoparmentier.openbikesharing.app.models.BikeNetworkLocation;
+import be.brunoparmentier.openbikesharing.app.models.Station;
+import be.brunoparmentier.openbikesharing.app.models.StationStatus;
 import be.brunoparmentier.openbikesharing.app.utils.OBSException;
 
 /**

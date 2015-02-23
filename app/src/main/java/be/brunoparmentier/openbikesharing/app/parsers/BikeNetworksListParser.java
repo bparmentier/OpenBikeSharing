@@ -23,8 +23,8 @@ import org.json.JSONObject;
 
 import java.util.ArrayList;
 
-import be.brunoparmentier.openbikesharing.app.BikeNetworkInfo;
-import be.brunoparmentier.openbikesharing.app.BikeNetworkLocation;
+import be.brunoparmentier.openbikesharing.app.models.BikeNetworkInfo;
+import be.brunoparmentier.openbikesharing.app.models.BikeNetworkLocation;
 import be.brunoparmentier.openbikesharing.app.utils.OBSException;
 
 /**

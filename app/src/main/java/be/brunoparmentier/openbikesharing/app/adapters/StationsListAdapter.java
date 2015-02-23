@@ -28,8 +28,8 @@ import android.widget.TextView;
 import java.util.ArrayList;
 
 import be.brunoparmentier.openbikesharing.app.R;
-import be.brunoparmentier.openbikesharing.app.Station;
-import be.brunoparmentier.openbikesharing.app.StationStatus;
+import be.brunoparmentier.openbikesharing.app.models.Station;
+import be.brunoparmentier.openbikesharing.app.models.StationStatus;
 
 /**
  * Define a list of stations with their title, number of bikes and empty slots.

@@ -25,8 +25,8 @@ import android.database.sqlite.SQLiteDatabase;
 import java.util.ArrayList;
 import java.util.Collections;
 
-import be.brunoparmentier.openbikesharing.app.Station;
-import be.brunoparmentier.openbikesharing.app.StationStatus;
+import be.brunoparmentier.openbikesharing.app.models.Station;
+import be.brunoparmentier.openbikesharing.app.models.StationStatus;
 
 public class StationsDataSource {
     private DatabaseHelper dbHelper;

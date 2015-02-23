@@ -29,7 +29,7 @@ import android.widget.ListView;
 import java.util.ArrayList;
 
 import be.brunoparmentier.openbikesharing.app.R;
-import be.brunoparmentier.openbikesharing.app.Station;
+import be.brunoparmentier.openbikesharing.app.models.Station;
 import be.brunoparmentier.openbikesharing.app.adapters.StationsListAdapter;
 import be.brunoparmentier.openbikesharing.app.activities.StationActivity;
 

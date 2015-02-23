@@ -15,22 +15,11 @@
  * along with OpenBikeSharing.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-package be.brunoparmentier.openbikesharing.app;
-
-import java.util.ArrayList;
+package be.brunoparmentier.openbikesharing.app.models;
 
 /**
- * Represents a bike network and its stations.
+ * Station status
  */
-public class BikeNetwork extends BikeNetworkInfo {
-    private ArrayList<Station> stations;
-
-    public BikeNetwork(String id, String name, String company, BikeNetworkLocation location, ArrayList<Station> stations) {
-        super(id, name, company, location);
-        this.stations = stations;
-    }
-
-    public ArrayList<Station> getStations() {
-        return stations;
-    }
+public enum StationStatus {
+    OPEN, CLOSED
 }
