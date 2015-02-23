@@ -203,24 +203,20 @@ public class StationActivity extends Activity {
             long currentDateTime = System.currentTimeMillis();
             timeDifferenceInSeconds = (currentDateTime - lastUpdate) / 1000;
 
-            if (timeDifferenceInSeconds >= 0 && timeDifferenceInSeconds < 120) {
-                stationLastUpdate.setText(String.format(getString(R.string.updated_minute_ago),
-                        timeDifferenceInSeconds / 60));
-            } else if (timeDifferenceInSeconds >= 120 && timeDifferenceInSeconds < 3600) {
-                stationLastUpdate.setText(String.format(getString(R.string.updated_minutes_ago),
-                        timeDifferenceInSeconds / 60));
-            } else if (timeDifferenceInSeconds >= 3600 && timeDifferenceInSeconds < 7200) {
-                stationLastUpdate.setText(String.format(getString(R.string.updated_hour_ago), 1));
-            } else if (timeDifferenceInSeconds >= 7200 && timeDifferenceInSeconds < 86400) {
-                stationLastUpdate.setText(String.format(getString(R.string.updated_hours_ago),
-                        timeDifferenceInSeconds / 3600));
-            } else if (timeDifferenceInSeconds >= 86400 && timeDifferenceInSeconds < 172800) {
-                stationLastUpdate.setText(String.format(getString(R.string.updated_day_ago), 1));
-            } else if (timeDifferenceInSeconds >= 172800) {
-                stationLastUpdate.setText(String.format(getString(R.string.updated_days_ago),
-                        timeDifferenceInSeconds / 86400));
-            } else {
-                stationLastUpdate.setText("NaN");
+            if (timeDifferenceInSeconds < 60) {
+                stationLastUpdate.setText(getString(R.string.updated_just_now));
+            } else if (timeDifferenceInSeconds >= 60 && timeDifferenceInSeconds < 3600) {
+                int minutes = (int) timeDifferenceInSeconds / 60;
+                stationLastUpdate.setText(getResources().getQuantityString(R.plurals.updated_minutes_ago,
+                        minutes, minutes));
+            } else if (timeDifferenceInSeconds >= 3600 && timeDifferenceInSeconds < 86400) {
+                int hours = (int) timeDifferenceInSeconds / 3600;
+                stationLastUpdate.setText(getResources().getQuantityString(R.plurals.updated_hours_ago,
+                        hours, hours));
+            } else if (timeDifferenceInSeconds >= 86400) {
+                int days = (int) timeDifferenceInSeconds / 86400;
+                stationLastUpdate.setText(getResources().getQuantityString(R.plurals.updated_days_ago,
+                        days, days));
             }
 
             stationLastUpdate.setTypeface(null, Typeface.ITALIC);
