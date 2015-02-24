@@ -21,11 +21,11 @@ import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
+import java.text.ParseException;
 import java.util.ArrayList;
 
 import be.brunoparmentier.openbikesharing.app.models.BikeNetworkInfo;
 import be.brunoparmentier.openbikesharing.app.models.BikeNetworkLocation;
-import be.brunoparmentier.openbikesharing.app.utils.OBSException;
 
 /**
  * Parse the list of bike networks.
@@ -33,11 +33,11 @@ import be.brunoparmentier.openbikesharing.app.utils.OBSException;
 public class BikeNetworksListParser {
     private ArrayList<BikeNetworkInfo> bikeNetworks;
 
-    public BikeNetworksListParser(JSONObject jsonObject) throws OBSException {
-
+    public BikeNetworksListParser(String toParse) throws ParseException {
         bikeNetworks = new ArrayList<>();
 
         try {
+            JSONObject jsonObject = new JSONObject(toParse);
             JSONArray rawNetworks = jsonObject.getJSONArray("networks");
             for (int i = 0; i < rawNetworks.length(); i++) {
                 JSONObject rawNetwork = rawNetworks.getJSONObject(i);
@@ -62,7 +62,7 @@ public class BikeNetworksListParser {
                 bikeNetworks.add(new BikeNetworkInfo(id, name, company, location));
             }
         } catch (JSONException e) {
-            throw new OBSException("Invalid JSON object");
+            throw new ParseException("Error parsing JSON", 0);
         }
     }
 

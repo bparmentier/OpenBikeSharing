@@ -51,6 +51,7 @@ import java.io.InputStreamReader;
 import java.net.HttpURLConnection;
 import java.net.URL;
 import java.text.DateFormat;
+import java.text.ParseException;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.HashSet;
@@ -67,7 +68,7 @@ import be.brunoparmentier.openbikesharing.app.parsers.BikeNetworkParser;
 
 
 public class StationsListActivity extends FragmentActivity implements ActionBar.TabListener {
-    private static final String TAG = "StationsListActivity";
+    private static final String TAG = StationsListActivity.class.getSimpleName();
 
     private static final String BASE_URL = "http://api.citybik.es/v2/networks";
     private static final String PREF_KEY_NETWORK_ID = "network-id";
@@ -270,7 +271,7 @@ public class StationsListActivity extends FragmentActivity implements ActionBar.
     }
 
     private void loadData(String query) {
-        ArrayList<Station> queryStations = new ArrayList<Station>();
+        ArrayList<Station> queryStations = new ArrayList<>();
         String[] columns = new String[]{"_id", "text"};
         Object[] temp = new Object[]{0, "default"};
 
@@ -344,7 +345,7 @@ public class StationsListActivity extends FragmentActivity implements ActionBar.
         }
 
         @Override
-        protected void onPostExecute(String result) {
+        protected void onPostExecute(final String result) {
             if (error != null) {
                 Log.d(TAG, error.getMessage());
                 Toast.makeText(getApplicationContext(),
@@ -353,11 +354,9 @@ public class StationsListActivity extends FragmentActivity implements ActionBar.
                 setRefreshActionButtonState(false);
             } else {
                 try {
-                    JSONObject jsonObject = new JSONObject(result);
-
                     /* parse result */
                     boolean stripId = settings.getBoolean(PREF_KEY_STRIP_ID_STATION, false);
-                    BikeNetworkParser bikeNetworkParser = new BikeNetworkParser(jsonObject, stripId);
+                    BikeNetworkParser bikeNetworkParser = new BikeNetworkParser(result, stripId);
                     bikeNetwork = bikeNetworkParser.getNetwork();
 
                     stations = bikeNetwork.getStations();
@@ -374,9 +373,10 @@ public class StationsListActivity extends FragmentActivity implements ActionBar.
                     tabsPagerAdapter.updateFavoriteStationsFragment(favStations);
 
                     upgradeAppToVersion13();
-                } catch (JSONException | OBSException e) {
+                } catch (ParseException e) {
+                    Log.e(TAG, e.getMessage());
                     Toast.makeText(StationsListActivity.this,
-                            e.getMessage(), Toast.LENGTH_LONG).show();
+                            R.string.json_error, Toast.LENGTH_LONG).show();
                 } finally {
                     setRefreshActionButtonState(false);
                 }

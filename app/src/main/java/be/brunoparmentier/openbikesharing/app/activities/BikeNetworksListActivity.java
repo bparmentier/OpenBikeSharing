@@ -25,6 +25,7 @@ import android.content.SharedPreferences;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.preference.PreferenceManager;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
@@ -41,6 +42,7 @@ import java.io.IOException;
 import java.io.InputStreamReader;
 import java.net.HttpURLConnection;
 import java.net.URL;
+import java.text.ParseException;
 import java.util.ArrayList;
 import java.util.Collections;
 
@@ -51,6 +53,7 @@ import be.brunoparmentier.openbikesharing.app.utils.OBSException;
 import be.brunoparmentier.openbikesharing.app.parsers.BikeNetworksListParser;
 
 public class BikeNetworksListActivity extends Activity {
+    private static final String TAG = BikeNetworksListActivity.class.getSimpleName();
 
     private static final String BASE_URL = "http://api.citybik.es/v2/networks";
     private static final String PREF_KEY_NETWORK_ID = "network-id";
@@ -172,10 +175,8 @@ public class BikeNetworksListActivity extends Activity {
         @Override
         protected void onPostExecute(final String result) {
             try {
-                JSONObject jsonObject = new JSONObject(result);
-
                 /* parse result */
-                BikeNetworksListParser bikeNetworksListParser = new BikeNetworksListParser(jsonObject);
+                BikeNetworksListParser bikeNetworksListParser = new BikeNetworksListParser(result);
                 bikeNetworks = bikeNetworksListParser.getNetworks();
                 Collections.sort(bikeNetworks);
 
@@ -219,13 +220,10 @@ public class BikeNetworksListActivity extends Activity {
                         finish();
                     }
                 });
-            } catch (JSONException e) {
+            } catch (ParseException e) {
+                Log.e(TAG, e.getMessage());
                 Toast.makeText(BikeNetworksListActivity.this,
                         R.string.json_error, Toast.LENGTH_LONG).show();
-            } catch (OBSException e) {
-                Toast.makeText(BikeNetworksListActivity.this,
-                        e.getLocalizedMessage(), Toast.LENGTH_LONG).show();
-
             }
         }
     }
