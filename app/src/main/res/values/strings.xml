@@ -40,7 +40,10 @@
     <string name="title_activity_map">Map</string>
 
     <!-- Welcome dialog -->
-    <string name="welcome_dialog_message">Before you begin, please choose a bike network in the Settings.</string>
+    <string name="welcome_dialog_message">
+        Before you begin, please choose a bike network in the list.
+        \nAlso make sure you are connected to the Internet.
+    </string>
     <string name="welcome_dialog_ok">OK</string>
     <string name="welcome_dialog_cancel">Cancel</string>
     <string name="welcome_dialog_title">Welcome</string>
