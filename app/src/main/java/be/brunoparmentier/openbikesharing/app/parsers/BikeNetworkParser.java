@@ -30,7 +30,6 @@ import be.brunoparmentier.openbikesharing.app.models.BikeNetwork;
 import be.brunoparmentier.openbikesharing.app.models.BikeNetworkLocation;
 import be.brunoparmentier.openbikesharing.app.models.Station;
 import be.brunoparmentier.openbikesharing.app.models.StationStatus;
-import be.brunoparmentier.openbikesharing.app.utils.OBSException;
 
 /**
  * Parse information on a bike network.

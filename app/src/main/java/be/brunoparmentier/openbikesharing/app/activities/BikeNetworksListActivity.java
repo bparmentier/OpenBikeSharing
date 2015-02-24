@@ -49,7 +49,6 @@ import java.util.Collections;
 import be.brunoparmentier.openbikesharing.app.models.BikeNetworkInfo;
 import be.brunoparmentier.openbikesharing.app.adapters.BikeNetworksListAdapter;
 import be.brunoparmentier.openbikesharing.app.R;
-import be.brunoparmentier.openbikesharing.app.utils.OBSException;
 import be.brunoparmentier.openbikesharing.app.parsers.BikeNetworksListParser;
 
 public class BikeNetworksListActivity extends Activity {

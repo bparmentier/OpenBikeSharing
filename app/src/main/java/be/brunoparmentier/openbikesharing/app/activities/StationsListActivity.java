@@ -63,7 +63,6 @@ import be.brunoparmentier.openbikesharing.app.adapters.SearchStationAdapter;
 import be.brunoparmentier.openbikesharing.app.models.Station;
 import be.brunoparmentier.openbikesharing.app.db.StationsDataSource;
 import be.brunoparmentier.openbikesharing.app.fragments.StationsListFragment;
-import be.brunoparmentier.openbikesharing.app.utils.OBSException;
 import be.brunoparmentier.openbikesharing.app.parsers.BikeNetworkParser;
 
 
