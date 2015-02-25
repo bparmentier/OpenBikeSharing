@@ -1,6 +1,6 @@
 ---
 layout: default
-img: v1.5-smartphone4-station-en_framed.png
+img: smartphone4-station-en_framed.png
 category: intro
 title: Get more info
 description: |
