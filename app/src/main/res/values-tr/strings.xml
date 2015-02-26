@@ -41,7 +41,9 @@
     <string name="title_activity_map">Harita</string>
 
     <!-- Welcome dialog -->
-    <string name="welcome_dialog_message">Başlamadan önce, lütfen ayarlardan bir bisiklet ağı seçin.</string>
+    <string name="welcome_dialog_message"></string>
+        Başlamadan önce, lütfen listeden bir bisiklet ağı seçin.
+        \nAyrıca, İnternet'e bağlı olduğunuzdan emin olun.
     <string name="welcome_dialog_ok">Tamam</string>
     <string name="welcome_dialog_cancel">İptal</string>
     <string name="welcome_dialog_title">Hoşgeldin</string>
@@ -61,5 +63,20 @@
     <string name="no_nav_application">Herhangi bir seyrüsefer uygulaması kurulu değil</string>
     <string name="is_bonus_station">Bonus istasyon</string>
     <string name="cards_accepted">Kart geçerli</string>
+    <string name="db_last_update">Son güncelleme: %1$s</string>
+    <string name="db_last_update_never">hiçbir zaman</string>
+    <string name="updated_just_now">Sadece şimdi</string>
+    <plurals name="updated_minutes_ago">
+        <item quantity="one">%d dakika önce</item>
+        <item quantity="other">%d dakika önce</item>
+    </plurals>
+    <plurals name="updated_hours_ago">
+        <item quantity="one">%d saat önce</item>
+        <item quantity="other">%d saat önce</item>
+    </plurals>
+    <plurals name="updated_days_ago">
+        <item quantity="one">%d gün önce</item>
+        <item quantity="other">%d gün önce</item>
+    </plurals>
 
 </resources>
