@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="utf-8"?><!--
+  ~ Copyright (c) 2014-2015 Bruno Parmentier. This file is part of OpenBikeSharing.
+  ~
+  ~ OpenBikeSharing is free software: you can redistribute it and/or modify
+  ~ it under the terms of the GNU General Public License as published by
+  ~ the Free Software Foundation, either version 3 of the License, or
+  ~ (at your option) any later version.
+  ~
+  ~ OpenBikeSharing is distributed in the hope that it will be useful,
+  ~ but WITHOUT ANY WARRANTY; without even the implied warranty of
+  ~ MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+  ~ GNU General Public License for more details.
+  ~
+  ~ You should have received a copy of the GNU General Public License
+  ~ along with OpenBikeSharing.  If not, see <http://www.gnu.org/licenses/>.
+  -->
+
+<resources>
+
+    <!-- App name -->
+    <string name="app_name">OpenBikeSharing</string>
+
+    <!-- Error messages -->
+    <string name="connection_error">Erro de conexão</string>
+    <string name="json_error">Erro ao recuperar dados</string>
+
+    <!-- Actions -->
+    <string name="action_settings">Configurações</string>
+    <string name="action_refresh">Refrescar</string>
+    <string name="action_map">Mapa</string>
+    <string name="action_directions">Direções</string>
+    <string name="action_favorite">Favorito</string>
+    <string name="action_my_location">Minha Localização</string>
+    <string name="action_search">Buscar</string>
+
+    <!-- Activities titles -->
+    <string name="title_activity_stations_list">Estações</string>
+    <string name="title_activity_station">Estação</string>
+    <string name="title_activity_networks_list">Selecione uma rede</string>
+    <string name="title_activity_map">Mapa</string>
+
+    <!-- Welcome dialog -->
+    <string name="welcome_dialog_message">Antes de começar, por favor escolha uma rede de bicicleta nas configurações</string>
+    <string name="welcome_dialog_ok">OK</string>
+    <string name="welcome_dialog_cancel">Cancelar</string>
+    <string name="welcome_dialog_title">Bem-Vindo</string>
+
+    <!-- Map -->
+    <string name="location_not_found">Localização não encontrada</string>
+    <string name="network_selected">selecionado</string>
+    <string name="bike_network_downloading">Por favor Espere enquanto a rede de bicicletas está baixado</string>
+
+    <!-- Various -->
+    <string name="free_bikes">Bicicletas livres:\u00A0</string>
+    <string name="empty_slots">As caça-níqueis vazias:\u00A0</string>
+    <string name="all_stations">Todas as estações</string>
+    <string name="favorite_stations">Favoritas</string>
+    <string name="station_added_to_favorites">Estação adicionada as favoritas</string>
+    <string name="stations_removed_from_favorites">Estação retirada das favoritas</string>
+    <string name="no_nav_application">Tu não tens nenhuma aplicação de navegação instalada</string>
+    <string name="is_bonus_station">Bônus estação</string>
+    <string name="cards_accepted">Cartas aceitadas</string>
+
+</resources>
