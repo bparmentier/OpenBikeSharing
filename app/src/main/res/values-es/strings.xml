@@ -40,7 +40,9 @@
     <string name="title_activity_map">Mapa</string>
 
     <!-- Welcome dialog -->
-    <string name="welcome_dialog_message">Antes de empezar, elija una red de bicicletas en la Configuración</string>
+    <string name="welcome_dialog_message">
+        Antes de empezar, elija una red de bicicletas en la Configuración
+    </string>
     <string name="welcome_dialog_ok">OK</string>
     <string name="welcome_dialog_cancel">Cancelar</string>
     <string name="welcome_dialog_title">Bienvenido</string>
@@ -60,5 +62,20 @@
     <string name="no_nav_application">Usted no tiene ninguna aplicación de navegación instalado</string>
     <string name="is_bonus_station">Bonus estación</string>
     <string name="cards_accepted">Tarjetas aceptadas</string>
+    <string name="db_last_update">Última actualización: %1$s</string>
+    <string name="db_last_update_never">nunca</string>
+    <string name="updated_just_now">Ahora</string>
+    <plurals name="updated_minutes_ago">
+        <item quantity="one">Hace %d minuto</item>
+        <item quantity="other">Hace %d minutos</item>
+    </plurals>
+    <plurals name="updated_hours_ago">
+        <item quantity="one">Hace %d hora</item>
+        <item quantity="other">Hace %d horas</item>
+    </plurals>
+    <plurals name="updated_days_ago">
+        <item quantity="one">Hace %d día</item>
+        <item quantity="other">Hace %d días</item>
+    </plurals>
 
 </resources>
