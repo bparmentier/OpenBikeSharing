@@ -40,7 +40,9 @@
     <string name="title_activity_map">Karte</string>
 
     <!-- Welcome dialog -->
-    <string name="welcome_dialog_message">Bitte wählen Sie ein Fahrrad Netzwerk aus bevor Sie beginnen. </string>
+    <string name="welcome_dialog_message">
+        Bitte wählen Sie ein Fahrrad Netzwerk aus bevor Sie beginnen.
+    </string>
     <string name="welcome_dialog_ok">OK</string>
     <string name="welcome_dialog_cancel">Abbrechen</string>
     <string name="welcome_dialog_title">Willkommen</string>
@@ -60,5 +62,20 @@
     <string name="no_nav_application">Sie haben keine Navigationsanwendung installiert</string>
     <string name="is_bonus_station">Bonus station</string>
     <string name="cards_accepted">Kreditkarten akzeptiert</string>
+    <string name="db_last_update">Letzten Aktualisierung: %1$s</string>
+    <string name="db_last_update_never">niemals</string>
+    <string name="updated_just_now">Gerade jetzt</string>
+    <plurals name="updated_minutes_ago">
+        <item quantity="one">Vor %d Minute</item>
+        <item quantity="other">Vor %d Minuten</item>
+    </plurals>
+    <plurals name="updated_hours_ago">
+        <item quantity="one">Vor %d Stunde</item>
+        <item quantity="other">Vor %d Stunden</item>
+    </plurals>
+    <plurals name="updated_days_ago">
+        <item quantity="one">Vor %d Tag</item>
+        <item quantity="other">Vor %d Tagen</item>
+    </plurals>
 
 </resources>
