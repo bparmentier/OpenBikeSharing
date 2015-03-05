@@ -22,49 +22,49 @@
 
     <!-- Error messages -->
     <string name="connection_error">Error de conexión</string>
-    <string name="json_error">Error al recuperar datos</string>
+    <string name="json_error">Error al obtener datos</string>
 
     <!-- Actions -->
-    <string name="action_settings">Ajustes </string>
+    <string name="action_settings">Ajustes</string>
     <string name="action_refresh">Refrescar</string>
     <string name="action_map">Mapa</string>
     <string name="action_directions">Rutas</string>
-    <string name="action_favorite">Favoritas</string>
+    <string name="action_favorite">Favoritos</string>
     <string name="action_my_location">Mi ubicación</string>
     <string name="action_search">Buscar</string>
 
     <!-- Activities titles -->
-    <string name="title_activity_stations_list">Estaciónes</string>
+    <string name="title_activity_stations_list">Estaciones</string>
     <string name="title_activity_station">Estación</string>
-    <string name="title_activity_networks_list">Seleccione Red Ciclo</string>
+    <string name="title_activity_networks_list">Seleccionar una red</string>
     <string name="title_activity_map">Mapa</string>
 
     <!-- Welcome dialog -->
     <string name="welcome_dialog_message">
-        Antes de empezar, elija una red de bicicletas en la Configuración
+        Antes de empezar, elija una red de bicicletas de la lista
     </string>
     <string name="welcome_dialog_ok">OK</string>
     <string name="welcome_dialog_cancel">Cancelar</string>
     <string name="welcome_dialog_title">Bienvenido</string>
 
     <!-- Map -->
-    <string name="location_not_found">Ubicación no encontrado</string>
-    <string name="network_selected">seleccionado</string>
-    <string name="bike_network_downloading">Por favor Espere mientras la red de bicicletas está siendo descargado</string>
+    <string name="location_not_found">Ubicación no encontrada</string>
+    <string name="network_selected">seleccionada</string>
+    <string name="bike_network_downloading">Por favor espere mientras la red de bicicletas está siendo descargada</string>
 
     <!-- Various -->
-    <string name="free_bikes">Bicicletas libras:\u00A0</string>
-    <string name="empty_slots">Las ranuras vacías:\u00A0</string>
+    <string name="free_bikes">Bicicletas:\u00A0</string>
+    <string name="empty_slots">Espacios:\u00A0</string>
     <string name="all_stations">Todas las estaciones</string>
-    <string name="favorite_stations">Favoritas</string>
-    <string name="station_added_to_favorites">Estación añadido a favoritas</string>
-    <string name="stations_removed_from_favorites">Estación retirado de favoritas</string>
-    <string name="no_nav_application">Usted no tiene ninguna aplicación de navegación instalado</string>
-    <string name="is_bonus_station">Bonus estación</string>
-    <string name="cards_accepted">Tarjetas aceptadas</string>
+    <string name="favorite_stations">Favoritos</string>
+    <string name="station_added_to_favorites">Estación añadida a favoritos</string>
+    <string name="stations_removed_from_favorites">Estación retirada de favoritos</string>
+    <string name="no_nav_application">Ninguna aplicación de navegación instalada</string>
+    <string name="is_bonus_station">Estación bonus</string>
+    <string name="cards_accepted">Acepta tarjeta</string>
     <string name="db_last_update">Última actualización: %1$s</string>
     <string name="db_last_update_never">nunca</string>
-    <string name="updated_just_now">Ahora</string>
+    <string name="updated_just_now">Ahora mismo</string>
     <plurals name="updated_minutes_ago">
         <item quantity="one">Hace %d minuto</item>
         <item quantity="other">Hace %d minutos</item>
