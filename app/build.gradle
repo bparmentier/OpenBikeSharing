@@ -25,8 +25,8 @@ android {
         applicationId "be.brunoparmentier.openbikesharing.app"
         minSdkVersion 14
         targetSdkVersion 22
-        versionCode 14
-        versionName "1.7.1"
+        versionCode 15
+        versionName "1.7.2"
     }
 
     buildTypes {
