@@ -76,7 +76,12 @@ public class BikeNetworkParser {
                     double latitude = rawStation.getDouble("latitude");
                     double longitude = rawStation.getDouble("longitude");
                     int freeBikes = rawStation.getInt("free_bikes");
-                    int emptySlots = rawStation.getInt("empty_slots");
+                    int emptySlots;
+                    if (!rawStation.isNull("empty_slots")) {
+                        emptySlots = rawStation.getInt("empty_slots");
+                    } else {
+                        emptySlots = -1;
+                    }
 
                     Station station = new Station(id, name, lastUpdate, latitude, longitude,
                             freeBikes, emptySlots);

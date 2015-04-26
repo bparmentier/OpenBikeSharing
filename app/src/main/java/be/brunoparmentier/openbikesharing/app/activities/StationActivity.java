@@ -114,7 +114,8 @@ public class StationActivity extends Activity {
         /* Marker icon */
         int emptySlots = station.getEmptySlots();
         int freeBikes = station.getFreeBikes();
-        if (emptySlots + freeBikes == 0 || station.getStatus() == StationStatus.CLOSED) {
+
+        if ((emptySlots == 0 && freeBikes == 0) || station.getStatus() == StationStatus.CLOSED) {
             marker.setIcon(getResources().getDrawable(R.drawable.ic_station_marker_unavailable));
         } else {
             double ratio = (double) freeBikes / (double) (freeBikes + emptySlots);
@@ -126,7 +127,7 @@ public class StationActivity extends Activity {
                 marker.setIcon(getResources().getDrawable(R.drawable.ic_station_marker50));
             } else if (ratio >= 0.7 && emptySlots >= 1) {
                 marker.setIcon(getResources().getDrawable(R.drawable.ic_station_marker75));
-            } else if (emptySlots == 0) {
+            } else if (emptySlots == 0 || emptySlots == -1) {
                 marker.setIcon(getResources().getDrawable(R.drawable.ic_station_marker100));
             }
         }
@@ -139,8 +140,14 @@ public class StationActivity extends Activity {
 
         stationName.setText(station.getName());
         setLastUpdateText(station.getLastUpdate());
-        stationEmptySlots.setText(String.valueOf(station.getEmptySlots()));
         stationFreeBikes.setText(String.valueOf(station.getFreeBikes()));
+        if (station.getEmptySlots() == -1) {
+            ImageView stationEmptySlotsLogo = (ImageView) findViewById(R.id.stationEmptySlotsLogo);
+            stationEmptySlots.setVisibility(View.GONE);
+            stationEmptySlotsLogo.setVisibility(View.GONE);
+        } else {
+            stationEmptySlots.setText(String.valueOf(station.getEmptySlots()));
+        }
 
         if (station.getAddress() != null) {
             TextView stationAddress = (TextView) findViewById(R.id.stationAddress);

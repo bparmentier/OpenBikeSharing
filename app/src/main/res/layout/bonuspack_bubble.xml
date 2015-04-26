@@ -53,6 +53,7 @@
             android:rowCount="2">
 
             <ImageView
+                android:id="@+id/bubble_freebikes_logo"
                 android:layout_width="22sp"
                 android:layout_height="22sp"
                 android:layout_gravity="center_vertical"
@@ -69,6 +70,7 @@
                 android:textSize="14sp" />
 
             <ImageView
+                android:id="@+id/bubble_emptyslots_logo"
                 android:layout_width="22sp"
                 android:layout_height="22sp"
                 android:layout_marginRight="5dp"

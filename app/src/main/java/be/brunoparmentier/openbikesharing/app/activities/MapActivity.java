@@ -25,6 +25,7 @@ import android.graphics.Bitmap;
 import android.graphics.drawable.BitmapDrawable;
 import android.graphics.drawable.Drawable;
 import android.location.LocationManager;
+import android.media.Image;
 import android.os.Bundle;
 import android.preference.PreferenceManager;
 import android.support.v4.app.NavUtils;
@@ -32,6 +33,7 @@ import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.Toast;
 
@@ -228,12 +230,15 @@ public class MapActivity extends Activity implements MapEventsReceiver {
         marker.setAnchor(Marker.ANCHOR_CENTER, Marker.ANCHOR_CENTER);
         marker.setTitle(station.getName());
         marker.setSnippet(String.valueOf(station.getFreeBikes())); // free bikes
-        marker.setSubDescription(String.valueOf(station.getEmptySlots())); // empty slots
+        if (station.getEmptySlots() != -1) {
+            marker.setSubDescription(String.valueOf(station.getEmptySlots())); // empty slots
+        }
 
         /* Marker icon */
         int emptySlots = station.getEmptySlots();
         int freeBikes = station.getFreeBikes();
-        if (emptySlots + freeBikes == 0 || station.getStatus() == StationStatus.CLOSED) {
+
+        if ((emptySlots == 0 && freeBikes == 0) || station.getStatus() == StationStatus.CLOSED) {
             marker.setIcon(getResources().getDrawable(R.drawable.ic_station_marker_unavailable));
         } else {
             double ratio = (double) freeBikes / (double) (freeBikes + emptySlots);
@@ -245,7 +250,7 @@ public class MapActivity extends Activity implements MapEventsReceiver {
                 marker.setIcon(getResources().getDrawable(R.drawable.ic_station_marker50));
             } else if (ratio >= 0.7 && emptySlots >= 1) {
                 marker.setIcon(getResources().getDrawable(R.drawable.ic_station_marker75));
-            } else if (emptySlots == 0) {
+            } else if (emptySlots == 0 || emptySlots == -1) {
                 marker.setIcon(getResources().getDrawable(R.drawable.ic_station_marker100));
             }
         }
@@ -267,6 +272,10 @@ public class MapActivity extends Activity implements MapEventsReceiver {
             closeAllInfoWindowsOn(map);
 
             LinearLayout layout = (LinearLayout) getView().findViewById(R.id.map_bubble_layout);
+            if (markerStation.getEmptySlots() == -1) {
+                ImageView emptySlotsLogo = (ImageView) getView().findViewById(R.id.bubble_emptyslots_logo);
+                emptySlotsLogo.setVisibility(View.GONE);
+            }
             layout.setClickable(true);
             layout.setOnClickListener(new View.OnClickListener() {
                 @Override

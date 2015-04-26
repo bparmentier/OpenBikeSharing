@@ -23,6 +23,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import java.util.ArrayList;
@@ -68,11 +69,23 @@ public class StationsListAdapter extends ArrayAdapter<Station> {
                 }
             }
 
-            if (freeBikesValue != null)
-                freeBikesValue.setText(String.valueOf(station.getFreeBikes()));
+            if (freeBikesValue != null) {
+                int bikes = station.getFreeBikes();
+                freeBikesValue.setText(String.valueOf(bikes));
+            }
 
-            if (emptySlotsValue != null)
-                emptySlotsValue.setText(String.valueOf(station.getEmptySlots()));
+            if (emptySlotsValue != null) {
+                int emptySlots = station.getEmptySlots();
+                ImageView emptySlotsLogo = (ImageView) v.findViewById(R.id.emptySlotsLogo);
+                if (emptySlots == -1) {
+                    emptySlotsLogo.setVisibility(View.GONE);
+                    emptySlotsValue.setVisibility(View.GONE);
+                } else {
+                    emptySlotsLogo.setVisibility(View.VISIBLE);
+                    emptySlotsValue.setVisibility(View.VISIBLE);
+                    emptySlotsValue.setText(String.valueOf(emptySlots));
+                }
+            }
         }
 
         return v;
