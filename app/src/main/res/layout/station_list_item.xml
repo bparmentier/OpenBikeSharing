@@ -18,52 +18,12 @@
   -->
 
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:layout_width="fill_parent"
-    android:layout_height="wrap_content">
-
-<TextView
-        android:id="@+id/emptySlotsValue"
-        android:layout_width="25dp"
-        android:layout_height="match_parent"
-        android:layout_alignParentEnd="true"
-        android:layout_alignParentRight="true"
-        android:layout_centerVertical="true"
-        android:gravity="center_vertical"
-        android:textAppearance="?android:attr/textAppearanceMedium" />
-
-    <ImageView
-        android:id="@+id/emptySlotsLogo"
-        android:layout_width="40dp"
-        android:layout_height="40dp"
-        android:layout_centerVertical="true"
-        android:layout_gravity="center_vertical"
-        android:layout_toLeftOf="@id/emptySlotsValue"
-        android:layout_toStartOf="@id/emptySlotsValue"
-        android:contentDescription="@string/empty_slots"
-        android:padding="3dp"
-        android:src="@drawable/ic_parking" />
-
-    <TextView
-        android:id="@+id/freeBikesValue"
-        android:layout_width="25dp"
-        android:layout_height="match_parent"
-        android:layout_centerVertical="true"
-        android:layout_toLeftOf="@id/emptySlotsLogo"
-        android:layout_toStartOf="@id/emptySlotsLogo"
-        android:gravity="center_vertical"
-        android:textAppearance="?android:attr/textAppearanceMedium" />
-
-    <ImageView
-        android:id="@+id/freeBikesLogo"
-        android:layout_width="40dp"
-        android:layout_height="40dp"
-        android:layout_centerVertical="true"
-        android:layout_gravity="center_vertical"
-        android:layout_toLeftOf="@id/freeBikesValue"
-        android:layout_toStartOf="@id/freeBikesValue"
-        android:contentDescription="@string/free_bikes"
-        android:padding="3dp"
-        android:src="@drawable/ic_bike" />
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:paddingEnd="?android:attr/listPreferredItemPaddingEnd"
+    android:paddingLeft="?android:attr/listPreferredItemPaddingLeft"
+    android:paddingRight="?android:attr/listPreferredItemPaddingRight"
+    android:paddingStart="?android:attr/listPreferredItemPaddingStart">
 
     <TextView
         android:id="@+id/stationNameTitle"
@@ -71,14 +31,51 @@
         android:layout_height="match_parent"
         android:layout_alignParentLeft="true"
         android:layout_alignParentStart="true"
-        android:layout_toLeftOf="@id/freeBikesLogo"
-        android:layout_toStartOf="@id/freeBikesLogo"
+        android:layout_toLeftOf="@+id/bikesAvailabilityLayout"
+        android:layout_toStartOf="@+id/bikesAvailabilityLayout"
         android:gravity="center_vertical"
         android:minHeight="?android:attr/listPreferredItemHeightSmall"
-        android:paddingEnd="?android:attr/listPreferredItemPaddingEnd"
-        android:paddingLeft="?android:attr/listPreferredItemPaddingLeft"
-        android:paddingRight="?android:attr/listPreferredItemPaddingRight"
-        android:paddingStart="?android:attr/listPreferredItemPaddingStart"
         android:textAppearance="?android:attr/textAppearanceListItemSmall" />
 
+    <LinearLayout
+        android:id="@+id/bikesAvailabilityLayout"
+        android:layout_width="wrap_content"
+        android:layout_height="match_parent"
+        android:orientation="horizontal"
+        android:layout_centerVertical="true"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentEnd="true">
+
+        <ImageView
+            android:id="@+id/freeBikesLogo"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:layout_gravity="center_vertical"
+            android:padding="@dimen/station_list_item_logo_padding"
+            android:contentDescription="@string/free_bikes"
+            android:src="@drawable/ic_bike" />
+
+        <TextView
+            android:id="@+id/freeBikesValue"
+            android:layout_width="25dp"
+            android:layout_height="match_parent"
+            android:gravity="center_vertical"
+            android:textAppearance="?android:attr/textAppearanceMedium" />
+
+        <ImageView
+            android:id="@+id/emptySlotsLogo"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:layout_gravity="center_vertical"
+            android:padding="@dimen/station_list_item_logo_padding"
+            android:contentDescription="@string/empty_slots"
+            android:src="@drawable/ic_parking" />
+
+        <TextView
+            android:id="@+id/emptySlotsValue"
+            android:layout_width="25dp"
+            android:layout_height="match_parent"
+            android:gravity="center_vertical"
+            android:textAppearance="?android:attr/textAppearanceMedium" />
+    </LinearLayout>
 </RelativeLayout>
