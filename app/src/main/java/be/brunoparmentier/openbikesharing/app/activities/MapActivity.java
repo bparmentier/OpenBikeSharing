@@ -57,6 +57,9 @@ import be.brunoparmentier.openbikesharing.app.db.StationsDataSource;
 
 public class MapActivity extends Activity implements MapEventsReceiver {
     private static final String TAG = "MapActivity";
+    private static final String MAP_CURRENT_ZOOM_KEY = "map-current-zoom";
+    private static final String MAP_CENTER_LAT_KEY = "map-center-lat";
+    private static final String MAP_CENTER_LON_KEY = "map-center-lon";
 
     private static final String PREF_KEY_NETWORK_LATITUDE = "network-latitude";
     private static final String PREF_KEY_NETWORK_LONGITUDE = "network-longitude";
@@ -66,6 +69,14 @@ public class MapActivity extends Activity implements MapEventsReceiver {
     private MyLocationNewOverlay myLocationOverlay;
     private StationMarkerInfoWindow stationMarkerInfoWindow;
     private StationsDataSource stationsDataSource;
+
+    @Override
+    protected void onSaveInstanceState(Bundle outState) {
+        super.onSaveInstanceState(outState);
+        outState.putInt(MAP_CURRENT_ZOOM_KEY, map.getZoomLevel());
+        outState.putDouble(MAP_CENTER_LAT_KEY, map.getMapCenter().getLatitude());
+        outState.putDouble(MAP_CENTER_LON_KEY, map.getMapCenter().getLongitude());
+    }
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -98,9 +109,6 @@ public class MapActivity extends Activity implements MapEventsReceiver {
         }
         map.invalidate();
 
-        mapController = map.getController();
-        mapController.setZoom(16);
-
         map.setMultiTouchControls(true);
         map.setBuiltInZoomControls(true);
         map.setMinZoomLevel(3);
@@ -130,23 +138,30 @@ public class MapActivity extends Activity implements MapEventsReceiver {
         imlp.setLocationUpdateMinTime(60000);
 
         myLocationOverlay = new MyLocationNewOverlay(this.getBaseContext(), imlp, this.map);
+        myLocationOverlay.enableMyLocation();
         map.getOverlays().add(this.myLocationOverlay);
 
-        myLocationOverlay.enableMyLocation();
+        mapController = map.getController();
+        if (savedInstanceState != null) {
+            mapController.setZoom(savedInstanceState.getInt(MAP_CURRENT_ZOOM_KEY));
+            mapController.setCenter(new GeoPoint(savedInstanceState.getDouble(MAP_CENTER_LAT_KEY),
+                    savedInstanceState.getDouble(MAP_CENTER_LON_KEY)));
+        } else {
+            try {
+                mapController.setZoom(16);
+                LocationManager locationManager =
+                        (LocationManager) this.getSystemService(Context.LOCATION_SERVICE);
+                GeoPoint userLocation = new GeoPoint(locationManager
+                        .getLastKnownLocation(LocationManager.NETWORK_PROVIDER));
+                mapController.animateTo(userLocation);
+            } catch (NullPointerException e) {
+                mapController.setZoom(13);
+                double bikeNetworkLatitude = Double.longBitsToDouble(settings.getLong(PREF_KEY_NETWORK_LATITUDE, 0));
+                double bikeNetworkLongitude = Double.longBitsToDouble(settings.getLong(PREF_KEY_NETWORK_LONGITUDE, 0));
+                mapController.animateTo(new GeoPoint(bikeNetworkLatitude, bikeNetworkLongitude));
 
-        try {
-            LocationManager locationManager =
-                    (LocationManager) this.getSystemService(Context.LOCATION_SERVICE);
-            GeoPoint userLocation = new GeoPoint(locationManager
-                    .getLastKnownLocation(LocationManager.NETWORK_PROVIDER));
-            mapController.animateTo(userLocation);
-        } catch (NullPointerException e) {
-            mapController.setZoom(13);
-            double bikeNetworkLatitude = Double.longBitsToDouble(settings.getLong(PREF_KEY_NETWORK_LATITUDE, 0));
-            double bikeNetworkLongitude = Double.longBitsToDouble(settings.getLong(PREF_KEY_NETWORK_LONGITUDE, 0));
-            mapController.animateTo(new GeoPoint(bikeNetworkLatitude, bikeNetworkLongitude));
-
-            Toast.makeText(this, R.string.location_not_found, Toast.LENGTH_LONG).show();
+                Toast.makeText(this, R.string.location_not_found, Toast.LENGTH_LONG).show();
+            }
         }
     }
 
