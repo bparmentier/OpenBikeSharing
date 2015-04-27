@@ -137,6 +137,12 @@ public class MapActivity extends Activity implements MapEventsReceiver {
         GpsMyLocationProvider imlp = new GpsMyLocationProvider(this.getBaseContext());
         imlp.setLocationUpdateMinDistance(1000);
         imlp.setLocationUpdateMinTime(60000);
+        map.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+
+            }
+        });
 
         myLocationOverlay = new MyLocationNewOverlay(this.getBaseContext(), imlp, this.map);
         myLocationOverlay.enableMyLocation();
@@ -156,10 +162,12 @@ public class MapActivity extends Activity implements MapEventsReceiver {
                         .getLastKnownLocation(LocationManager.NETWORK_PROVIDER));
                 mapController.animateTo(userLocation);
             } catch (NullPointerException e) {
+                Log.e(TAG, e.getMessage());
+
                 mapController.setZoom(13);
                 double bikeNetworkLatitude = Double.longBitsToDouble(settings.getLong(PREF_KEY_NETWORK_LATITUDE, 0));
                 double bikeNetworkLongitude = Double.longBitsToDouble(settings.getLong(PREF_KEY_NETWORK_LONGITUDE, 0));
-                mapController.animateTo(new GeoPoint(bikeNetworkLatitude, bikeNetworkLongitude));
+                mapController.setCenter(new GeoPoint(bikeNetworkLatitude, bikeNetworkLongitude));
 
                 Toast.makeText(this, R.string.location_not_found, Toast.LENGTH_LONG).show();
             }

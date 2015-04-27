@@ -117,6 +117,12 @@ public class BikeNetworksListActivity extends Activity {
                         editor.putString(PREF_KEY_NETWORK_ID, searchedBikeNetworks.get(position).getId());
                         editor.putString(PREF_KEY_NETWORK_NAME, searchedBikeNetworks.get(position).getName());
                         editor.putString(PREF_KEY_NETWORK_CITY, searchedBikeNetworks.get(position).getLocation().getCity());
+                        editor.putLong(PREF_KEY_NETWORK_LATITUDE, Double.doubleToRawLongBits(
+                                        searchedBikeNetworks.get(position).getLocation().getLatitude())
+                        );
+                        editor.putLong(PREF_KEY_NETWORK_LONGITUDE, Double.doubleToRawLongBits(
+                                        searchedBikeNetworks.get(position).getLocation().getLongitude())
+                        );
                         editor.apply();
                         Toast.makeText(BikeNetworksListActivity.this,
                                 searchedBikeNetworks.get(position).getName()
@@ -125,6 +131,13 @@ public class BikeNetworksListActivity extends Activity {
                                         + ") " + getString(R.string.network_selected),
                                 Toast.LENGTH_SHORT).show();
 
+                        Intent resultIntent = new Intent();
+                        resultIntent.putExtra("network-id", searchedBikeNetworks.get(position).getId());
+                        if (getParent() == null) {
+                            setResult(Activity.RESULT_OK, resultIntent);
+                        } else {
+                            getParent().setResult(Activity.RESULT_OK, resultIntent);
+                        }
                         finish();
                     }
                 });
@@ -196,7 +209,7 @@ public class BikeNetworksListActivity extends Activity {
                                         bikeNetworks.get(position).getLocation().getLatitude())
                         );
                         editor.putLong(PREF_KEY_NETWORK_LONGITUDE, Double.doubleToRawLongBits(
-                                bikeNetworks.get(position).getLocation().getLongitude())
+                                        bikeNetworks.get(position).getLocation().getLongitude())
                         );
                         editor.apply();
                         Toast.makeText(BikeNetworksListActivity.this,
