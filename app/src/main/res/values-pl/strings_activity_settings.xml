@@ -1,0 +1,48 @@
+<!--
+  ~ Copyright (c) 2014-2015 Bruno Parmentier. This file is part of OpenBikeSharing.
+  ~
+  ~ OpenBikeSharing is free software: you can redistribute it and/or modify
+  ~ it under the terms of the GNU General Public License as published by
+  ~ the Free Software Foundation, either version 3 of the License, or
+  ~ (at your option) any later version.
+  ~
+  ~ OpenBikeSharing is distributed in the hope that it will be useful,
+  ~ but WITHOUT ANY WARRANTY; without even the implied warranty of
+  ~ MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+  ~ GNU General Public License for more details.
+  ~
+  ~ You should have received a copy of the GNU General Public License
+  ~ along with OpenBikeSharing.  If not, see <http://www.gnu.org/licenses/>.
+  -->
+
+<resources>
+    <string name="title_activity_settings">Ustawienia</string>
+
+    <!-- Strings related to Settings -->
+
+    <!-- Example General settings -->
+    <string name="pref_header_general">Ogólne</string>
+
+    <string name="pref_title_bike_networks_list">Wybierz sieć</string>
+
+    <string name="pref_title_license">Licencja</string>
+    
+    <string name="pref_title_about">O</string>
+    <string name="pref_title_website">Strona</string>
+    <string name="pref_title_source_code">Kod źródłowy</string>
+    <string name="pref_title_developers_website">Strona twórcy</string>
+    <string name="pref_title_donate_bitcoin">Podaruj Bitcoin</string>
+    <string name="pref_title_citybikes_api">CityBikes API</string>
+    <string name="pref_title_osmdroid_library">osmdroid library</string>
+    <string name="pref_title_openstreetmap">OpenStreetMap</string>
+    <string name="pref_title_version">Wersja</string>
+
+    <!-- Map layer -->
+    <string name="pref_map_layer_title">Warstwa mapy</string>
+
+    <string name="pref_title_strip_station_id">Usuń ID stacji</string>
+    <string name="pref_title_strip_station_id_summary">
+        Usuwa ID z nazwy stacji (przydatne tylko w niektórych sieciach)
+    </string>
+
+</resources>
