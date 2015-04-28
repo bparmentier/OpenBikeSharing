@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="utf-8"?><!--
+  ~ Copyright (c) 2014-2015 Bruno Parmentier. This file is part of OpenBikeSharing.
+  ~
+  ~ OpenBikeSharing is free software: you can redistribute it and/or modify
+  ~ it under the terms of the GNU General Public License as published by
+  ~ the Free Software Foundation, either version 3 of the License, or
+  ~ (at your option) any later version.
+  ~
+  ~ OpenBikeSharing is distributed in the hope that it will be useful,
+  ~ but WITHOUT ANY WARRANTY; without even the implied warranty of
+  ~ MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+  ~ GNU General Public License for more details.
+  ~
+  ~ You should have received a copy of the GNU General Public License
+  ~ along with OpenBikeSharing.  If not, see <http://www.gnu.org/licenses/>.
+  -->
+
+<resources>
+
+    <!-- App name -->
+    <string name="app_name">OpenBikeSharing</string>
+
+    <!-- Error messages -->
+    <string name="connection_error">Błąd połączenia</string>
+    <string name="json_error">Błąd pobierania danych</string>
+
+    <!-- Actions -->
+    <string name="action_settings">Ustawienia</string>
+    <string name="action_refresh">Odśwież</string>
+    <string name="action_map">Mapa</string>
+    <string name="action_directions">Wskazówki</string>
+    <string name="action_favorite">Ulubione</string>
+    <string name="action_my_location">Moja lokalizacja</string>
+    <string name="action_search">Szukaj</string>
+
+    <!-- Activities titles -->
+    <string name="title_activity_stations_list">Stacje</string>
+    <string name="title_activity_station">Stacja</string>
+    <string name="title_activity_networks_list">Wybież sieć</string>
+    <string name="title_activity_map">Mapa</string>
+
+    <!-- Welcome dialog -->
+    <string name="welcome_dialog_message">
+		Przed rozpoczęciem, wybierz z listy sieć rowerową.
+        \nPonadto upewnij się, że jesteś podłączony do Internetu
+    </string>
+    <string name="welcome_dialog_ok">OK</string>
+    <string name="welcome_dialog_cancel">Anuluj</string>
+    <string name="welcome_dialog_title">Witaj</string>
+
+    <!-- Map -->
+    <string name="location_not_found">Lokacja nie odnaleziona</string>
+    <string name="network_selected">wybrane</string>
+    <string name="bike_network_downloading">Proszę czekaj, sieć rowerowa jest pobierana</string>
+
+    <!-- Various -->
+    <string name="free_bikes">Dostępne rowery:\u00A0</string>
+    <string name="empty_slots">Wolne sloty:\u00A0</string>
+    <string name="all_stations">Wszystkie stacje</string>
+    <string name="favorite_stations">Ulubione</string>
+    <string name="station_added_to_favorites">Stacja dodana do ulubionych</string>
+    <string name="stations_removed_from_favorites">Stacja usunięta z ulubionych</string>
+    <string name="no_nav_application">Nie masz zainstalowanej żadnej aplikacji do nawigacji</string>
+    <string name="is_bonus_station">Stacja bonusowa</string>
+    <string name="cards_accepted">Karty akceptowane</string>
+    <string name="db_last_update">Ostatnia aktualizacja: %1$s</string>
+    <string name="db_last_update_never">nigdy</string>
+    <string name="updated_just_now">Przed chwilą</string>
+    <plurals name="updated_minutes_ago">
+        <item quantity="one">%d minuta temu</item>
+        <item quantity="few">%d minuty temu</item>
+        <item quantity="other">%d minut temu</item>
+    </plurals>
+    <plurals name="updated_hours_ago">
+        <item quantity="one">%d godzina temu</item>
+        <item quantity="few">%d godziny temu</item>
+        <item quantity="other">%d godzin temu</item>
+    </plurals>
+    <plurals name="updated_days_ago">
+        <item quantity="one">%d dzień temu</item>
+        <item quantity="few">%d dni temu</item>
+        <item quantity="other">%d dni temu</item>
+    </plurals>
+
+</resources>
