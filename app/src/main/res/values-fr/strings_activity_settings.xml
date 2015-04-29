@@ -26,23 +26,6 @@
     <string name="pref_title_bike_networks_list">Choisir un réseau</string>
 
     <string name="pref_title_license">Licence</string>
-    <!--<string name="pref_title_license_message" translatable="false">
-        OpenBikeSharing
-        \nCopyright (C) 2014 Bruno Parmentier\n
-
-        \nThis program is free software: you can redistribute it and/or modify
-        it under the terms of the GNU General Public License as published by
-        the Free Software Foundation, either version 3 of the License, or
-        (at your option) any later version.\n
-
-        \nThis program is distributed in the hope that it will be useful,
-        but WITHOUT ANY WARRANTY; without even the implied warranty of
-        MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
-        GNU General Public License for more details.\n
-
-        \nYou should have received a copy of the GNU General Public License
-        along with this program.  If not, see &lt;http://www.gnu.org/licenses/&gt;.\n
-    </string>-->
 
     <string name="pref_title_about">À propos</string>
     <string name="pref_title_website">Site web</string>
@@ -51,15 +34,12 @@
     <string name="pref_title_donate_bitcoin">Donation Bitcoin</string>
     <string name="pref_title_citybikes_api">API CityBikes</string>
     <string name="pref_title_osmdroid_library">Bibliothèque osmdroid</string>
+    <string name="pref_title_osmbonuspack_library">Bibliothèque OSMBonusPack</string>
     <string name="pref_title_openstreetmap">OpenStreetMap</string>
     <string name="pref_title_version">Version</string>
 
     <!-- Map layer -->
     <string name="pref_map_layer_title">Fond de carte</string>
-    <!--<string name="pref_map_layer_mapnik" translatable="false">Mapnik</string>
-    <string name="pref_map_layer_cyclemap" translatable="false">OpenCycleMap</string>
-    <string name="pref_map_layer_osmpublictransport" translatable="false">OSMPublicTransport</string>
-    <string name="pref_map_layer_mapquestosm" translatable="false">MapQuest-OSM</string>-->
 
     <string name="pref_title_strip_station_id">Masquer l\'ID de la station</string>
     <string name="pref_title_strip_station_id_summary">

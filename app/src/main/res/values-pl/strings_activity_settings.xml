@@ -34,6 +34,7 @@
     <string name="pref_title_donate_bitcoin">Podaruj Bitcoin</string>
     <string name="pref_title_citybikes_api">CityBikes API</string>
     <string name="pref_title_osmdroid_library">osmdroid library</string>
+    <string name="pref_title_osmbonuspack_library">OSMBonusPack library</string>
     <string name="pref_title_openstreetmap">OpenStreetMap</string>
     <string name="pref_title_version">Wersja</string>
 

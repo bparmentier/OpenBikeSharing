@@ -97,6 +97,14 @@
         </Preference>
 
         <Preference
+            android:summary="https://github.com/MKergall/osmbonuspack"
+            android:title="@string/pref_title_osmbonuspack_library">
+            <intent
+                android:action="android.intent.action.VIEW"
+                android:data="https://github.com/MKergall/osmbonuspack" />
+        </Preference>
+
+        <Preference
             android:summary="https://www.openstreetmap.org"
             android:title="@string/pref_title_openstreetmap">
             <intent

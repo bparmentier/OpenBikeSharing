@@ -34,6 +34,7 @@
     <string name="pref_title_donate_bitcoin">Bitcoin Spenden</string>
     <string name="pref_title_citybikes_api">CityBikes API</string>
     <string name="pref_title_osmdroid_library">osmdroid Bibliothek</string>
+    <string name="pref_title_osmbonuspack_library">OSMBonusPack Bibliothek</string>
     <string name="pref_title_openstreetmap">OpenStreetMap</string>
     <string name="pref_title_version">Version</string>
 
