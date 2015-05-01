@@ -36,7 +36,7 @@
     <!-- Activities titles -->
     <string name="title_activity_stations_list">Stacje</string>
     <string name="title_activity_station">Stacja</string>
-    <string name="title_activity_networks_list">Wybież sieć</string>
+    <string name="title_activity_networks_list">Wybierz sieć</string>
     <string name="title_activity_map">Mapa</string>
 
     <!-- Welcome dialog -->
