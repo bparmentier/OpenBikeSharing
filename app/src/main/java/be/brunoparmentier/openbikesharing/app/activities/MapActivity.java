@@ -24,6 +24,7 @@ import android.content.SharedPreferences;
 import android.graphics.Bitmap;
 import android.graphics.drawable.BitmapDrawable;
 import android.graphics.drawable.Drawable;
+import android.location.Location;
 import android.location.LocationManager;
 import android.os.Bundle;
 import android.preference.PreferenceManager;
@@ -154,19 +155,16 @@ public class MapActivity extends Activity implements MapEventsReceiver {
             mapController.setCenter(new GeoPoint(savedInstanceState.getDouble(MAP_CENTER_LAT_KEY),
                     savedInstanceState.getDouble(MAP_CENTER_LON_KEY)));
         } else {
-            try {
+            LocationManager locationManager =
+                    (LocationManager) this.getSystemService(Context.LOCATION_SERVICE);
+            Location userLocation = locationManager.getLastKnownLocation(LocationManager.NETWORK_PROVIDER);
+            if (userLocation != null) {
                 mapController.setZoom(16);
-                LocationManager locationManager =
-                        (LocationManager) this.getSystemService(Context.LOCATION_SERVICE);
-                GeoPoint userLocation = new GeoPoint(locationManager
-                        .getLastKnownLocation(LocationManager.NETWORK_PROVIDER));
-                mapController.animateTo(userLocation);
-            } catch (NullPointerException e) {
-                Log.e(TAG, e.getMessage());
-
-                mapController.setZoom(13);
+                mapController.animateTo(new GeoPoint(userLocation));
+            } else {
                 double bikeNetworkLatitude = Double.longBitsToDouble(settings.getLong(PREF_KEY_NETWORK_LATITUDE, 0));
                 double bikeNetworkLongitude = Double.longBitsToDouble(settings.getLong(PREF_KEY_NETWORK_LONGITUDE, 0));
+                mapController.setZoom(13);
                 mapController.setCenter(new GeoPoint(bikeNetworkLatitude, bikeNetworkLongitude));
 
                 Toast.makeText(this, R.string.location_not_found, Toast.LENGTH_LONG).show();
