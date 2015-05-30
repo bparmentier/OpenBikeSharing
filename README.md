@@ -26,11 +26,14 @@ Contribute
 This is my first Android application. I probably don't comply with all the "good practices" and the
 code may be a bit messy. So if you have enough courage, take a look at it and tell me what is wrong!
 
-If your language is not supported yet, I will gladly add it if you translate some strings for me.
-They are located in `app/src/main/res/values-xx` (there is not much).
+If your language is not yet supported, just copy the `app/src/main/res/values` directory and
+translate the strings in it.
 
-As I don't have as many devices as I would like to test this app on (only one, actually), please
-report any bug/crash that you may encounter. And feel free to make any suggestions to improve it.
+As I don't have as many devices as I would like to test this app on, please report any bug/crash
+that you may encounter. And feel free to make any suggestions to improve it.
+
+To contribute to the [openbikesharing.org](http://openbikesharing.org) website, just switch to the
+[gh-pages](https://github.com/bparmentier/OpenBikeSharing/tree/gh-pages) branch.
 
 Build
 -----
