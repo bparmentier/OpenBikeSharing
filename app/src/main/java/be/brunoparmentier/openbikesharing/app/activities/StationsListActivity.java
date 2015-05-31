@@ -81,6 +81,8 @@ public class StationsListActivity extends FragmentActivity implements ActionBar.
     private ArrayList<Station> favStations;
     private StationsDataSource stationsDataSource;
 
+    private JSONDownloadTask jsonDownloadTask;
+
     private SharedPreferences settings;
 
     private Menu optionsMenu;
@@ -164,7 +166,26 @@ public class StationsListActivity extends FragmentActivity implements ActionBar.
             } else {
                 String networkId = settings.getString(PREF_KEY_NETWORK_ID, "");
                 String stationUrl = BASE_URL + "/" + networkId;
-                new JSONDownloadTask().execute(stationUrl);
+                jsonDownloadTask = new JSONDownloadTask();
+                jsonDownloadTask.execute(stationUrl);
+            }
+        }
+    }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+
+        if ((jsonDownloadTask.getStatus() == AsyncTask.Status.FINISHED)) {
+            long dbLastUpdate = settings.getLong(PREF_KEY_DB_LAST_UPDATE, -1);
+            long currentTime = System.currentTimeMillis();
+
+            /* update automatically if data are more than 10 min old */
+            if ((dbLastUpdate != -1) && ((currentTime - dbLastUpdate) > 600000)) {
+                String networkId = settings.getString(PREF_KEY_NETWORK_ID, "");
+                String stationUrl = BASE_URL + "/" + networkId;
+                jsonDownloadTask = new JSONDownloadTask();
+                jsonDownloadTask.execute(stationUrl);
             }
         }
     }
@@ -229,7 +250,9 @@ public class StationsListActivity extends FragmentActivity implements ActionBar.
                 String networkId = PreferenceManager
                         .getDefaultSharedPreferences(this)
                         .getString(PREF_KEY_NETWORK_ID, "");
-                new JSONDownloadTask().execute(BASE_URL + "/" + networkId);
+                String stationUrl = BASE_URL + "/" + networkId;
+                jsonDownloadTask = new JSONDownloadTask();
+                jsonDownloadTask.execute(stationUrl);
                 return true;
             case R.id.action_map:
                 Intent mapIntent = new Intent(this, MapActivity.class);
@@ -245,8 +268,9 @@ public class StationsListActivity extends FragmentActivity implements ActionBar.
             Log.d(TAG, "PICK_NETWORK_REQUEST");
             if (resultCode == RESULT_OK) {
                 Log.d(TAG, "RESULT_OK");
-                String url = BASE_URL + "/" + data.getExtras().getString("network-id");
-                new JSONDownloadTask().execute(url);
+                String stationUrl = BASE_URL + "/" + data.getExtras().getString("network-id");
+                jsonDownloadTask = new JSONDownloadTask();
+                jsonDownloadTask.execute(stationUrl);
             }
         }
     }
