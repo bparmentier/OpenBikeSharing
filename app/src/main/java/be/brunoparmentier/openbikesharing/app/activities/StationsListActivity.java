@@ -217,6 +217,11 @@ public class StationsListActivity extends FragmentActivity implements ActionBar.
         this.optionsMenu = menu;
         getMenuInflater().inflate(R.menu.stations_list, menu);
 
+        if (jsonDownloadTask.getStatus() == AsyncTask.Status.PENDING
+                || jsonDownloadTask.getStatus() == AsyncTask.Status.RUNNING) {
+            setRefreshActionButtonState(true);
+        }
+
         SearchManager manager = (SearchManager) getSystemService(Context.SEARCH_SERVICE);
 
         searchView = (SearchView) menu.findItem(R.id.action_search).getActionView();
