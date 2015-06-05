@@ -176,7 +176,7 @@ public class StationsListActivity extends FragmentActivity implements ActionBar.
     protected void onResume() {
         super.onResume();
 
-        if ((jsonDownloadTask.getStatus() == AsyncTask.Status.FINISHED)) {
+        if ((jsonDownloadTask != null && jsonDownloadTask.getStatus() == AsyncTask.Status.FINISHED)) {
             long dbLastUpdate = settings.getLong(PREF_KEY_DB_LAST_UPDATE, -1);
             long currentTime = System.currentTimeMillis();
 
@@ -217,8 +217,9 @@ public class StationsListActivity extends FragmentActivity implements ActionBar.
         this.optionsMenu = menu;
         getMenuInflater().inflate(R.menu.stations_list, menu);
 
-        if (jsonDownloadTask.getStatus() == AsyncTask.Status.PENDING
-                || jsonDownloadTask.getStatus() == AsyncTask.Status.RUNNING) {
+        if (jsonDownloadTask != null &&
+                (jsonDownloadTask.getStatus() == AsyncTask.Status.PENDING
+                || jsonDownloadTask.getStatus() == AsyncTask.Status.RUNNING)) {
             setRefreshActionButtonState(true);
         }
 
