@@ -44,7 +44,7 @@
         along with this program.  If not, see &lt;http://www.gnu.org/licenses/&gt;.\n
     </string>
 
-    <string name="pref_title_about">About</string>
+    <string name="pref_title_about">Dettagli</string>
     <string name="pref_title_website">Sito web</string>
     <string name="pref_title_source_code">Codice sorgente</string>
     <string name="pref_title_developers_website">Sito dello sviluppatore</string>
@@ -56,7 +56,7 @@
     <string name="pref_title_version">Versione</string>
 
     <!-- Map layer -->
-    <string name="pref_map_layer_title">Map layer</string>
+    <string name="pref_map_layer_title">Mappa usata</string>
     <string name="pref_map_layer_mapnik" translatable="false">Mapnik</string>
     <string name="pref_map_layer_cyclemap" translatable="false">OpenCycleMap</string>
     <string name="pref_map_layer_osmpublictransport" translatable="false">OSMPublicTransport</string>
