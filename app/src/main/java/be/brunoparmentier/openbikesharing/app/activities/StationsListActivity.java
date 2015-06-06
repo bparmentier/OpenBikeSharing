@@ -131,12 +131,11 @@ public class StationsListActivity extends FragmentActivity implements ActionBar.
         actionBar.setHomeButtonEnabled(false);
 
         settings = PreferenceManager.getDefaultSharedPreferences(this);
-        boolean firstRun = settings.getString(PREF_KEY_NETWORK_ID, "").isEmpty();
 
         actionBar.setNavigationMode(ActionBar.NAVIGATION_MODE_TABS);
         tabsPagerAdapter = new TabsPagerAdapter(getSupportFragmentManager());
         viewPager.setAdapter(tabsPagerAdapter);
-
+        boolean firstRun = settings.getString(PREF_KEY_NETWORK_ID, "").isEmpty();
         setDBLastUpdateText();
 
         if (firstRun) {
@@ -176,7 +175,7 @@ public class StationsListActivity extends FragmentActivity implements ActionBar.
     protected void onResume() {
         super.onResume();
 
-        if ((jsonDownloadTask.getStatus() == AsyncTask.Status.FINISHED)) {
+        if ((jsonDownloadTask != null && jsonDownloadTask.getStatus() == AsyncTask.Status.FINISHED)) {
             long dbLastUpdate = settings.getLong(PREF_KEY_DB_LAST_UPDATE, -1);
             long currentTime = System.currentTimeMillis();
 
@@ -216,10 +215,10 @@ public class StationsListActivity extends FragmentActivity implements ActionBar.
     public boolean onCreateOptionsMenu(Menu menu) {
         this.optionsMenu = menu;
         getMenuInflater().inflate(R.menu.stations_list, menu);
-
-        if (jsonDownloadTask.getStatus() == AsyncTask.Status.PENDING
-                || jsonDownloadTask.getStatus() == AsyncTask.Status.RUNNING) {
+        if (jsonDownloadTask != null && (jsonDownloadTask.getStatus() == AsyncTask.Status.PENDING
+                || jsonDownloadTask.getStatus() == AsyncTask.Status.RUNNING)) {
             setRefreshActionButtonState(true);
+
         }
 
         SearchManager manager = (SearchManager) getSystemService(Context.SEARCH_SERVICE);
