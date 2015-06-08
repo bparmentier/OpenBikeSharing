@@ -215,7 +215,9 @@ public class StationsListActivity extends FragmentActivity implements ActionBar.
     public boolean onCreateOptionsMenu(Menu menu) {
         this.optionsMenu = menu;
         getMenuInflater().inflate(R.menu.stations_list, menu);
-        if (jsonDownloadTask != null && (jsonDownloadTask.getStatus() == AsyncTask.Status.PENDING
+
+        if (jsonDownloadTask != null &&
+                (jsonDownloadTask.getStatus() == AsyncTask.Status.PENDING
                 || jsonDownloadTask.getStatus() == AsyncTask.Status.RUNNING)) {
             setRefreshActionButtonState(true);
 
