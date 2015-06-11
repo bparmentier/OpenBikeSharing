@@ -131,12 +131,11 @@ public class StationsListActivity extends FragmentActivity implements ActionBar.
         actionBar.setHomeButtonEnabled(false);
 
         settings = PreferenceManager.getDefaultSharedPreferences(this);
-        boolean firstRun = settings.getString(PREF_KEY_NETWORK_ID, "").isEmpty();
 
         actionBar.setNavigationMode(ActionBar.NAVIGATION_MODE_TABS);
         tabsPagerAdapter = new TabsPagerAdapter(getSupportFragmentManager());
         viewPager.setAdapter(tabsPagerAdapter);
-
+        boolean firstRun = settings.getString(PREF_KEY_NETWORK_ID, "").isEmpty();
         setDBLastUpdateText();
 
         if (firstRun) {
@@ -221,6 +220,7 @@ public class StationsListActivity extends FragmentActivity implements ActionBar.
                 (jsonDownloadTask.getStatus() == AsyncTask.Status.PENDING
                 || jsonDownloadTask.getStatus() == AsyncTask.Status.RUNNING)) {
             setRefreshActionButtonState(true);
+
         }
 
         SearchManager manager = (SearchManager) getSystemService(Context.SEARCH_SERVICE);
