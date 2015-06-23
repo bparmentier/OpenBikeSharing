@@ -53,6 +53,10 @@
     <string name="network_selected">selected</string>
     <string name="bike_network_downloading">Please wait while bike network is being downloaded</string>
 
+    <!-- Widget -->
+    <string name="widget_title_favorite_stations">Favorite stations</string>
+    <string name="widget_no_fav_stations">No favorite stations</string>
+
     <!-- Various -->
     <string name="free_bikes">Free bikes:\u00A0</string>
     <string name="empty_slots">Empty slots:\u00A0</string>
@@ -78,5 +82,4 @@
         <item quantity="one">%d day ago</item>
         <item quantity="other">%d days ago</item>
     </plurals>
-
 </resources>
