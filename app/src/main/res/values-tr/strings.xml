@@ -43,7 +43,7 @@
     <!-- Welcome dialog -->
     <string name="welcome_dialog_message">
         Başlamadan önce, lütfen listeden bir bisiklet ağı seçin.
-        \nAyrıca, İnternet'e bağlı olduğunuzdan emin olun.
+        \nAyrıca, İnternet\'e bağlı olduğunuzdan emin olun.
     </string>
     <string name="welcome_dialog_ok">Tamam</string>
     <string name="welcome_dialog_cancel">İptal</string>
