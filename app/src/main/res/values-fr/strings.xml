@@ -52,6 +52,10 @@
     <string name="network_selected">sélectionné</string>
     <string name="bike_network_downloading">Veuillez patienter pendant que le réseau de vélos est téléchargé</string>
 
+    <!-- Widget -->
+    <string name="widget_no_fav_stations">Aucune station en favoris</string>
+    <string name="widget_title_favorite_stations">Stations favorites</string>
+
     <!-- Various -->
     <string name="free_bikes">Vélos restants\u00A0:\u00A0</string>
     <string name="empty_slots">Emplacements vides\u00A0:\u00A0</string>
