@@ -38,6 +38,7 @@
     <string name="title_activity_station">Estación</string>
     <string name="title_activity_networks_list">Seleccionar una red</string>
     <string name="title_activity_map">Mapa</string>
+    <string name="title_activity_settings">Ajustes</string>
 
     <!-- Welcome dialog -->
     <string name="welcome_dialog_message">
@@ -78,4 +79,23 @@
         <item quantity="other">Hace %d días</item>
     </plurals>
 
+    <!-- Settings -->
+    <string name="pref_header_general">General</string>
+    <string name="pref_title_bike_networks_list">Elija una red</string>
+    <string name="pref_title_license">Licencia</string>
+    <string name="pref_title_about">Acerca de</string>
+    <string name="pref_title_website">Sitio Web</string>
+    <string name="pref_title_source_code">Código fuente</string>
+    <string name="pref_title_developers_website">Sitio web del desarrollador</string>
+    <string name="pref_title_donate_bitcoin">Donar Bitcoin</string>
+    <string name="pref_title_citybikes_api">CityBikes API</string>
+    <string name="pref_title_osmdroid_library">biblioteca osmdroid</string>
+    <string name="pref_title_osmbonuspack_library">biblioteca OSMBonusPack</string>
+    <string name="pref_title_openstreetmap">OpenStreetMap</string>
+    <string name="pref_title_version">Versión</string>
+    <string name="pref_map_layer_title">Capa de mapa</string>
+    <string name="pref_title_strip_station_id">Ocultar ID de la estación</string>
+    <string name="pref_title_strip_station_id_summary">
+        Ocultar ID del nombre de la estación (útil para algunas redes)
+    </string>
 </resources>

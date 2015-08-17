@@ -38,6 +38,7 @@
     <string name="title_activity_station">Stazione</string>
     <string name="title_activity_networks_list">Seleziona una rete</string>
     <string name="title_activity_map">Mappa</string>
+    <string name="title_activity_settings">Impostazioni</string>
 
     <!-- Welcome dialog -->
     <string name="welcome_dialog_message">
@@ -80,4 +81,22 @@
     </plurals>
     <string name="pref_title_strip_station_id">Nascondi codice della stazione</string>
 
+    <!-- Settings -->
+    <string name="pref_header_general">General</string>
+    <string name="pref_title_bike_networks_list">Scegli una rete</string>
+    <string name="pref_title_license">Licenza</string>
+    <string name="pref_title_about">Dettagli</string>
+    <string name="pref_title_website">Sito web</string>
+    <string name="pref_title_source_code">Codice sorgente</string>
+    <string name="pref_title_developers_website">Sito dello sviluppatore</string>
+    <string name="pref_title_donate_bitcoin">Dona Bitcoin</string>
+    <string name="pref_title_citybikes_api">CityBikes API</string>
+    <string name="pref_title_osmdroid_library">libreria osmdroid</string>
+    <string name="pref_title_osmbonuspack_library">libreria OSMBonusPack</string>
+    <string name="pref_title_openstreetmap">OpenStreetMap</string>
+    <string name="pref_title_version">Versione</string>
+    <string name="pref_map_layer_title">Mappa usata</string>
+    <string name="pref_title_strip_station_id_summary">
+        Rimuovi codice dal nome della stazione (utile solo per alcune reti)
+    </string>
 </resources>
