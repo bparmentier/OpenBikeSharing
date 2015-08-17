@@ -27,7 +27,8 @@ This is my first Android application. I probably don't comply with all the "good
 code may be a bit messy. So if you have enough courage, take a look at it and tell me what is wrong!
 
 If your language is not yet supported, just copy the `app/src/main/res/values` directory and
-translate the strings in it.
+translate the strings in it (when copying strings from English, please remove those marked
+`translatable="false"`).
 
 As I don't have as many devices as I would like to test this app on, please report any bug/crash
 that you may encounter. And feel free to make any suggestions to improve it.
