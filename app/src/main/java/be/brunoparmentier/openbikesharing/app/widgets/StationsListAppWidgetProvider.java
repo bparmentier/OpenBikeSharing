@@ -81,12 +81,19 @@ public class StationsListAppWidgetProvider extends AppWidgetProvider {
             intent.setData(Uri.parse(intent.toUri(Intent.URI_INTENT_SCHEME)));
             rv.setRemoteAdapter(R.id.widgetStationsList, intent);
 
-            // Bind the click intent for the refresh button on the widget
+            // Click on the refresh button updates the stations
             final Intent refreshIntent = new Intent(context, StationsListAppWidgetProvider.class);
             refreshIntent.setAction(AppWidgetManager.ACTION_APPWIDGET_UPDATE);
             final PendingIntent refreshPendingIntent = PendingIntent.getBroadcast(context, 0,
                     refreshIntent, PendingIntent.FLAG_UPDATE_CURRENT);
             rv.setOnClickPendingIntent(R.id.widgetRefreshButton, refreshPendingIntent);
+
+            // Click on the widget title launches application
+            final Intent openAppIntent = new Intent(context, StationsListActivity.class);
+            openAppIntent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+            final PendingIntent openAppPendingIntent = PendingIntent.getActivity(context, 0,
+                    openAppIntent, PendingIntent.FLAG_UPDATE_CURRENT);
+            rv.setOnClickPendingIntent(R.id.widgetTitle, openAppPendingIntent);
 
             appWidgetManager.updateAppWidget(appWidgetId, rv);
         }

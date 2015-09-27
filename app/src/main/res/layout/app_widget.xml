@@ -33,7 +33,7 @@
         <TextView
             android:id="@+id/widgetTitle"
             android:layout_height="wrap_content"
-            android:layout_width="match_parent"
+            android:layout_width="wrap_content"
             android:text="@string/widget_title_favorite_stations"
             android:textSize="20sp"
             android:clickable="true" />
