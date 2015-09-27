@@ -18,6 +18,7 @@
 package be.brunoparmentier.openbikesharing.app.activities;
 
 import android.app.Activity;
+import android.appwidget.AppWidgetManager;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.content.pm.PackageManager;
@@ -47,9 +48,10 @@ import java.util.Locale;
 import java.util.TimeZone;
 
 import be.brunoparmentier.openbikesharing.app.R;
+import be.brunoparmentier.openbikesharing.app.db.StationsDataSource;
 import be.brunoparmentier.openbikesharing.app.models.Station;
 import be.brunoparmentier.openbikesharing.app.models.StationStatus;
-import be.brunoparmentier.openbikesharing.app.db.StationsDataSource;
+import be.brunoparmentier.openbikesharing.app.widgets.StationsListAppWidgetProvider;
 
 public class StationActivity extends Activity {
     private SharedPreferences settings;
@@ -291,5 +293,12 @@ public class StationActivity extends Activity {
             Toast.makeText(StationActivity.this,
                     getString(R.string.stations_removed_from_favorites), Toast.LENGTH_SHORT).show();
         }
+
+        /* Refresh widget with new favorite */
+        Intent refreshWidgetIntent = new Intent(getApplicationContext(),
+                StationsListAppWidgetProvider.class);
+        refreshWidgetIntent.setAction(AppWidgetManager.ACTION_APPWIDGET_UPDATE);
+        refreshWidgetIntent.putExtra(StationsListAppWidgetProvider.EXTRA_REFRESH_LIST_ONLY, true);
+        sendBroadcast(refreshWidgetIntent);
     }
 }
