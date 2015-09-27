@@ -181,7 +181,14 @@ public class StationsListActivity extends FragmentActivity implements ActionBar.
             long dbLastUpdate = settings.getLong(PREF_KEY_DB_LAST_UPDATE, -1);
             long currentTime = System.currentTimeMillis();
 
-            /* update automatically if data is more than 10 min old */
+            /* Refresh list with latest data from database */
+            stations = stationsDataSource.getStations();
+            favStations = stationsDataSource.getFavoriteStations();
+            tabsPagerAdapter.updateAllStationsListFragment(stations);
+            tabsPagerAdapter.updateFavoriteStationsFragment(favStations);
+            setDBLastUpdateText();
+
+            /* Update automatically if data is more than 10 min old */
             if ((dbLastUpdate != -1) && ((currentTime - dbLastUpdate) > 600000)) {
                 String networkId = settings.getString(PREF_KEY_NETWORK_ID, "");
                 String stationUrl = BASE_URL + "/" + networkId;
