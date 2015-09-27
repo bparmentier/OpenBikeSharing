@@ -21,6 +21,7 @@ import android.app.ActionBar;
 import android.app.AlertDialog;
 import android.app.FragmentTransaction;
 import android.app.SearchManager;
+import android.appwidget.AppWidgetManager;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
@@ -54,13 +55,14 @@ import java.util.Collections;
 import java.util.HashSet;
 import java.util.Set;
 
-import be.brunoparmentier.openbikesharing.app.models.BikeNetwork;
 import be.brunoparmentier.openbikesharing.app.R;
 import be.brunoparmentier.openbikesharing.app.adapters.SearchStationAdapter;
-import be.brunoparmentier.openbikesharing.app.models.Station;
 import be.brunoparmentier.openbikesharing.app.db.StationsDataSource;
 import be.brunoparmentier.openbikesharing.app.fragments.StationsListFragment;
+import be.brunoparmentier.openbikesharing.app.models.BikeNetwork;
+import be.brunoparmentier.openbikesharing.app.models.Station;
 import be.brunoparmentier.openbikesharing.app.parsers.BikeNetworkParser;
+import be.brunoparmentier.openbikesharing.app.widgets.StationsListAppWidgetProvider;
 
 
 public class StationsListActivity extends FragmentActivity implements ActionBar.TabListener {
@@ -179,7 +181,7 @@ public class StationsListActivity extends FragmentActivity implements ActionBar.
             long dbLastUpdate = settings.getLong(PREF_KEY_DB_LAST_UPDATE, -1);
             long currentTime = System.currentTimeMillis();
 
-            /* update automatically if data are more than 10 min old */
+            /* update automatically if data is more than 10 min old */
             if ((dbLastUpdate != -1) && ((currentTime - dbLastUpdate) > 600000)) {
                 String networkId = settings.getString(PREF_KEY_NETWORK_ID, "");
                 String stationUrl = BASE_URL + "/" + networkId;
@@ -397,6 +399,12 @@ public class StationsListActivity extends FragmentActivity implements ActionBar.
 
                     tabsPagerAdapter.updateAllStationsListFragment(stations);
                     tabsPagerAdapter.updateFavoriteStationsFragment(favStations);
+
+                    Intent refreshWidgetIntent = new Intent(getApplicationContext(),
+                            StationsListAppWidgetProvider.class);
+                    refreshWidgetIntent.setAction(AppWidgetManager.ACTION_APPWIDGET_UPDATE);
+                    refreshWidgetIntent.putExtra(StationsListAppWidgetProvider.EXTRA_REFRESH_LIST_ONLY, true);
+                    sendBroadcast(refreshWidgetIntent);
 
                     upgradeAppToVersion13();
                 } catch (ParseException e) {

@@ -56,6 +56,8 @@ public class StationsListAppWidgetProvider extends AppWidgetProvider {
     private static final String PREF_KEY_DB_LAST_UPDATE = "db_last_update";
 
     public static final String EXTRA_ITEM = "be.brunoparmentier.openbikesharing.app.widget.EXTRA_ITEM";
+    public static final String EXTRA_REFRESH_LIST_ONLY =
+            "be.brunoparmentier.openbikesharing.app.widget.EXTRA_REFRESH_LIST_ONLY";
 
     private ArrayList<Station> stations;
     private Context mContext;
@@ -120,10 +122,18 @@ public class StationsListAppWidgetProvider extends AppWidgetProvider {
         mContext = context;
 
         if (intent.getAction().equals(AppWidgetManager.ACTION_APPWIDGET_UPDATE)) {
-            String networkId = PreferenceManager.getDefaultSharedPreferences(context).getString(PREF_KEY_NETWORK_ID, "");
-            String stationUrl = BASE_URL + "/" + networkId;
+            if (intent.getBooleanExtra(EXTRA_REFRESH_LIST_ONLY, false)) {
+                /* Update widget list with data from database */
+                final AppWidgetManager mgr = AppWidgetManager.getInstance(mContext);
+                final ComponentName cn = new ComponentName(mContext, StationsListAppWidgetProvider.class);
+                mgr.notifyAppWidgetViewDataChanged(mgr.getAppWidgetIds(cn), R.id.widgetStationsList);
+            } else {
+                /* Download new data then update widget list */
+                String networkId = PreferenceManager.getDefaultSharedPreferences(context).getString(PREF_KEY_NETWORK_ID, "");
+                String stationUrl = BASE_URL + "/" + networkId;
 
-            new JSONDownloadTask().execute(stationUrl);
+                new JSONDownloadTask().execute(stationUrl);
+            }
         }
     }
 
