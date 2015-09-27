@@ -91,8 +91,11 @@ public class StationsListAppWidgetProvider extends AppWidgetProvider {
             rv.setOnClickPendingIntent(R.id.widgetRefreshButton, refreshPendingIntent);
 
             // Click on the widget title launches application
-            final Intent openAppIntent = new Intent(context, StationsListActivity.class);
-            openAppIntent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+            final Intent openAppIntent = new Intent(Intent.ACTION_MAIN);
+            openAppIntent.addCategory(Intent.CATEGORY_LAUNCHER);
+            openAppIntent.addFlags(Intent.FLAG_ACTIVITY_NO_ANIMATION);
+            openAppIntent.setComponent(new ComponentName(context.getPackageName(),
+                    StationsListActivity.class.getCanonicalName()));
             final PendingIntent openAppPendingIntent = PendingIntent.getActivity(context, 0,
                     openAppIntent, PendingIntent.FLAG_UPDATE_CURRENT);
             rv.setOnClickPendingIntent(R.id.widgetTitle, openAppPendingIntent);
