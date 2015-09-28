@@ -29,9 +29,9 @@ import android.widget.ListView;
 import java.util.ArrayList;
 
 import be.brunoparmentier.openbikesharing.app.R;
-import be.brunoparmentier.openbikesharing.app.models.Station;
-import be.brunoparmentier.openbikesharing.app.adapters.StationsListAdapter;
 import be.brunoparmentier.openbikesharing.app.activities.StationActivity;
+import be.brunoparmentier.openbikesharing.app.adapters.StationsListAdapter;
+import be.brunoparmentier.openbikesharing.app.models.Station;
 
 public class StationsListFragment extends Fragment {
     private ArrayList<Station> stations;
@@ -76,9 +76,7 @@ public class StationsListFragment extends Fragment {
     public void updateStationsList(ArrayList<Station> stations) {
         if (stationsListAdapter != null) {
             stationsListAdapter.clear();
-            for (Station station : stations) {
-                stationsListAdapter.add(station);
-            }
+            stationsListAdapter.addAll(stations);
             stationsListAdapter.notifyDataSetChanged();
         }
     }
