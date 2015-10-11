@@ -20,13 +20,18 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context="be.brunoparmentier.openbikesharing.app.activities.StationsListActivity">
-
+    <android.support.v4.widget.SwipeRefreshLayout
+            xmlns:android="http://schemas.android.com/apk/res/android"
+            android:id="@+id/swipe_container"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
     <android.support.v4.view.ViewPager
         android:id="@+id/viewPager"
         android:layout_width="match_parent"
         android:layout_above="@+id/dbLastUpdate"
         android:layout_height="wrap_content" />
-
+    </android.support.v4.widget.SwipeRefreshLayout>
     <TextView
         android:id="@+id/dbLastUpdate"
         android:layout_width="match_parent"
