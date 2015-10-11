@@ -35,6 +35,7 @@ import android.support.v4.app.FragmentActivity;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentPagerAdapter;
 import android.support.v4.view.ViewPager;
+import android.support.v4.widget.SwipeRefreshLayout;
 import android.text.format.DateUtils;
 import android.util.Log;
 import android.view.Menu;
@@ -96,11 +97,20 @@ public class StationsListActivity extends FragmentActivity implements ActionBar.
     private StationsListFragment allStationsFragment;
     private StationsListFragment favoriteStationsFragment;
 
+    private SwipeRefreshLayout refreshLayout;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_stations_list);
 
+        refreshLayout = (SwipeRefreshLayout) findViewById(R.id.swipe_container);
+        refreshLayout.setColorSchemeResources(R.color.bike_red,R.color.parking_blue_dark);
+        refreshLayout.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
+            @Override
+            public void onRefresh() {
+                executeDownloadTask();
+            }
+        });
         viewPager = (ViewPager) findViewById(R.id.viewPager);
         viewPager.setOnPageChangeListener(new ViewPager.OnPageChangeListener() {
             @Override
@@ -342,6 +352,16 @@ public class StationsListActivity extends FragmentActivity implements ActionBar.
             }
         }
     }
+    //put here the code to update the bikes data
+    private void executeDownloadTask(){
+        String networkId = PreferenceManager
+                .getDefaultSharedPreferences(this)
+                .getString(PREF_KEY_NETWORK_ID, "");
+        String stationUrl = BASE_URL + "/" + networkId;
+        jsonDownloadTask = new JSONDownloadTask();
+        jsonDownloadTask.execute(stationUrl);
+    }
+
 
     private class JSONDownloadTask extends AsyncTask<String, Void, String> {
 
@@ -387,6 +407,7 @@ public class StationsListActivity extends FragmentActivity implements ActionBar.
                         getApplicationContext().getResources().getString(R.string.connection_error),
                         Toast.LENGTH_SHORT).show();
                 setRefreshActionButtonState(false);
+                refreshLayout.setRefreshing(false);
             } else {
                 try {
                     /* parse result */
@@ -420,6 +441,7 @@ public class StationsListActivity extends FragmentActivity implements ActionBar.
                             R.string.json_error, Toast.LENGTH_LONG).show();
                 } finally {
                     setRefreshActionButtonState(false);
+                    refreshLayout.setRefreshing(false);
                 }
             }
         }
