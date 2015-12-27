@@ -18,11 +18,13 @@
 package be.brunoparmentier.openbikesharing.app.fragments;
 
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.content.pm.ApplicationInfo;
 import android.content.pm.PackageManager;
 import android.content.pm.ResolveInfo;
 import android.net.Uri;
 import android.os.Bundle;
+import android.preference.EditTextPreference;
 import android.preference.Preference;
 import android.preference.PreferenceFragment;
 import android.preference.PreferenceManager;
@@ -40,19 +42,19 @@ import be.brunoparmentier.openbikesharing.app.R;
 /**
  * Settings fragment
  */
-public class SettingsFragment extends PreferenceFragment {
+public class SettingsFragment extends PreferenceFragment implements SharedPreferences.OnSharedPreferenceChangeListener {
 
     private static final String TAG = "SettingsFragment";
     private static final String PREF_KEY_NETWORK_ID = "network-id";
     private static final String PREF_KEY_NETWORK_NAME = "network-name";
     private static final String PREF_KEY_NETWORK_CITY = "network-city";
+    private static final String PREF_KEY_API_URL = "pref_api_url";
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         addPreferencesFromResource(R.xml.pref_general);
 
-        setBikeNetworkPrefSummary();
         setupBitcoinButton();
         setupVersionEntry();
     }
@@ -108,23 +110,46 @@ public class SettingsFragment extends PreferenceFragment {
         }
     }
 
-    private void setBikeNetworkPrefSummary() {
-        Preference bikeNetworkPref = findPreference(PREF_KEY_NETWORK_ID);
+    @Override
+    public void onResume(){
+        super.onResume();
 
-        String networkName = PreferenceManager
-                .getDefaultSharedPreferences(getActivity())
-                .getString(PREF_KEY_NETWORK_NAME, "");
-        String networkCity = PreferenceManager
-                .getDefaultSharedPreferences(getActivity())
-                .getString(PREF_KEY_NETWORK_CITY, "");
-        if (!networkName.isEmpty() && !networkCity.isEmpty()) {
-            bikeNetworkPref.setSummary(networkName + " (" + networkCity + ")");
-        }
+        getPreferenceScreen().getSharedPreferences().registerOnSharedPreferenceChangeListener(this);
+        updatePreference(PREF_KEY_API_URL);
+        updatePreference(PREF_KEY_NETWORK_ID);
     }
 
     @Override
-    public void onResume() {
-        super.onResume();
-        setBikeNetworkPrefSummary();
+    public void onPause() {
+        super.onPause();
+
+        getPreferenceScreen().getSharedPreferences()
+                .unregisterOnSharedPreferenceChangeListener(this);
+    }
+
+    @Override
+    public void onSharedPreferenceChanged(SharedPreferences sharedPreferences, String key) {
+        updatePreference(key);
+    }
+
+    private void updatePreference(String key){
+        if (key.equals(PREF_KEY_API_URL)){
+            Preference preference = findPreference(key);
+            //if (preference instanceof EditTextPreference){
+                EditTextPreference editTextPreference =  (EditTextPreference) preference;
+                editTextPreference.setSummary(editTextPreference.getText());
+            //}
+        } else if (key.equals(PREF_KEY_NETWORK_ID)) {
+            Preference preference = findPreference(key);
+            String networkName = PreferenceManager
+                    .getDefaultSharedPreferences(getActivity())
+                    .getString(PREF_KEY_NETWORK_NAME, "");
+            String networkCity = PreferenceManager
+                    .getDefaultSharedPreferences(getActivity())
+                    .getString(PREF_KEY_NETWORK_CITY, "");
+            if (!networkName.isEmpty() && !networkCity.isEmpty()) {
+                preference.setSummary(networkName + " (" + networkCity + ")");
+            }
+        }
     }
 }

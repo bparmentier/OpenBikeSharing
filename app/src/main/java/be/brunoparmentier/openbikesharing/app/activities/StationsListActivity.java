@@ -72,7 +72,8 @@ import be.brunoparmentier.openbikesharing.app.widgets.StationsListAppWidgetProvi
 public class StationsListActivity extends FragmentActivity implements ActionBar.TabListener {
     private static final String TAG = StationsListActivity.class.getSimpleName();
 
-    private static final String BASE_URL = "http://api.citybik.es/v2/networks";
+    private static final String DEFAULT_API_URL = "http://api.citybik.es/v2/";
+    private static final String PREF_KEY_API_URL = "pref_api_url";
     private static final String PREF_KEY_NETWORK_ID = "network-id";
     private static final String PREF_KEY_NETWORK_LATITUDE = "network-latitude";
     private static final String PREF_KEY_NETWORK_LONGITUDE = "network-longitude";
@@ -177,7 +178,8 @@ public class StationsListActivity extends FragmentActivity implements ActionBar.
                 nearbyStations = (ArrayList<Station>) savedInstanceState.getSerializable("nearbyStations");
             } else {
                 String networkId = settings.getString(PREF_KEY_NETWORK_ID, "");
-                String stationUrl = BASE_URL + "/" + networkId;
+                String stationUrl = settings.getString(PREF_KEY_API_URL, DEFAULT_API_URL)
+                        + "networks/" + networkId;
                 jsonDownloadTask = new JSONDownloadTask();
                 jsonDownloadTask.execute(stationUrl);
             }
@@ -195,14 +197,17 @@ public class StationsListActivity extends FragmentActivity implements ActionBar.
             /* Refresh list with latest data from database */
             stations = stationsDataSource.getStations();
             favStations = stationsDataSource.getFavoriteStations();
+            setNearbyStations(stations);
             tabsPagerAdapter.updateAllStationsListFragment(stations);
             tabsPagerAdapter.updateFavoriteStationsFragment(favStations);
+            tabsPagerAdapter.updateNearbyStationsFragment(nearbyStations);
             setDBLastUpdateText();
 
             /* Update automatically if data is more than 10 min old */
             if ((dbLastUpdate != -1) && ((currentTime - dbLastUpdate) > 600000)) {
                 String networkId = settings.getString(PREF_KEY_NETWORK_ID, "");
-                String stationUrl = BASE_URL + "/" + networkId;
+                String stationUrl = settings.getString(PREF_KEY_API_URL, DEFAULT_API_URL)
+                        + "networks/" + networkId;
                 jsonDownloadTask = new JSONDownloadTask();
                 jsonDownloadTask.execute(stationUrl);
             }
@@ -277,7 +282,8 @@ public class StationsListActivity extends FragmentActivity implements ActionBar.
                 String networkId = PreferenceManager
                         .getDefaultSharedPreferences(this)
                         .getString(PREF_KEY_NETWORK_ID, "");
-                String stationUrl = BASE_URL + "/" + networkId;
+                String stationUrl = settings.getString(PREF_KEY_API_URL, DEFAULT_API_URL)
+                        + "networks/" + networkId;
                 jsonDownloadTask = new JSONDownloadTask();
                 jsonDownloadTask.execute(stationUrl);
                 return true;
@@ -295,7 +301,8 @@ public class StationsListActivity extends FragmentActivity implements ActionBar.
             Log.d(TAG, "PICK_NETWORK_REQUEST");
             if (resultCode == RESULT_OK) {
                 Log.d(TAG, "RESULT_OK");
-                String stationUrl = BASE_URL + "/" + data.getExtras().getString("network-id");
+                String stationUrl = settings.getString(PREF_KEY_API_URL, DEFAULT_API_URL)
+                        + "networks/" + data.getExtras().getString("network-id");
                 jsonDownloadTask = new JSONDownloadTask();
                 jsonDownloadTask.execute(stationUrl);
             }
@@ -388,7 +395,7 @@ public class StationsListActivity extends FragmentActivity implements ActionBar.
                     }
                 });
             } else {
-                // Update location?
+                // TODO: update location?
             }
         }
     }
@@ -420,7 +427,6 @@ public class StationsListActivity extends FragmentActivity implements ActionBar.
                     }
                     input.close();
                 }
-                Log.d(TAG, "Stations downloaded");
                 return response.toString();
             } catch (IOException e) {
                 error = e;
@@ -454,7 +460,6 @@ public class StationsListActivity extends FragmentActivity implements ActionBar.
                             .apply();
                     setDBLastUpdateText();
 
-                    Log.d(TAG, "Setting nearby stations");
                     setNearbyStations(stations);
 
                     tabsPagerAdapter.updateAllStationsListFragment(stations);

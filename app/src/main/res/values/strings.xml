@@ -125,4 +125,6 @@
     <string name="pref_title_strip_station_id_summary">
         Remove ID from station name (only useful for some networks)
     </string>
+    <string name="pref_title_advanced">Advanced</string>
+    <string name="pref_title_api_url">API URL</string>
 </resources>
