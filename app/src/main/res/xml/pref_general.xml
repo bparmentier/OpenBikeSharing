@@ -68,11 +68,11 @@
         </Preference>
 
         <Preference
-            android:summary="http://www.brunoparmentier.be"
+            android:summary="https://www.brunoparmentier.be"
             android:title="@string/pref_title_developers_website">
             <intent
                 android:action="android.intent.action.VIEW"
-                android:data="http://www.brunoparmentier.be" />
+                android:data="https://www.brunoparmentier.be" />
         </Preference>
 
         <be.brunoparmentier.openbikesharing.app.preferences.InfoDialogPreference
