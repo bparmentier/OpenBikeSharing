@@ -63,6 +63,7 @@
     <string name="empty_slots">Empty slots:\u00A0</string>
     <string name="all_stations">All stations</string>
     <string name="favorite_stations">Favorites</string>
+    <string name="nearby_stations">Nearby</string>
     <string name="station_added_to_favorites">Station added to favorites</string>
     <string name="stations_removed_from_favorites">Station removed from favorites</string>
     <string name="no_nav_application">You don\'t have any navigation application installed</string>

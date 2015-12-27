@@ -27,6 +27,8 @@ import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.database.MatrixCursor;
+import android.location.Location;
+import android.location.LocationManager;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.preference.PreferenceManager;
@@ -52,7 +54,9 @@ import java.text.DateFormat;
 import java.text.ParseException;
 import java.util.ArrayList;
 import java.util.Collections;
+import java.util.Comparator;
 import java.util.HashSet;
+import java.util.List;
 import java.util.Set;
 
 import be.brunoparmentier.openbikesharing.app.R;
@@ -81,6 +85,7 @@ public class StationsListActivity extends FragmentActivity implements ActionBar.
     private BikeNetwork bikeNetwork;
     private ArrayList<Station> stations;
     private ArrayList<Station> favStations;
+    private ArrayList<Station> nearbyStations;
     private StationsDataSource stationsDataSource;
 
     private JSONDownloadTask jsonDownloadTask;
@@ -95,6 +100,7 @@ public class StationsListActivity extends FragmentActivity implements ActionBar.
 
     private StationsListFragment allStationsFragment;
     private StationsListFragment favoriteStationsFragment;
+    private StationsListFragment nearbyStationsFragment;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -122,13 +128,17 @@ public class StationsListActivity extends FragmentActivity implements ActionBar.
         stationsDataSource = new StationsDataSource(this);
         stations = stationsDataSource.getStations();
         favStations = stationsDataSource.getFavoriteStations();
+        nearbyStations = new ArrayList<>();
 
         actionBar = getActionBar();
         actionBar.addTab(actionBar.newTab()
-                .setText(getString(R.string.all_stations))
+                .setText(getString(R.string.nearby_stations))
                 .setTabListener(this));
         actionBar.addTab(actionBar.newTab()
                 .setText(getString(R.string.favorite_stations))
+                .setTabListener(this));
+        actionBar.addTab(actionBar.newTab()
+                .setText(getString(R.string.all_stations))
                 .setTabListener(this));
         actionBar.setHomeButtonEnabled(false);
 
@@ -164,6 +174,7 @@ public class StationsListActivity extends FragmentActivity implements ActionBar.
                 bikeNetwork = (BikeNetwork) savedInstanceState.getSerializable("bikeNetwork");
                 stations = (ArrayList<Station>) savedInstanceState.getSerializable("stations");
                 favStations = (ArrayList<Station>) savedInstanceState.getSerializable("favStations");
+                nearbyStations = (ArrayList<Station>) savedInstanceState.getSerializable("nearbyStations");
             } else {
                 String networkId = settings.getString(PREF_KEY_NETWORK_ID, "");
                 String stationUrl = BASE_URL + "/" + networkId;
@@ -218,6 +229,7 @@ public class StationsListActivity extends FragmentActivity implements ActionBar.
         outState.putSerializable("bikeNetwork", bikeNetwork);
         outState.putSerializable("stations", stations);
         outState.putSerializable("favStations", favStations);
+        outState.putSerializable("nearbyStations", nearbyStations);
     }
 
     @Override
@@ -341,6 +353,46 @@ public class StationsListActivity extends FragmentActivity implements ActionBar.
         }
     }
 
+    private void setNearbyStations(List<Station> stations) {
+        final double radius = 0.01;
+        nearbyStations = new ArrayList<>();
+        LocationManager locationManager =
+                (LocationManager) this.getSystemService(Context.LOCATION_SERVICE);
+        if (locationManager.isProviderEnabled(LocationManager.NETWORK_PROVIDER)){
+            final Location userLocation = locationManager
+                    .getLastKnownLocation(LocationManager.NETWORK_PROVIDER);
+            if (userLocation != null) {
+                for (Station station : stations) {
+                    if ((station.getLatitude() > userLocation.getLatitude() - radius)
+                            && (station.getLatitude() < userLocation.getLatitude() + radius)
+                            && (station.getLongitude() > userLocation.getLongitude() - radius)
+                            && (station.getLongitude() < userLocation.getLongitude() + radius)) {
+                        nearbyStations.add(station);
+                    }
+                }
+                Collections.sort(nearbyStations, new Comparator<Station>() {
+
+                    @Override
+                    public int compare(Station station1, Station station2) {
+                        float[] result1 = new float[3];
+                        Location.distanceBetween(userLocation.getLatitude(), userLocation.getLongitude(),
+                                station1.getLatitude(), station1.getLongitude(), result1);
+                        Float distance1 = result1[0];
+
+                        float[] result2 = new float[3];
+                        Location.distanceBetween(userLocation.getLatitude(), userLocation.getLongitude(),
+                                station2.getLatitude(), station2.getLongitude(), result2);
+                        Float distance2 = result2[0];
+
+                        return distance1.compareTo(distance2);
+                    }
+                });
+            } else {
+                // Update location?
+            }
+        }
+    }
+
     private class JSONDownloadTask extends AsyncTask<String, Void, String> {
 
         Exception error;
@@ -402,8 +454,12 @@ public class StationsListActivity extends FragmentActivity implements ActionBar.
                             .apply();
                     setDBLastUpdateText();
 
+                    Log.d(TAG, "Setting nearby stations");
+                    setNearbyStations(stations);
+
                     tabsPagerAdapter.updateAllStationsListFragment(stations);
                     tabsPagerAdapter.updateFavoriteStationsFragment(favStations);
+                    tabsPagerAdapter.updateNearbyStationsFragment(nearbyStations);
 
                     Intent refreshWidgetIntent = new Intent(getApplicationContext(),
                             StationsListAppWidgetProvider.class);
@@ -424,13 +480,14 @@ public class StationsListActivity extends FragmentActivity implements ActionBar.
     }
 
     private class TabsPagerAdapter extends FragmentPagerAdapter {
-        private final int NUM_ITEMS = 2;
+        private final int NUM_ITEMS = 3;
 
         public TabsPagerAdapter(FragmentManager fragmentManager) {
             super(fragmentManager);
 
             allStationsFragment = StationsListFragment.newInstance(stations);
             favoriteStationsFragment = StationsListFragment.newInstance(favStations);
+            nearbyStationsFragment = StationsListFragment.newInstance(nearbyStations);
         }
 
         @Override
@@ -442,9 +499,11 @@ public class StationsListActivity extends FragmentActivity implements ActionBar.
         public Fragment getItem(int position) {
             switch (position) {
                 case 0:
-                    return allStationsFragment;
+                    return nearbyStationsFragment;
                 case 1:
                     return favoriteStationsFragment;
+                case 2:
+                    return allStationsFragment;
                 default:
                     return null;
             }
@@ -456,6 +515,10 @@ public class StationsListActivity extends FragmentActivity implements ActionBar.
 
         public void updateFavoriteStationsFragment(ArrayList<Station> stations) {
             favoriteStationsFragment.updateStationsList(stations);
+        }
+
+        public void updateNearbyStationsFragment(ArrayList<Station> stations) {
+            nearbyStationsFragment.updateStationsList(stations);
         }
     }
 

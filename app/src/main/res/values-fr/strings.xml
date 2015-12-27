@@ -102,4 +102,5 @@
     <string name="pref_title_strip_station_id_summary">
         Supprime l\'identifiant dans le nom de la station (utile pour certains réseaux uniquement)
     </string>
+    <string name="nearby_stations">À proximité</string>
 </resources>
