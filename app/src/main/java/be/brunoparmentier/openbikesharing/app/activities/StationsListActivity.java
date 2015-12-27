@@ -334,10 +334,8 @@ public class StationsListActivity extends FragmentActivity implements ActionBar.
             if (refreshItem != null) {
                 if (refreshing) {
                     refreshItem.setActionView(R.layout.actionbar_indeterminate_progress);
-                    refreshItem.setShowAsAction(MenuItem.SHOW_AS_ACTION_ALWAYS);
                 } else {
                     refreshItem.setActionView(null);
-                    refreshItem.setShowAsAction(MenuItem.SHOW_AS_ACTION_IF_ROOM);
                 }
             }
         }
