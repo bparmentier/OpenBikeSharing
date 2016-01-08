@@ -103,4 +103,7 @@
         Supprime l\'identifiant dans le nom de la station (utile pour certains réseaux uniquement)
     </string>
     <string name="nearby_stations">À proximité</string>
+    <string name="no_favorite_stations">Pas de stations favorites</string>
+    <string name="no_nearby_stations">Pas de stations à proximité</string>
+    <string name="no_stations">Pas de stations</string>
 </resources>

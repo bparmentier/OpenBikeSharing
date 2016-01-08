@@ -64,6 +64,9 @@
     <string name="all_stations">All stations</string>
     <string name="favorite_stations">Favorites</string>
     <string name="nearby_stations">Nearby</string>
+    <string name="no_stations">No stations</string>
+    <string name="no_favorite_stations">No favorite stations</string>
+    <string name="no_nearby_stations">No nearby stations</string>
     <string name="station_added_to_favorites">Station added to favorites</string>
     <string name="stations_removed_from_favorites">Station removed from favorites</string>
     <string name="no_nav_application">You don\'t have any navigation application installed</string>

@@ -25,6 +25,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.ListView;
+import android.widget.TextView;
 
 import java.util.ArrayList;
 
@@ -36,12 +37,20 @@ import be.brunoparmentier.openbikesharing.app.models.Station;
 public class StationsListFragment extends Fragment {
     private ArrayList<Station> stations;
     private StationsListAdapter stationsListAdapter;
+    private TabType tabId;
+
+    public enum TabType {
+        ALL_STATIONS,
+        FAVORITE_STATIONS,
+        NEARBY_STATIONS
+    }
 
     /* newInstance constructor for creating fragment with arguments */
-    public static StationsListFragment newInstance(ArrayList<Station> stations) {
+    public static StationsListFragment newInstance(TabType tabId, ArrayList<Station> stations) {
         StationsListFragment stationsListFragment = new StationsListFragment();
         Bundle args = new Bundle();
         args.putSerializable("stations", stations);
+        args.putSerializable("tabId", tabId);
         stationsListFragment.setArguments(args);
         return stationsListFragment;
     }
@@ -50,6 +59,7 @@ public class StationsListFragment extends Fragment {
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         stations = (ArrayList<Station>) getArguments().getSerializable("stations");
+        tabId = (TabType) getArguments().getSerializable("tabId");
 
         stationsListAdapter = new StationsListAdapter(getActivity(),
                 R.layout.station_list_item, stations);
@@ -60,7 +70,19 @@ public class StationsListFragment extends Fragment {
         View view = inflater.inflate(R.layout.fragment_stations_list, container, false);
         ListView listView = (ListView) view.findViewById(R.id.stationsListView);
         listView.setAdapter(stationsListAdapter);
-
+        TextView emptyView = (TextView) view.findViewById(R.id.emptyList);
+        switch (tabId) {
+            case NEARBY_STATIONS:
+                emptyView.setText(R.string.no_nearby_stations);
+                break;
+            case FAVORITE_STATIONS:
+                emptyView.setText(R.string.no_favorite_stations);
+                break;
+            case ALL_STATIONS:
+                emptyView.setText(R.string.no_stations);
+                break;
+        }
+        listView.setEmptyView(view.findViewById(R.id.emptyList));
         listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view,
