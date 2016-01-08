@@ -106,4 +106,6 @@
     <string name="no_favorite_stations">Pas de stations favorites</string>
     <string name="no_nearby_stations">Pas de stations à proximité</string>
     <string name="no_stations">Pas de stations</string>
+    <string name="pref_title_advanced">Avancé</string>
+    <string name="pref_title_api_url">URL de l\'API</string>
 </resources>
