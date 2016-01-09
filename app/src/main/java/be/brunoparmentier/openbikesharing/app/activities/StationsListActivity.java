@@ -490,12 +490,12 @@ public class StationsListActivity extends FragmentActivity implements ActionBar.
         public TabsPagerAdapter(FragmentManager fragmentManager) {
             super(fragmentManager);
 
-            allStationsFragment = StationsListFragment.newInstance(
-                    StationsListFragment.TabType.ALL_STATIONS, stations);
-            favoriteStationsFragment = StationsListFragment.newInstance(
-                    StationsListFragment.TabType.FAVORITE_STATIONS, favStations);
-            nearbyStationsFragment = StationsListFragment.newInstance(
-                    StationsListFragment.TabType.NEARBY_STATIONS, nearbyStations);
+            allStationsFragment = StationsListFragment.newInstance(stations,
+                    R.string.no_stations);
+            favoriteStationsFragment = StationsListFragment.newInstance(favStations,
+                    R.string.no_favorite_stations);
+            nearbyStationsFragment = StationsListFragment.newInstance(nearbyStations,
+                    R.string.no_nearby_stations);
         }
 
         @Override
