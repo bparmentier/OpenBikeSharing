@@ -54,6 +54,13 @@ import be.brunoparmentier.openbikesharing.app.models.StationStatus;
 import be.brunoparmentier.openbikesharing.app.widgets.StationsListAppWidgetProvider;
 
 public class StationActivity extends Activity {
+    private static final String PREF_KEY_MAP_LAYER = "pref_map_layer";
+    private static final String KEY_STATION = "station";
+    private static final String MAP_LAYER_MAPNIK = "mapnik";
+    private static final String MAP_LAYER_CYCLEMAP = "cyclemap";
+    private static final String MAP_LAYER_OSMPUBLICTRANSPORT = "osmpublictransport";
+    private static final String MAP_LAYER_MAPQUESTOSM = "mapquestosm";
+
     private SharedPreferences settings;
     private Station station;
     private MapView map;
@@ -71,7 +78,7 @@ public class StationActivity extends Activity {
 
         settings = PreferenceManager.getDefaultSharedPreferences(this);
 
-        station = (Station) getIntent().getSerializableExtra("station");
+        station = (Station) getIntent().getSerializableExtra(KEY_STATION);
 
         map = (MapView) findViewById(R.id.mapView);
         final GeoPoint stationLocation = new GeoPoint((int) (station.getLatitude() * 1000000),
@@ -81,18 +88,18 @@ public class StationActivity extends Activity {
         mapController.setZoom(16);
 
         /* map tile source */
-        String mapLayer = settings.getString("pref_map_layer", "");
+        String mapLayer = settings.getString(PREF_KEY_MAP_LAYER, "");
         switch (mapLayer) {
-            case "mapnik":
+            case MAP_LAYER_MAPNIK:
                 map.setTileSource(TileSourceFactory.MAPNIK);
                 break;
-            case "cyclemap":
+            case MAP_LAYER_CYCLEMAP:
                 map.setTileSource(TileSourceFactory.CYCLEMAP);
                 break;
-            case "osmpublictransport":
+            case MAP_LAYER_OSMPUBLICTRANSPORT:
                 map.setTileSource(TileSourceFactory.PUBLIC_TRANSPORT);
                 break;
-            case "mapquestosm":
+            case MAP_LAYER_MAPQUESTOSM:
                 map.setTileSource(TileSourceFactory.MAPQUESTOSM);
                 break;
             default:

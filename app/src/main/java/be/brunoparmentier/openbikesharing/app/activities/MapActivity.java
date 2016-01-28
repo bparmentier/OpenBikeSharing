@@ -53,9 +53,9 @@ import org.osmdroid.views.overlay.mylocation.MyLocationNewOverlay;
 import java.util.ArrayList;
 
 import be.brunoparmentier.openbikesharing.app.R;
+import be.brunoparmentier.openbikesharing.app.db.StationsDataSource;
 import be.brunoparmentier.openbikesharing.app.models.Station;
 import be.brunoparmentier.openbikesharing.app.models.StationStatus;
-import be.brunoparmentier.openbikesharing.app.db.StationsDataSource;
 
 public class MapActivity extends Activity implements MapEventsReceiver {
     private static final String TAG = "MapActivity";
@@ -65,6 +65,12 @@ public class MapActivity extends Activity implements MapEventsReceiver {
 
     private static final String PREF_KEY_NETWORK_LATITUDE = "network-latitude";
     private static final String PREF_KEY_NETWORK_LONGITUDE = "network-longitude";
+    private static final String PREF_KEY_MAP_LAYER = "pref_map_layer";
+    private static final String KEY_STATION = "station";
+    private static final String MAP_LAYER_MAPNIK = "mapnik";
+    private static final String MAP_LAYER_CYCLEMAP = "cyclemap";
+    private static final String MAP_LAYER_OSMPUBLICTRANSPORT = "osmpublictransport";
+    private static final String MAP_LAYER_MAPQUESTOSM = "mapquestosm";
 
     private MapView map;
     private IMapController mapController;
@@ -116,18 +122,18 @@ public class MapActivity extends Activity implements MapEventsReceiver {
         map.setMinZoomLevel(3);
 
         /* map tile source */
-        String mapLayer = settings.getString("pref_map_layer", "");
+        String mapLayer = settings.getString(PREF_KEY_MAP_LAYER, "");
         switch (mapLayer) {
-            case "mapnik":
+            case MAP_LAYER_MAPNIK:
                 map.setTileSource(TileSourceFactory.MAPNIK);
                 break;
-            case "cyclemap":
+            case MAP_LAYER_CYCLEMAP:
                 map.setTileSource(TileSourceFactory.CYCLEMAP);
                 break;
-            case "osmpublictransport":
+            case MAP_LAYER_OSMPUBLICTRANSPORT:
                 map.setTileSource(TileSourceFactory.PUBLIC_TRANSPORT);
                 break;
-            case "mapquestosm":
+            case MAP_LAYER_MAPQUESTOSM:
                 map.setTileSource(TileSourceFactory.MAPQUESTOSM);
                 break;
             default:
@@ -286,7 +292,7 @@ public class MapActivity extends Activity implements MapEventsReceiver {
                 @Override
                 public void onClick(View view) {
                     Intent intent = new Intent(MapActivity.this, StationActivity.class);
-                    intent.putExtra("station", markerStation);
+                    intent.putExtra(KEY_STATION, markerStation);
                     startActivity(intent);
                 }
             });

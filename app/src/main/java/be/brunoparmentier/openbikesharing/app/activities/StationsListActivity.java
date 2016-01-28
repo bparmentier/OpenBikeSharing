@@ -81,6 +81,12 @@ public class StationsListActivity extends FragmentActivity implements ActionBar.
     private static final String PREF_KEY_STRIP_ID_STATION = "pref_strip_id_station";
     private static final String PREF_KEY_DB_LAST_UPDATE = "db_last_update";
 
+    private static final String KEY_BIKE_NETWORK = "bikeNetwork";
+    private static final String KEY_STATIONS = "stations";
+    private static final String KEY_FAV_STATIONS = "favStations";
+    private static final String KEY_NEARBY_STATIONS = "nearbyStations";
+    private static final String KEY_NETWORK_ID = "network-id";
+
     private static final int PICK_NETWORK_REQUEST = 1;
 
     private BikeNetwork bikeNetwork;
@@ -173,10 +179,10 @@ public class StationsListActivity extends FragmentActivity implements ActionBar.
             dialog.show();
         } else {
             if (savedInstanceState != null) {
-                bikeNetwork = (BikeNetwork) savedInstanceState.getSerializable("bikeNetwork");
-                stations = (ArrayList<Station>) savedInstanceState.getSerializable("stations");
-                favStations = (ArrayList<Station>) savedInstanceState.getSerializable("favStations");
-                nearbyStations = (ArrayList<Station>) savedInstanceState.getSerializable("nearbyStations");
+                bikeNetwork = (BikeNetwork) savedInstanceState.getSerializable(KEY_BIKE_NETWORK);
+                stations = (ArrayList<Station>) savedInstanceState.getSerializable(KEY_STATIONS);
+                favStations = (ArrayList<Station>) savedInstanceState.getSerializable(KEY_FAV_STATIONS);
+                nearbyStations = (ArrayList<Station>) savedInstanceState.getSerializable(KEY_NEARBY_STATIONS);
             } else {
                 String networkId = settings.getString(PREF_KEY_NETWORK_ID, "");
                 String stationUrl = settings.getString(PREF_KEY_API_URL, DEFAULT_API_URL)
@@ -232,10 +238,10 @@ public class StationsListActivity extends FragmentActivity implements ActionBar.
     @Override
     protected void onSaveInstanceState(Bundle outState) {
         super.onSaveInstanceState(outState);
-        outState.putSerializable("bikeNetwork", bikeNetwork);
-        outState.putSerializable("stations", stations);
-        outState.putSerializable("favStations", favStations);
-        outState.putSerializable("nearbyStations", nearbyStations);
+        outState.putSerializable(KEY_BIKE_NETWORK, bikeNetwork);
+        outState.putSerializable(KEY_STATIONS, stations);
+        outState.putSerializable(KEY_FAV_STATIONS, favStations);
+        outState.putSerializable(KEY_NEARBY_STATIONS, nearbyStations);
     }
 
     @Override
@@ -303,7 +309,7 @@ public class StationsListActivity extends FragmentActivity implements ActionBar.
             if (resultCode == RESULT_OK) {
                 Log.d(TAG, "RESULT_OK");
                 String stationUrl = settings.getString(PREF_KEY_API_URL, DEFAULT_API_URL)
-                        + "networks/" + data.getExtras().getString("network-id");
+                        + "networks/" + data.getExtras().getString(KEY_NETWORK_ID);
                 jsonDownloadTask = new JSONDownloadTask();
                 jsonDownloadTask.execute(stationUrl);
             }
