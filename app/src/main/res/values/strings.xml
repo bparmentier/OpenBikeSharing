@@ -130,4 +130,5 @@
     </string>
     <string name="pref_title_advanced">Advanced</string>
     <string name="pref_title_api_url">API URL</string>
+    <string name="pref_title_default_tab">Default tab</string>
 </resources>

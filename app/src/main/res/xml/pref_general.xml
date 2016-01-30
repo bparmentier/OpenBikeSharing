@@ -34,6 +34,15 @@
         android:summary="%s"
         android:title="@string/pref_map_layer_title" />
 
+    <be.brunoparmentier.openbikesharing.app.preferences.UpdateListPreference
+        android:defaultValue="0"
+        android:dialogTitle="@string/pref_title_default_tab"
+        android:entries="@array/pref_default_tab_entries"
+        android:entryValues="@array/pref_default_tab_values"
+        android:key="pref_default_tab"
+        android:summary="%s"
+        android:title="@string/pref_title_default_tab" />
+
     <PreferenceScreen android:title="@string/pref_title_advanced">
         <EditTextPreference
             android:key="pref_api_url"

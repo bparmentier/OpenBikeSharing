@@ -80,6 +80,7 @@ public class StationsListActivity extends FragmentActivity implements ActionBar.
     private static final String PREF_KEY_FAV_STATIONS = "fav-stations";
     private static final String PREF_KEY_STRIP_ID_STATION = "pref_strip_id_station";
     private static final String PREF_KEY_DB_LAST_UPDATE = "db_last_update";
+    private static final String PREF_KEY_DEFAULT_TAB = "pref_default_tab";
 
     private static final String KEY_BIKE_NETWORK = "bikeNetwork";
     private static final String KEY_STATIONS = "stations";
@@ -138,23 +139,22 @@ public class StationsListActivity extends FragmentActivity implements ActionBar.
         favStations = stationsDataSource.getFavoriteStations();
         nearbyStations = new ArrayList<>();
 
-        actionBar = getActionBar();
-        actionBar.addTab(actionBar.newTab()
-                .setText(getString(R.string.nearby_stations))
-                .setTabListener(this));
-        actionBar.addTab(actionBar.newTab()
-                .setText(getString(R.string.favorite_stations))
-                .setTabListener(this));
-        actionBar.addTab(actionBar.newTab()
-                .setText(getString(R.string.all_stations))
-                .setTabListener(this));
-        actionBar.setHomeButtonEnabled(false);
+        tabsPagerAdapter = new TabsPagerAdapter(getSupportFragmentManager());
+        viewPager.setAdapter(tabsPagerAdapter);
 
         settings = PreferenceManager.getDefaultSharedPreferences(this);
 
+        actionBar = getActionBar();
+        int defaultTabIndex = Integer.valueOf(settings.getString(PREF_KEY_DEFAULT_TAB, "0"));
+        for (int i = 0; i < 3; i++) {
+            ActionBar.Tab tab = actionBar.newTab();
+            tab.setTabListener(this);
+            tab.setText(tabsPagerAdapter.getPageTitle(i));
+            actionBar.addTab(tab, (defaultTabIndex == i));
+        }
+        actionBar.setHomeButtonEnabled(false);
         actionBar.setNavigationMode(ActionBar.NAVIGATION_MODE_TABS);
-        tabsPagerAdapter = new TabsPagerAdapter(getSupportFragmentManager());
-        viewPager.setAdapter(tabsPagerAdapter);
+
         boolean firstRun = settings.getString(PREF_KEY_NETWORK_ID, "").isEmpty();
         setDBLastUpdateText();
 
@@ -492,7 +492,7 @@ public class StationsListActivity extends FragmentActivity implements ActionBar.
     }
 
     private class TabsPagerAdapter extends FragmentPagerAdapter {
-        private final int NUM_ITEMS = 3;
+        private static final int NUM_ITEMS = 3;
 
         public TabsPagerAdapter(FragmentManager fragmentManager) {
             super(fragmentManager);
@@ -519,6 +519,20 @@ public class StationsListActivity extends FragmentActivity implements ActionBar.
                     return favoriteStationsFragment;
                 case 2:
                     return allStationsFragment;
+                default:
+                    return null;
+            }
+        }
+
+        @Override
+        public CharSequence getPageTitle(int position) {
+            switch (position) {
+                case 0:
+                    return getString(R.string.nearby_stations);
+                case 1:
+                    return getString(R.string.favorite_stations);
+                case 2:
+                    return getString(R.string.all_stations);
                 default:
                     return null;
             }
