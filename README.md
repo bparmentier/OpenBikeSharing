@@ -1,5 +1,4 @@
-OpenBikeSharing
-===============
+# OpenBikeSharing
 
 [![Build Status](https://travis-ci.org/bparmentier/OpenBikeSharing.svg?branch=master)](https://travis-ci.org/bparmentier/OpenBikeSharing)
 
@@ -11,8 +10,7 @@ It uses the [CityBikes API](http://api.citybik.es/v2/) that provides data for mo
 thanks to the [osmdroid](https://github.com/osmdroid/osmdroid) library (you can choose between
 multiple layers).
 
-Download
---------
+## Download
 
 OpenBikeSharing is available on
 [F-Droid](https://f-droid.org/repository/browse/?fdid=be.brunoparmentier.openbikesharing.app) and
@@ -20,24 +18,26 @@ OpenBikeSharing is available on
 Signed APK's can also be found on GitHub in the
 [Releases](https://github.com/bparmentier/OpenBikeSharing/releases) section.
 
-Contribute
-----------
+## Contribute
 
-This is my first Android application. I probably don't comply with all the "good practices" and the
-code may be a bit messy. So if you have enough courage, take a look at it and tell me what is wrong!
+### Issues
 
-If your language is not yet supported, just copy the `app/src/main/res/values` directory and
-translate the strings in it (when copying strings from English, please remove those marked
-`translatable="false"`).
-
-As I don't have as many devices as I would like to test this app on, please report any bug/crash
-that you may encounter. And feel free to make any suggestions to improve it.
+Bug reports and feature requests can be reported in [Issues](https://github.com/bparmentier/OpenBikeSharing/issues).
 
 To contribute to the [openbikesharing.org](http://openbikesharing.org) website, just switch to the
 [gh-pages](https://github.com/bparmentier/OpenBikeSharing/tree/gh-pages) branch.
 
-Build
------
+### Translations
+
+Translations are managed on [Weblate](https://hosted.weblate.org/). Please follow [these instructions](https://hosted.weblate.org/engage/openbikesharing/) if you want to help.
+
+### Donations
+
+Donations are always welcome and will help further development of OpenBikeSharing:
+
+* Bitcoin: `168utA5DWMVXLFVfQDahG5abEWUSk9Wcfm`
+
+## Build
 
 If you use Android Studio, you can import the project directly from GitHub.
 
@@ -52,8 +52,7 @@ Clone the repo and type:
 The Gradle script will take care of downloading the necessary libraries and will generate the APK's
 in `app/build/outputs/apk`.
 
-Permissions
------------
+## Permissions
 
 The following permissions are needed by OpenBikeSharing (those are the same that are required by
 osmdroid):
