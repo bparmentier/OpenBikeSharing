@@ -5,10 +5,8 @@
 OpenBikeSharing is an Android application that displays the availability of shared bikes in your
 city.
 
-It uses the [CityBikes API](http://api.citybik.es/v2/) that provides data for more than 200 cities
-(in 23 countries) and displays those data on an [OpenStreetMap](https://www.openstreetmap.org) layer
-thanks to the [osmdroid](https://github.com/osmdroid/osmdroid) library (you can choose between
-multiple layers).
+It uses the [CityBikes API](http://api.citybik.es/v2/) that provides data for more than 400 cities in around 40 countries and displays this data in a list or on an [OpenStreetMap](https://www.openstreetmap.org) layer
+thanks to the [osmdroid](https://github.com/osmdroid/osmdroid) library (multiple layers are available).
 
 ## Download
 
