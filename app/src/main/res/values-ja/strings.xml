@@ -1,6 +1,5 @@
 <?xml version='1.0' encoding='UTF-8'?>
-<resources><string name="app_name">オープン自転車シェアリング</string>
-
+<resources>
     <string name="connection_error">接続エラー</string>
     <string name="json_error">データの取得中にエラー</string>
 

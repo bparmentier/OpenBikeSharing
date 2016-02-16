@@ -18,7 +18,7 @@
 <resources>
 
     <!-- App name -->
-    <string name="app_name">OpenBikeSharing</string>
+    <string name="app_name" translatable="false">OpenBikeSharing</string>
 
     <!-- Error messages -->
     <string name="connection_error">Connection error</string>
