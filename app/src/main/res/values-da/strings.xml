@@ -29,7 +29,7 @@
     <string name="widget_title_favorite_stations">Foretrukne stationer</string>
     <string name="widget_no_fav_stations">Ingen foretrukne stationer</string>
 
-    <string name="free_bikes">Gratis cykler: </string>
+    <string name="free_bikes">Ledige cykler: </string>
     <string name="empty_slots">Tomme pladser: </string>
     <string name="all_stations">Alle stationer</string>
     <string name="favorite_stations">Favoritter</string>
