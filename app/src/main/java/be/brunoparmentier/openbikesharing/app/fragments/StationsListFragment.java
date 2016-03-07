@@ -17,12 +17,15 @@
 
 package be.brunoparmentier.openbikesharing.app.fragments;
 
+import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
+import android.support.v4.widget.SwipeRefreshLayout;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.AbsListView;
 import android.widget.AdapterView;
 import android.widget.ListView;
 
@@ -70,6 +73,19 @@ public class StationsListFragment extends Fragment {
                 startActivity(intent);
             }
         });
+        listView.setOnScrollListener(new AbsListView.OnScrollListener() {
+            @Override
+            public void onScrollStateChanged(AbsListView view, int scrollState) {
+
+            }
+
+            @Override
+            public void onScroll(AbsListView view, int firstVisibleItem, int visibleItemCount, int totalItemCount) {
+                SwipeRefreshLayout refreshLayout = (SwipeRefreshLayout) getActivity().findViewById(R.id.swipe_container);
+                if(firstVisibleItem == 0) refreshLayout.setEnabled(true);
+                else refreshLayout.setEnabled(false);
+            }
+        });
         return view;
     }
 
@@ -80,4 +96,5 @@ public class StationsListFragment extends Fragment {
             stationsListAdapter.notifyDataSetChanged();
         }
     }
+
 }
