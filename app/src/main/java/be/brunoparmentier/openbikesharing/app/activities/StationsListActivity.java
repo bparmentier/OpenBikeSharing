@@ -381,7 +381,8 @@ public class StationsListActivity extends FragmentActivity implements ActionBar.
         String networkId = PreferenceManager
                 .getDefaultSharedPreferences(this)
                 .getString(PREF_KEY_NETWORK_ID, "");
-        String stationUrl = DEFAULT_API_URL + "/" + networkId;
+        String stationUrl = settings.getString(PREF_KEY_API_URL, DEFAULT_API_URL)
+                + "networks/" + networkId;
         jsonDownloadTask = new JSONDownloadTask();
         jsonDownloadTask.execute(stationUrl);
     }
