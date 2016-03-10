@@ -1,0 +1,80 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<resources>
+    <string name="connection_error">接続エラー</string>
+    <string name="json_error">データの取得中にエラー</string>
+
+    <string name="action_settings">設定</string>
+    <string name="action_refresh">更新</string>
+    <string name="action_map">地図</string>
+    <string name="action_directions">方向</string>
+    <string name="action_favorite">お気に入り</string>
+    <string name="action_my_location">私の場所</string>
+    <string name="action_search">検索</string>
+
+    <string name="title_activity_stations_list">ステーション</string>
+    <string name="title_activity_station">ステーション</string>
+    <string name="title_activity_networks_list">ネットワークを選択</string>
+    <string name="title_activity_map">地図</string>
+    <string name="title_activity_settings">設定</string>
+
+    <string name="welcome_dialog_message">" 開始する前に、一覧から自転車ネットワークを選択してください。\nまた、インターネットに接続していることを確認してください。 "</string>
+    <string name="welcome_dialog_ok">OK</string>
+    <string name="welcome_dialog_cancel">キャンセル</string>
+    <string name="welcome_dialog_title">ようこそ</string>
+
+    <string name="location_not_found">場所が見つかりません</string>
+    <string name="network_selected">選択しました</string>
+    <string name="bike_network_downloading">自転車ネットワークがダウンロードされるまでお待ちください</string>
+
+    <string name="widget_title_favorite_stations">お気に入りのステーション</string>
+    <string name="widget_no_fav_stations">お気に入りのステーションはありません</string>
+
+    <string name="free_bikes">無料レンタル自転車: </string>
+    <string name="empty_slots">空の場所: </string>
+    <string name="all_stations">すべてのステーション</string>
+    <string name="favorite_stations">お気に入り</string>
+    <string name="nearby_stations">近く</string>
+    <string name="no_stations">ステーションはありません</string>
+    <string name="no_favorite_stations">お気に入りのステーションはありません</string>
+    <string name="no_nearby_stations">近くのステーションはありません</string>
+    <string name="station_added_to_favorites">ステーションをお気に入りに追加しました</string>
+    <string name="stations_removed_from_favorites">ステーションをお気に入りから削除しました</string>
+    <string name="no_nav_application">ナビゲーション アプリケーションがインストールされていません</string>
+    <string name="is_bonus_station">ボーナス ステーション</string>
+    <string name="cards_accepted">カード利用可</string>
+    <string name="db_last_update">最終更新: %1$s</string>
+    <string name="db_last_update_never">なし</string>
+    <string name="updated_just_now">ちょうど今</string>
+    <plurals name="updated_minutes_ago">
+	<item quantity="one">%d 分前</item>
+	<item quantity="other"/>
+</plurals>
+    <plurals name="updated_hours_ago">
+	<item quantity="one">%d 時間前</item>
+	<item quantity="other"/>
+</plurals>
+    <plurals name="updated_days_ago">
+	<item quantity="one">%d 日前</item>
+	<item quantity="other"/>
+</plurals>
+
+    <string name="pref_header_general">全般</string>
+    <string name="pref_title_bike_networks_list">ネットワークを選択</string>
+    <string name="pref_title_license">ライセンス</string>
+    <string name="pref_title_about">アプリについて</string>
+    <string name="pref_title_website">ウェブサイト</string>
+    <string name="pref_title_source_code">ソースコード</string>
+    <string name="pref_title_developers_website">開発者のウェブサイト</string>
+    <string name="pref_title_donate_bitcoin">Bitcoin を寄付する</string>
+    <string name="pref_title_citybikes_api">CityBikes API</string>
+    <string name="pref_title_osmdroid_library">osmdroid ライブラリ</string>
+    <string name="pref_title_osmbonuspack_library">OSMBonusPack ライブラリ</string>
+    <string name="pref_title_openstreetmap">OpenStreetMap</string>
+    <string name="pref_title_version">バージョン</string>
+    <string name="pref_map_layer_title">地図レイヤー</string>
+    <string name="pref_title_strip_station_id">ステーション ID を取る</string>
+    <string name="pref_title_strip_station_id_summary">" ステーション名から ID を削除します (一部のネットワークでのみ役立ちます) "</string>
+    <string name="pref_title_advanced">詳細</string>
+    <string name="pref_title_api_url">API URL</string>
+    <string name="pref_title_default_tab">デフォルトのタブ</string>
+</resources>

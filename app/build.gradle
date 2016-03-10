@@ -19,14 +19,14 @@ apply plugin: 'com.android.application'
 
 android {
     compileSdkVersion 22
-    buildToolsVersion '23.0.1'
+    buildToolsVersion '23.0.2'
 
     defaultConfig {
         applicationId "be.brunoparmentier.openbikesharing.app"
         minSdkVersion 14
         targetSdkVersion 22
-        versionCode 19
-        versionName "1.8"
+        versionCode 22
+        versionName "1.9.2"
     }
 
     buildTypes {
@@ -47,8 +47,7 @@ android {
 }
 
 dependencies {
-    compile 'org.osmdroid:osmdroid-android:4.3'
+    compile 'org.osmdroid:osmdroid-android:5.0.1@aar'
+    compile 'com.github.MKergall.osmbonuspack:OSMBonusPack:v5.6'
     compile 'com.android.support:support-v4:23.0.1'
-    compile 'org.slf4j:slf4j-simple:1.7.7'
-    compile files('libs/osmbonuspack_v4.8.jar')
 }

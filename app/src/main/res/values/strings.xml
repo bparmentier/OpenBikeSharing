@@ -18,7 +18,7 @@
 <resources>
 
     <!-- App name -->
-    <string name="app_name">OpenBikeSharing</string>
+    <string name="app_name" translatable="false">OpenBikeSharing</string>
 
     <!-- Error messages -->
     <string name="connection_error">Connection error</string>
@@ -63,6 +63,10 @@
     <string name="empty_slots">Empty slots:\u00A0</string>
     <string name="all_stations">All stations</string>
     <string name="favorite_stations">Favorites</string>
+    <string name="nearby_stations">Nearby</string>
+    <string name="no_stations">No stations</string>
+    <string name="no_favorite_stations">No favorite stations</string>
+    <string name="no_nearby_stations">No nearby stations</string>
     <string name="station_added_to_favorites">Station added to favorites</string>
     <string name="stations_removed_from_favorites">Station removed from favorites</string>
     <string name="no_nav_application">You don\'t have any navigation application installed</string>
@@ -124,4 +128,7 @@
     <string name="pref_title_strip_station_id_summary">
         Remove ID from station name (only useful for some networks)
     </string>
+    <string name="pref_title_advanced">Advanced</string>
+    <string name="pref_title_api_url">API URL</string>
+    <string name="pref_title_default_tab">Default tab</string>
 </resources>

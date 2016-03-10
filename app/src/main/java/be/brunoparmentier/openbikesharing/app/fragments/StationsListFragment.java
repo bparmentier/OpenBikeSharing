@@ -28,6 +28,7 @@ import android.view.ViewGroup;
 import android.widget.AbsListView;
 import android.widget.AdapterView;
 import android.widget.ListView;
+import android.widget.TextView;
 
 import java.util.ArrayList;
 
@@ -37,14 +38,20 @@ import be.brunoparmentier.openbikesharing.app.adapters.StationsListAdapter;
 import be.brunoparmentier.openbikesharing.app.models.Station;
 
 public class StationsListFragment extends Fragment {
+    private static final String KEY_STATION = "station";
+    private static final String KEY_STATIONS = "stations";
+    private static final String KEY_EMPTY_LIST_RESOURCE_ID = "emptyListResourceId";
+
     private ArrayList<Station> stations;
     private StationsListAdapter stationsListAdapter;
+    private int emptyListResourceId;
 
     /* newInstance constructor for creating fragment with arguments */
-    public static StationsListFragment newInstance(ArrayList<Station> stations) {
+    public static StationsListFragment newInstance(ArrayList<Station> stations, int emptyListResourceId) {
         StationsListFragment stationsListFragment = new StationsListFragment();
         Bundle args = new Bundle();
-        args.putSerializable("stations", stations);
+        args.putSerializable(KEY_STATIONS, stations);
+        args.putInt(KEY_EMPTY_LIST_RESOURCE_ID, emptyListResourceId);
         stationsListFragment.setArguments(args);
         return stationsListFragment;
     }
@@ -52,7 +59,8 @@ public class StationsListFragment extends Fragment {
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        stations = (ArrayList<Station>) getArguments().getSerializable("stations");
+        stations = (ArrayList<Station>) getArguments().getSerializable(KEY_STATIONS);
+        emptyListResourceId = getArguments().getInt(KEY_EMPTY_LIST_RESOURCE_ID);
 
         stationsListAdapter = new StationsListAdapter(getActivity(),
                 R.layout.station_list_item, stations);
@@ -63,13 +71,15 @@ public class StationsListFragment extends Fragment {
         View view = inflater.inflate(R.layout.fragment_stations_list, container, false);
         ListView listView = (ListView) view.findViewById(R.id.stationsListView);
         listView.setAdapter(stationsListAdapter);
-
+        TextView emptyView = (TextView) view.findViewById(R.id.emptyList);
+        emptyView.setText(emptyListResourceId);
+        listView.setEmptyView(view.findViewById(R.id.emptyList));
         listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view,
                                     int position, long id) {
                 Intent intent = new Intent(getActivity(), StationActivity.class);
-                intent.putExtra("station", stations.get(position));
+                intent.putExtra(KEY_STATION, stations.get(position));
                 startActivity(intent);
             }
         });

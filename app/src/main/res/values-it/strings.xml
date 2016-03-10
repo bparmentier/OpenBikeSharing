@@ -17,9 +17,6 @@
 
 <resources>
 
-    <!-- App name -->
-    <string name="app_name">OpenBikeSharing</string>
-
     <!-- Error messages -->
     <string name="connection_error">Errore di connessione</string>
     <string name="json_error">Errore nel recupero dei dati</string>

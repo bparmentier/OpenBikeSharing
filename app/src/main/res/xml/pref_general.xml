@@ -34,10 +34,26 @@
         android:summary="%s"
         android:title="@string/pref_map_layer_title" />
 
-    <CheckBoxPreference
-        android:key="pref_strip_id_station"
-        android:summary="@string/pref_title_strip_station_id_summary"
-        android:title="@string/pref_title_strip_station_id" />
+    <be.brunoparmentier.openbikesharing.app.preferences.UpdateListPreference
+        android:defaultValue="0"
+        android:dialogTitle="@string/pref_title_default_tab"
+        android:entries="@array/pref_default_tab_entries"
+        android:entryValues="@array/pref_default_tab_values"
+        android:key="pref_default_tab"
+        android:summary="%s"
+        android:title="@string/pref_title_default_tab" />
+
+    <PreferenceScreen android:title="@string/pref_title_advanced">
+        <EditTextPreference
+            android:key="pref_api_url"
+            android:title="@string/pref_title_api_url"
+            android:defaultValue="http://api.citybik.es/v2/" />
+
+        <CheckBoxPreference
+            android:key="pref_strip_id_station"
+            android:summary="@string/pref_title_strip_station_id_summary"
+            android:title="@string/pref_title_strip_station_id" />
+    </PreferenceScreen>
 
     <PreferenceScreen android:title="@string/pref_title_about">
         <Preference
@@ -61,11 +77,11 @@
         </Preference>
 
         <Preference
-            android:summary="http://www.brunoparmentier.be"
+            android:summary="https://www.brunoparmentier.be"
             android:title="@string/pref_title_developers_website">
             <intent
                 android:action="android.intent.action.VIEW"
-                android:data="http://www.brunoparmentier.be" />
+                android:data="https://www.brunoparmentier.be" />
         </Preference>
 
         <be.brunoparmentier.openbikesharing.app.preferences.InfoDialogPreference

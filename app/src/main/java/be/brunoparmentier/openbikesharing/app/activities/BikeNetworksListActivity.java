@@ -43,20 +43,23 @@ import java.text.ParseException;
 import java.util.ArrayList;
 import java.util.Collections;
 
-import be.brunoparmentier.openbikesharing.app.models.BikeNetworkInfo;
-import be.brunoparmentier.openbikesharing.app.adapters.BikeNetworksListAdapter;
 import be.brunoparmentier.openbikesharing.app.R;
+import be.brunoparmentier.openbikesharing.app.adapters.BikeNetworksListAdapter;
+import be.brunoparmentier.openbikesharing.app.models.BikeNetworkInfo;
 import be.brunoparmentier.openbikesharing.app.parsers.BikeNetworksListParser;
 
 public class BikeNetworksListActivity extends Activity {
     private static final String TAG = BikeNetworksListActivity.class.getSimpleName();
 
-    private static final String BASE_URL = "http://api.citybik.es/v2/networks";
+    private static final String DEFAULT_API_URL = "http://api.citybik.es/v2/";
+    private static final String PREF_KEY_API_URL = "pref_api_url";
     private static final String PREF_KEY_NETWORK_ID = "network-id";
     private static final String PREF_KEY_NETWORK_NAME = "network-name";
     private static final String PREF_KEY_NETWORK_CITY = "network-city";
     private static final String PREF_KEY_NETWORK_LATITUDE = "network-latitude";
     private static final String PREF_KEY_NETWORK_LONGITUDE = "network-longitude";
+    private static final String KEY_NETWORK_ID = "network-id";
+
     private ListView listView;
     private ArrayList<BikeNetworkInfo> bikeNetworks;
     private ArrayList<BikeNetworkInfo> searchedBikeNetworks;
@@ -69,7 +72,10 @@ public class BikeNetworksListActivity extends Activity {
         getActionBar().setDisplayHomeAsUpEnabled(true);
 
         listView = (ListView) findViewById(R.id.networksListView);
-        new JSONDownloadTask().execute(BASE_URL);
+        String apiUrl = PreferenceManager
+                .getDefaultSharedPreferences(this)
+                .getString(PREF_KEY_API_URL, DEFAULT_API_URL) + "networks";
+        new JSONDownloadTask().execute(apiUrl);
     }
 
     @Override
@@ -132,7 +138,7 @@ public class BikeNetworksListActivity extends Activity {
                                 Toast.LENGTH_SHORT).show();
 
                         Intent resultIntent = new Intent();
-                        resultIntent.putExtra("network-id", searchedBikeNetworks.get(position).getId());
+                        resultIntent.putExtra(KEY_NETWORK_ID, searchedBikeNetworks.get(position).getId());
                         if (getParent() == null) {
                             setResult(Activity.RESULT_OK, resultIntent);
                         } else {
@@ -220,7 +226,7 @@ public class BikeNetworksListActivity extends Activity {
                                 Toast.LENGTH_SHORT).show();
 
                         Intent resultIntent = new Intent();
-                        resultIntent.putExtra("network-id", bikeNetworks.get(position).getId());
+                        resultIntent.putExtra(KEY_NETWORK_ID, bikeNetworks.get(position).getId());
                         if (getParent() == null) {
                             setResult(Activity.RESULT_OK, resultIntent);
                         } else {

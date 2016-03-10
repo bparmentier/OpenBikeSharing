@@ -17,9 +17,6 @@
 
 <resources>
 
-    <!-- App name -->
-    <string name="app_name">OpenBikeSharing</string>
-
     <!-- Error messages -->
     <string name="connection_error">Erreur de connexion</string>
     <string name="json_error">Erreur de récupération des données</string>
@@ -102,4 +99,11 @@
     <string name="pref_title_strip_station_id_summary">
         Supprime l\'identifiant dans le nom de la station (utile pour certains réseaux uniquement)
     </string>
+    <string name="nearby_stations">À proximité</string>
+    <string name="no_favorite_stations">Pas de stations favorites</string>
+    <string name="no_nearby_stations">Pas de stations à proximité</string>
+    <string name="no_stations">Pas de stations</string>
+    <string name="pref_title_advanced">Avancé</string>
+    <string name="pref_title_api_url">URL de l\'API</string>
+    <string name="pref_title_default_tab">Onglet par défaut</string>
 </resources>
