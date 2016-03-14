@@ -140,6 +140,10 @@ public class StationsListActivity extends FragmentActivity implements ActionBar.
 
             @Override
             public void onPageScrollStateChanged(int state) {
+                /* as explained on
+                http://stackoverflow.com/questions/25978462/swiperefreshlayout-viewpager-limit-horizontal-scroll-only
+                 */
+                refreshLayout.setEnabled(state == ViewPager.SCROLL_STATE_IDLE);
 
             }
         });
