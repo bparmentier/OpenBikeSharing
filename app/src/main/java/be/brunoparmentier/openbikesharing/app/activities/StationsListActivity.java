@@ -37,6 +37,7 @@ import android.support.v4.app.FragmentActivity;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentPagerAdapter;
 import android.support.v4.view.ViewPager;
+import android.support.v4.widget.SwipeRefreshLayout;
 import android.text.format.DateUtils;
 import android.util.Log;
 import android.view.Menu;
@@ -110,11 +111,20 @@ public class StationsListActivity extends FragmentActivity implements ActionBar.
     private StationsListFragment favoriteStationsFragment;
     private StationsListFragment nearbyStationsFragment;
 
+    private SwipeRefreshLayout refreshLayout;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_stations_list);
 
+        refreshLayout = (SwipeRefreshLayout) findViewById(R.id.swipe_container);
+        refreshLayout.setColorSchemeResources(R.color.bike_red,R.color.parking_blue_dark);
+        refreshLayout.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
+            @Override
+            public void onRefresh() {
+                executeDownloadTask();
+            }
+        });
         viewPager = (ViewPager) findViewById(R.id.viewPager);
         viewPager.setOffscreenPageLimit(2);
         viewPager.setOnPageChangeListener(new ViewPager.OnPageChangeListener() {
@@ -130,6 +140,10 @@ public class StationsListActivity extends FragmentActivity implements ActionBar.
 
             @Override
             public void onPageScrollStateChanged(int state) {
+                /* as explained on
+                http://stackoverflow.com/questions/25978462/swiperefreshlayout-viewpager-limit-horizontal-scroll-only
+                 */
+                refreshLayout.setEnabled(state == ViewPager.SCROLL_STATE_IDLE);
 
             }
         });
@@ -366,6 +380,17 @@ public class StationsListActivity extends FragmentActivity implements ActionBar.
             }
         }
     }
+    //put here the code to update the bikes data
+    private void executeDownloadTask(){
+        String networkId = PreferenceManager
+                .getDefaultSharedPreferences(this)
+                .getString(PREF_KEY_NETWORK_ID, "");
+        String stationUrl = settings.getString(PREF_KEY_API_URL, DEFAULT_API_URL)
+                + "networks/" + networkId;
+        jsonDownloadTask = new JSONDownloadTask();
+        jsonDownloadTask.execute(stationUrl);
+    }
+
 
     private void setNearbyStations(List<Station> stations) {
         final double radius = 0.01;
@@ -450,6 +475,7 @@ public class StationsListActivity extends FragmentActivity implements ActionBar.
                         getApplicationContext().getResources().getString(R.string.connection_error),
                         Toast.LENGTH_SHORT).show();
                 setRefreshActionButtonState(false);
+                refreshLayout.setRefreshing(false);
             } else {
                 try {
                     /* parse result */
@@ -486,6 +512,7 @@ public class StationsListActivity extends FragmentActivity implements ActionBar.
                             R.string.json_error, Toast.LENGTH_LONG).show();
                 } finally {
                     setRefreshActionButtonState(false);
+                    refreshLayout.setRefreshing(false);
                 }
             }
         }
