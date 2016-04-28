@@ -1,2 +1,79 @@
-<?xml version="1.0" encoding="utf-8"?>
-<resources></resources>
+<?xml version='1.0' encoding='UTF-8'?>
+<resources><string name="connection_error">Forbindelsesfeil</string>
+    <string name="json_error">Feil under mottak av data</string>
+
+    <string name="action_settings">Innstillinger</string>
+    <string name="action_refresh">Oppdater</string>
+    <string name="action_map">Kart</string>
+    <string name="action_directions">Veivisninger</string>
+    <string name="action_favorite">Favoritt</string>
+    <string name="action_my_location">Min plassering</string>
+    <string name="action_search">Søk</string>
+
+    <string name="title_activity_stations_list">Stasjoner</string>
+    <string name="title_activity_station">Stasjon</string>
+    <string name="title_activity_networks_list">Velg et nettverk</string>
+    <string name="title_activity_map">Kart</string>
+    <string name="title_activity_settings">Innstillinger</string>
+
+    <string name="welcome_dialog_message">" Før du begynner, velg et sykkelnettverk fra listen.\nSørg også for å være tilknyttet Internett. "</string>
+    <string name="welcome_dialog_ok">OK</string>
+    <string name="welcome_dialog_cancel">Avbryt</string>
+    <string name="welcome_dialog_title">Velkommen</string>
+
+    <string name="location_not_found">Sted ikke funnet</string>
+    <string name="network_selected">valgt</string>
+    <string name="bike_network_downloading">Vent mens sykkelnettverket blir lastet ned</string>
+
+    <string name="widget_title_favorite_stations">Foretrukne stasjoner</string>
+    <string name="widget_no_fav_stations">Ingen foretrukne stasjoner</string>
+
+    <string name="free_bikes">Ledige sykler: </string>
+    <string name="empty_slots">Ledige plasser: </string>
+    <string name="all_stations">Alle stasjoner</string>
+    <string name="favorite_stations">Favoritter</string>
+    <string name="nearby_stations">I nærheten</string>
+    <string name="no_stations">Ingen stasjoner</string>
+    <string name="no_favorite_stations">Ingen foretrukne stasjoner</string>
+    <string name="no_nearby_stations">Ingen nærliggende stasjoner</string>
+    <string name="station_added_to_favorites">Stasjon foretrukket</string>
+    <string name="stations_removed_from_favorites">Stasjon fjernet fra foretrukne</string>
+    <string name="no_nav_application">Du har ikke noe navigasjonsprogram installert</string>
+    <string name="is_bonus_station">Bonusstasjon</string>
+    <string name="cards_accepted">Kort godtas</string>
+    <string name="db_last_update">Siste oppdatering: %1$s</string>
+    <string name="db_last_update_never">aldri</string>
+    <string name="updated_just_now">Akkurat nå</string>
+    <plurals name="updated_minutes_ago">
+	<item quantity="one">%d minutt siden</item>
+	<item quantity="other">%d minutter siden</item>
+</plurals>
+    <plurals name="updated_hours_ago">
+	<item quantity="one">%d time siden</item>
+	<item quantity="other">%d timer siden</item>
+</plurals>
+    <plurals name="updated_days_ago">
+	<item quantity="one">i går</item>
+	<item quantity="other">%d dager siden</item>
+</plurals>
+
+    <string name="pref_header_general">Hovedinnstillinger</string>
+    <string name="pref_title_bike_networks_list">Velg et nettverk</string>
+    <string name="pref_title_license">Lisens</string>
+    <string name="pref_title_about">Om</string>
+    <string name="pref_title_website">Nettside</string>
+    <string name="pref_title_source_code">Kildekode</string>
+    <string name="pref_title_developers_website">Utviklerens hjemmeside</string>
+    <string name="pref_title_donate_bitcoin">Doner Bitcoin</string>
+    <string name="pref_title_citybikes_api">CityBikes API</string>
+    <string name="pref_title_osmdroid_library">osmdroid-bibliotek</string>
+    <string name="pref_title_osmbonuspack_library">OSMBonusPack-bibliotek</string>
+    <string name="pref_title_openstreetmap">OpenStreetMap</string>
+    <string name="pref_title_version">Versjon</string>
+    <string name="pref_map_layer_title">Kartlag</string>
+    <string name="pref_title_strip_station_id">Skjul stasjons-ID</string>
+    <string name="pref_title_strip_station_id_summary">" Fjern ID fra stasjonsnavn (bare nyttig på noen nettverk) "</string>
+    <string name="pref_title_advanced">Avansert</string>
+    <string name="pref_title_api_url">Nettadresse til API</string>
+    <string name="pref_title_default_tab">Forvalgt fane</string>
+</resources>
