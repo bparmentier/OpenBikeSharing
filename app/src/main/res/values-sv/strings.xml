@@ -1,2 +1,77 @@
-<?xml version="1.0" encoding="utf-8"?>
-<resources></resources>
+<?xml version='1.0' encoding='UTF-8'?>
+<resources><string name="connection_error">Anslutningsfel</string>
+    <string name="json_error">Fel inträffade vid mottagning av data</string>
+
+    <string name="action_settings">Inställningar</string>
+    <string name="action_refresh">Uppdatera</string>
+    <string name="action_map">Karta</string>
+    <string name="action_directions">Riktningar</string>
+    <string name="action_favorite">Favorit</string>
+    <string name="action_my_location">Min plats</string>
+    <string name="action_search">Sök</string>
+
+    <string name="title_activity_stations_list">Stationer</string>
+    <string name="title_activity_station">Station</string>
+    <string name="title_activity_networks_list">Välj ett nätverk</string>
+    <string name="title_activity_map">Karta</string>
+    <string name="title_activity_settings">Inställningar</string>
+
+    <string name="welcome_dialog_message">" Innan du loggar in, vänligen välj ett cykelnätverk i listan.\nFörsäkra dig också om att du är ansluten till internet. "</string>
+    <string name="welcome_dialog_ok">OK</string>
+    <string name="welcome_dialog_cancel">Avbryt</string>
+    <string name="welcome_dialog_title">Välkommen</string>
+
+    <string name="location_not_found">Platsen kunde inte hittas</string>
+    <string name="network_selected">valt</string>
+    <string name="bike_network_downloading">Vänligen vänta medans cykelnätverket laddas ner</string>
+
+    <string name="widget_title_favorite_stations">Favoritstationer</string>
+    <string name="widget_no_fav_stations">Inga favoritstationer</string>
+
+    <string name="free_bikes">Gratis cyklar: </string>
+    <string name="all_stations">Alla stationer</string>
+    <string name="favorite_stations">Favoriter</string>
+    <string name="nearby_stations">Närliggande</string>
+    <string name="no_stations">Inga stationer</string>
+    <string name="no_favorite_stations">Inga favoritstationer</string>
+    <string name="no_nearby_stations">Inga närliggande stationer</string>
+    <string name="station_added_to_favorites">Stationen lades till i Favoriter</string>
+    <string name="stations_removed_from_favorites">Stationen togs bort från Favoriter</string>
+    <string name="no_nav_application">Du har ingen applikation för navigation installerad</string>
+    <string name="is_bonus_station">Bonusstation</string>
+    <string name="cards_accepted">Accepterade kort</string>
+    <string name="db_last_update">Senaste uppdatering: % 1$s</string>
+    <string name="db_last_update_never">aldrig</string>
+    <string name="updated_just_now">Just nu</string>
+    <plurals name="updated_minutes_ago">
+	<item quantity="one">%d minut sedan</item>
+	<item quantity="other">%d minuter sedan</item>
+</plurals>
+    <plurals name="updated_hours_ago">
+	<item quantity="one">%d timme sedan</item>
+	<item quantity="other">%d timmar sedan</item>
+</plurals>
+    <plurals name="updated_days_ago">
+	<item quantity="one">%d dag sedan</item>
+	<item quantity="other">%d dagar sedan</item>
+</plurals>
+
+    <string name="pref_header_general">Generell</string>
+    <string name="pref_title_bike_networks_list">Välj ett nätverk</string>
+    <string name="pref_title_license">Licens</string>
+    <string name="pref_title_about">Om</string>
+    <string name="pref_title_website">Hemsida</string>
+    <string name="pref_title_source_code">Källkod</string>
+    <string name="pref_title_developers_website">Utvecklarens hemsida</string>
+    <string name="pref_title_donate_bitcoin">Donera Bitcoin</string>
+    <string name="pref_title_citybikes_api">CityBikes API</string>
+    <string name="pref_title_osmdroid_library">osmdroid-bibliotek</string>
+    <string name="pref_title_osmbonuspack_library">OSMBonusPack-bibliotek</string>
+    <string name="pref_title_openstreetmap">OpenStreetMap</string>
+    <string name="pref_title_version">Version</string>
+    <string name="pref_map_layer_title">Kartlager</string>
+    <string name="pref_title_strip_station_id_summary">" Ta bort ID från stationsnamnet (endast användbart för vissa nätverk) "</string>
+    <string name="pref_title_advanced">Avancerat</string>
+    <string name="pref_title_api_url">URL för API</string>
+    <string name="pref_title_default_tab">Standardflik</string>
+</resources>
