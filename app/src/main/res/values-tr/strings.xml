@@ -1,4 +1,5 @@
-<?xml version="1.0" encoding="utf-8"?><!--
+<?xml version='1.0' encoding='UTF-8'?>
+<!--
   ~ Copyright (c) 2014-2015 Bruno Parmentier. This file is part of OpenBikeSharing.
   ~	Turkish Translator: Caner Başaran <basaran.caner at gmail.com>, 2015
   ~
@@ -15,7 +16,6 @@
   ~ You should have received a copy of the GNU General Public License
   ~ along with OpenBikeSharing.  If not, see <http://www.gnu.org/licenses/>.
   -->
-
 <resources>
 
     <!-- Error messages -->
@@ -97,4 +97,14 @@
     <string name="pref_title_strip_station_id_summary">
         İstasyon adından kimlik numarasını kaldır (sadece bazı ağlar için yararlıdır)
     </string>
-</resources>
+<string name="pref_title_default_tab">Varsayılan Sekme</string>
+<string name="pref_title_advanced">Gelişmiş</string>
+    <string name="no_nearby_stations">Yakın istasyon yok</string>
+    <string name="no_stations">İstasyon yok</string>
+    <string name="nearby_stations">Yakında</string>
+    <string name="widget_title_favorite_stations">Sık kullanılan istasyonlar</string>
+    <string name="widget_no_fav_stations">Sık kullanılan istasyon yok</string>
+
+    <string name="no_favorite_stations">Sık kullanılan istasyon yok</string>
+    <string name="pref_title_api_url">API URL</string>
+    </resources>
