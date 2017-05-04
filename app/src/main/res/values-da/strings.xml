@@ -42,7 +42,7 @@
     <string name="no_nav_application">Der er ikke installeret et navigationsprogram</string>
     <string name="is_bonus_station">Bonusstation</string>
     <string name="cards_accepted">Kort accepteret</string>
-    <string name="db_last_update">Seneste opdatering: %1$ s</string>
+    <string name="db_last_update">Seneste opdatering: %1$s</string>
     <string name="db_last_update_never">aldrig</string>
     <string name="updated_just_now">Lige nu</string>
     <plurals name="updated_minutes_ago">

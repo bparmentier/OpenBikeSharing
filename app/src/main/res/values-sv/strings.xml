@@ -40,7 +40,7 @@
     <string name="no_nav_application">Du har ingen applikation för navigation installerad</string>
     <string name="is_bonus_station">Bonusstation</string>
     <string name="cards_accepted">Accepterade kort</string>
-    <string name="db_last_update">Senaste uppdatering: % 1$s</string>
+    <string name="db_last_update">Senaste uppdatering: %1$s</string>
     <string name="db_last_update_never">aldrig</string>
     <string name="updated_just_now">Just nu</string>
     <plurals name="updated_minutes_ago">
