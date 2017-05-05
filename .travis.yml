@@ -1,9 +1,8 @@
 sudo: false
 
 language: android
-dist: trusty
 jdk:
-  - openjdk8
+  - oraclejdk8
 android:
   components:
     # Use the latest revision of Android SDK Tools
