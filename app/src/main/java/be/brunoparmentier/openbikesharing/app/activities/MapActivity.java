@@ -70,7 +70,6 @@ public class MapActivity extends Activity implements MapEventsReceiver {
     private static final String MAP_LAYER_MAPNIK = "mapnik";
     private static final String MAP_LAYER_CYCLEMAP = "cyclemap";
     private static final String MAP_LAYER_OSMPUBLICTRANSPORT = "osmpublictransport";
-    private static final String MAP_LAYER_MAPQUESTOSM = "mapquestosm";
 
     private MapView map;
     private IMapController mapController;
@@ -133,9 +132,6 @@ public class MapActivity extends Activity implements MapEventsReceiver {
             case MAP_LAYER_OSMPUBLICTRANSPORT:
                 map.setTileSource(TileSourceFactory.PUBLIC_TRANSPORT);
                 break;
-            case MAP_LAYER_MAPQUESTOSM:
-//                map.setTileSource(TileSourceFactory.MAPQUESTOSM);
-//                break;
             default:
                 map.setTileSource(TileSourceFactory.DEFAULT_TILE_SOURCE);
                 break;

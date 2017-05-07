@@ -59,7 +59,6 @@ public class StationActivity extends Activity {
     private static final String MAP_LAYER_MAPNIK = "mapnik";
     private static final String MAP_LAYER_CYCLEMAP = "cyclemap";
     private static final String MAP_LAYER_OSMPUBLICTRANSPORT = "osmpublictransport";
-    private static final String MAP_LAYER_MAPQUESTOSM = "mapquestosm";
 
     private SharedPreferences settings;
     private Station station;
@@ -99,9 +98,6 @@ public class StationActivity extends Activity {
             case MAP_LAYER_OSMPUBLICTRANSPORT:
                 map.setTileSource(TileSourceFactory.PUBLIC_TRANSPORT);
                 break;
-            case MAP_LAYER_MAPQUESTOSM:
-//                map.setTileSource(TileSourceFactory.MAPQUESTOSM);
-//                break;
             default:
                 map.setTileSource(TileSourceFactory.DEFAULT_TILE_SOURCE);
                 break;

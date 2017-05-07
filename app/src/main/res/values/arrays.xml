@@ -20,14 +20,12 @@
         <item>@string/pref_map_layer_mapnik</item>
         <item>@string/pref_map_layer_cyclemap</item>
         <item>@string/pref_map_layer_osmpublictransport</item>
-        <item>@string/pref_map_layer_mapquestosm</item>
     </string-array>
 
     <string-array name="pref_map_layer_values" translatable="false">
         <item>mapnik</item>
         <item>cyclemap</item>
         <item>osmpublictransport</item>
-        <item>mapquestosm</item>
     </string-array>
 
     <string-array name="pref_default_tab_entries">
