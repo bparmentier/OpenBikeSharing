@@ -39,14 +39,14 @@ import android.widget.Toast;
 
 import org.osmdroid.api.IMapController;
 import org.osmdroid.bonuspack.clustering.GridMarkerClusterer;
-import org.osmdroid.bonuspack.overlays.InfoWindow;
-import org.osmdroid.bonuspack.overlays.MapEventsOverlay;
-import org.osmdroid.bonuspack.overlays.MapEventsReceiver;
-import org.osmdroid.bonuspack.overlays.Marker;
-import org.osmdroid.bonuspack.overlays.MarkerInfoWindow;
+import org.osmdroid.events.MapEventsReceiver;
 import org.osmdroid.tileprovider.tilesource.TileSourceFactory;
 import org.osmdroid.util.GeoPoint;
 import org.osmdroid.views.MapView;
+import org.osmdroid.views.overlay.MapEventsOverlay;
+import org.osmdroid.views.overlay.Marker;
+import org.osmdroid.views.overlay.infowindow.InfoWindow;
+import org.osmdroid.views.overlay.infowindow.MarkerInfoWindow;
 import org.osmdroid.views.overlay.mylocation.GpsMyLocationProvider;
 import org.osmdroid.views.overlay.mylocation.MyLocationNewOverlay;
 
@@ -105,7 +105,7 @@ public class MapActivity extends Activity implements MapEventsReceiver {
         map.getOverlays().add(0, mapEventsOverlay);
 
         /* markers list */
-        GridMarkerClusterer stationsMarkers = new GridMarkerClusterer(this);
+        GridMarkerClusterer stationsMarkers = new GridMarkerClusterer();
         Drawable clusterIconD = getResources().getDrawable(R.drawable.marker_cluster);
         Bitmap clusterIcon = ((BitmapDrawable) clusterIconD).getBitmap();
         map.getOverlays().add(stationsMarkers);
@@ -134,8 +134,8 @@ public class MapActivity extends Activity implements MapEventsReceiver {
                 map.setTileSource(TileSourceFactory.PUBLIC_TRANSPORT);
                 break;
             case MAP_LAYER_MAPQUESTOSM:
-                map.setTileSource(TileSourceFactory.MAPQUESTOSM);
-                break;
+//                map.setTileSource(TileSourceFactory.MAPQUESTOSM);
+//                break;
             default:
                 map.setTileSource(TileSourceFactory.DEFAULT_TILE_SOURCE);
                 break;
@@ -151,7 +151,7 @@ public class MapActivity extends Activity implements MapEventsReceiver {
             }
         });
 
-        myLocationOverlay = new MyLocationNewOverlay(this.getBaseContext(), imlp, this.map);
+        myLocationOverlay = new MyLocationNewOverlay(imlp, this.map);
         myLocationOverlay.enableMyLocation();
         map.getOverlays().add(this.myLocationOverlay);
 

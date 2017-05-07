@@ -36,10 +36,10 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import org.osmdroid.api.IMapController;
-import org.osmdroid.bonuspack.overlays.Marker;
 import org.osmdroid.tileprovider.tilesource.TileSourceFactory;
 import org.osmdroid.util.GeoPoint;
 import org.osmdroid.views.MapView;
+import org.osmdroid.views.overlay.Marker;
 
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
@@ -100,8 +100,8 @@ public class StationActivity extends Activity {
                 map.setTileSource(TileSourceFactory.PUBLIC_TRANSPORT);
                 break;
             case MAP_LAYER_MAPQUESTOSM:
-                map.setTileSource(TileSourceFactory.MAPQUESTOSM);
-                break;
+//                map.setTileSource(TileSourceFactory.MAPQUESTOSM);
+//                break;
             default:
                 map.setTileSource(TileSourceFactory.DEFAULT_TILE_SOURCE);
                 break;
