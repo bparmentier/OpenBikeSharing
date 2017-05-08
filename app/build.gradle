@@ -27,6 +27,7 @@ android {
         targetSdkVersion 22
         versionCode 22
         versionName "1.9.2"
+        buildConfigField "long", "BUILD_TIMESTAMP", System.currentTimeMillis() + "L"
     }
 
     buildTypes {

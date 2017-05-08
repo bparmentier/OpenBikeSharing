@@ -19,7 +19,6 @@ package be.brunoparmentier.openbikesharing.app.fragments;
 
 import android.content.Intent;
 import android.content.SharedPreferences;
-import android.content.pm.ApplicationInfo;
 import android.content.pm.PackageManager;
 import android.content.pm.ResolveInfo;
 import android.net.Uri;
@@ -28,13 +27,10 @@ import android.preference.EditTextPreference;
 import android.preference.Preference;
 import android.preference.PreferenceFragment;
 import android.preference.PreferenceManager;
+import android.text.format.DateFormat;
 import android.util.Log;
 
-import java.io.IOException;
-import java.text.SimpleDateFormat;
 import java.util.List;
-import java.util.zip.ZipEntry;
-import java.util.zip.ZipFile;
 
 import be.brunoparmentier.openbikesharing.app.BuildConfig;
 import be.brunoparmentier.openbikesharing.app.R;
@@ -94,18 +90,11 @@ public class SettingsFragment extends PreferenceFragment implements SharedPrefer
             versionName = getActivity().getPackageManager()
                     .getPackageInfo(getActivity().getPackageName(), 0).versionName;
             if (BuildConfig.DEBUG) {
-                /* https://stackoverflow.com/a/7608719/3997816 */
-                ApplicationInfo ai = getActivity().getPackageManager().getApplicationInfo(getActivity().getPackageName(), 0);
-                ZipFile zf = new ZipFile(ai.sourceDir);
-                ZipEntry ze = zf.getEntry("classes.dex");
-                zf.close();
-                long time = ze.getTime();
-                SimpleDateFormat dateFormat = new SimpleDateFormat("yyyyMMddHHmmdd");
-
-                versionName += "-debug-" + dateFormat.format(time);
+                String buildTime = DateFormat.format("yyyyMMddHHmmdd", new java.util.Date(BuildConfig.BUILD_TIMESTAMP)).toString();
+                versionName += "-debug-" + buildTime;
             }
             versionPref.setSummary(versionName);
-        } catch (PackageManager.NameNotFoundException | IOException e) {
+        } catch (PackageManager.NameNotFoundException e) {
             Log.e(TAG, e.getMessage());
         }
     }
