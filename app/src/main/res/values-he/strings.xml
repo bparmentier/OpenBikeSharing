@@ -1,2 +1,86 @@
-<?xml version="1.0" encoding="utf-8"?>
-<resources></resources>
+<?xml version='1.0' encoding='UTF-8'?>
+<resources><string name="connection_error">שגיאת חיבור</string>
+    <string name="json_error">קבלת הנתונים נכשלה</string>
+
+    <string name="action_settings">הגדרות</string>
+    <string name="action_refresh">רענון</string>
+    <string name="action_map">מפה</string>
+    <string name="action_directions">הנחיות</string>
+    <string name="action_favorite">מועדף</string>
+    <string name="action_my_location">המיקום שלי</string>
+    <string name="action_search">חיפוש</string>
+
+    <string name="title_activity_stations_list">תחנות</string>
+    <string name="title_activity_station">תחנה</string>
+    <string name="title_activity_networks_list">בחירת רשת</string>
+    <string name="title_activity_map">מפה</string>
+    <string name="title_activity_settings">הגדרות</string>
+
+    <string name="welcome_dialog_message">לפני שנתחיל, נא לבחור מפת אופניים מהרשימה.
+\nיש גם לוודא שיש לך חיבור לאינטרנט.</string>
+    <string name="welcome_dialog_ok">אישור</string>
+    <string name="welcome_dialog_cancel">ביטול</string>
+    <string name="welcome_dialog_title">ברוך בואך</string>
+
+    <string name="location_not_found">המיקום לא נמצא</string>
+    <string name="network_selected">נבחרו</string>
+    <string name="bike_network_downloading">נא להמתין בזמן הורדת רשת האופניים</string>
+
+    <string name="widget_title_favorite_stations">תחנות מועדפות</string>
+    <string name="widget_no_fav_stations">אין תחנות מועדפות</string>
+
+    <string name="free_bikes">אופניים בחינם: </string>
+    <string name="empty_slots">חניות ריקות: </string>
+    <string name="all_stations">כל התחנות</string>
+    <string name="favorite_stations">מועדפים</string>
+    <string name="nearby_stations">בקרבת מקום</string>
+    <string name="no_stations">אין תחנות</string>
+    <string name="no_favorite_stations">אין תחנות מועדפות</string>
+    <string name="no_nearby_stations">אין תחנות בקרבת מקום</string>
+    <string name="station_added_to_favorites">התחנה נוספה למועדפים</string>
+    <string name="stations_removed_from_favorites">התחנה הוסרה מהמועדפים</string>
+    <string name="no_nav_application">אין לך אף יישומון ניווט מותקן</string>
+    <string name="is_bonus_station">תחנת בונוס</string>
+    <string name="cards_accepted">כרטיסים מכובדים</string>
+    <string name="db_last_update">עדכון אחרון: %1$s</string>
+    <string name="db_last_update_never">מעולם לא</string>
+    <string name="updated_just_now">כרגע</string>
+    <plurals name="updated_minutes_ago">
+	<item quantity="one">לפני דקה</item>
+	<item quantity="two">לפני %d דקות</item>
+	<item quantity="many"></item>
+	<item quantity="other"></item>
+</plurals>
+    <plurals name="updated_hours_ago">
+	<item quantity="one">לפני שעה</item>
+	<item quantity="two">לפני %d שעות</item>
+	<item quantity="many"></item>
+	<item quantity="other"></item>
+</plurals>
+    <plurals name="updated_days_ago">
+	<item quantity="one">אתמול</item>
+	<item quantity="two">לפני %d ימים</item>
+	<item quantity="many"></item>
+	<item quantity="other"></item>
+</plurals>
+
+    <string name="pref_header_general">כללי</string>
+    <string name="pref_title_bike_networks_list">בחירת רשת</string>
+    <string name="pref_title_license">רשיון</string>
+    <string name="pref_title_about">על אודות</string>
+    <string name="pref_title_website">אתר</string>
+    <string name="pref_title_source_code">קוד מקור</string>
+    <string name="pref_title_developers_website">אתר המפתחים</string>
+    <string name="pref_title_donate_bitcoin">תרומה בביטקוין</string>
+    <string name="pref_title_citybikes_api">ה־API של CityBikes</string>
+    <string name="pref_title_osmdroid_library">ספריית osmdroid</string>
+    <string name="pref_title_osmbonuspack_library">ספריית OSMBonusPack</string>
+    <string name="pref_title_openstreetmap">OpenStreetMap</string>
+    <string name="pref_title_version">גרסה</string>
+    <string name="pref_map_layer_title">שכבת מפה</string>
+    <string name="pref_title_strip_station_id">קיצור מזהה התחנה</string>
+    <string name="pref_title_strip_station_id_summary">הסרת המזהה משם התחנה (מועיל בחלק מהרשתות)</string>
+    <string name="pref_title_advanced">מתקדם</string>
+    <string name="pref_title_api_url">כתובת API</string>
+    <string name="pref_title_default_tab">לשונית בררת מחדל</string>
+</resources>
