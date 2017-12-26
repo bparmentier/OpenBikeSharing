@@ -1,2 +1,77 @@
-<?xml version="1.0" encoding="utf-8"?>
-<resources></resources>
+<?xml version='1.0' encoding='UTF-8'?>
+<resources><string name="connection_error">連接錯誤</string>
+    <string name="json_error">取得數據時出現問題</string>
+
+    <string name="action_settings">設定</string>
+    <string name="action_refresh">重新整理</string>
+    <string name="action_map">地圖</string>
+    <string name="action_directions">導航</string>
+    <string name="action_favorite">收藏</string>
+    <string name="action_my_location">我的位置</string>
+    <string name="action_search">搜尋</string>
+
+    <string name="title_activity_stations_list">單車站</string>
+    <string name="title_activity_station">單車站</string>
+    <string name="title_activity_networks_list">選擇一個網絡</string>
+    <string name="title_activity_map">地圖</string>
+    <string name="title_activity_settings">設定</string>
+
+    <string name="welcome_dialog_message">請先從列表選擇一個單車網絡。
+\n另外，請確保您有可用的網絡連線。</string>
+    <string name="welcome_dialog_ok">確定</string>
+    <string name="welcome_dialog_cancel">取消</string>
+    <string name="welcome_dialog_title">歡迎</string>
+
+    <string name="location_not_found">找不到位置</string>
+    <string name="network_selected">已選取</string>
+    <string name="bike_network_downloading">請等待單車網絡下載完畢</string>
+
+    <string name="widget_title_favorite_stations">收藏中的單車站</string>
+    <string name="widget_no_fav_stations">沒有收藏單車站</string>
+
+    <string name="free_bikes">空置單車： </string>
+    <string name="empty_slots">空位： </string>
+    <string name="all_stations">全部單車站</string>
+    <string name="favorite_stations">收藏</string>
+    <string name="nearby_stations">附近</string>
+    <string name="no_stations">沒有單車站</string>
+    <string name="no_favorite_stations">沒有收藏中的單車站</string>
+    <string name="no_nearby_stations">附近沒有單車站</string>
+    <string name="station_added_to_favorites">已收藏單車站</string>
+    <string name="stations_removed_from_favorites">已從收藏移除單車站</string>
+    <string name="no_nav_application">您沒有安裝任何導航應用程式</string>
+    <string name="is_bonus_station">額外單車站</string>
+    <string name="cards_accepted">接受的銀行卡</string>
+    <string name="db_last_update">最近更新：%1$s</string>
+    <string name="db_last_update_never">從未更新</string>
+    <string name="updated_just_now">剛更新</string>
+    <plurals name="updated_minutes_ago">
+	<item quantity="other">%d分鐘前</item>
+</plurals>
+    <plurals name="updated_hours_ago">
+	<item quantity="other">%d小時前</item>
+</plurals>
+    <plurals name="updated_days_ago">
+	<item quantity="other">%d天前</item>
+</plurals>
+
+    <string name="pref_header_general">一般</string>
+    <string name="pref_title_bike_networks_list">選擇一個網絡</string>
+    <string name="pref_title_license">授權條款</string>
+    <string name="pref_title_about">關於</string>
+    <string name="pref_title_website">網站</string>
+    <string name="pref_title_source_code">原始碼</string>
+    <string name="pref_title_developers_website">開發者網站</string>
+    <string name="pref_title_donate_bitcoin">捐贈比特幣</string>
+    <string name="pref_title_citybikes_api">CityBikes API</string>
+    <string name="pref_title_osmdroid_library">osmdroid工具庫</string>
+    <string name="pref_title_osmbonuspack_library">OSMBonusPack工具庫</string>
+    <string name="pref_title_openstreetmap">OpenStreetMap</string>
+    <string name="pref_title_version">版本</string>
+    <string name="pref_map_layer_title">地圖圖層</string>
+    <string name="pref_title_strip_station_id">移除單車站編碼</string>
+    <string name="pref_title_strip_station_id_summary">從單車站名移除編碼（只適用於部分網絡）</string>
+    <string name="pref_title_advanced">進階</string>
+    <string name="pref_title_api_url">API URL</string>
+    <string name="pref_title_default_tab">預設分頁</string>
+</resources>
