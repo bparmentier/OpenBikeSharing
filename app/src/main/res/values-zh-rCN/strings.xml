@@ -24,25 +24,25 @@
 
     <string name="location_not_found">找不到位置</string>
     <string name="network_selected">已选取</string>
-    <string name="bike_network_downloading">请等候单车网络的下载</string>
+    <string name="bike_network_downloading">请等待单车网络下载完毕</string>
 
     <string name="widget_title_favorite_stations">收藏中的单车站</string>
     <string name="widget_no_fav_stations">没有收藏单车站</string>
 
     <string name="free_bikes">空置单车： </string>
     <string name="empty_slots">空位： </string>
-    <string name="all_stations">所有单车站</string>
+    <string name="all_stations">全部单车站</string>
     <string name="favorite_stations">收藏</string>
     <string name="nearby_stations">附近</string>
     <string name="no_stations">没有单车站</string>
     <string name="no_favorite_stations">没有收藏中的单车站</string>
-    <string name="no_nearby_stations">没有附近的单车</string>
+    <string name="no_nearby_stations">附近没有单车站</string>
     <string name="station_added_to_favorites">已收藏单车站</string>
     <string name="stations_removed_from_favorites">已从收藏移除</string>
     <string name="no_nav_application">你没有安装任何导航应用</string>
     <string name="is_bonus_station">额外单车站</string>
     <string name="cards_accepted">接受的银行卡</string>
-    <string name="db_last_update">最后更新：%1$s</string>
+    <string name="db_last_update">最近更新：%1$s</string>
     <string name="db_last_update_never">从未更新</string>
     <string name="updated_just_now">刚更新</string>
     <plurals name="updated_minutes_ago">
@@ -70,7 +70,7 @@
     <string name="pref_title_version">版本</string>
     <string name="pref_map_layer_title">地图图层</string>
     <string name="pref_title_strip_station_id">移除单车站编码</string>
-    <string name="pref_title_strip_station_id_summary">从单车站名称移除编码（仅适用于部分网络）</string>
+    <string name="pref_title_strip_station_id_summary">从单车站名移除编码（仅适用于部分网络）</string>
     <string name="pref_title_advanced">高级</string>
     <string name="pref_title_api_url">API URL</string>
     <string name="pref_title_default_tab">默认分页</string>
