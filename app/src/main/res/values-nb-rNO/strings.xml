@@ -16,7 +16,8 @@
     <string name="title_activity_map">Kart</string>
     <string name="title_activity_settings">Innstillinger</string>
 
-    <string name="welcome_dialog_message">" Før du begynner, velg et sykkelnettverk fra listen.\nSørg også for å være tilknyttet Internett. "</string>
+    <string name="welcome_dialog_message">"Før du begynner, velg et sykkelnettverk fra listen.
+\nSørg også for å være tilknyttet Internett. "</string>
     <string name="welcome_dialog_ok">OK</string>
     <string name="welcome_dialog_cancel">Avbryt</string>
     <string name="welcome_dialog_title">Velkommen</string>
