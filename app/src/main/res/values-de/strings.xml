@@ -58,7 +58,7 @@
     <string name="station_added_to_favorites">Zu Favoriten hinzugefügt</string>
     <string name="stations_removed_from_favorites">Aus Favoriten entfernt</string>
     <string name="no_nav_application">Sie haben keine Navigationsanwendung installiert</string>
-    <string name="is_bonus_station">Bonus station</string>
+    <string name="is_bonus_station">Bonus Station</string>
     <string name="cards_accepted">Kreditkarten akzeptiert</string>
     <string name="db_last_update">Letzten Aktualisierung: %1$s</string>
     <string name="db_last_update_never">niemals</string>
