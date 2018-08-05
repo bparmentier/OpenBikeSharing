@@ -61,4 +61,20 @@
     <string name="pref_title_version">Versió</string>
     <string name="pref_map_layer_title">Capa de mapa</string>
     <string name="pref_title_advanced">avançat</string>
-    </resources>
+    <string name="json_error">Error en obtenir dades</string>
+
+    <string name="is_bonus_station">Estació de bonificació</string>
+    <string name="cards_accepted">Accepten targetes</string>
+    <string name="pref_header_general">General</string>
+    <string name="pref_title_about">Sobre</string>
+    <string name="pref_title_website">Pàgina web</string>
+    <string name="pref_title_developers_website">Lloc web del programador</string>
+    <string name="pref_title_citybikes_api">API de CityBikes</string>
+    <string name="pref_title_osmdroid_library">Biblioteca OSMdroid</string>
+    <string name="pref_title_osmbonuspack_library">Biblioteca OSMBonusPack</string>
+    <string name="pref_title_openstreetmap">OpenStreetMap</string>
+    <string name="pref_title_strip_station_id">Treure ID de l\'estació</string>
+    <string name="pref_title_strip_station_id_summary">Eliminar l\'ID del nom de l\'estació (útil només en algunes xarxes)</string>
+    <string name="pref_title_api_url">URL de l\'API</string>
+    <string name="pref_title_default_tab">Pestanya per defecte</string>
+</resources>
