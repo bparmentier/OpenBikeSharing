@@ -1,5 +1,5 @@
-var tilesUrl = 'http://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png';
-var attribution = 'Map data &copy; <a href="http://openstreetmap.org">OpenStreetMap</a> contributors';
+var tilesUrl = 'https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png';
+var attribution = 'Map data &copy; <a href="https://openstreetmap.org">OpenStreetMap</a> contributors';
 var tiles = L.tileLayer(tilesUrl, {attribution: attribution, maxZoom: 18});
 
 var map = L.map('map', {center: L.latLng(30, 0), zoom: 1, minZoom: 1, layers: [tiles]});
