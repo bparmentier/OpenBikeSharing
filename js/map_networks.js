@@ -5,7 +5,7 @@ var tiles = L.tileLayer(tilesUrl, {attribution: attribution, maxZoom: 18});
 var map = L.map('map', {center: L.latLng(30, 0), zoom: 1, minZoom: 1, layers: [tiles]});
 var markers = new L.MarkerClusterGroup({showCoverageOnHover: false});
 
-$.getJSON("http://api.citybik.es/v2/networks", function(data) {
+$.getJSON("https://api.citybik.es/v2/networks", function(data) {
     length = data.networks.length;
     for (var i = 0; i < length; i++) {
         var network = data.networks[i];
