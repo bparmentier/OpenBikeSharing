@@ -1,4 +1,5 @@
-<?xml version="1.0" encoding="utf-8"?><!--
+<?xml version="1.0" encoding="utf-8"?>
+<!--
   ~ Copyright (c) 2014-2015 Bruno Parmentier. This file is part of OpenBikeSharing.
   ~
   ~ OpenBikeSharing is free software: you can redistribute it and/or modify
@@ -13,9 +14,7 @@
   ~
   ~ You should have received a copy of the GNU General Public License
   ~ along with OpenBikeSharing.  If not, see <http://www.gnu.org/licenses/>.
-  -->
-
-<resources>
+  --><resources>
 
     <!-- Error messages -->
     <string name="connection_error">Erro de conexão</string>
@@ -85,7 +84,7 @@
     <string name="pref_title_source_code">Código fonte</string>
     <string name="pref_title_developers_website">Desenvolvedor do site</string>
     <string name="pref_title_donate_bitcoin">Doe Bitcoin</string>
-    <string name="pref_title_citybikes_api">CityBikes API</string>
+    <string name="pref_title_citybikes_api">API do CityBikes</string>
     <string name="pref_title_osmdroid_library">biblioteca osmdroid</string>
     <string name="pref_title_osmbonuspack_library">biblioteca OSMBonusPack</string>
     <string name="pref_title_openstreetmap">OpenStreetMap</string>
@@ -95,4 +94,13 @@
     <string name="pref_title_strip_station_id_summary">
 		Retire ID do nome da estação (Útil apenas para algumas redes)
     </string>
+    <string name="widget_title_favorite_stations">Estações favoritas</string>
+    <string name="widget_no_fav_stations">Sem estações favoritas</string>
+    <string name="nearby_stations">Perto</string>
+    <string name="no_stations">Sem estações</string>
+    <string name="no_favorite_stations">Sem estações favoritas</string>
+    <string name="no_nearby_stations">Não há estações pertas</string>
+    <string name="pref_title_advanced">Avançado</string>
+    <string name="pref_title_api_url">URL do API</string>
+    <string name="pref_title_default_tab">Separador padrão</string>
 </resources>
