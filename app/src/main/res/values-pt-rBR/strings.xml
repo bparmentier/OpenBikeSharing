@@ -1,2 +1,74 @@
 <?xml version="1.0" encoding="utf-8"?>
-<resources></resources>
+<resources>
+    <string name="connection_error">Erro de conexão</string>
+    <string name="json_error">Erro ao recuperar dados</string>
+    <string name="action_settings">Configurações</string>
+    <string name="action_refresh">Refrescar</string>
+    <string name="action_map">Mapa</string>
+    <string name="action_directions">Direções</string>
+    <string name="action_favorite">Favorito</string>
+    <string name="action_my_location">Minha localização</string>
+    <string name="action_search">Buscar</string>
+    <string name="title_activity_stations_list">Estações</string>
+    <string name="title_activity_station">Estação</string>
+    <string name="title_activity_networks_list">Selecione uma rede</string>
+    <string name="title_activity_map">Mapa</string>
+    <string name="title_activity_settings">Ajustes</string>
+    <string name="welcome_dialog_message">Antes de começar, por favor escolha uma rede de bicicletas na lista. 
+\nCertifique-se também que está cornetado à Internet.</string>
+    <string name="welcome_dialog_ok">OK</string>
+    <string name="welcome_dialog_cancel">Cancelar</string>
+    <string name="welcome_dialog_title">Bem-Vindo</string>
+    <string name="location_not_found">Localização não encontrada</string>
+    <string name="network_selected">selecionado</string>
+    <string name="bike_network_downloading">Por favor aguarde enquanto a rede de bicicletas está sendo baixada</string>
+    <string name="widget_title_favorite_stations">Estações favoritas</string>
+    <string name="widget_no_fav_stations">Sem estações favoritas</string>
+    <string name="free_bikes">Bicicletas livres: </string>
+    <string name="empty_slots">As caça-níqueis vazias: </string>
+    <string name="all_stations">Todas as estações</string>
+    <string name="favorite_stations">Favoritas</string>
+    <string name="nearby_stations">Perto</string>
+    <string name="no_stations">Sem estações</string>
+    <string name="no_favorite_stations">Sem estações favoritas</string>
+    <string name="no_nearby_stations">Não há estações por perto</string>
+    <string name="station_added_to_favorites">Estação adicionada às favoritas</string>
+    <string name="stations_removed_from_favorites">Estação retirada das favoritas</string>
+    <string name="no_nav_application">Você não tem nenhum aplicativo de navegação instalado</string>
+    <string name="is_bonus_station">Estação bônus</string>
+    <string name="cards_accepted">Cartões aceites</string>
+    <string name="db_last_update">Última atualização: %1$s</string>
+    <string name="db_last_update_never">nunca</string>
+    <string name="updated_just_now">Agora mesmo</string>
+    <plurals name="updated_minutes_ago">
+        <item quantity="one">Há %d minuto</item>
+        <item quantity="other">Há %d minutos</item>
+    </plurals>
+    <plurals name="updated_hours_ago">
+        <item quantity="one">Há %d hora</item>
+        <item quantity="other">Há %d horas</item>
+    </plurals>
+    <plurals name="updated_days_ago">
+        <item quantity="one">Há %d dia</item>
+        <item quantity="other">Há %d dias</item>
+    </plurals>
+    <string name="pref_header_general">Geral</string>
+    <string name="pref_title_bike_networks_list">Escolha uma rede</string>
+    <string name="pref_title_license">Licença</string>
+    <string name="pref_title_about">Acerca</string>
+    <string name="pref_title_website">Website</string>
+    <string name="pref_title_source_code">Código-fonte</string>
+    <string name="pref_title_developers_website">Site do desenvolvedor</string>
+    <string name="pref_title_donate_bitcoin">Doe Bitcoin</string>
+    <string name="pref_title_citybikes_api">API do CityBikes</string>
+    <string name="pref_title_osmdroid_library">Biblioteca osmdroid</string>
+    <string name="pref_title_osmbonuspack_library">Biblioteca OSMBonusPack</string>
+    <string name="pref_title_openstreetmap">OpenStreetMap</string>
+    <string name="pref_title_version">Versão</string>
+    <string name="pref_map_layer_title">Mapa</string>
+    <string name="pref_title_strip_station_id">Ocultar identificador da estação</string>
+    <string name="pref_title_strip_station_id_summary">Retire o identificador do nome da estação (útil apenas para algumas redes)</string>
+    <string name="pref_title_advanced">Avançado</string>
+    <string name="pref_title_api_url">URL do API</string>
+    <string name="pref_title_default_tab">Separador padrão</string>
+</resources>
