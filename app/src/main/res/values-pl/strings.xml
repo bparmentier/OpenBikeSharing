@@ -1,4 +1,4 @@
-<?xml version='1.0' encoding='UTF-8'?>
+<?xml version="1.0" encoding="utf-8"?>
 <!--
   ~ Copyright (c) 2014-2015 Bruno Parmentier. This file is part of OpenBikeSharing.
   ~
@@ -14,13 +14,10 @@
   ~
   ~ You should have received a copy of the GNU General Public License
   ~ along with OpenBikeSharing.  If not, see <http://www.gnu.org/licenses/>.
-  -->
-<resources>
-
+  --><resources>
     <!-- Error messages -->
     <string name="connection_error">Błąd połączenia</string>
     <string name="json_error">Błąd pobierania danych</string>
-
     <!-- Actions -->
     <string name="action_settings">Ustawienia</string>
     <string name="action_refresh">Odśwież</string>
@@ -29,14 +26,12 @@
     <string name="action_favorite">Ulubione</string>
     <string name="action_my_location">Moja lokalizacja</string>
     <string name="action_search">Szukaj</string>
-
     <!-- Activities titles -->
     <string name="title_activity_stations_list">Stacje</string>
     <string name="title_activity_station">Stacja</string>
     <string name="title_activity_networks_list">Wybierz sieć</string>
     <string name="title_activity_map">Mapa</string>
     <string name="title_activity_settings">Ustawienia</string>
-
     <!-- Welcome dialog -->
     <string name="welcome_dialog_message">
 		Przed rozpoczęciem, wybierz z listy sieć rowerową.
@@ -45,12 +40,10 @@
     <string name="welcome_dialog_ok">OK</string>
     <string name="welcome_dialog_cancel">Anuluj</string>
     <string name="welcome_dialog_title">Witaj</string>
-
     <!-- Map -->
-    <string name="location_not_found">Lokacja nie odnaleziona</string>
+    <string name="location_not_found">Lokalizacji nie odnaleziono</string>
     <string name="network_selected">wybrane</string>
     <string name="bike_network_downloading">Proszę czekaj, sieć rowerowa jest pobierana</string>
-
     <!-- Various -->
     <string name="free_bikes">Dostępne rowery:\u00A0</string>
     <string name="empty_slots">Wolne sloty:\u00A0</string>
@@ -79,7 +72,6 @@
         <item quantity="few">%d dni temu</item>
         <item quantity="other">%d dni temu</item>
     </plurals>
-
     <!-- Settings -->
     <string name="pref_header_general">Ogólne</string>
     <string name="pref_title_bike_networks_list">Wybierz sieć</string>
@@ -99,9 +91,8 @@
     <string name="pref_title_strip_station_id_summary">
         Usuwa ID z nazwy stacji (przydatne tylko w niektórych sieciach)
     </string>
-<string name="widget_title_favorite_stations">Ulubione stacje</string>
+    <string name="widget_title_favorite_stations">Ulubione stacje</string>
     <string name="widget_no_fav_stations">Brak ulubionych stacji</string>
-
     <string name="nearby_stations">W pobliżu</string>
     <string name="no_stations">Brak stacji</string>
     <string name="no_favorite_stations">Brak ulubionych stacji</string>
