@@ -1,7 +1,7 @@
-<?xml version='1.0' encoding='UTF-8'?>
-<resources><string name="connection_error">Kapcsolódási hiba</string>
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="connection_error">Kapcsolódási hiba</string>
     <string name="json_error">Hiba az adatok lekérésekor</string>
-
     <string name="action_settings">Beállítások</string>
     <string name="action_refresh">Frissítés</string>
     <string name="action_map">Térkép</string>
@@ -9,29 +9,21 @@
     <string name="action_favorite">Kedvenc</string>
     <string name="action_my_location">Saját hely</string>
     <string name="action_search">Keresés</string>
-
     <string name="title_activity_stations_list">Állomások</string>
     <string name="title_activity_station">Állomás</string>
-    <string name="title_activity_networks_list">Válasszon hálózatot</string>
+    <string name="title_activity_networks_list">Hálózat kiválasztása</string>
     <string name="title_activity_map">Térkép</string>
     <string name="title_activity_settings">Beállítások</string>
-
-    <string name="welcome_dialog_message">"
- Mielőtt elkezdené, válasszon egy kerékpárhálózatot a listából.
-
-Győződjön meg arról is, hogy kapcsolódik-e az internethez.
- "</string>
+    <string name="welcome_dialog_message">" Mielőtt elkezdené, válasszon egy kerékpárhálózatot a listából. 
+\nGyőződjön meg arról is, hogy kapcsolódik-e az internethez. "</string>
     <string name="welcome_dialog_ok">OK</string>
     <string name="welcome_dialog_cancel">Mégse</string>
     <string name="welcome_dialog_title">Üdvözöljük</string>
-
     <string name="location_not_found">A hely nem található</string>
     <string name="network_selected">kiválasztva</string>
     <string name="bike_network_downloading">Kérjük várjon, amíg a kerékpárhálózat letöltődik</string>
-
     <string name="widget_title_favorite_stations">Kedvenc állomások</string>
     <string name="widget_no_fav_stations">Nincsenek kedvenc állomások</string>
-
     <string name="free_bikes">Szabad kerékpárok: </string>
     <string name="empty_slots">Üres tárolóhelyek: </string>
     <string name="all_stations">Összes állomás</string>
@@ -47,22 +39,21 @@ Győződjön meg arról is, hogy kapcsolódik-e az internethez.
     <string name="cards_accepted">Elfogadott kártyák</string>
     <string name="db_last_update">Utolsó frissítés: %1$s</string>
     <string name="db_last_update_never">soha</string>
-    <string name="updated_just_now">Most</string>
+    <string name="updated_just_now">Éppen most</string>
     <plurals name="updated_minutes_ago">
-	<item quantity="one">%d perccel ezelőtt</item>
-	<item quantity="other">%d perccel ezelőtt</item>
-</plurals>
+        <item quantity="one">%d perccel ezelőtt</item>
+        <item quantity="other">%d perccel ezelőtt</item>
+    </plurals>
     <plurals name="updated_hours_ago">
-	<item quantity="one">%d órával ezelőtt</item>
-	<item quantity="other">%d órával ezelőtt</item>
-</plurals>
+        <item quantity="one">%d órával ezelőtt</item>
+        <item quantity="other">%d órával ezelőtt</item>
+    </plurals>
     <plurals name="updated_days_ago">
-	<item quantity="one">%d nappal ezelőtt</item>
-	<item quantity="other">%d nappal ezelőtt</item>
-</plurals>
-
+        <item quantity="one">%d nappal ezelőtt</item>
+        <item quantity="other">%d nappal ezelőtt</item>
+    </plurals>
     <string name="pref_header_general">Általános</string>
-    <string name="pref_title_bike_networks_list">Válasszon hálózatot</string>
+    <string name="pref_title_bike_networks_list">Hálózat kiválasztása</string>
     <string name="pref_title_license">Licenc</string>
     <string name="pref_title_about">Névjegy</string>
     <string name="pref_title_website">Weboldal</string>
@@ -76,9 +67,7 @@ Győződjön meg arról is, hogy kapcsolódik-e az internethez.
     <string name="pref_title_version">Verzió</string>
     <string name="pref_map_layer_title">Térképréteg</string>
     <string name="pref_title_strip_station_id">Állomásazonosító felvágása</string>
-    <string name="pref_title_strip_station_id_summary">"
- Azonosító eltávolítása az állomás nevéből (csak néhány hálózatnál hasznos)
- "</string>
+    <string name="pref_title_strip_station_id_summary">" Azonosító eltávolítása az állomás nevéből (csak néhány hálózatnál hasznos) "</string>
     <string name="pref_title_advanced">Speciális</string>
     <string name="pref_title_api_url">API URL</string>
     <string name="pref_title_default_tab">Alapértelmezett lap</string>
