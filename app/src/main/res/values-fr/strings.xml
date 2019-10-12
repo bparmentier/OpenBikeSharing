@@ -1,4 +1,5 @@
-<?xml version="1.0" encoding="utf-8"?><!--
+<?xml version="1.0" encoding="utf-8"?>
+<!--
   ~ Copyright (c) 2014-2015 Bruno Parmentier. This file is part of OpenBikeSharing.
   ~
   ~ OpenBikeSharing is free software: you can redistribute it and/or modify
@@ -13,14 +14,10 @@
   ~
   ~ You should have received a copy of the GNU General Public License
   ~ along with OpenBikeSharing.  If not, see <http://www.gnu.org/licenses/>.
-  -->
-
-<resources>
-
+  --><resources>
     <!-- Error messages -->
     <string name="connection_error">Erreur de connexion</string>
     <string name="json_error">Erreur de récupération des données</string>
-
     <!-- Actions -->
     <string name="action_settings">Paramètres</string>
     <string name="action_refresh">Rafraîchir</string>
@@ -29,31 +26,25 @@
     <string name="action_favorite">Favori</string>
     <string name="action_my_location">Mon emplacement</string>
     <string name="action_search">Rechercher</string>
-
     <!-- Activities titles -->
     <string name="title_activity_stations_list">Stations</string>
     <string name="title_activity_station">Station</string>
     <string name="title_activity_networks_list">Choisir un réseau</string>
     <string name="title_activity_map">Carte</string>
     <string name="title_activity_settings">Paramètres</string>
-
     <!-- Welcome dialog -->
-    <string name="welcome_dialog_message">
-        Avant de commencer, veuillez choisir un réseau de vélos dans la liste.
-        \nAssurez-vous d\'être connecté à internet.</string>
+    <string name="welcome_dialog_message">" Avant de commencer, veuillez choisir un réseau de vélos dans la liste. 
+\nAssurez-vous d\'être connecté à internet. "</string>
     <string name="welcome_dialog_ok">OK</string>
     <string name="welcome_dialog_cancel">Annuler</string>
     <string name="welcome_dialog_title">Bienvenue</string>
-
     <!-- Map -->
     <string name="location_not_found">Localisation non trouvée</string>
     <string name="network_selected">sélectionné</string>
     <string name="bike_network_downloading">Veuillez patienter pendant que le réseau de vélos est téléchargé</string>
-
     <!-- Widget -->
     <string name="widget_no_fav_stations">Aucune station en favoris</string>
     <string name="widget_title_favorite_stations">Stations favorites</string>
-
     <!-- Various -->
     <string name="free_bikes">Vélos restants\u00A0:\u00A0</string>
     <string name="empty_slots">Emplacements vides\u00A0:\u00A0</string>
@@ -79,7 +70,6 @@
         <item quantity="one">Il y a %d jour</item>
         <item quantity="other">Il y a %d jours</item>
     </plurals>
-
     <!-- Settings -->
     <string name="pref_header_general">Général</string>
     <string name="pref_title_bike_networks_list">Choisir un réseau</string>
