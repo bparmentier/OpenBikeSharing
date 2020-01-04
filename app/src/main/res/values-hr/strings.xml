@@ -1,2 +1,77 @@
 <?xml version="1.0" encoding="utf-8"?>
-<resources></resources>
+<resources>
+    <string name="connection_error">Greška u vezi</string>
+    <string name="json_error">Greška pri dohvaćanju podataka</string>
+    <string name="action_settings">Postavke</string>
+    <string name="action_refresh">Aktualiziraj</string>
+    <string name="action_map">Karta</string>
+    <string name="action_directions">Upute</string>
+    <string name="action_favorite">Favorit</string>
+    <string name="action_my_location">Moja lokacija</string>
+    <string name="action_search">Traži</string>
+    <string name="title_activity_stations_list">Stanice</string>
+    <string name="title_activity_station">Stanica</string>
+    <string name="title_activity_networks_list">Odaberi mrežu</string>
+    <string name="title_activity_map">Karta</string>
+    <string name="title_activity_settings">Postavke</string>
+    <string name="welcome_dialog_message">Prije nego što počneš, odaberi biciklističku mrežu u popisu. 
+\nTakođer provjeri vezu s internetom.</string>
+    <string name="welcome_dialog_ok">U redu</string>
+    <string name="welcome_dialog_cancel">Odustani</string>
+    <string name="welcome_dialog_title">Dobrodošli</string>
+    <string name="location_not_found">Lokacija nije pronađena</string>
+    <string name="network_selected">odabrano</string>
+    <string name="bike_network_downloading">Pričekaj dok se preuzima biciklistička mreža</string>
+    <string name="widget_title_favorite_stations">Omiljene stanice</string>
+    <string name="widget_no_fav_stations">Nema omiljenih postaja</string>
+    <string name="free_bikes">Slobodni bicikli: </string>
+    <string name="empty_slots">Nezauzeti termini: </string>
+    <string name="all_stations">Sve stanice</string>
+    <string name="favorite_stations">Favoriti</string>
+    <string name="nearby_stations">U blizini</string>
+    <string name="no_stations">Nema stanica</string>
+    <string name="no_favorite_stations">Nema favoriziranih stanica</string>
+    <string name="no_nearby_stations">Nema stanica u blizini</string>
+    <string name="station_added_to_favorites">Stanica dodana u omiljene</string>
+    <string name="stations_removed_from_favorites">Stanice uklonjene iz omiljenih</string>
+    <string name="no_nav_application">Nemaš nijedan instalirani program za navigaciju</string>
+    <string name="is_bonus_station">Stanica s popustom</string>
+    <string name="cards_accepted">Kartice koje se prihvaćaju</string>
+    <string name="db_last_update">Zadnje aktualiziranje: %1$s</string>
+    <string name="db_last_update_never">nikada</string>
+    <string name="updated_just_now">Upravo sada</string>
+    <plurals name="updated_minutes_ago">
+        <item quantity="one">prije %d minute</item>
+        <item quantity="few">prije %d minute</item>
+        <item quantity="other">prije %d minuta</item>
+    </plurals>
+    <plurals name="updated_hours_ago">
+        <item quantity="one">prije %d sat</item>
+        <item quantity="few">prije %d sata</item>
+        <item quantity="other">prije %d sati</item>
+    </plurals>
+    <plurals name="updated_days_ago">
+        <item quantity="one">prije %d dan</item>
+        <item quantity="few">prije %d dana</item>
+        <item quantity="other">prije %d dana</item>
+    </plurals>
+    <string name="pref_header_general">Opće</string>
+    <string name="pref_title_bike_networks_list">Odaberi mrežu</string>
+    <string name="pref_title_license">Licenca</string>
+    <string name="pref_title_about">Informacije</string>
+    <string name="pref_title_website">Web stranica</string>
+    <string name="pref_title_source_code">Izvorni kȏd</string>
+    <string name="pref_title_developers_website">Web-stranica razvijatelja</string>
+    <string name="pref_title_donate_bitcoin">Doniraj Bitcoin</string>
+    <string name="pref_title_citybikes_api">Sučelje za CityBikes</string>
+    <string name="pref_title_osmdroid_library">biblioteka osmdroid</string>
+    <string name="pref_title_osmbonuspack_library">Bobilioteka OSMBonusPack</string>
+    <string name="pref_title_openstreetmap">OpenStreetMap</string>
+    <string name="pref_title_version">Verzija</string>
+    <string name="pref_map_layer_title">Sloj karte</string>
+    <string name="pref_title_strip_station_id">Ukloni ID stanice</string>
+    <string name="pref_title_strip_station_id_summary">Ukloni ID iz imena stanice (korisno samo za neke merže)</string>
+    <string name="pref_title_advanced">Napredno</string>
+    <string name="pref_title_api_url">API URL</string>
+    <string name="pref_title_default_tab">Standardna kartica</string>
+</resources>
