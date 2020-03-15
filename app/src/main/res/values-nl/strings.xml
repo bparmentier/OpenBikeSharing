@@ -1,2 +1,74 @@
 <?xml version="1.0" encoding="utf-8"?>
-<resources></resources>
+<resources>
+    <string name="connection_error">Verbindingsfout</string>
+    <string name="json_error">Kan gegevens niet ophalen</string>
+    <string name="action_settings">Instellingen</string>
+    <string name="action_refresh">Herladen</string>
+    <string name="action_map">Kaart</string>
+    <string name="action_directions">Navigatie</string>
+    <string name="action_favorite">Toev. aan favorieten</string>
+    <string name="action_my_location">Mijn locatie</string>
+    <string name="action_search">Zoeken</string>
+    <string name="title_activity_stations_list">Stallingen</string>
+    <string name="title_activity_station">Stalling</string>
+    <string name="title_activity_networks_list">Kies een netwerk</string>
+    <string name="title_activity_map">Kaart</string>
+    <string name="title_activity_settings">Instellingen</string>
+    <string name="welcome_dialog_message">Kies een fietsnetwerk uit de lijst.
+\nZorg ervoor dat je verbonden bent met het internet.</string>
+    <string name="welcome_dialog_ok">Oké</string>
+    <string name="welcome_dialog_cancel">Annuleren</string>
+    <string name="welcome_dialog_title">Welkom</string>
+    <string name="location_not_found">Locatie niet gevonden</string>
+    <string name="network_selected">geselecteerd</string>
+    <string name="bike_network_downloading">Het fietsnetwerk wordt opgehaald; even geduld...</string>
+    <string name="widget_title_favorite_stations">Favoriete stallingen</string>
+    <string name="widget_no_fav_stations">Geen favoriete stallingen</string>
+    <string name="free_bikes">Beschikbare fietsen: </string>
+    <string name="empty_slots">Lege plekken: </string>
+    <string name="all_stations">Alle stallingen</string>
+    <string name="favorite_stations">Favorieten</string>
+    <string name="nearby_stations">In de buurt</string>
+    <string name="no_stations">Geen stallingen</string>
+    <string name="no_favorite_stations">Geen favoriete stallingen</string>
+    <string name="no_nearby_stations">Geen stalling in de buurt</string>
+    <string name="station_added_to_favorites">De stalling is toegevoegd aan je favorieten</string>
+    <string name="stations_removed_from_favorites">De stalling is verwijderd uit je favorieten</string>
+    <string name="no_nav_application">Je hebt geen navigatie-app op je telefoon</string>
+    <string name="is_bonus_station">Extra stalling</string>
+    <string name="cards_accepted">Accepteert betaalkaarten</string>
+    <string name="db_last_update">Bijgewerkt: %1$s</string>
+    <string name="db_last_update_never">nooit</string>
+    <string name="updated_just_now">Zojuist</string>
+    <plurals name="updated_minutes_ago">
+        <item quantity="one">%d minuut geleden</item>
+        <item quantity="other">%d minuten geleden</item>
+    </plurals>
+    <plurals name="updated_hours_ago">
+        <item quantity="one">%d uur geleden</item>
+        <item quantity="other">%d uur geleden</item>
+    </plurals>
+    <plurals name="updated_days_ago">
+        <item quantity="one">%d dag geleden</item>
+        <item quantity="other">%d dagen geleden</item>
+    </plurals>
+    <string name="pref_header_general">Algemeen</string>
+    <string name="pref_title_bike_networks_list">Kies een netwerk</string>
+    <string name="pref_title_license">Licentie</string>
+    <string name="pref_title_about">Over</string>
+    <string name="pref_title_website">Website</string>
+    <string name="pref_title_source_code">Broncode</string>
+    <string name="pref_title_developers_website">Website van ontwikkelaar</string>
+    <string name="pref_title_donate_bitcoin">Bitcoins doneren</string>
+    <string name="pref_title_citybikes_api">CityBikes-API</string>
+    <string name="pref_title_osmdroid_library">osmdroid-bibliotheek</string>
+    <string name="pref_title_osmbonuspack_library">OSMBonusPack-bibliotheek</string>
+    <string name="pref_title_openstreetmap">OpenStreetMap</string>
+    <string name="pref_title_version">Versie</string>
+    <string name="pref_map_layer_title">Kaartlaag</string>
+    <string name="pref_title_strip_station_id">Stalling-id verbergen</string>
+    <string name="pref_title_strip_station_id_summary">Verbergt de id uit de naam van de stalling (alleen handig in sommige netwerken)</string>
+    <string name="pref_title_advanced">Geavanceerd</string>
+    <string name="pref_title_api_url">API-url</string>
+    <string name="pref_title_default_tab">Standaard tabblad</string>
+</resources>
