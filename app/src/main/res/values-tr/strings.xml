@@ -1,4 +1,4 @@
-<?xml version='1.0' encoding='UTF-8'?>
+<?xml version="1.0" encoding="utf-8"?>
 <!--
   ~ Copyright (c) 2014-2015 Bruno Parmentier. This file is part of OpenBikeSharing.
   ~	Turkish Translator: Caner Başaran <basaran.caner at gmail.com>, 2015
@@ -15,13 +15,10 @@
   ~
   ~ You should have received a copy of the GNU General Public License
   ~ along with OpenBikeSharing.  If not, see <http://www.gnu.org/licenses/>.
-  -->
-<resources>
-
+  --><resources>
     <!-- Error messages -->
     <string name="connection_error">Bağlantı hatası</string>
     <string name="json_error">Veri alımında hata</string>
-
     <!-- Actions -->
     <string name="action_settings">Ayarlar</string>
     <string name="action_refresh">Yenile</string>
@@ -30,14 +27,12 @@
     <string name="action_favorite">Sık kullanılan</string>
     <string name="action_my_location">Konumum</string>
     <string name="action_search">Ara</string>
-
     <!-- Activities titles -->
     <string name="title_activity_stations_list">İstasyonlar</string>
     <string name="title_activity_station">İstasyon</string>
     <string name="title_activity_networks_list">Bir ağ seç</string>
     <string name="title_activity_map">Harita</string>
     <string name="title_activity_settings">Ayarlar</string>
-
     <!-- Welcome dialog -->
     <string name="welcome_dialog_message">
         Başlamadan önce, lütfen listeden bir bisiklet ağı seçin.
@@ -45,26 +40,24 @@
     </string>
     <string name="welcome_dialog_ok">Tamam</string>
     <string name="welcome_dialog_cancel">İptal</string>
-    <string name="welcome_dialog_title">Hoşgeldin</string>
-
+    <string name="welcome_dialog_title">Hoş geldiniz</string>
     <!-- Map -->
-    <string name="location_not_found">Konumun bulunamadı</string>
+    <string name="location_not_found">Konum bulunamadı</string>
     <string name="network_selected">seçildi</string>
     <string name="bike_network_downloading">Lütfen, bisiklet ağı indirilirken bekleyin</string>
-
     <!-- Various -->
-    <string name="free_bikes">Uygun bisiklet:\u00A0</string>
-    <string name="empty_slots">Boş yer:\u00A0</string>
+    <string name="free_bikes">Uygun bisikletler: </string>
+    <string name="empty_slots">Boş yerler: </string>
     <string name="all_stations">Tüm istasyonlar</string>
     <string name="favorite_stations">Sık kullanılanlar</string>
     <string name="station_added_to_favorites">İstasyon sık kullanılanlara eklendi</string>
     <string name="stations_removed_from_favorites">İstasyon sık kullanılanlardan çıkarıldı</string>
-    <string name="no_nav_application">Herhangi bir seyrüsefer uygulaması kurulu değil</string>
+    <string name="no_nav_application">Herhangi bir navigasyon uygulaması kurulu değil</string>
     <string name="is_bonus_station">Bonus istasyon</string>
     <string name="cards_accepted">Kart geçerli</string>
     <string name="db_last_update">Son güncelleme: %1$s</string>
     <string name="db_last_update_never">hiçbir zaman</string>
-    <string name="updated_just_now">Sadece şimdi</string>
+    <string name="updated_just_now">Hemen şimdi</string>
     <plurals name="updated_minutes_ago">
         <item quantity="one">%d dakika önce</item>
         <item quantity="other">%d dakika önce</item>
@@ -77,7 +70,6 @@
         <item quantity="one">%d gün önce</item>
         <item quantity="other">%d gün önce</item>
     </plurals>
-
     <!-- Settings -->
     <string name="pref_header_general">Genel</string>
     <string name="pref_title_bike_networks_list">Bir ağ seç</string>
@@ -97,14 +89,13 @@
     <string name="pref_title_strip_station_id_summary">
         İstasyon adından kimlik numarasını kaldır (sadece bazı ağlar için yararlıdır)
     </string>
-<string name="pref_title_default_tab">Varsayılan Sekme</string>
-<string name="pref_title_advanced">Gelişmiş</string>
+    <string name="pref_title_default_tab">Varsayılan sekme</string>
+    <string name="pref_title_advanced">Gelişmiş</string>
     <string name="no_nearby_stations">Yakın istasyon yok</string>
     <string name="no_stations">İstasyon yok</string>
     <string name="nearby_stations">Yakında</string>
     <string name="widget_title_favorite_stations">Sık kullanılan istasyonlar</string>
     <string name="widget_no_fav_stations">Sık kullanılan istasyon yok</string>
-
     <string name="no_favorite_stations">Sık kullanılan istasyon yok</string>
     <string name="pref_title_api_url">API URL</string>
-    </resources>
+</resources>
