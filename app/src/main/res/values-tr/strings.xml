@@ -89,7 +89,7 @@
     <string name="pref_title_strip_station_id_summary">
         İstasyon adından kimlik numarasını kaldır (sadece bazı ağlar için yararlıdır)
     </string>
-    <string name="pref_title_default_tab">Varsayılan sekme</string>
+    <string name="pref_title_default_tab">Öntanımlı sekme</string>
     <string name="pref_title_advanced">Gelişmiş</string>
     <string name="no_nearby_stations">Yakın istasyon yok</string>
     <string name="no_stations">İstasyon yok</string>
