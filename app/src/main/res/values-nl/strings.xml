@@ -21,7 +21,7 @@
     <string name="welcome_dialog_title">Welkom</string>
     <string name="location_not_found">Locatie niet gevonden</string>
     <string name="network_selected">geselecteerd</string>
-    <string name="bike_network_downloading">Het fietsnetwerk wordt opgehaald; even geduld...</string>
+    <string name="bike_network_downloading">Het fietsnetwerk wordt opgehaald; even geduld</string>
     <string name="widget_title_favorite_stations">Favoriete stallingen</string>
     <string name="widget_no_fav_stations">Geen favoriete stallingen</string>
     <string name="free_bikes">Beschikbare fietsen: </string>
