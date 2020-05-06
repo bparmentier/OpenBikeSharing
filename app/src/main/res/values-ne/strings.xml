@@ -1,2 +1,17 @@
 <?xml version="1.0" encoding="utf-8"?>
-<resources></resources>
+<resources>
+    <string name="title_activity_settings">सेटिङहरू</string>
+    <string name="title_activity_map">नक्सा</string>
+    <string name="title_activity_networks_list">सञ्जल छान्नुहोस्</string>
+    <string name="title_activity_station">स्टेसन</string>
+    <string name="title_activity_stations_list">स्टेसनहरू</string>
+    <string name="action_search">खोज</string>
+    <string name="action_my_location">मेरो स्थान</string>
+    <string name="action_favorite">मनपर्ने</string>
+    <string name="action_directions">दिशानिर्देश</string>
+    <string name="action_map">नक्सा</string>
+    <string name="action_refresh">ताजा पार्नुहोस्</string>
+    <string name="action_settings">सेटिङहरू</string>
+    <string name="json_error">डाटा प्राप्ति गर्दा त्रुटि</string>
+    <string name="connection_error">जडान त्रुटि</string>
+</resources>
