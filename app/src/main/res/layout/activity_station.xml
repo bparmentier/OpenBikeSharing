@@ -101,13 +101,35 @@
                     android:textAppearance="?android:attr/textAppearanceMedium" />
 
                 <ImageView
-                    android:id="@+id/stationEmptySlotsLogo"
+                    android:id="@+id/stationEBikesLogo"
                     android:layout_width="22sp"
                     android:layout_height="22sp"
                     android:layout_column="0"
                     android:layout_marginEnd="10dp"
                     android:layout_marginRight="10dp"
                     android:layout_row="2"
+                    android:src="@drawable/ic_electric_bike"
+                    android:contentDescription="@string/free_ebikes"
+                    android:visibility="gone" />
+
+                <TextView
+                    android:id="@+id/stationEBikesValue"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_column="1"
+                    android:layout_row="2"
+                    android:text="5"
+                    android:textAppearance="?android:attr/textAppearanceMedium"
+                    android:visibility="gone" />
+
+                <ImageView
+                    android:id="@+id/stationEmptySlotsLogo"
+                    android:layout_width="22sp"
+                    android:layout_height="22sp"
+                    android:layout_column="0"
+                    android:layout_marginEnd="10dp"
+                    android:layout_marginRight="10dp"
+                    android:layout_row="3"
                     android:src="@drawable/ic_parking"
                     android:contentDescription="@string/empty_slots" />
 
@@ -116,7 +138,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_column="1"
-                    android:layout_row="2"
+                    android:layout_row="3"
                     android:text="5"
                     android:textAppearance="?android:attr/textAppearanceMedium" />
 

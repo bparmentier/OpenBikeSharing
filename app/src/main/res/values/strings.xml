@@ -60,6 +60,7 @@
 
     <!-- Various -->
     <string name="free_bikes">Free bikes:\u00A0</string>
+    <string name="free_ebikes">Electric bikes:\u00A0</string>
     <string name="empty_slots">Empty slots:\u00A0</string>
     <string name="all_stations">All stations</string>
     <string name="favorite_stations">Favorites</string>

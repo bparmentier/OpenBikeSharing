@@ -35,6 +35,7 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import org.osmdroid.api.IMapController;
@@ -289,6 +290,23 @@ public class MapActivity extends Activity implements MapEventsReceiver {
                 ImageView emptySlotsLogo = (ImageView) getView().findViewById(R.id.bubble_emptyslots_logo);
                 emptySlotsLogo.setVisibility(View.GONE);
             }
+
+            ImageView regularBikesLogo = (ImageView) getView().findViewById(R.id.bubble_freebikes_logo);
+            TextView regularBikesValue = (TextView) getView().findViewById(R.id.bubble_description);
+            ImageView eBikesLogo = (ImageView) getView().findViewById(R.id.bubble_ebikes_logo);
+            TextView eBikesValue = (TextView) getView().findViewById(R.id.bubble_ebikes_value);
+
+            int bikes = markerStation.getFreeBikes();
+            if(markerStation.getEBikes() != null && regularBikesLogo != null
+            && eBikesLogo != null && regularBikesValue!= null && eBikesValue != null ) {
+            int ebikes = markerStation.getEBikes();
+                regularBikesValue.setText(String.valueOf(bikes-ebikes));
+                regularBikesLogo.setImageResource(R.drawable.ic_regular_bike);
+                eBikesLogo.setVisibility(View.VISIBLE);
+                eBikesValue.setVisibility(View.VISIBLE);
+                eBikesValue.setText(String.valueOf(ebikes));
+            }
+
             layout.setClickable(true);
             layout.setOnClickListener(new View.OnClickListener() {
                 @Override

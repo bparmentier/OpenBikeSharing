@@ -171,6 +171,7 @@ public class StationActivity extends Activity {
         Boolean isBankingStation = station.isBanking();
         Boolean isBonusStation = station.isBonus();
         StationStatus stationStatus = station.getStatus();
+        Integer stationEBikes = station.getEBikes();
 
         if (isBankingStation != null) {
             ImageView stationBanking = (ImageView) findViewById(R.id.stationBanking);
@@ -206,6 +207,19 @@ public class StationActivity extends Activity {
 
         if ((stationStatus != null) && stationStatus == StationStatus.CLOSED) {
             stationName.setPaintFlags(stationName.getPaintFlags() | Paint.STRIKE_THRU_TEXT_FLAG);
+        }
+
+        if (stationEBikes != null) {
+            ImageView eBikesLogo = (ImageView) findViewById(R.id.stationEBikesLogo);
+            ImageView regularBikesLogo = (ImageView) findViewById(R.id.stationFreeBikesLogo);
+            TextView stationEBikesValue = (TextView) findViewById(R.id.stationEBikesValue);
+            int ebikes = station.getEBikes();
+
+            eBikesLogo.setVisibility(View.VISIBLE);
+            stationEBikesValue.setVisibility(View.VISIBLE);
+            stationEBikesValue.setText(String.valueOf(ebikes));
+            regularBikesLogo.setImageResource(R.drawable.ic_regular_bike);
+            stationFreeBikes.setText(String.valueOf(freeBikes - ebikes));   //display regular bikes only
         }
 
         mapController.setCenter(stationLocation);
