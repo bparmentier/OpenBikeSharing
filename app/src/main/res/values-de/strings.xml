@@ -33,9 +33,8 @@
     <string name="title_activity_map">Karte</string>
     <string name="title_activity_settings">Einstellungen</string>
     <!-- Welcome dialog -->
-    <string name="welcome_dialog_message">
-        Bitte wählen Sie ein Fahrrad Netzwerk aus bevor Sie beginnen.
-    </string>
+    <string name="welcome_dialog_message">" Bevor Sie beginnen, wählen Sie bitte ein Fahrradnetz in der Liste aus.
+\nStellen Sie auch sicher, dass Sie mit dem Internet verbunden sind. "</string>
     <string name="welcome_dialog_ok">OK</string>
     <string name="welcome_dialog_cancel">Abbrechen</string>
     <string name="welcome_dialog_title">Willkommen</string>
@@ -87,11 +86,11 @@
     <string name="pref_title_strip_station_id_summary">
 		Entfernen Sie die ID aus dem Stationnamen (nur bei einigen Netzwerken nützlich)
     </string>
-    <string name="widget_title_favorite_stations">Bevorzugte Stationen</string>
-    <string name="widget_no_fav_stations">Keine bevorzugten Stationen</string>
+    <string name="widget_title_favorite_stations">Lieblingsstationen</string>
+    <string name="widget_no_fav_stations">Keine Lieblingsstationen</string>
     <string name="nearby_stations">In der Nähe</string>
     <string name="no_stations">Keine Stationen</string>
-    <string name="no_favorite_stations">Keine bevorzugten Stationen</string>
+    <string name="no_favorite_stations">Keine Lieblingsstationen</string>
     <string name="no_nearby_stations">Keine nahe gelegenen Stationen</string>
     <string name="pref_title_advanced">Fortgeschritten</string>
     <string name="pref_title_api_url">API URL</string>
