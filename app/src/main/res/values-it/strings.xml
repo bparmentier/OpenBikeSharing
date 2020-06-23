@@ -43,7 +43,7 @@
     <string name="network_selected">selezionata</string>
     <string name="bike_network_downloading">Attendi mentre la lista delle stazioni viene scaricata</string>
     <!-- Various -->
-    <string name="free_bikes">Bici presenti:\u00A0</string>
+    <string name="free_bikes">Bici disponibili: </string>
     <string name="empty_slots">Posti vuoti:\u00A0</string>
     <string name="all_stations">Tutte le stazioni</string>
     <string name="favorite_stations">Preferite</string>
