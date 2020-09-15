@@ -18,12 +18,12 @@
 \nTakođer provjeri vezu s internetom.</string>
     <string name="welcome_dialog_ok">U redu</string>
     <string name="welcome_dialog_cancel">Odustani</string>
-    <string name="welcome_dialog_title">Dobrodošli</string>
+    <string name="welcome_dialog_title">Pozdrav</string>
     <string name="location_not_found">Lokacija nije pronađena</string>
     <string name="network_selected">odabrano</string>
     <string name="bike_network_downloading">Pričekaj dok se preuzima biciklistička mreža</string>
     <string name="widget_title_favorite_stations">Omiljene stanice</string>
-    <string name="widget_no_fav_stations">Nema omiljenih postaja</string>
+    <string name="widget_no_fav_stations">Nema omiljenih stanica</string>
     <string name="free_bikes">Slobodni bicikli: </string>
     <string name="empty_slots">Nezauzeti termini: </string>
     <string name="all_stations">Sve stanice</string>
@@ -33,7 +33,7 @@
     <string name="no_favorite_stations">Nema favoriziranih stanica</string>
     <string name="no_nearby_stations">Nema stanica u blizini</string>
     <string name="station_added_to_favorites">Stanica dodana u omiljene</string>
-    <string name="stations_removed_from_favorites">Stanice uklonjene iz omiljenih</string>
+    <string name="stations_removed_from_favorites">Stanica uklonjena iz omiljenih</string>
     <string name="no_nav_application">Nemaš nijedan instalirani program za navigaciju</string>
     <string name="is_bonus_station">Stanica s popustom</string>
     <string name="cards_accepted">Kartice koje se prihvaćaju</string>
@@ -61,7 +61,7 @@
     <string name="pref_title_about">Informacije</string>
     <string name="pref_title_website">Web stranica</string>
     <string name="pref_title_source_code">Izvorni kȏd</string>
-    <string name="pref_title_developers_website">Web-stranica razvijatelja</string>
+    <string name="pref_title_developers_website">Web-stranica programera</string>
     <string name="pref_title_donate_bitcoin">Doniraj Bitcoin</string>
     <string name="pref_title_citybikes_api">Sučelje za CityBikes</string>
     <string name="pref_title_osmdroid_library">biblioteka osmdroid</string>
@@ -72,6 +72,6 @@
     <string name="pref_title_strip_station_id">Ukloni ID stanice</string>
     <string name="pref_title_strip_station_id_summary">Ukloni ID iz imena stanice (korisno samo za neke merže)</string>
     <string name="pref_title_advanced">Napredno</string>
-    <string name="pref_title_api_url">API URL</string>
+    <string name="pref_title_api_url">URL sučelja</string>
     <string name="pref_title_default_tab">Standardna kartica</string>
 </resources>
