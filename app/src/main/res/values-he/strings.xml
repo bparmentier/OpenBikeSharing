@@ -1,7 +1,7 @@
-<?xml version='1.0' encoding='UTF-8'?>
-<resources><string name="connection_error">שגיאת חיבור</string>
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="connection_error">שגיאת חיבור</string>
     <string name="json_error">קבלת הנתונים נכשלה</string>
-
     <string name="action_settings">הגדרות</string>
     <string name="action_refresh">רענון</string>
     <string name="action_map">מפה</string>
@@ -9,26 +9,21 @@
     <string name="action_favorite">מועדף</string>
     <string name="action_my_location">המיקום שלי</string>
     <string name="action_search">חיפוש</string>
-
     <string name="title_activity_stations_list">תחנות</string>
     <string name="title_activity_station">תחנה</string>
     <string name="title_activity_networks_list">בחירת רשת</string>
     <string name="title_activity_map">מפה</string>
     <string name="title_activity_settings">הגדרות</string>
-
     <string name="welcome_dialog_message">לפני שנתחיל, נא לבחור מפת אופניים מהרשימה.
 \nיש גם לוודא שיש לך חיבור לאינטרנט.</string>
     <string name="welcome_dialog_ok">אישור</string>
     <string name="welcome_dialog_cancel">ביטול</string>
     <string name="welcome_dialog_title">ברוך בואך</string>
-
     <string name="location_not_found">המיקום לא נמצא</string>
     <string name="network_selected">נבחרו</string>
     <string name="bike_network_downloading">נא להמתין בזמן הורדת רשת האופניים</string>
-
     <string name="widget_title_favorite_stations">תחנות מועדפות</string>
     <string name="widget_no_fav_stations">אין תחנות מועדפות</string>
-
     <string name="free_bikes">אופניים בחינם: </string>
     <string name="empty_slots">חניות ריקות: </string>
     <string name="all_stations">כל התחנות</string>
@@ -46,24 +41,23 @@
     <string name="db_last_update_never">מעולם לא</string>
     <string name="updated_just_now">כרגע</string>
     <plurals name="updated_minutes_ago">
-	<item quantity="one">לפני דקה</item>
-	<item quantity="two">לפני %d דקות</item>
-	<item quantity="many"></item>
-	<item quantity="other"></item>
-</plurals>
+        <item quantity="one">לפני דקה</item>
+        <item quantity="two">לפני %d דקות</item>
+        <item quantity="many">לפני %d דקות</item>
+        <item quantity="other">לפני %d דקות</item>
+    </plurals>
     <plurals name="updated_hours_ago">
-	<item quantity="one">לפני שעה</item>
-	<item quantity="two">לפני %d שעות</item>
-	<item quantity="many"></item>
-	<item quantity="other"></item>
-</plurals>
+        <item quantity="one">לפני שעה</item>
+        <item quantity="two">לפני שעתיים</item>
+        <item quantity="many">לפני %d שעות</item>
+        <item quantity="other">לפני %d שעות</item>
+    </plurals>
     <plurals name="updated_days_ago">
-	<item quantity="one">אתמול</item>
-	<item quantity="two">לפני %d ימים</item>
-	<item quantity="many"></item>
-	<item quantity="other"></item>
-</plurals>
-
+        <item quantity="one">אתמול</item>
+        <item quantity="two">שלשום</item>
+        <item quantity="many">לפני %d ימים</item>
+        <item quantity="other">לפני %d ימים</item>
+    </plurals>
     <string name="pref_header_general">כללי</string>
     <string name="pref_title_bike_networks_list">בחירת רשת</string>
     <string name="pref_title_license">רשיון</string>
