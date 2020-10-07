@@ -67,7 +67,7 @@
     <string name="pref_title_version">Versjon</string>
     <string name="pref_map_layer_title">Kartlag</string>
     <string name="pref_title_strip_station_id">Skjul stasjons-ID</string>
-    <string name="pref_title_strip_station_id_summary">" Fjern ID fra stasjonsnavn (bare nyttig på noen nettverk) "</string>
+    <string name="pref_title_strip_station_id_summary">Fjern ID fra stasjonsnavn (bare nyttig på noen nettverk)</string>
     <string name="pref_title_advanced">Avansert</string>
     <string name="pref_title_api_url">Nettadresse til API</string>
     <string name="pref_title_default_tab">Forvalgt fane</string>
