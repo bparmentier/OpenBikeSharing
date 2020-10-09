@@ -1,2 +1,74 @@
 <?xml version="1.0" encoding="utf-8"?>
-<resources></resources>
+<resources>
+    <string name="pref_title_default_tab">Lapela por omisión</string>
+    <string name="pref_title_api_url">URL da API</string>
+    <string name="pref_title_advanced">Avanzado</string>
+    <string name="pref_title_strip_station_id_summary">Eliminar o ID do nome da estación (útil só nalgunhas redes)</string>
+    <string name="pref_title_strip_station_id">Quitar ID da estación</string>
+    <string name="pref_map_layer_title">Capa do mapa</string>
+    <string name="pref_title_version">Versión</string>
+    <string name="pref_title_openstreetmap">OpenStreetMap</string>
+    <string name="pref_title_osmbonuspack_library">biblioteca OSMBonusPack</string>
+    <string name="pref_title_osmdroid_library">biblioteca osmdroid</string>
+    <string name="pref_title_citybikes_api">API CityBikes</string>
+    <string name="pref_title_donate_bitcoin">Doar Bitcoin</string>
+    <string name="pref_title_developers_website">Web das desenvolvedoras</string>
+    <string name="pref_title_source_code">Código fonte</string>
+    <string name="pref_title_website">Sitio web</string>
+    <string name="pref_title_about">Acerca de</string>
+    <string name="pref_title_license">Licenza</string>
+    <string name="pref_title_bike_networks_list">Escolle unha rede</string>
+    <string name="pref_header_general">Xeral</string>
+    <plurals name="updated_days_ago">
+        <item quantity="one">fai %d día</item>
+        <item quantity="other">fai %d días</item>
+    </plurals>
+    <plurals name="updated_hours_ago">
+        <item quantity="one">fai %d hora</item>
+        <item quantity="other">fai %d horas</item>
+    </plurals>
+    <plurals name="updated_minutes_ago">
+        <item quantity="one">fai %d minuto</item>
+        <item quantity="other">fai %d minutos</item>
+    </plurals>
+    <string name="updated_just_now">Agora mesmo</string>
+    <string name="db_last_update_never">nunca</string>
+    <string name="db_last_update">Actualizao: %1$s</string>
+    <string name="cards_accepted">Cartóns aceptados</string>
+    <string name="is_bonus_station">Estación bonus</string>
+    <string name="no_nav_application">Non tes ningunha app de navegación instalada</string>
+    <string name="stations_removed_from_favorites">Estación eliminada das favoritas</string>
+    <string name="station_added_to_favorites">Estación engadida ás favoritas</string>
+    <string name="no_nearby_stations">Sen estacións próximas</string>
+    <string name="no_favorite_stations">Sen estacións favoritas</string>
+    <string name="no_stations">Sen estacións</string>
+    <string name="nearby_stations">Preto</string>
+    <string name="favorite_stations">Favoritas</string>
+    <string name="all_stations">Tódalas estacións</string>
+    <string name="empty_slots">Espazos baleiros: </string>
+    <string name="free_bikes">Bicis libres: </string>
+    <string name="widget_no_fav_stations">Sen estacións favoritas</string>
+    <string name="widget_title_favorite_stations">Estacións favoritas</string>
+    <string name="bike_network_downloading">Por favor agarda mentras se descarga a rede de bicicletas</string>
+    <string name="network_selected">seleccionado</string>
+    <string name="location_not_found">Non se atopa o lugar</string>
+    <string name="welcome_dialog_title">Ben vida</string>
+    <string name="welcome_dialog_cancel">Cancelar</string>
+    <string name="welcome_dialog_ok">Ok</string>
+    <string name="welcome_dialog_message">Antes de comezar, escolle unha rede de bicicletas na lista.
+\nAsegúrate tamén de que tes conexión a internet.</string>
+    <string name="title_activity_settings">Axustes</string>
+    <string name="title_activity_map">Mapa</string>
+    <string name="title_activity_networks_list">Escolle unha rede</string>
+    <string name="title_activity_station">Estación</string>
+    <string name="title_activity_stations_list">Estacións</string>
+    <string name="action_search">Buscar</string>
+    <string name="action_my_location">Onde estou</string>
+    <string name="action_favorite">Favorito</string>
+    <string name="action_directions">Direccións</string>
+    <string name="action_map">Mapa</string>
+    <string name="action_refresh">Actualizar</string>
+    <string name="action_settings">Axustes</string>
+    <string name="json_error">Fallo ó obter os datos</string>
+    <string name="connection_error">Fallo de conexión</string>
+</resources>
