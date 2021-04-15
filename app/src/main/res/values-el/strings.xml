@@ -1,2 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
-<resources></resources>
+<resources>
+    <string name="action_map">Χάρτης</string>
+    <string name="action_refresh">Ανανέωση</string>
+    <string name="action_settings">Ρυθμίσεις</string>
+    <string name="json_error">Σφάλμα ανάκτησης δεδομένων</string>
+    <string name="connection_error">Σφάλμα σύνδεσης</string>
+</resources>
