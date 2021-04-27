@@ -145,6 +145,11 @@ public class BikeNetworkParser {
                                 station.setStatus(StationStatus.OPEN);
                             }
                         }
+
+                        /* electric bikes */
+                        if (rawExtra.has("ebikes")) {
+                            station.setEBikes(rawExtra.getInt("ebikes"));
+                        }
                     }
                     stations.add(station);
                 }

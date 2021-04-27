@@ -35,10 +35,12 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import org.osmdroid.api.IMapController;
 import org.osmdroid.bonuspack.clustering.GridMarkerClusterer;
+import org.osmdroid.config.Configuration;
 import org.osmdroid.events.MapEventsReceiver;
 import org.osmdroid.tileprovider.tilesource.TileSourceFactory;
 import org.osmdroid.util.GeoPoint;
@@ -53,6 +55,7 @@ import org.osmdroid.views.overlay.mylocation.MyLocationNewOverlay;
 import java.util.ArrayList;
 
 import be.brunoparmentier.openbikesharing.app.R;
+import be.brunoparmentier.openbikesharing.app.BuildConfig;
 import be.brunoparmentier.openbikesharing.app.db.StationsDataSource;
 import be.brunoparmentier.openbikesharing.app.models.Station;
 import be.brunoparmentier.openbikesharing.app.models.StationStatus;
@@ -96,6 +99,10 @@ public class MapActivity extends Activity implements MapEventsReceiver {
         stationsDataSource = new StationsDataSource(this);
         ArrayList<Station> stations = stationsDataSource.getStations();
 
+        final Context context = getApplicationContext();
+        Configuration.getInstance().load(context, PreferenceManager.getDefaultSharedPreferences(context));
+        Configuration.getInstance().setUserAgentValue(BuildConfig.APPLICATION_ID);
+
         map = (MapView) findViewById(R.id.mapView);
         stationMarkerInfoWindow = new StationMarkerInfoWindow(R.layout.bonuspack_bubble, map);
 
@@ -118,7 +125,7 @@ public class MapActivity extends Activity implements MapEventsReceiver {
 
         map.setMultiTouchControls(true);
         map.setBuiltInZoomControls(true);
-        map.setMinZoomLevel(3);
+        map.setMinZoomLevel(Double.valueOf(3));
 
         /* map tile source */
         String mapLayer = settings.getString(PREF_KEY_MAP_LAYER, "");
@@ -127,7 +134,7 @@ public class MapActivity extends Activity implements MapEventsReceiver {
                 map.setTileSource(TileSourceFactory.MAPNIK);
                 break;
             case MAP_LAYER_CYCLEMAP:
-                map.setTileSource(TileSourceFactory.CYCLEMAP);
+                map.setTileSource(TileSourceFactory.HIKEBIKEMAP);
                 break;
             case MAP_LAYER_OSMPUBLICTRANSPORT:
                 map.setTileSource(TileSourceFactory.PUBLIC_TRANSPORT);
@@ -283,6 +290,23 @@ public class MapActivity extends Activity implements MapEventsReceiver {
                 ImageView emptySlotsLogo = (ImageView) getView().findViewById(R.id.bubble_emptyslots_logo);
                 emptySlotsLogo.setVisibility(View.GONE);
             }
+
+            ImageView regularBikesLogo = (ImageView) getView().findViewById(R.id.bubble_freebikes_logo);
+            TextView regularBikesValue = (TextView) getView().findViewById(R.id.bubble_description);
+            ImageView eBikesLogo = (ImageView) getView().findViewById(R.id.bubble_ebikes_logo);
+            TextView eBikesValue = (TextView) getView().findViewById(R.id.bubble_ebikes_value);
+
+            int bikes = markerStation.getFreeBikes();
+            if(markerStation.getEBikes() != null && regularBikesLogo != null
+            && eBikesLogo != null && regularBikesValue!= null && eBikesValue != null ) {
+            int ebikes = markerStation.getEBikes();
+                regularBikesValue.setText(String.valueOf(bikes-ebikes));
+                regularBikesLogo.setImageResource(R.drawable.ic_regular_bike);
+                eBikesLogo.setVisibility(View.VISIBLE);
+                eBikesValue.setVisibility(View.VISIBLE);
+                eBikesValue.setText(String.valueOf(ebikes));
+            }
+
             layout.setClickable(true);
             layout.setOnClickListener(new View.OnClickListener() {
                 @Override

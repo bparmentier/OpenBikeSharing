@@ -60,6 +60,7 @@
 
     <!-- Various -->
     <string name="free_bikes">Free bikes:\u00A0</string>
+    <string name="free_ebikes">Electric bikes:\u00A0</string>
     <string name="empty_slots">Empty slots:\u00A0</string>
     <string name="all_stations">All stations</string>
     <string name="favorite_stations">Favorites</string>
@@ -121,7 +122,7 @@
     <string name="pref_title_version">Version</string>
     <string name="pref_map_layer_title">Map layer</string>
     <string name="pref_map_layer_mapnik" translatable="false">Mapnik</string>
-    <string name="pref_map_layer_cyclemap" translatable="false">OpenCycleMap</string>
+    <string name="pref_map_layer_cyclemap" translatable="false">Hike &amp; Bike Map</string>
     <string name="pref_map_layer_osmpublictransport" translatable="false">OSMPublicTransport</string>
     <string name="pref_title_strip_station_id">Strip station ID</string>
     <string name="pref_title_strip_station_id_summary">
