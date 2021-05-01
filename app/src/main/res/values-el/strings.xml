@@ -5,4 +5,36 @@
     <string name="action_settings">Ρυθμίσεις</string>
     <string name="json_error">Σφάλμα ανάκτησης δεδομένων</string>
     <string name="connection_error">Σφάλμα σύνδεσης</string>
+    <string name="cards_accepted">Δεκτές κάρτες</string>
+    <string name="is_bonus_station">Σταθμός μπόνους</string>
+    <string name="no_nav_application">Δεν έχετε εγκαταστήσει καμία εφαρμογή πλοήγησης</string>
+    <string name="stations_removed_from_favorites">Ο σταθμός αφαιρέθηκε από τα αγαπημένα</string>
+    <string name="station_added_to_favorites">Ο σταθμός προστέθηκε στα αγαπημένα</string>
+    <string name="no_nearby_stations">Δεν υπάρχουν κοντινοί σταθμοί</string>
+    <string name="no_favorite_stations">Δεν υπάρχουν αγαπημένοι σταθμοί</string>
+    <string name="no_stations">Δεν υπάρχουν σταθμοί</string>
+    <string name="nearby_stations">Πλησίον</string>
+    <string name="favorite_stations">Αγαπημένα</string>
+    <string name="all_stations">Όλοι οι σταθμοί</string>
+    <string name="empty_slots">Κενές θέσεις: </string>
+    <string name="free_bikes">Δωρεάν ποδήλατα: </string>
+    <string name="widget_no_fav_stations">Δεν υπάρχουν αγαπημένοι σταθμοί</string>
+    <string name="widget_title_favorite_stations">Αγαπημένοι σταθμοί</string>
+    <string name="bike_network_downloading">Παρακαλούμε περιμένετε ενώ γίνεται λήψη του δικτύου ποδηλάτων</string>
+    <string name="network_selected">επιλεγμένο</string>
+    <string name="location_not_found">Η τοποθεσία δεν βρέθηκε</string>
+    <string name="welcome_dialog_title">Καλώς ορίσατε</string>
+    <string name="welcome_dialog_cancel">Ακύρωση</string>
+    <string name="welcome_dialog_ok">Εντάξει</string>
+    <string name="welcome_dialog_message">Πριν ξεκινήσετε, επιλέξτε ένα δίκτυο ποδηλάτων από τη λίστα.
+\nΒεβαιωθείτε επίσης ότι είστε συνδεδεμένοι στο διαδίκτυο.</string>
+    <string name="title_activity_settings">Ρυθμίσεις</string>
+    <string name="title_activity_map">Χάρτης</string>
+    <string name="title_activity_networks_list">Επιλέξτε ένα δίκτυο</string>
+    <string name="title_activity_station">Σταθμός</string>
+    <string name="title_activity_stations_list">Σταθμοί</string>
+    <string name="action_search">Αναζήτηση</string>
+    <string name="action_my_location">Η τοποθεσία μου</string>
+    <string name="action_favorite">Αγαπημένο</string>
+    <string name="action_directions">Οδηγίες</string>
 </resources>
