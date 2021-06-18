@@ -1,2 +1,74 @@
 <?xml version="1.0" encoding="utf-8"?>
-<resources></resources>
+<resources>
+    <string name="pref_title_api_url">Ohjelmointirajapinnan osoite</string>
+    <string name="pref_title_default_tab">Oletusvälilehti</string>
+    <string name="pref_title_advanced">Edistynyt</string>
+    <string name="pref_title_strip_station_id_summary">Poista tunnus aseman nimestä (hyödyllinen vain joissain verkoissa)</string>
+    <string name="pref_title_strip_station_id">Poista aseman tunnus</string>
+    <string name="pref_map_layer_title">Karttataso</string>
+    <string name="pref_title_version">Versio</string>
+    <string name="pref_title_openstreetmap">OpenStreetMap</string>
+    <string name="pref_title_osmbonuspack_library">OSMBonusPack-kirjasto</string>
+    <string name="pref_title_osmdroid_library">osmdroid-kirjasto</string>
+    <string name="pref_title_citybikes_api">CityBikes-ohjelmointirajapinta</string>
+    <string name="pref_title_donate_bitcoin">Lahjoita Bitcoineja</string>
+    <string name="pref_title_developers_website">Kehittäjän verkkosivusto</string>
+    <string name="pref_title_source_code">Lähdekoodi</string>
+    <string name="pref_title_website">Verkkosivusto</string>
+    <string name="pref_title_about">Tietoja</string>
+    <string name="pref_title_license">Lisenssi</string>
+    <string name="pref_title_bike_networks_list">Valitse verkko</string>
+    <string name="pref_header_general">Yleiset</string>
+    <plurals name="updated_days_ago">
+        <item quantity="one">%d päivä sitten</item>
+        <item quantity="other">%d päivää sitten</item>
+    </plurals>
+    <plurals name="updated_hours_ago">
+        <item quantity="one">%d tunti sitten</item>
+        <item quantity="other">%d tuntia sitten</item>
+    </plurals>
+    <plurals name="updated_minutes_ago">
+        <item quantity="one">%d minuutti sitten</item>
+        <item quantity="other">%d minuuttia sitten</item>
+    </plurals>
+    <string name="updated_just_now">Juuri äsken</string>
+    <string name="db_last_update_never">ei koskaan</string>
+    <string name="db_last_update">Viimeisin päivitys: %1$s</string>
+    <string name="cards_accepted">Kortit hyväksytään</string>
+    <string name="is_bonus_station">Bonusasema</string>
+    <string name="no_nav_application">Sinulla ei ole mitään navigointisovellusta asennettuna</string>
+    <string name="stations_removed_from_favorites">Asema poistettu suosikeista</string>
+    <string name="station_added_to_favorites">Asema lisätty suosikkeihin</string>
+    <string name="no_nearby_stations">Ei asemia lähistöllä</string>
+    <string name="no_favorite_stations">Ei suosikkiasemia</string>
+    <string name="no_stations">Ei asemia</string>
+    <string name="nearby_stations">Lähistöllä</string>
+    <string name="favorite_stations">Suosikit</string>
+    <string name="all_stations">Kaikki asemat</string>
+    <string name="empty_slots">Tyhjät paikat: </string>
+    <string name="free_bikes">Vapaat polkupyörät: </string>
+    <string name="widget_no_fav_stations">Ei suosikkiasemia</string>
+    <string name="widget_title_favorite_stations">Suosikkiasemat</string>
+    <string name="bike_network_downloading">Odota, kun pyöräilyverkkoa ladataan</string>
+    <string name="network_selected">valittu</string>
+    <string name="location_not_found">Sijaintia ei löytynyt</string>
+    <string name="welcome_dialog_title">Tervetuloa</string>
+    <string name="welcome_dialog_cancel">Peruuta</string>
+    <string name="welcome_dialog_ok">OK</string>
+    <string name="welcome_dialog_message">Ennen kuin aloitat, valitse pyöräilyverkko luettelosta.
+\nVarmista myös, että sinulla on Internet-yhteys.</string>
+    <string name="title_activity_settings">Asetukset</string>
+    <string name="title_activity_map">Kartta</string>
+    <string name="title_activity_networks_list">Valitse verkko</string>
+    <string name="title_activity_station">Asema</string>
+    <string name="title_activity_stations_list">Asemat</string>
+    <string name="action_search">Etsi</string>
+    <string name="action_my_location">Sijaintini</string>
+    <string name="action_favorite">Lisää suosikiksi</string>
+    <string name="action_directions">Reittiohjeet</string>
+    <string name="action_map">Kartta</string>
+    <string name="action_refresh">Päivitä</string>
+    <string name="action_settings">Asetukset</string>
+    <string name="json_error">Virhe noudettaessa tietoja</string>
+    <string name="connection_error">Yhteysvirhe</string>
+</resources>
