@@ -8,4 +8,52 @@
     <string name="action_refresh">Обновить</string>
     <string name="action_settings">Настройки</string>
     <string name="connection_error">Ошибка соединения</string>
+    <string name="pref_title_api_url">API URL</string>
+    <string name="pref_map_layer_title">Слой карты</string>
+    <string name="pref_title_version">Версия</string>
+    <string name="pref_title_openstreetmap">OpenStreetMap</string>
+    <string name="pref_title_osmbonuspack_library">библиотека OSMBonusPack</string>
+    <string name="pref_title_osmdroid_library">библиотека osmdroid</string>
+    <string name="pref_title_citybikes_api">CityBikes API</string>
+    <string name="pref_title_donate_bitcoin">Пожертвование с помощью Bitcoin</string>
+    <string name="pref_title_developers_website">Сайт разработчика</string>
+    <string name="pref_title_website">Веб-сайт</string>
+    <string name="pref_title_about">Инфо</string>
+    <string name="pref_title_license">Лицензия</string>
+    <string name="pref_title_bike_networks_list">Выбрать сеть</string>
+    <string name="pref_header_general">Общее</string>
+    <plurals name="updated_days_ago">
+        <item quantity="one">%d день назад</item>
+        <item quantity="few">%d дня назад</item>
+        <item quantity="many">%d дней назад</item>
+        <item quantity="other">%d дней назад</item>
+    </plurals>
+    <plurals name="updated_hours_ago">
+        <item quantity="one">%d час назад</item>
+        <item quantity="few">%d часа назад</item>
+        <item quantity="many">%d часов назад</item>
+        <item quantity="other">%d часов назад</item>
+    </plurals>
+    <plurals name="updated_minutes_ago">
+        <item quantity="one">%d минуту назад</item>
+        <item quantity="few">%d минуты назад</item>
+        <item quantity="many">%d минут назад</item>
+        <item quantity="other">%d минут назад</item>
+    </plurals>
+    <string name="updated_just_now">Только что</string>
+    <string name="db_last_update_never">никогда</string>
+    <string name="db_last_update">Последнее обновление: %1$s</string>
+    <string name="cards_accepted">Принимаются пластиковые карты</string>
+    <string name="no_nav_application">У вас не установлено ни одного навигационного приложения</string>
+    <string name="nearby_stations">Ближайшие</string>
+    <string name="favorite_stations">Избранное</string>
+    <string name="empty_slots">Пустые слоты: </string>
+    <string name="network_selected">выбрано</string>
+    <string name="location_not_found">Место не найдено</string>
+    <string name="welcome_dialog_title">Добро пожаловать</string>
+    <string name="welcome_dialog_cancel">Отмена</string>
+    <string name="welcome_dialog_ok">Ок</string>
+    <string name="title_activity_settings">Настройки</string>
+    <string name="title_activity_map">Карта</string>
+    <string name="title_activity_networks_list">Выбрать сеть</string>
 </resources>
