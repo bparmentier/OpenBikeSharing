@@ -1,2 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
-<resources></resources>
+<resources>
+    <string name="action_search">Поиск</string>
+    <string name="action_my_location">Моё местоположение</string>
+    <string name="action_favorite">Избранное</string>
+    <string name="action_directions">Направления</string>
+    <string name="action_map">Карта</string>
+    <string name="action_refresh">Обновить</string>
+    <string name="action_settings">Настройки</string>
+    <string name="connection_error">Ошибка соединения</string>
+</resources>
