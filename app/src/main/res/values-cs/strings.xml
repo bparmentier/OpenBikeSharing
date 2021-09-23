@@ -1,2 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
-<resources></resources>
+<resources>
+    <string name="action_settings">Nastavení</string>
+    <string name="json_error">Chyba při načítání dat</string>
+    <string name="connection_error">Chyba připojení</string>
+</resources>
