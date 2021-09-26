@@ -3,4 +3,19 @@
     <string name="action_settings">Nastavení</string>
     <string name="json_error">Chyba při načítání dat</string>
     <string name="connection_error">Chyba připojení</string>
+    <string name="welcome_dialog_cancel">Zrušit</string>
+    <string name="welcome_dialog_ok">OK</string>
+    <string name="welcome_dialog_message">Než začnete, vyberte si v seznamu síť jízdních kol.
+\nUjistěte se také, že jste připojeni k internetu.</string>
+    <string name="title_activity_settings">Nastavení</string>
+    <string name="title_activity_map">Mapa</string>
+    <string name="title_activity_networks_list">Vybrat síť</string>
+    <string name="title_activity_station">Stanice</string>
+    <string name="title_activity_stations_list">Stanice</string>
+    <string name="action_search">Hledat</string>
+    <string name="action_my_location">Moje lokace</string>
+    <string name="action_favorite">Oblíbené</string>
+    <string name="action_directions">Směry</string>
+    <string name="action_map">Mapa</string>
+    <string name="action_refresh">Obnovit</string>
 </resources>
