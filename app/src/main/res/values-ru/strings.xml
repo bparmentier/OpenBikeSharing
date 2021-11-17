@@ -64,4 +64,6 @@
     <string name="station_added_to_favorites">Станция добавлена в избранные</string>
     <string name="title_activity_stations_list">Станции</string>
     <string name="title_activity_station">Станция</string>
+    <string name="no_favorite_stations">Нет избранных станций</string>
+    <string name="pref_title_source_code">Исходный код</string>
 </resources>
