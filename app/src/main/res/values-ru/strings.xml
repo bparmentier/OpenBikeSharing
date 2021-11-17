@@ -56,4 +56,12 @@
     <string name="title_activity_settings">Настройки</string>
     <string name="title_activity_map">Карта</string>
     <string name="title_activity_networks_list">Выбрать сеть</string>
+    <string name="widget_title_favorite_stations">Избранные станции</string>
+    <string name="free_bikes">Свободные велосипеды: </string>
+    <string name="all_stations">Все станции</string>
+    <string name="no_stations">Нет станций</string>
+    <string name="widget_no_fav_stations">Нет избранных станций</string>
+    <string name="station_added_to_favorites">Станция добавлена в избранные</string>
+    <string name="title_activity_stations_list">Станции</string>
+    <string name="title_activity_station">Станция</string>
 </resources>
