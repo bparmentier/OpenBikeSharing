@@ -1,4 +1,4 @@
-<?xml version='1.0' encoding='UTF-8'?>
+<?xml version="1.0" encoding="utf-8"?>
 <!--
   ~ Copyright (c) 2014-2015 Bruno Parmentier. This file is part of OpenBikeSharing.
   ~
@@ -14,13 +14,10 @@
   ~
   ~ You should have received a copy of the GNU General Public License
   ~ along with OpenBikeSharing.  If not, see <http://www.gnu.org/licenses/>.
-  -->
-<resources>
-
+  --><resources>
     <!-- Error messages -->
     <string name="connection_error">Error de conexión</string>
     <string name="json_error">Error al obtener datos</string>
-
     <!-- Actions -->
     <string name="action_settings">Ajustes</string>
     <string name="action_refresh">Refrescar</string>
@@ -29,27 +26,22 @@
     <string name="action_favorite">Favoritos</string>
     <string name="action_my_location">Mi ubicación</string>
     <string name="action_search">Buscar</string>
-
     <!-- Activities titles -->
     <string name="title_activity_stations_list">Estaciones</string>
     <string name="title_activity_station">Estación</string>
     <string name="title_activity_networks_list">Seleccionar una red</string>
     <string name="title_activity_map">Mapa</string>
     <string name="title_activity_settings">Ajustes</string>
-
     <!-- Welcome dialog -->
-    <string name="welcome_dialog_message">
-        Antes de empezar, elija una red de bicicletas de la lista
-    </string>
+    <string name="welcome_dialog_message">" Antes de empezar, por favor elije una red de bicicletas de la lista. 
+\nTambién asegúrate de estar conectado a Internet. "</string>
     <string name="welcome_dialog_ok">OK</string>
     <string name="welcome_dialog_cancel">Cancelar</string>
     <string name="welcome_dialog_title">Bienvenido</string>
-
     <!-- Map -->
     <string name="location_not_found">Ubicación no encontrada</string>
     <string name="network_selected">seleccionada</string>
     <string name="bike_network_downloading">Por favor espere mientras la red de bicicletas está siendo descargada</string>
-
     <!-- Various -->
     <string name="free_bikes">Bicicletas:\u00A0</string>
     <string name="empty_slots">Espacios:\u00A0</string>
@@ -75,7 +67,6 @@
         <item quantity="one">Hace %d día</item>
         <item quantity="other">Hace %d días</item>
     </plurals>
-
     <!-- Settings -->
     <string name="pref_header_general">General</string>
     <string name="pref_title_bike_networks_list">Elija una red</string>
@@ -95,9 +86,8 @@
     <string name="pref_title_strip_station_id_summary">
         Ocultar ID del nombre de la estación (útil para algunas redes)
     </string>
-<string name="widget_title_favorite_stations">Estaciones favoritas</string>
+    <string name="widget_title_favorite_stations">Estaciones favoritas</string>
     <string name="widget_no_fav_stations">Sin estaciones favoritas</string>
-
     <string name="nearby_stations">Cercano</string>
     <string name="no_stations">Sin estaciones</string>
     <string name="no_favorite_stations">Sin estaciones favoritas</string>
