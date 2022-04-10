@@ -66,4 +66,14 @@
     <string name="title_activity_station">Станция</string>
     <string name="no_favorite_stations">Нет избранных станций</string>
     <string name="pref_title_source_code">Исходный код</string>
+    <string name="is_bonus_station">Премиальная станция</string>
+    <string name="stations_removed_from_favorites">Станция удалена из избранного</string>
+    <string name="json_error">Ошибка при извлечении данных</string>
+    <string name="welcome_dialog_message">Перед началом работы, пожалуйста, выберите велосипедную сеть в списке.
+\nТакже убедитесь, что вы подключены к Интернету.</string>
+    <string name="bike_network_downloading">Пожалуйста, подождите, пока загружается велосипедная сеть</string>
+    <string name="no_nearby_stations">Отсутствуют близлежащие станций</string>
+    <string name="pref_title_default_tab">Вкладка по умолчанию</string>
+    <string name="pref_title_strip_station_id_summary">Удалить ID из названия станции (полезно только для некоторых сетей)</string>
+    <string name="pref_title_advanced">Расширенный</string>
 </resources>
