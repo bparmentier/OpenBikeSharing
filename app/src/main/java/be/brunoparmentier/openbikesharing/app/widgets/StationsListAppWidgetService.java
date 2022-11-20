@@ -21,6 +21,7 @@ import android.appwidget.AppWidgetManager;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
+import android.view.View;
 import android.widget.RemoteViews;
 import android.widget.RemoteViewsService;
 
@@ -88,9 +89,19 @@ class StationsListAppWidgetFactory implements RemoteViewsService.RemoteViewsFact
         // We construct a remote views item based on our widget item xml file, and set the
         // text based on the position.
         RemoteViews rv = new RemoteViews(mContext.getPackageName(), R.layout.app_widget_item);
-        rv.setTextViewText(R.id.widgetStationNameTitle, stations.get(position).getName());
-        rv.setTextViewText(R.id.widgetFreeBikesValue, String.valueOf(stations.get(position).getFreeBikes()));
-        rv.setTextViewText(R.id.widgetEmptySlotsValue, String.valueOf(stations.get(position).getEmptySlots()));
+        Station mStation = stations.get(position);
+        rv.setTextViewText(R.id.widgetStationNameTitle, mStation.getName());
+        int bikes = mStation.getFreeBikes();
+        if(mStation.getEBikes() != null) {
+            int ebikes = mStation.getEBikes();
+            rv.setImageViewResource(R.id.widgetFreeBikesLogo, R.drawable.ic_regular_bike);
+            rv.setViewVisibility(R.id.widgetEBikesLogo, View.VISIBLE);
+            rv.setViewVisibility(R.id.widgetEBikesValue, View.VISIBLE);
+            rv.setTextViewText(R.id.widgetEBikesValue, String.valueOf(ebikes));
+            bikes = bikes - ebikes;
+        }
+        rv.setTextViewText(R.id.widgetFreeBikesValue, String.valueOf(bikes));
+        rv.setTextViewText(R.id.widgetEmptySlotsValue, String.valueOf(mStation.getEmptySlots()));
 
         // Next, we set a fill-intent which will be used to fill-in the pending intent template
         // which is set on the collection view in StationsListAppWidgetProvider.

@@ -25,7 +25,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
     private static DatabaseHelper instance;
 
     private static final String DB_NAME = "openbikesharing.sqlite";
-    private static final int DB_VERSION = 1;
+    private static final int DB_VERSION = 2;
 
     public static final String STATIONS_TABLE_NAME = "stations";
     public static final String STATIONS_COLUMN_ID = "id";
@@ -39,6 +39,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
     public static final String STATIONS_COLUMN_BANKING = "banking";
     public static final String STATIONS_COLUMN_BONUS = "bonus";
     public static final String STATIONS_COLUMN_STATUS = "status";
+    public static final String STATIONS_COLUMN_EBIKES = "ebikes";
 
     public static final String FAV_STATIONS_TABLE_NAME = "fav_stations";
     public static final String FAV_STATIONS_COLUMN_ID = "id";
@@ -61,7 +62,8 @@ public class DatabaseHelper extends SQLiteOpenHelper {
                 + "(id TEXT PRIMARY KEY, name TEXT NOT NULL, last_update TEXT NOT NULL, "
                 + "latitude NUMERIC NOT NULL, longitude NUMERIC NOT NULL, "
                 + "free_bikes INTEGER NOT NULL, empty_slots INTEGER NOT NULL, "
-                + "address TEXT, banking INTEGER, bonus INTEGER, status TEXT)"
+                + "address TEXT, banking INTEGER, bonus INTEGER, status TEXT, "
+                + "ebikes INTEGER) "
         );
         db.execSQL("CREATE TABLE " + FAV_STATIONS_TABLE_NAME
                         + "(id TEXT PRIMARY KEY)"
@@ -71,6 +73,9 @@ public class DatabaseHelper extends SQLiteOpenHelper {
     @Override
     public void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion) {
 
+        if (oldVersion < 2) {
+             db.execSQL("ALTER TABLE " + STATIONS_TABLE_NAME + " ADD COLUMN ebikes INTEGER;");
+        }
     }
 
 }
