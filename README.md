@@ -1,3 +1,5 @@
+**This project isn't maintained anymore! Please have a look at [BikeSharingHub](https://github.com/francoisfds/BikeSharingHub) (forked by [@francoisfds](https://github.com/francoisfds)).**
+
 # OpenBikeSharing
 
 [![Build Status](https://travis-ci.org/bparmentier/OpenBikeSharing.svg?branch=master)](https://travis-ci.org/bparmentier/OpenBikeSharing)
